@@ -1,0 +1,845 @@
+{
+  "app": {
+    "documentTitle": "MedHelp — 你的研究生 AI 助理"
+  },
+  "buttons": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "create": "创建",
+    "edit": "编辑",
+    "close": "关闭",
+    "confirm": "确认",
+    "submit": "提交",
+    "retry": "重试",
+    "refresh": "刷新",
+    "search": "搜索",
+    "clear": "清除",
+    "copy": "复制",
+    "download": "下载",
+    "upload": "上传",
+    "browse": "浏览"
+  },
+  "entitlements": {
+    "proBadge": "PRO 专属",
+    "proOnly": "仅限 Pro",
+    "contactAdmin": "请联系管理员升级到 Pro 会员",
+    "lockedAction": "升级 Pro 后可用",
+    "features": {
+      "computeResources": {
+        "title": "计算资源为 Pro 功能",
+        "description": "升级后可配置本地或远程计算节点、监控 CPU/GPU 资源并运行 Slurm 任务。"
+      },
+      "skillCatalog": {
+        "title": "技能列表为 Pro 功能",
+        "description": "升级后可浏览完整技能目录、查看技能详情并管理技能包；对话框中的技能名称仍可正常使用。"
+      },
+      "researchTasks": {
+        "title": "任务面板为 Pro 功能",
+        "description": "升级后可拆解研究任务、跟踪阶段进度并管理 Pipeline 产物。"
+      },
+      "literatureMonitor": {
+        "title": "文献动态为 Pro 功能",
+        "description": "升级后可使用多来源文献监控、自动检索、评分和候选文献入库。"
+      },
+      "researchPipeline": {
+        "title": "自动化 Pipeline 为 Pro 功能",
+        "description": "升级后可启动、恢复和管理自动化研究流水线。"
+      },
+      "variableCatalog": {
+        "title": "变量标签为 Pro 功能",
+        "description": "升级后可维护变量标签、证据关系和跨项目复用信息。"
+      },
+      "variableDiscovery": {
+        "title": "变量发现为 Pro 功能",
+        "description": "升级后可从 PubMed 自动抽取候选变量并进入人工审核流程。"
+      },
+      "projectMemory": {
+        "title": "记忆总结为 Pro 功能",
+        "description": "升级后可沉淀项目经验、模板、SOP 和跨项目记忆。"
+      },
+      "conversationArchive": {
+        "title": "对话记录为 Pro 功能",
+        "description": "升级后可使用账号级对话归档、搜索和跨设备同步。"
+      }
+    }
+  },
+  "headerActions": {
+    "restart": "重启",
+    "restarting": "重启中...",
+    "restartTitle": "一键重启应用与后端",
+    "restartFailed": "重启失败，请稍后重试。"
+  },
+  "downloadDialog": {
+    "title": "选择下载内容",
+    "description": "默认保存到浏览器或桌面端的下载位置；会自动排除隐藏路径、符号链接、模型记忆/上下文文件、原始数据路径和超过 50MB 的文件。",
+    "chooseLocation": "选择保存位置",
+    "options": {
+      "all": "全部",
+      "publication": "论文报告（含图表）",
+      "experimentAnalysis": "分析文件夹（含代码）"
+    }
+  },
+  "tabs": {
+    "dashboard": "今日状态",
+    "projectProgress": "项目进度",
+    "today": "今日待办",
+    "submissions": "投稿中心",
+    "thesis": "毕业论文",
+    "dailyReview": "每日复盘",
+    "meetings": "组会日常",
+    "advisor": "导师事项",
+    "automation": "自动化",
+    "companions": "桌面伙伴",
+    "miniApps": "我的应用",
+    "settings": "设置",
+    "trash": "回收站",
+    "chat": "对话",
+    "context": "上下文",
+    "survey": "知识库",
+    "shell": "终端",
+    "files": "文件与数据",
+    "git": "版本控制",
+    "skills": "技能中心",
+    "compute": "计算资源",
+    "news": "文献追踪",
+    "medlibrary": "资源库",
+    "conversationHistory": "对话记录",
+    "variableOverview": "变量标签",
+    "variableKnowledgePubmedDiscovery": "PubMed 自动发现",
+    "memorySummary": "记忆总结"
+  },
+  "explorer": {
+    "openNav": "打开导航",
+    "clearSearch": "清除搜索",
+    "resizeList": "调整列表栏宽度",
+    "resizeHint": "拖动调整列表栏宽度；双击恢复默认",
+    "resizeNav": "调整功能导航宽度",
+    "resizeProjects": "调整项目栏宽度"
+  },
+  "myApps": {
+    "searchPlaceholder": "搜索我的应用",
+    "loading": "正在加载应用…",
+    "noMatch": "没有匹配的应用",
+    "emptyList": "还没有应用。",
+    "noDescription": "暂无描述",
+    "selectApp": "选择一个应用",
+    "description": "把常用研究流程做成安全隔离、随开随用的个人应用。",
+    "refresh": "刷新",
+    "openApp": "打开应用",
+    "clone": "创建副本",
+    "export": "导出 HTML",
+    "exportAria": "导出应用",
+    "editSource": "编辑源码",
+    "deleteConfirm": "确定删除 {{name}}？",
+    "importHtml": "导入 HTML",
+    "createWithAgent": "与 Agent 创建",
+    "emptyPick": "选择左侧应用开始运行",
+    "emptyTitle": "还没有应用",
+    "emptyHint": "与 Agent 对话完成需求澄清、界面设计和发布，也可以直接导入已有 HTML。",
+    "createTitle": "创建应用",
+    "editTitle": "编辑 {{name}}",
+    "saveAndRun": "保存并运行",
+    "icon": "图标",
+    "name": "名称",
+    "desc": "描述",
+    "source": "应用源码（单文件 HTML）",
+    "preview": "应用实时预览",
+    "fileTooLarge": "HTML 文件不能超过 2 MiB",
+    "importedName": "导入的应用",
+    "importedDescription": "从本地 HTML 文件导入",
+    "starterName": "研究小工具",
+    "starterDescription": "一个自包含的 HTML 研究应用",
+    "copySuffix": "{{name}} 副本"
+  },
+  "conversationHistory": {
+    "title": "对话记录",
+    "subtitle": "登录同一账户即可跨设备查看已保存的对话。",
+    "directoryEyebrow": "记录",
+    "directoryTitle": "对话列表",
+    "conversationCount": "{{count}} 条",
+    "results": "对话",
+    "searchPlaceholder": "搜索标题或项目",
+    "emptyTitle": "还没有云端对话记录",
+    "emptyDescription": "完成一次对话后，可见的用户与助手消息会自动保存到当前账户。",
+    "selectHint": "选择一条对话记录查看内容",
+    "messages": "条消息",
+    "loadMore": "加载更多",
+    "loadFailed": "加载对话记录失败",
+    "deleteFailed": "删除对话记录失败",
+    "deleteConfirm": "确定从账户中删除这条对话记录吗？本地原始会话不会受到影响。",
+    "unknownProject": "未标记项目",
+    "privacyNote": "仅保存可见对话文本，不包含本地文件、工具参数、思考过程或系统提示",
+    "you": "你",
+    "assistant": "助手"
+  },
+  "variableKnowledge": {
+    "title": "变量与发现",
+    "overview": "变量总览",
+    "library": "变量库",
+    "pubmedDiscovery": "PubMed 自动发现",
+    "pubmedDiscoverySubtitle": "自动发现候选变量、派生指标、复合指标与风险评分",
+    "candidatePool": "候选池",
+    "favorites": "我的收藏",
+    "comingSoon": "后续页面待接入"
+  },
+  "researchStages": {
+    "title": "研究工作流",
+    "literature": "文献",
+    "literatureBar": "文献调研",
+    "literatureHint": "证据摄取 · 文献基线",
+    "ideation": "构思",
+    "ideationBar": "研究构思",
+    "ideationHint": "研究问题 · 方案设定",
+    "experiment": "实验",
+    "experimentBar": "研究执行",
+    "experimentHint": "数据 · 建模 · 结果",
+    "publication": "发表",
+    "publicationBar": "论文产出",
+    "publicationHint": "图表 · 稿件 · 审阅",
+    "promotion": "推广",
+    "promotionBar": "成果推广",
+    "promotionHint": "幻灯 · 主页 · 传播",
+    "currentStage": "当前阶段",
+    "completed": "已完成",
+    "upcoming": "未开始",
+    "artifactsLine": "{{count}} 个产物",
+    "waiting": "等待中"
+  },
+  "status": {
+    "loading": "加载中...",
+    "success": "成功",
+    "error": "错误",
+    "failed": "失败",
+    "pending": "待处理",
+    "completed": "已完成",
+    "inProgress": "进行中"
+  },
+  "messages": {
+    "savedSuccessfully": "保存成功",
+    "deletedSuccessfully": "删除成功",
+    "updatedSuccessfully": "更新成功",
+    "operationFailed": "操作失败",
+    "networkError": "网络错误，请检查您的连接。",
+    "unauthorized": "未授权，请登录。",
+    "notFound": "未找到",
+    "invalidInput": "输入无效",
+    "requiredField": "此字段为必填项",
+    "unknownError": "发生未知错误"
+  },
+  "navigation": {
+    "settings": "设置",
+    "home": "首页",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "logout": "退出登录"
+  },
+  "mobileNav": {
+    "survey": "文献",
+    "context": "上下文",
+    "files": "文件",
+    "git": "Git",
+    "trash": "回收站"
+  },
+  "surveyPage": {
+    "title": "文献",
+    "description": "在一个页面中集中查看项目相关论文、文献图谱、文献笔记和阶段任务。",
+    "filterPlaceholder": "筛选论文、图谱和笔记...",
+    "loading": "正在加载文献资料...",
+    "summary": {
+      "papers": "论文",
+      "reports": "报告",
+      "graphs": "图谱",
+      "tasks": "文献任务"
+    },
+    "labels": {
+      "workspaceTag": "文献项目",
+      "focusTag": "文献综述",
+      "library": "文献资料库",
+      "preview": "预览"
+    },
+    "actions": {
+      "collapse": "收起",
+      "expand": "展开"
+    },
+    "sections": {
+      "papers": "项目论文",
+      "reports": "文献报告",
+      "graphs": "文献图谱",
+      "notes": "文献笔记",
+      "tasks": "阶段任务",
+      "references": "项目文献"
+    },
+    "errors": {
+      "loadFailed": "加载该项目的文献数据失败。"
+    },
+    "empty": {
+      "noSurveyFiles": "当前还没有在 Literature/ 下发现文献相关文件。",
+      "noSectionFiles": "当前筛选条件下没有 {{section}} 文件。",
+      "noTasks": "当前还没有文献阶段任务。",
+      "noSelection": "选择论文、图谱、报告、笔记或任务后，可在此查看详情。",
+      "noTaskDescription": "该任务还没有描述。"
+    },
+    "preview": {
+      "loading": "正在加载预览...",
+      "failed": "加载所选文献内容失败。",
+      "unsupported": "该文件类型暂时无法在文献页面中预览。",
+      "surveyTask": "文献任务",
+      "taskDescription": "任务描述",
+      "dragHint": "拖动可平移图谱",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "fit": "适配",
+      "resetZoom": "重置",
+      "openInWindow": "新窗口打开",
+      "windowLoadFailed": "无法在独立窗口中打开该图谱。"
+    }
+  },
+  "common": {
+    "language": "语言",
+    "theme": "主题",
+    "darkMode": "深色模式",
+    "lightMode": "浅色模式",
+    "name": "名称",
+    "description": "描述",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "optional": "可选",
+    "version": "版本",
+    "select": "选择",
+    "selectAll": "全选",
+    "deselectAll": "取消全选"
+  },
+  "time": {
+    "justNow": "刚刚",
+    "oneMinuteAgo": "1 分钟前",
+    "minutesAgo": "{{count}} 分钟前",
+    "oneHourAgo": "1 小时前",
+    "hoursAgo": "{{count}} 小时前",
+    "oneDayAgo": "1 天前",
+    "daysAgo": "{{count}} 天前",
+    "yesterday": "昨天"
+  },
+  "fileOperations": {
+    "newFile": "新建文件",
+    "newFolder": "新建文件夹",
+    "rename": "重命名",
+    "move": "移动",
+    "copyPath": "复制相对路径",
+    "openInEditor": "在编辑器中打开"
+  },
+  "mainContent": {
+    "loading": "正在加载 MedHelp®",
+    "settingUpWorkspace": "正在设置您的工作空间...",
+    "chooseProject": "选择项目",
+    "selectProjectDescription": "从侧边栏选择一个项目，开始查看对话、文件数据与证据产物。每个项目都会保留会话记录和文件历史。",
+    "tip": "提示",
+    "createProjectMobile": "点击上方的菜单按钮以访问项目",
+    "createProjectDesktop": "点击侧边栏中的文件夹图标创建项目",
+    "newSession": "新建分析会话",
+    "untitledSession": "未命名会话",
+    "projectFiles": "文件与数据"
+  },
+  "projectDashboard": {
+    "title": "项目总览",
+    "trashTitle": "项目回收站",
+    "trashSubtitle": "从研究总览移除的项目会先移动到这里，便于恢复，或分别删除数据库记录与本地文件。",
+    "trashBadge": "回收站",
+    "trashEmptyTitle": "回收站为空",
+    "trashEmptyDescription": "从研究总览移除的项目不会立刻彻底清除，而是先移动到这里。",
+    "trashDeletedAt": "删除于 {{time}}",
+    "trashSessions": "{{count}} 个对话",
+    "trashFilesMissing": "项目文件已不存在",
+    "restoreProject": "恢复项目",
+    "deleteFromTrash": "从回收站移除",
+    "trashDeleteTitle": "选择删除方式",
+    "trashDeleteDescription": "逻辑删除只移除数据库记录。物理删除还会永久删除回收站中残留的实际文件。",
+    "logicalDelete": "仅删除记录",
+    "physicalDelete": "永久删除文件",
+    "subtitle": "集中管理临床数据集、分析会话与生成输出，快速回到当前分析流程。",
+    "overviewBadge": "临床数据分析",
+    "sharedBadge": "共享能力",
+    "skillsTitle": "技能中心",
+    "skillsDescription": "集中查看临床研究设计、生物统计分析、证据合成与科研自动化相关技能，所有项目共享同一套已安装能力。",
+    "openSkillsLibrary": "打开技能列表",
+    "activityTitle": "最近更新",
+    "projectsSectionTitle": "临床数据项目",
+    "projectsSectionSubtitle": "快速打开活跃的临床数据项目，查看分析状态、最近分析与输出入口。",
+    "emptyTitle": "还没有临床数据项目",
+    "emptyDescription": "从侧边栏创建或添加项目后，这里会显示各项目的数据路径、分析进度、流程状态与输出入口。",
+    "summary": {
+      "projects": "临床项目",
+      "sessions": "分析会话",
+      "tracked": "活跃分析",
+      "progress": "平均分析进度",
+      "todayTokens": "今日 Token",
+      "weekTokens": "本周 Token"
+    },
+    "metrics": {
+      "sessions": "分析会话",
+      "tasks": "分析任务",
+      "completed": "已完成任务",
+      "todayTokens": "今日 Token",
+      "weekTokens": "本周 Token"
+    },
+    "actions": {
+      "chat": "分析对话",
+      "files": "数据文件",
+      "shell": "终端"
+    },
+    "datasetPath": "数据路径",
+    "openProject": "进入项目",
+    "progressTitle": "分析进度",
+    "progressBadge": "已完成 {{progress}}%",
+    "progressValue": "已完成 {{progress}}%",
+    "notTracked": "暂无可跟踪进度",
+    "notTrackedShort": "未跟踪",
+    "lastActivity": "最近分析：{{time}}",
+    "pipelineUpdated": "分析流程更新于 {{time}}",
+    "noRecentActivity": "暂无最近分析",
+    "autoResearch": {
+      "title": "分析流程",
+      "running": "进行中 {{completed}}/{{total}}{{currentTask}}",
+      "currentTaskSuffix": "，任务 {{id}}",
+      "readyVia": "已通过 {{provider}} 就绪",
+      "resumeAvailable": "最近一次流程可恢复。",
+      "nextTask": "下一步：{{title}}",
+      "nextTaskFallback": "下一步任务",
+      "lastStatus": "上次状态：{{status}}",
+      "resumeTarget": "恢复目标：{{title}}{{status}}",
+      "resumeStatusSuffix": "，来源于 {{status}} 运行",
+      "stageLine": "流程阶段：{{current}}{{next}}",
+      "stageNextSuffix": " -> {{next}}",
+      "checkpointLine": "最近检查点：{{value}}",
+      "eventLine": "最近事件：{{value}}{{time}}",
+      "eventTimeSuffix": "（{{time}}）",
+      "noRecentEvent": "暂无最近事件",
+      "provider": "提供方",
+      "model": "模型",
+      "permissionMode": "权限",
+      "permissionModes": {
+        "default": "工具前确认",
+        "acceptEdits": "仅自动编辑",
+        "bypassPermissions": "完全绕过"
+      },
+      "bypassConfirm": "完全绕过会让自动调研在本次运行中拥有不受限制的文件、命令和网络访问权限。确定使用完全绕过启动吗？",
+      "resumable": "可恢复",
+      "unavailable": "未就绪",
+      "openSession": "打开会话",
+      "preparingSession": "正在准备分析…",
+      "sessionUnavailable": "分析暂不可用",
+      "working": "处理中…",
+      "cancel": "取消流程",
+      "resume": "恢复流程",
+      "startFresh": "重新开始",
+      "start": "开始流程",
+      "reason": {
+        "notificationEmailMissing": "请先在设置中添加通知邮箱",
+        "researchBriefMissing": "缺少分析简报。请先打开分析实验台生成后再开始流程。",
+        "researchBriefInvalid": "分析简报 JSON 无效。请在分析实验台重新生成后再开始流程。",
+        "tasksFileMissing": "缺少分析任务列表。请先打开分析实验台生成任务后再开始流程。",
+        "tasksFileInvalid": "分析任务列表 JSON 无效。请在分析实验台重新生成后再开始流程。",
+        "noActionableTasks": "没有待处理分析任务。请先在分析实验台补充任务后再试。",
+        "runInProgress": "已有流程在运行",
+        "default": "不可用"
+      },
+      "hint": {
+        "needNotificationEmail": "开始流程前，请先在设置中填写通知邮箱。",
+        "needSenderEmail": "如需邮件通知，请先在设置中配置流程发件邮箱。",
+        "emailsConfigured": "完成通知将使用已保存的发件人与通知邮箱设置。"
+      },
+      "events": {
+        "queued": "已排队",
+        "runStarted": "已开始运行",
+        "resumeQueued": "已加入恢复队列",
+        "runResumed": "已恢复运行",
+        "sessionCreated": "已创建分析会话",
+        "taskStarted": "开始：{{title}}",
+        "taskStartedGeneric": "任务已开始",
+        "taskCompleted": "完成：{{title}}",
+        "taskCompletedGeneric": "任务已完成",
+        "stageCompleted": "{{stage}} 已完成",
+        "stageCompletedGeneric": "阶段已完成",
+        "stageContractWarning": "阶段校验警告",
+        "stageContractFailed": "阶段校验失败",
+        "runCompleted": "流程已完成",
+        "runCancelling": "正在取消",
+        "runCancelled": "已取消",
+        "runFailed": "失败：{{error}}",
+        "runFailedGeneric": "流程失败"
+      }
+    }
+  },
+  "fileTree": {
+    "loading": "正在加载文件...",
+    "files": "文件",
+    "simpleView": "简单视图",
+    "compactView": "紧凑视图",
+    "detailedView": "详细视图",
+    "expandAll": "展开第一层文件夹",
+    "collapseAll": "收起全部文件夹",
+    "refresh": "刷新文件",
+    "autoRefresh": "自动刷新间隔",
+    "autoRefreshOptions": {
+      "0": "关",
+      "5000": "5秒",
+      "15000": "15秒",
+      "30000": "30秒",
+      "60000": "60秒"
+    },
+    "searchPlaceholder": "搜索文件和文件夹...",
+    "clearSearch": "清除搜索",
+    "name": "名称",
+    "size": "大小",
+    "modified": "修改时间",
+    "permissions": "权限",
+    "noFilesFound": "未找到文件",
+    "checkProjectPath": "检查项目路径是否可访问",
+    "folderEmpty": "这个文件夹是空的",
+    "folderEmptyHint": "可以在这里新建文件夹或上传文件。",
+    "noFolderConnected": "当前对话尚未建立独立文件夹",
+    "noFolderConnectedHint": "发送新对话的第一条消息后，会自动进入该对话自己的文件夹。",
+    "noMatchesFound": "未找到匹配项",
+    "tryDifferentSearch": "尝试不同的搜索词或清除搜索",
+    "justNow": "刚刚",
+    "minAgo": "{{count}} 分钟前",
+    "hoursAgo": "{{count}} 小时前",
+    "daysAgo": "{{count}} 天前",
+    "uploadFiles": "上传文件",
+    "uploading": "上传中...",
+    "uploadSuccess": "成功上传 {{count}} 个项目",
+    "uploadError": "上传失败",
+    "folderReadError": "读取拖入的文件夹失败",
+    "moveSuccess": "已将 {{name}} 移动到 {{folder}}",
+    "moveError": "移动项目失败",
+    "dropFilesHere": "将文件拖放到此处",
+    "uploadHere": "上传到这里…",
+    "newFile": "新建文件…",
+    "newFilePlaceholder": "文件名，例如 notes.md",
+    "createFileTitle": "新建文件",
+    "createFileAction": "创建文件",
+    "createFileSuccess": "已创建 {{name}}",
+    "createFileError": "创建文件失败",
+    "newFolder": "新建文件夹",
+    "newFolderPlaceholder": "文件夹名称",
+    "createFolder": "创建文件夹",
+    "cancelFolder": "取消",
+    "createFolderSuccess": "已在 {{folder}} 下创建 {{name}}",
+    "createFolderError": "创建文件夹失败",
+    "invalidFolderName": "请输入有效文件夹名，不能以点开头或包含路径分隔符",
+    "invalidItemName": "请输入有效名称，不能以点开头或包含系统保留字符",
+    "itemActions": "{{name}} 的操作",
+    "rename": "重命名…",
+    "renameTitle": "重命名",
+    "renamePlaceholder": "新名称",
+    "renameAction": "保存名称",
+    "renameSuccess": "已重命名为 {{name}}",
+    "renameError": "重命名失败",
+    "copyItem": "复制",
+    "pasteItem": "粘贴",
+    "copyItemReady": "已复制 {{name}}，请在目标文件夹右击粘贴",
+    "copyItemSuccess": "已粘贴为 {{name}}",
+    "copyItemError": "复制项目失败",
+    "moveItem": "移动…",
+    "moveTitle": "移动 {{name}}",
+    "chooseMoveDestination": "选择目标文件夹",
+    "moveAction": "移动到这里",
+    "loadingFolders": "正在加载文件夹…",
+    "loadFoldersError": "加载文件夹失败",
+    "noMoveDestinations": "没有其他可移动到的文件夹",
+    "projectRoot": "项目根目录",
+    "fileOperationError": "文件操作失败",
+    "copyPath": "复制相对路径",
+    "deleteFile": "删除",
+    "confirmDelete": "确定要删除 \"{{name}}\" 吗？",
+    "deleteConfirmTitle": "确认删除",
+    "deleteConfirmWarning": "此操作无法撤销。",
+    "deleteConfirmAction": "确认删除",
+    "deletingFile": "删除中...",
+    "deleteSuccess": "删除成功",
+    "uploadToFolder": "上传到此文件夹",
+    "openInFileManager": "在文件管理器中打开",
+    "openInFileManagerSuccess": "已在本机文件管理器中打开",
+    "openInFileManagerError": "无法打开本机文件管理器",
+    "askAboutFile": "询问这个文件",
+    "askAboutDirectory": "询问这个文件夹",
+    "addToNewChat": "加入新对话",
+    "askAboutFilePrompt": "请帮我解释一下文件 `{{path}}`。它的作用是什么，在这个项目里是怎么被使用的，以及我在修改它之前需要知道什么？",
+    "askAboutDirectoryPrompt": "请帮我解释一下目录 `{{path}}`。它的用途是什么，里面重要的文件或子模块有哪些，以及它在这个项目中的位置和作用是什么？",
+    "imageViewer": {
+      "loading": "正在加载图片…",
+      "loadError": "无法加载图片",
+      "previous": "上一张图片",
+      "next": "下一张图片",
+      "position": "{{current}} / {{total}}"
+    }
+  },
+  "projectWizard": {
+    "connect": {
+      "title": "打开文件夹",
+      "select": "打开",
+      "useThisFolder": "打开此文件夹",
+      "connecting": "正在打开…"
+    },
+    "title": "创建项目总览",
+    "steps": {
+      "type": "类型",
+      "configure": "配置",
+      "confirm": "确认"
+    },
+    "step1": {
+      "question": "您已经有项目，还是想创建一个新的项目？",
+      "existing": {
+        "title": "现有项目",
+        "description": "我的电脑上已经有项目，只需要将其添加到侧边栏列表中"
+      },
+      "new": {
+        "title": "新建项目",
+        "description": "创建一个新的项目，重命名后开始使用"
+      }
+    },
+    "step2": {
+      "existingPath": "项目路径",
+      "newPath": "项目路径",
+      "existingPlaceholder": "/path/to/existing/workspace",
+      "newPlaceholder": "/path/to/new/workspace",
+      "existingHelp": "您现有项目目录的完整路径",
+      "newHelp": "项目目录的完整路径",
+      "projectName": "项目名称",
+      "projectNamePlaceholder": "输入项目名称",
+      "projectNameHelp": "一个易于识别的项目名称。",
+      "githubUrl": "GitHub URL（可选）",
+      "githubPlaceholder": "https://github.com/username/repository",
+      "githubHelp": "可选：提供 GitHub URL 以克隆仓库",
+      "githubAuth": "GitHub 身份验证（可选）",
+      "githubAuthHelp": "仅私有仓库需要。公共仓库无需身份验证即可克隆。",
+      "loadingTokens": "正在加载已保存的令牌...",
+      "storedToken": "已保存的令牌",
+      "newToken": "新令牌",
+      "nonePublic": "无（公共）",
+      "selectToken": "选择令牌",
+      "selectTokenPlaceholder": "-- 选择令牌 --",
+      "tokenPlaceholder": "ghp_...",
+      "tokenHelp": "此令牌仅用于此操作",
+      "publicRepoInfo": "公共仓库不需要身份验证。如果克隆公共仓库，可以跳过提供令牌。",
+      "noTokensHelp": "没有可用的已保存令牌。您可以在 设置 → API 密钥 中添加令牌以便重复使用。",
+      "optionalTokenPublic": "GitHub 令牌（公共仓库可选）",
+      "tokenPublicPlaceholder": "ghp_...（公共仓库可留空）"
+    },
+    "step3": {
+      "reviewConfig": "查看您的配置",
+      "workspaceType": "项目类型：",
+      "existingWorkspace": "现有项目",
+      "newWorkspace": "新建项目",
+      "path": "路径：",
+      "cloneFrom": "克隆自：",
+      "authentication": "身份验证：",
+      "usingStoredToken": "使用已保存的令牌：",
+      "usingProvidedToken": "使用提供的令牌",
+      "noAuthentication": "无身份验证",
+      "sshKey": "SSH 密钥",
+      "existingInfo": "项目将被添加到侧边栏列表中，并可用于分析会话。",
+      "newWithClone": "仓库将从此文件夹克隆。",
+      "newEmpty": "项目将被添加到侧边栏列表中，并可用于分析会话。",
+      "cloningRepository": "正在克隆仓库..."
+    },
+    "buttons": {
+      "cancel": "取消",
+      "back": "返回",
+      "next": "下一步",
+      "createProject": "创建项目",
+      "creating": "创建中...",
+      "cloning": "正在克隆..."
+    },
+    "folderBrowser": {
+      "regenerateName": "生成新名称"
+    },
+    "errors": {
+      "selectType": "请选择您已有现有项目还是想创建新项目",
+      "providePath": "请提供项目路径",
+      "failedToCreate": "创建项目失败",
+      "failedToConnect": "连接文件夹失败",
+      "failedToCreateFolder": "创建文件夹失败"
+    }
+  },
+  "localKernel": {
+    "productName": "MedHelp 本地引擎",
+    "badgeLabel": "本地引擎",
+    "entryBadgeLabel": "登录后设置",
+    "gateTitle": "登录成功，正在连接桌面 App",
+    "deviceSlotHint": "仅登录网页不会占用设备名额；浏览器连接到桌面 App 后才会绑定当前设备。已绑定设备可在设备管理中下线。",
+    "gateSubtitle": "网页版会自动连接此电脑上正在运行的 MedHelp 桌面 App。桌面 App 关闭窗口后仍可在系统托盘保持在线。",
+    "endpointLabel": "本地引擎",
+    "browserRecoveryHint": "请先打开 MedHelp 桌面 App；如果它已在系统托盘运行，请允许 app.medtimehelp.com 访问本地网络，然后重新检测。",
+    "localNetworkPermission": {
+      "title": "需要允许网页连接本地引擎",
+      "description": "桌面 App 可以作为本地引擎供当前浏览器使用；这不是账号限制。Chrome / Edge 会单独询问是否允许本站访问这台电脑上的本地服务。",
+      "instructions": "请点地址栏左侧的站点信息图标 → 本地网络访问 → 允许，然后刷新本页或点“允许后重新检测”。该权限只用于连接本机 127.0.0.1，不会把本地引擎开放到公网。",
+      "retry": "允许后重新检测"
+    },
+    "appDownload": {
+      "badge": "推荐",
+      "title": "下载 MedHelp 桌面 App",
+      "description": "桌面 App 已内置本地引擎。安装并保持运行后，网页登录会自动连接到桌面端。",
+      "benefits": {
+        "builtIn": "本地引擎随 App 安装，无需复制终端命令",
+        "simple": "自动启动、连接和更新，关闭窗口后仍可在托盘在线",
+        "secure": "研究文件与执行能力仍保留在当前电脑"
+      },
+      "windowsAction": "下载 Windows 版",
+      "windowsNote": "Windows 10/11 · x64",
+      "macAction": "下载 macOS 版",
+      "macNote": "Apple Silicon · M 系列",
+      "windowsInstallTitle": "Windows 安装提示",
+      "windowsInstallBody": "下载后运行 EXE。若出现 Microsoft Defender SmartScreen，请先确认文件来自本站，再点“更多信息”→“仍要运行”。",
+      "macInstallTitle": "macOS 安装与开发者授权",
+      "macInstallBody": "打开 DMG，将 MedHelp 拖入“应用程序”。首次启动若提示“无法验证开发者”，请先尝试打开一次，再进入“系统设置”→“隐私与安全”→“安全性”，点“仍要打开”并确认。",
+      "macDamagedHint": "若提示“应用已损坏”，请打开“终端”运行：",
+      "copyCommand": "复制命令",
+      "ccTitle": "CC Switch 下载",
+      "ccDescription": "服务器上的其他 CC Switch 安装包也可在这里直接下载。"
+    },
+    "desktop": {
+      "subtitle": "桌面应用会自动启动并连接本地引擎，无需运行终端命令。",
+      "title": "正在连接内置本地引擎",
+      "description": "MedHelp 本地引擎已由桌面应用启动，正在安全接入当前账号。",
+      "offlineDescription": "桌面应用已尝试连接内置本地引擎，但页面暂时没有收到本机会话。请点重新连接；如果仍失败，请重启 MedHelp。",
+      "endpoint": "本地服务地址",
+      "retry": "重新连接",
+      "recoveryHint": "无需打开终端。请先点重新连接；如果仍失败，请退出并重新打开 MedHelp。",
+      "states": {
+        "offline": {
+          "title": "本地引擎暂未连接",
+          "description": "应用已经启动本地引擎，正在把桌面窗口重新接回本机服务。"
+        }
+      }
+    },
+    "states": {
+      "probing": {
+        "title": "正在检测本地引擎",
+        "description": "MedHelp 正在当前电脑上查找可用的本地引擎。"
+      },
+      "invalidEndpoint": {
+        "title": "地址已被拦截",
+        "description": "为保护这台电脑，网页只允许连接当前设备上的本地引擎。"
+      },
+      "offline": {
+        "title": "本地引擎暂未连接",
+        "description": "请打开 MedHelp 桌面 App。若桌面端已在系统托盘运行，可能是浏览器拦截了本地访问；允许本地网络访问后点重新检测。"
+      },
+      "sessionPending": {
+        "title": "已检测到本地引擎",
+        "description": "正在使用当前账号安全连接本地引擎。"
+      }
+    },
+    "actions": {
+      "retry": "重新检测",
+      "copyCommand": "复制命令",
+      "copied": "已复制",
+      "disconnect": "断开",
+      "stop": "关闭本地引擎",
+      "stopping": "正在关闭……",
+      "stopConfirm": "要关闭这台电脑上的本地引擎吗？之后可以重新启动。",
+      "stopFailed": "关闭本地引擎失败。"
+    },
+    "status": {
+      "connected": "本地引擎已连接"
+    },
+    "diagnostics": {
+      "title": "连接诊断",
+      "discovery": "检测方式",
+      "discoveryHint": "页面只在当前电脑范围内检测本地引擎，不显示技术连接细节。",
+      "kernel": "本地引擎",
+      "notDetected": "未检测到",
+      "security": "安全边界",
+      "securityHint": "云端登录只负责连接账号，所有执行能力都留在本机。"
+    },
+    "errors": {
+      "empty_endpoint": "请输入本地引擎连接信息。",
+      "invalid_endpoint": "本地引擎连接信息无效。",
+      "unsupported_protocol": "请使用 http、https、ws 或 wss。",
+      "non_loopback_host": "默认模式下只能连接当前电脑上的本地引擎。",
+      "unknown": "本地引擎连接失败。"
+    }
+  },
+  "versionUpdate": {
+    "title": "有可用更新",
+    "newVersionReady": "新版本已准备就绪",
+    "currentVersion": "当前版本",
+    "latestVersion": "最新版本",
+    "whatsNew": "新内容：",
+    "viewFullRelease": "查看完整发布",
+    "updateProgress": "更新进度：",
+    "manualUpgrade": "手动升级：",
+    "npmUpgradeCommand": "npm install -g medhelp@latest",
+    "manualUpgradeHint": "或点击'立即更新'以自动运行更新。",
+    "updateCompleted": "更新成功完成！",
+    "restartServer": "请重启服务器以应用更改。",
+    "updateFailed": "更新失败",
+    "buttons": {
+      "close": "关闭",
+      "later": "稍后",
+      "copyCommand": "复制命令",
+      "downloadKernel": "下载本地引擎更新",
+      "downloadDesktop": "下载桌面安装包",
+      "updateNow": "立即更新",
+      "updating": "更新中..."
+    },
+    "desktop": {
+      "autoUpdateStarting": "正在后台下载并校验桌面更新。下载完成后 MedHelp 会自动退出、安装并重新打开。",
+      "manualUpgrade": "升级桌面版：",
+      "manualUpgradeHint": "当前是旧版桌面客户端，需要先下载安装包完成升级；安装 1.1.15 后，后续版本即可在客户端内自动下载和校验。",
+      "downloadBytes": "已下载 {{downloaded}} MB / {{total}} MB",
+      "progressStates": {
+        "checking": "正在检查桌面版本",
+        "downloading": "正在后台下载更新",
+        "verifying": "正在校验更新包",
+        "ready": "更新已准备就绪",
+        "installing": "即将退出并自动安装",
+        "restarting": "正在重新打开 MedHelp",
+        "awaiting_manual_restart": "等待重新打开",
+        "completed": "更新完成",
+        "failed": "更新失败"
+      },
+      "statusBarDownloading": "下载中 {{progress}}%",
+      "statusBarVerifying": "正在校验",
+      "statusBarInstalling": "正在安装",
+      "statusBarRetry": "更新失败，重试"
+    },
+    "localKernel": {
+      "title": "本地引擎有可用更新",
+      "newVersionReady": "新的本地引擎版本已准备就绪",
+      "currentVersion": "当前本地引擎版本",
+      "latestVersion": "最新本地引擎版本",
+      "manualUpgrade": "升级本地引擎：",
+      "manualUpgradeHint": "请下载并安装新版 MedHelp 桌面 App；网页会自动重新连接。",
+      "autoUpdateStarting": "正在准备桌面端内置引擎更新……",
+      "autoUpdateComplete": "请退出并重新打开 MedHelp 桌面 App 以完成更新。",
+      "autoUpdateUnavailable": "内置引擎随 MedHelp 桌面 App 更新，请升级桌面安装包。",
+      "downloadBytes": "已下载 {{downloaded}} MB / {{total}} MB",
+      "progressStates": {
+        "checking": "正在检查签名版本",
+        "downloading": "正在下载更新包",
+        "verifying": "正在校验签名和哈希",
+        "ready": "正在准备桌面更新",
+        "installing": "正在安装本地引擎更新",
+        "restarting": "正在重启并重新连接",
+        "awaiting_manual_restart": "等待重新打开桌面 App",
+        "completed": "更新完成",
+        "failed": "更新失败"
+      },
+      "statusBarCheck": "检查更新",
+      "statusBarChecking": "检查中",
+      "statusBarUpdate": "更新本地引擎 v{{version}}"
+    },
+    "ariaLabels": {
+      "closeModal": "关闭版本升级模态框",
+      "showSidebar": "显示侧边栏",
+      "settings": "设置",
+      "updateAvailable": "有可用更新",
+      "localKernelUpdateAvailable": "本地引擎有可用更新",
+      "closeSidebar": "关闭侧边栏"
+    }
+  }
+}

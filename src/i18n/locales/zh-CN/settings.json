@@ -1,0 +1,1406 @@
+{
+  "title": "设置",
+  "appVersion": "App 版本 v{{version}}",
+  "resizeNav": "拖动调整设置菜单宽度",
+  "tabs": {
+    "account": "账户",
+    "permissions": "权限",
+    "memory": "记忆",
+    "email": "邮件",
+    "mcpServers": "MCP 与插件",
+    "plugins": "插件与扩展",
+    "appearance": "◐ 外观"
+  },
+  "piIntegrations": {
+    "scope": "范围",
+    "userScope": "用户级",
+    "localScope": "项目级",
+    "kernelScope": "本地引擎",
+    "userScopeHelp": "保存到当前账户，在所有 medhelpOS 项目中生效。",
+    "localScopeHelp": "仅在选定项目中生效。",
+    "bundleVersion": "版本",
+    "testConnection": "测试连接",
+    "testSuccess": "连接成功",
+    "authorizationRequired": "需要完成授权",
+    "moreTools": "另有 {{count}} 个",
+    "partialLoad": "有 {{count}} 个项目的 MCP 配置加载失败，其余配置已显示。",
+    "nameExists": "此名称已存在。请关闭表单并编辑已有连接，或使用新名称。",
+    "title": "medhelpOS MCP 与插件",
+    "description": "统一管理内置插件、离线包和远程 MCP 连接，并逐个控制智能体是否可以读取或调用它们。",
+    "accessHelp": "科研工作台默认允许访问；其他新插件和新连接默认关闭。只有打开“允许访问”后，medhelpOS 才会在后续对话中加载该 MCP；关闭后不再向新的智能体轮次提供它的工具或数据。",
+    "add": "添加 MCP",
+    "project": "项目",
+    "selectProject": "请选择项目以管理连接",
+    "refresh": "刷新",
+    "plugins": "插件与扩展",
+    "scopeHelp": "远程连接仅对当前账户的所选项目生效；离线包存放在当前本地引擎，供该引擎上的 medhelpOS 会话使用。",
+    "saved": "连接已保存，但默认不允许智能体访问。打开“允许访问”后可以测试或授权。",
+    "tested": "{{name}} 连接成功。",
+    "installed": "离线包已安装，但需要你在列表中打开“允许访问”后 medhelpOS 才会加载。",
+    "mcpDisabled": "当前本地引擎已通过 MEDHELP_PI_MCP_ENABLED 禁用 MCP。",
+    "openAuthorization": "为 {{name}} 打开授权页面，完成后点击「测试与工具」",
+    "edit": "编辑",
+    "addMethod": "添加方式",
+    "remote": "远程连接",
+    "json": "导入 JSON",
+    "bundle": "离线包",
+    "name": "连接名称",
+    "url": "MCP HTTPS 地址",
+    "advanced": "高级设置（可选）",
+    "callback": "OAuth 回调地址",
+    "remoteHelp": "支持 Streamable HTTP 和 OAuth。保存不会执行工具；暂不支持自定义认证请求头或旧版 SSE。修改连接或停用会清除已保存的授权。",
+    "save": "保存连接",
+    "jsonHelp": "粘贴一个服务的配置，或包含单个服务的 mcpServers JSON。解析后可先检查，再保存。",
+    "preview": "解析并检查",
+    "bundleHelp": "安装自包含的 Node.js .mcpb / .dxt 包。",
+    "bundleFile": "选择 MCP 离线包",
+    "trustBundle": "我信任该包的来源，并理解 medhelpOS 使用时会在当前本地引擎上执行包内代码。",
+    "bundleLimit": "请选择不超过 256 MB 的 .mcpb 或 .dxt 文件。",
+    "install": "安装离线包",
+    "installing": "正在安装…",
+    "cancel": "关闭",
+    "search": "搜索连接名称或地址",
+    "loading": "加载中…",
+    "noMatches": "没有匹配的连接。",
+    "empty": "还没有 MCP 连接。添加远程地址或安装离线包后，在这里测试并查看工具。",
+    "installedBundle": "已安装离线包 · 本地引擎共享",
+    "projectScope": "项目连接",
+    "testTools": "测试与工具",
+    "authorize": "授权",
+    "disable": "停用",
+    "enable": "启用",
+    "allowAccess": "允许访问",
+    "accessAllowed": "已允许",
+    "accessToggle": "切换 {{name}} 的 MCP 访问权限",
+    "delete": "删除",
+    "deleteConfirm": "删除连接「{{name}}」及其已保存授权？不会卸载离线包，也不会撤销已经执行的操作。",
+    "toolsCount": "发现 {{count}} 个工具",
+    "searchTools": "搜索工具名称或说明",
+    "diagnostics": "{{count}} 项 MCP 加载提示",
+    "runtimeHelp": "测试仅连接服务并读取工具清单，不调用业务工具。权限变更在下一个智能体轮次生效；关闭不会撤销已经完成或正在执行的操作。",
+    "builtins": {
+      "workbench": "科研工作台",
+      "workbenchHelp": "读取与更新组会、待办、论文、投稿和今日状态。",
+      "compute": "计算资源",
+      "computeHelp": "读取已配置的本地与远程计算节点，并根据授权执行计算任务。"
+    },
+    "status": {
+      "connected": "已连接",
+      "disconnected": "未连接",
+      "needs_authorization": "待授权",
+      "disabled": "已停用"
+    },
+    "errors": {
+      "invalidJson": "JSON 格式或字段类型不正确。",
+      "oneServer": "请每次导入一个 MCP 服务。",
+      "useBundle": "这是本地命令配置。请改用「离线包」安装受信任的 .mcpb / .dxt 包。",
+      "httpOnly": "当前支持 Streamable HTTP，不支持旧版 SSE。",
+      "unsupportedCredentials": "配置包含认证头、环境变量或密钥。当前不会导入或丢弃这些字段，请使用支持 OAuth 的服务或离线包。",
+      "httpsRequired": "请填写不含用户名和密码的 HTTPS MCP 地址。",
+      "invalidName": "名称需以字母或数字开头，且仅包含字母、数字、点、下划线和连字符。"
+    }
+  },
+  "piPlugins": {
+    "title": "medhelpOS 插件与扩展",
+    "description": "查看原生 medhelpOS Extensions / Packages 的支持状态与当前运行边界。",
+    "nativeTitle": "原生 Extensions / Packages · 尚未启用"
+  },
+  "memorySettings": {
+    "title": "偏好",
+    "description": "保存你明确指定的回答风格、分析语言和工作方式。所有支持的智能体共用同一套偏好；这里不会自动学习，也不会与长期记忆混合。",
+    "categories": {
+      "general": "通用",
+      "preference": "偏好",
+      "context": "上下文",
+      "workflow": "工作流"
+    },
+    "scopes": {
+      "user": "全局",
+      "project": "项目"
+    },
+    "actions": {
+      "add": "新增偏好",
+      "enable": "启用偏好",
+      "disable": "停用偏好",
+      "enableItem": "启用该偏好",
+      "disableItem": "停用该偏好"
+    },
+    "status": {
+      "enabled": "已启用",
+      "disabled": "已停用",
+      "itemDisabled": "该条不会注入提示词"
+    },
+    "form": {
+      "title": "添加可复用偏好",
+      "help": "建议写得短一些、具体一些，例如写作风格、编码默认项或反复出现的项目上下文。",
+      "placeholder": "例如：先给简短结论，再补证据细节。除非我特别说明，否则优先使用 Python 做分析。",
+      "selectProject": "选择一个项目...",
+      "counter": "{{count}} / {{max}}"
+    },
+    "list": {
+      "title": "已保存条目（{{count}}）",
+      "scope": "对支持的智能体统一生效",
+      "empty": "还没有保存任何偏好。"
+    },
+    "messages": {
+      "loading": "正在加载偏好...",
+      "loadError": "加载偏好失败",
+      "createError": "创建偏好失败",
+      "updateError": "更新偏好失败",
+      "deleteError": "删除偏好失败",
+      "toggleError": "更新全局偏好开关失败",
+      "toggleItemError": "更新偏好状态失败",
+      "confirmDelete": "确定删除这条偏好吗？",
+      "disabledNotice": "偏好当前已关闭。已保存内容仍会保留，但不会注入到提示词。"
+    }
+  },
+  "longTermMemorySettings": {
+    "title": "长期记忆",
+    "description": "保存跨会话仍有用的事实、人物、目标与决定。偏好指令和项目记忆仍按各自范围管理，避免事实与行为指令相互污染。",
+    "recall": {
+      "title": "在对话中使用记忆",
+      "description": "关闭后保留已记住的内容，但不会把它们带入新的对话。"
+    },
+    "autoCapture": {
+      "title": "自动记忆",
+      "description": "每轮完成后自动提取值得长期保留的事实。此开关独立于上方的对话召回开关。"
+    },
+    "safety": {
+      "title": "保存前安全检查",
+      "description": "密钥、口令、访问令牌、联系方式、身份证件号和病历标识会在写入前被拒绝。自动记忆只会淘汰较旧且未置顶的自动记录，手动记录不会被自动删除。"
+    },
+    "add": {
+      "title": "手动让智能体记住",
+      "placeholder": "例如：我的论文计划在 2026 年 12 月提交。",
+      "action": "记住"
+    },
+    "list": {
+      "title": "已记住的事实（{{count}}）",
+      "description": "最多保存 {{limit}} 条；按当前对话相关性召回，置顶内容优先。",
+      "search": "搜索记忆",
+      "clear": "全部遗忘",
+      "clearAutomatic": "清理自动记忆",
+      "import": "导入",
+      "export": "导出",
+      "empty": "还没有长期记忆。完成几轮对话后，值得保留的事实会自动出现在这里。",
+      "noMatches": "没有匹配的记忆。",
+      "automatic": "自动记住",
+      "manual": "手动添加",
+      "pinned": "已置顶",
+      "blockedSensitive": "含敏感标识，不会召回",
+      "fromConversation": "来源对话 {{id}}"
+    },
+    "filters": {
+      "all": "全部 {{count}}",
+      "manual": "手动 {{count}}",
+      "automatic": "自动 {{count}}",
+      "pinned": "置顶 {{count}}"
+    },
+    "actions": {
+      "pin": "置顶记忆",
+      "unpin": "取消置顶",
+      "edit": "编辑记忆",
+      "delete": "删除记忆",
+      "save": "保存修改",
+      "cancel": "取消修改"
+    },
+    "messages": {
+      "loading": "正在加载记忆...",
+      "loadError": "加载记忆失败",
+      "settingsError": "更新记忆设置失败",
+      "createError": "添加记忆失败",
+      "updateError": "更新记忆失败",
+      "deleteError": "遗忘这条记忆失败",
+      "pinError": "更新置顶状态失败",
+      "clearError": "清空记忆失败",
+      "clearAutomaticError": "清理自动记忆失败",
+      "importError": "导入长期记忆失败",
+      "importInvalid": "请选择由长期记忆导出的有效 JSON 文件。",
+      "importTooLarge": "导入文件不能超过 1 MB。",
+      "importResult": "导入完成：新增 {{added}} 条，跳过 {{skipped}} 条，因格式或敏感内容拒绝 {{rejected}} 条。",
+      "sensitiveContent": "内容可能包含密钥或个人标识，未保存。请删除敏感信息后重试。",
+      "limitReached": "长期记忆已满。请先取消置顶或删除一条已有记忆。",
+      "confirmDelete": "确定让智能体遗忘这条内容吗？",
+      "confirmClear": "确定清空全部长期记忆吗？偏好不会受影响。",
+      "confirmClearAutomatic": "清理全部未置顶的自动记忆吗？手动记录和已置顶记录会保留。"
+    }
+  },
+  "memoryHub": {
+    "title": "记忆与偏好",
+    "description": "长期记忆保存关于你的事实；偏好保存智能体应如何回答和工作的指令。两者在同一入口维护，但仍分开存储和注入，项目记忆则留在对应项目内。",
+    "longTerm": "长期记忆",
+    "preferences": "偏好指令"
+  },
+  "account": {
+    "title": "账户",
+    "language": "语言",
+    "languageLabel": "显示语言",
+    "languageDescription": "选择您偏好的界面语言",
+    "username": "用户名",
+    "email": "邮箱",
+    "profile": "个人资料",
+    "changePassword": "修改密码"
+  },
+  "mcp": {
+    "title": "MCP 服务器",
+    "addServer": "添加服务器",
+    "editServer": "编辑服务器",
+    "deleteServer": "删除服务器",
+    "serverName": "服务器名称",
+    "serverType": "服务器类型",
+    "config": "配置",
+    "testConnection": "测试连接",
+    "status": "状态",
+    "connected": "已连接",
+    "disconnected": "未连接",
+    "scope": {
+      "label": "范围",
+      "user": "用户",
+      "project": "项目"
+    }
+  },
+  "appearance": {
+    "title": "外观",
+    "theme": "主题",
+    "codeEditor": "代码编辑器",
+    "editorTheme": "编辑器主题",
+    "wordWrap": "自动换行",
+    "showMinimap": "显示缩略图",
+    "lineNumbers": "行号",
+    "fontSize": "字体大小"
+  },
+  "actions": {
+    "saveChanges": "保存更改",
+    "resetToDefaults": "重置为默认值",
+    "cancelChanges": "取消更改"
+  },
+  "quickSettings": {
+    "title": "快速设置",
+    "sections": {
+      "appearance": "◐ 外观",
+      "toolDisplay": "工具显示",
+      "viewOptions": "视图选项",
+      "inputSettings": "输入设置",
+      "whisperDictation": "Whisper 听写"
+    },
+    "darkMode": "深色模式",
+    "autoExpandTools": "自动展开工具",
+    "showRawParameters": "显示原始参数",
+    "showThinking": "显示思考过程",
+    "autoScrollToBottom": "自动滚动到底部",
+    "sendByCtrlEnter": "使用 Ctrl+Enter 发送",
+    "sendByCtrlEnterDescription": "启用后，按 Ctrl+Enter 发送消息，而不是仅按 Enter。这对于使用输入法的用户可以避免意外发送。",
+    "dragHandle": {
+      "dragging": "正在拖拽手柄",
+      "closePanel": "关闭设置面板",
+      "openPanel": "打开设置面板",
+      "draggingStatus": "正在拖拽...",
+      "toggleAndMove": "点击切换，拖拽移动"
+    },
+    "whisper": {
+      "modes": {
+        "default": "默认模式",
+        "defaultDescription": "直接转录您的语音",
+        "prompt": "提示词增强",
+        "promptDescription": "将粗略的想法转化为清晰、详细的 AI 提示词",
+        "vibe": "Vibe 模式",
+        "vibeDescription": "将想法格式化为带有详细说明的清晰智能体指令"
+      }
+    }
+  },
+  "mainTabs": {
+    "userAccount": "个人信息",
+    "imChannels": "即时通信",
+    "trash": "回收站",
+    "compute": "计算资源",
+    "agents": "智能体",
+    "mcp": "MCP 与插件",
+    "models": "大模型",
+    "preferences": "偏好",
+    "memory": "记忆与偏好",
+    "email": "邮件",
+    "appearance": "外观",
+    "dataPaths": "数据盘",
+    "git": "Git",
+    "tokens": "Token",
+    "apiTokens": "连接器",
+    "tasks": "任务"
+  },
+  "computePanel": {
+    "syncTarget": "同步项目",
+    "syncUpload": "同步上传",
+    "syncDownload": "同步下载",
+    "syncingUpload": "正在上传…",
+    "syncingDownload": "正在下载…",
+    "syncUploadSuccess": "项目已同步上传到计算节点。",
+    "syncDownloadSuccess": "计算节点结果已同步下载到本机。"
+  },
+  "tokenUsage": {
+    "title": "Token 统计",
+    "description": "按当前项目列表汇总本日和本周的 Token 使用情况。",
+    "todayTokens": "今日 Token",
+    "weekTokens": "本周 Token",
+    "generatedAt": "统计时间：{{time}}",
+    "projectBreakdown": "项目拆分",
+    "empty": "暂无可统计项目。"
+  },
+  "trash": {
+    "title": "项目回收站",
+    "description": "按项目查看已删除内容，根据项目名称和原路径辨认，恢复或删除整个项目。",
+    "loadFailed": "项目回收站加载失败，请点击刷新重试。",
+    "refresh": "刷新"
+  },
+  "userAccount": {
+    "title": "个人信息",
+    "description": "管理当前个人资料与登录状态，可在这里切换账号或退出登录。",
+    "profile": {
+      "sections": {
+        "account": "账户",
+        "research": "研究信息"
+      },
+      "aboutYou": {
+        "title": "关于你",
+        "label": "你的详情",
+        "placeholder": "例如：你是一个医生，平时做临床研究，想让我多帮你整理文献、写论文和分析数据。",
+        "counter": "{{count}} / {{max}}"
+      },
+      "badges": {
+        "loginIdentity": "登录身份",
+        "optional": "选填"
+      },
+      "fields": {
+        "notificationEmail": "邮箱",
+        "displayName": "显示名称",
+        "fullName": "姓名",
+        "institution": "机构",
+        "organization": "组织",
+        "academicTitle": "头衔",
+        "researchField": "研究方向",
+        "usagePurpose": "使用目的",
+        "googleScholarUrl": "Google Scholar",
+        "websiteUrl": "个人/实验室网站",
+        "orcid": "ORCID ID"
+      },
+      "placeholders": {
+        "notificationEmail": "name@example.com",
+        "displayName": "显示在应用里的名称",
+        "fullName": "真实姓名或署名",
+        "institution": "所属机构",
+        "organization": "院系、团队或实验室",
+        "academicTitle": "教授 / 医师 / 研究员",
+        "researchField": "临床预测、检验标志物...",
+        "usagePurpose": "论文、基金、数据库分析...",
+        "googleScholarUrl": "https://scholar.google.com/...",
+        "websiteUrl": "https://...",
+        "orcid": "0000-0000-0000-0000"
+      },
+      "actions": {
+        "edit": "修改个人信息",
+        "save": "保存个人信息",
+        "saving": "保存中...",
+        "reset": "重置"
+      },
+      "saved": "个人信息已保存。",
+      "errors": {
+        "invalidEmail": "请输入有效的邮箱地址。",
+        "saveFailed": "保存个人信息失败",
+        "networkError": "网络错误，请重试。"
+      }
+    },
+    "currentAccount": "当前账号",
+    "currentUserFallback": "未命名用户",
+    "noNotificationEmail": "未设置通知邮箱",
+    "switchHint": "切换账号会直接替换当前登录态，不需要先回到独立登录页。",
+    "switchFormTitle": "登录其他账号",
+    "switchFormDescription": "使用下面的表单登录后，会直接切换到新的账号。",
+    "replaceSessionHint": "登录成功后，当前账号会被新的登录账号替换。",
+    "mode": {
+      "login": "登录",
+      "register": "注册"
+    },
+    "status": {
+      "loggedIn": "已登录",
+      "loggedOut": "未登录"
+    },
+    "actions": {
+      "switchAccount": "切换账号",
+      "logout": "退出登录"
+    },
+    "localKernelSettings": {
+      "eyebrow": "本机运行环境",
+      "title": "本地引擎",
+      "description": "查看本地引擎的连接状态、版本和可用更新。",
+      "status": {
+        "disconnected": "未连接"
+      }
+    },
+    "avatar": {
+      "title": "头像",
+      "description": "上传图片，或从已有头像中选择。",
+      "currentLabel": "{{username}} 的头像",
+      "uploadOption": "上传",
+      "catalogOption": "修改",
+      "uploadButton": "上传图片",
+      "uploading": "上传中...",
+      "uploadHint": "支持 PNG、JPG、WebP 或 GIF，最大 5MB。",
+      "searchPlaceholder": "搜索头像",
+      "saved": "头像已更新。",
+      "empty": "没有匹配的头像。",
+      "categories": {
+        "all": "全部",
+        "medical": "医学",
+        "research": "科研",
+        "data": "数据",
+        "nature": "自然",
+        "abstract": "抽象",
+        "classic": "经典"
+      },
+      "errors": {
+        "saveFailed": "更新头像失败",
+        "uploadFailed": "上传头像失败",
+        "invalidFile": "请选择图片文件。",
+        "fileTooLarge": "图片不能超过 5MB。",
+        "networkError": "网络错误，请重试。"
+      }
+    },
+    "projectActivity": {
+      "title": "每日项目活动记录",
+      "description": "最近一年打开项目概览。",
+      "loading": "正在加载项目活动...",
+      "empty": "最近一年还没有项目打开记录。",
+      "retry": "重试",
+      "stats": {
+        "opens": "打开",
+        "projects": "项目",
+        "activeDays": "活跃天"
+      },
+      "weekdays": {
+        "mon": "一",
+        "wed": "三",
+        "fri": "五"
+      },
+      "legend": {
+        "less": "少",
+        "more": "多"
+      },
+      "tooltip": "{{date}}：打开 {{projects}} 个项目，{{opens}} 次打开",
+      "errors": {
+        "loadFailed": "加载项目活动失败"
+      }
+    },
+    "password": {
+      "title": "修改密码",
+      "description": "输入当前密码并设置一个新的登录密码。",
+      "current": "当前密码",
+      "new": "新密码",
+      "confirm": "确认新密码",
+      "submit": "更新密码",
+      "loading": "更新中...",
+      "success": "密码已更新。下次登录请使用新密码。",
+      "placeholders": {
+        "current": "输入当前密码",
+        "new": "输入新密码",
+        "confirm": "再次输入新密码"
+      },
+      "errors": {
+        "requiredFields": "请填写所有密码字段",
+        "passwordLength": "新密码至少需要 6 个字符",
+        "passwordMismatch": "两次输入的新密码不一致",
+        "currentIncorrect": "当前密码不正确",
+        "updateFailed": "更新密码失败",
+        "networkError": "网络错误，请重试。"
+      }
+    }
+  },
+  "imChannels": {
+    "title": "即时通信",
+    "description": "配置国产即时通讯入口，所有消息统一由 medhelpOS 智能体接收与回复。",
+    "enabled": "已启用",
+    "notConfigured": "未配置",
+    "notConfiguredDetail": "当前还没有保存这个通道的凭据。",
+    "unknown": "未知账号",
+    "defaultAgent": {
+      "title": "绑定智能体",
+      "description": "所有即时通信通道固定绑定到自定义 medhelpOS 智能体，不启用 Claude 或 Codex。",
+      "pi": "medhelpOS 智能体"
+    },
+    "domestic": {
+      "title": "国产通信通道",
+      "description": "选择一个通道进行配置。绿点表示正在接收消息，黄点表示已配置但连接异常。"
+    },
+    "runtime": {
+      "running": "长连接正在运行，消息将交给 medhelpOS。",
+      "stopped": "已保存，但长连接尚未运行。",
+      "error": "最近错误：{{error}}"
+    },
+    "commandHelp": {
+      "title": "即时通信命令帮助",
+      "description": "未选择研究项目时，消息会进入「对话和任务」。所有已连接的国产通信通道共用这些项目与会话命令。",
+      "badge": "在聊天中发送",
+      "items": [
+        {
+          "command": "/projects",
+          "description": "查看当前账号可用项目"
+        },
+        {
+          "command": "/find 关键词",
+          "description": "按名称或路径搜索项目"
+        },
+        {
+          "command": "/use 1",
+          "description": "按编号或项目名选择研究项目"
+        },
+        {
+          "command": "/create 项目名",
+          "description": "在工作区中新建研究项目并选中"
+        },
+        {
+          "command": "/project",
+          "description": "查看当前对话绑定的项目"
+        },
+        {
+          "command": "/new",
+          "description": "新开一个智能体会话；在「对话和任务」中会新开对话文件夹"
+        },
+        {
+          "command": "/help",
+          "description": "在即时通信应用中显示帮助"
+        }
+      ]
+    },
+    "actions": {
+      "setup": "配置",
+      "edit": "编辑",
+      "save": "保存",
+      "disable": "停用",
+      "dismiss": "关闭",
+      "retry": "重试",
+      "testConnection": "测试连接"
+    },
+    "messages": {
+      "loading": "正在加载即时通信设置...",
+      "loadFailed": "加载即时通信设置失败",
+      "connecting": "正在连接...",
+      "saved": "即时通信通道已保存。",
+      "disabled": "即时通信通道已停用。",
+      "saveFailed": "保存即时通信通道失败",
+      "disableFailed": "停用即时通信通道失败",
+      "testPassed": "凭据验证通过",
+      "testFailed": "连接测试失败",
+      "qrFailed": "二维码流程失败"
+    },
+    "feishu": {
+      "title": "飞书",
+      "tileHint": "扫码或 App 凭据",
+      "description": "使用飞书开放平台机器人或扫码创建的个人智能体应用。",
+      "connectedAs": "已连接：{{appId}}",
+      "domain": "域名",
+      "connectionMode": "连接方式",
+      "qrScan": "扫码创建",
+      "qrScanDesc": "用飞书扫码完成应用注册",
+      "manualInput": "手动输入",
+      "manualInputDesc": "填写开放平台 App ID 和 App Secret",
+      "startQr": "生成二维码",
+      "scanPrompt": "请打开飞书扫描二维码",
+      "qrSuccess": "飞书应用创建成功，配置已保存并启用。",
+      "qrAlt": "飞书配置二维码"
+    },
+    "dingtalk": {
+      "title": "钉钉",
+      "tileHint": "Stream 模式机器人",
+      "description": "通过钉钉 Stream 模式长连接收发机器人消息。",
+      "connectedAs": "已连接：{{id}}",
+      "idLabel": "Client ID / AppKey",
+      "secretLabel": "Client Secret / AppSecret"
+    },
+    "wecom": {
+      "title": "企业微信",
+      "tileHint": "智能机器人长连接",
+      "description": "连接企业微信智能机器人，通过官方长连接接收与回复消息。",
+      "connectedAs": "已连接：{{id}}",
+      "idLabel": "机器人 ID（BotID）",
+      "secretLabel": "机器人密钥（Secret）"
+    },
+    "qq": {
+      "title": "QQ",
+      "tileHint": "QQ 开放平台机器人",
+      "description": "连接 QQ 开放平台机器人，支持私聊、群聊和频道消息。",
+      "connectedAs": "已连接：{{id}}",
+      "idLabel": "App ID",
+      "secretLabel": "App Secret"
+    },
+    "weixin": {
+      "title": "微信 (iLink)",
+      "tileHint": "扫码登录微信",
+      "description": "使用 iLink 凭据接入微信消息通道。",
+      "connectedAs": "已连接：{{accountId}}",
+      "runtimeRunning": "后台接收已运行，微信消息会自动转给 medhelpOS 智能体。",
+      "runtimeStopped": "后台接收未运行，请重新保存或扫码登录。",
+      "runtimeError": "最近错误：{{error}}",
+      "qrLogin": "扫码登录",
+      "qrLoginDesc": "通过 weixin-ilink 生成微信登录二维码",
+      "relogin": "重新登录",
+      "loadingQr": "正在生成二维码...",
+      "scanPrompt": "请打开微信扫描二维码登录",
+      "loginSuccess": "微信登录成功，凭据已保存。",
+      "manualInput": "手动输入",
+      "manualInputDesc": "填写 iLink baseUrl 与 botToken",
+      "baseUrl": "iLink Base URL",
+      "botToken": "Bot Token",
+      "accountId": "账号 ID",
+      "accountIdPlaceholder": "可选",
+      "qrAlt": "微信登录二维码"
+    }
+  },
+  "dataPathSettings": {
+    "title": "数据盘",
+    "description": "设置新项目默认使用的工作区目录。",
+    "localKernelRequired": "需要先连接当前电脑的本地引擎，才能读取和保存本机路径设置。",
+    "workspaceRoot": {
+      "label": "工作区根目录",
+      "description": "新项目默认放到这个目录下。"
+    },
+    "allowedFolders": {
+      "label": "允许的数据文件夹",
+      "description": "登记供智能体只读使用的数据目录；分析输出请保存到项目中。",
+      "empty": "暂无，目前只能访问工作区。",
+      "placeholder": "文件夹绝对路径，如 /data 或 D:\\experiments",
+      "help": "粘贴绝对路径，点「添加」，再点「保存全部」。目录会在下一轮对话自动告知智能体，不加入可写工作区。终端命令仍受各引擎的沙箱设置约束；medhelpOS 没有内建目录沙箱。",
+      "browse": "浏览",
+      "add": "添加",
+      "select": "选择",
+      "selectFolderTitle": "选择数据文件夹",
+      "useThisFolder": "添加此文件夹",
+      "thisPc": "此电脑",
+      "missing": "不存在"
+    },
+    "saveAll": "保存全部",
+    "saving": "保存中...",
+    "refresh": "刷新",
+    "saved": "路径设置已保存。",
+    "errors": {
+      "loadFailed": "加载路径设置失败",
+      "saveFailed": "保存路径设置失败"
+    }
+  },
+  "appearanceSettings": {
+    "fontScale": {
+      "title": "字体大小",
+      "description": "各区域可独立缩放，界面字号是整体基准，聊天字号会在此基础上叠加。设置会自动保存。",
+      "interface": {
+        "label": "界面",
+        "description": "整个工作区，包括侧边栏、面板和对话框。"
+      },
+      "chat": {
+        "label": "聊天",
+        "description": "对话消息区。"
+      }
+    },
+    "darkMode": {
+      "label": "深色模式",
+      "description": "切换浅色和纯黑深色主题"
+    },
+    "completionSound": {
+      "label": "任务完成提示音",
+      "description": "当你切到别的应用、对话或功能页时，任务完成后播放一声提示。",
+      "preview": "试听",
+      "enabled": "已启用",
+      "disabled": "已禁用"
+    },
+    "accentColor": {
+      "label": "主题配色",
+      "description": "选择一种主题色，浅色和深色模式下均可使用。",
+      "themes": {
+        "emerald": "翠绿",
+        "azure": "海蓝",
+        "terracotta": "朱砂",
+        "violet": "紫韵",
+        "amber": "琥珀"
+      }
+    },
+    "telemetry": {
+      "label": "数据传输",
+      "description": "默认关闭。开启后客户端会调用本应用遥测接口；服务端不存储、不向外转发。"
+    },
+    "appRestart": {
+      "label": "重启应用",
+      "description": "重启桌面应用和后端，用于应用配置变更或从卡住状态恢复。",
+      "button": "重启",
+      "restarting": "重启中...",
+      "title": "重启应用和后端",
+      "failed": "重启失败，请稍后重试。"
+    },
+    "projectSorting": {
+      "label": "项目排序",
+      "description": "项目在侧边栏中的排列方式",
+      "alphabetical": "按字母顺序",
+      "recentActivity": "最近活动",
+      "manual": "手动排序"
+    },
+    "defaultProjectPath": {
+      "label": "默认项目路径",
+      "description": "新项目的默认起始目录。客户仍可在自己的用户目录内自由选择安全的本地文件夹。",
+      "browse": "浏览",
+      "save": "保存",
+      "reset": "重置",
+      "select": "选择",
+      "selectFolderTitle": "选择文件夹",
+      "useThisFolder": "使用此文件夹",
+      "path": "路径：",
+      "cancel": "取消",
+      "showHidden": "显示隐藏文件夹",
+      "hideHidden": "隐藏隐藏文件夹",
+      "createFolder": "新建文件夹",
+      "newFolderName": "新文件夹名称",
+      "create": "创建",
+      "noSubfolders": "没有子文件夹",
+      "browseFailed": "加载文件夹失败",
+      "createFolderFailed": "创建文件夹失败",
+      "saved": "已保存",
+      "localKernelSource": "将通过当前电脑运行的本地引擎保存。",
+      "invalidPath": "无效的目录路径"
+    },
+    "codeEditor": {
+      "title": "代码编辑器",
+      "toolCallsDisplay": {
+        "label": "自动展开工具调用",
+        "description": "开启后自动展开工具卡片；关闭后仅显示摘要，点击卡片再查看完整内容。"
+      },
+      "rawParametersDisplay": {
+        "label": "原始参数显示",
+        "description": "显示工具调用的原始输入参数。"
+      },
+      "thinkingDisplay": {
+        "label": "思考过程显示",
+        "description": "显示模型返回的思考或推理内容。"
+      },
+      "theme": {
+        "label": "编辑器主题",
+        "description": "代码编辑器的默认主题"
+      },
+      "wordWrap": {
+        "label": "自动换行",
+        "description": "在编辑器中默认启用自动换行"
+      },
+      "showMinimap": {
+        "label": "显示缩略图",
+        "description": "在差异视图中显示缩略图以便于导航"
+      },
+      "lineNumbers": {
+        "label": "显示行号",
+        "description": "在编辑器中显示行号"
+      },
+      "fontSize": {
+        "label": "字体大小",
+        "description": "编辑器字体大小（px）"
+      },
+      "previewFontSize": {
+        "label": "预览字体大小",
+        "description": "Markdown 预览字体大小（px）"
+      }
+    }
+  },
+  "mcpForm": {
+    "title": {
+      "add": "添加 MCP 服务器",
+      "edit": "编辑 MCP 服务器"
+    },
+    "importMode": {
+      "form": "表单输入",
+      "json": "JSON 导入",
+      "bundle": "本地安装包"
+    },
+    "bundle": {
+      "title": "安装本地 MCP 包",
+      "description": "选择一个 .mcpb 文件。MedHelp 会在本机验证并解压安装包，使用应用内置的 Node.js 运行环境，然后自动挂载到 medhelpOS。无需联网或单独安装依赖。",
+      "chooseFile": "选择 .mcpb 文件",
+      "supportedFiles": "支持 .mcpb 和旧版 .dxt，最大 256 MB",
+      "fileSize": "已选择 · {{size}} MB",
+      "securityNotice": "安装时不会执行包内代码，但 Claude 调用其中工具时会运行这些代码。MedHelp 会拦截危险路径、符号链接和异常压缩包；请只安装来源可信的 MCP 包。",
+      "fileRequired": "请先选择一个 MCP 安装包。",
+      "installFailed": "MCP 安装包安装失败。"
+    },
+    "scope": {
+      "label": "范围",
+      "userGlobal": "用户（全局）",
+      "projectLocal": "项目（本地）",
+      "userDescription": "用户范围：在您机器上的所有项目中可用",
+      "projectDescription": "本地范围：仅在选定项目中可用",
+      "cannotChange": "编辑现有服务器时无法更改范围"
+    },
+    "fields": {
+      "serverName": "服务器名称",
+      "transportType": "传输类型",
+      "command": "命令",
+      "arguments": "参数（每行一个）",
+      "jsonConfig": "JSON 配置",
+      "url": "URL",
+      "envVars": "环境变量（KEY=值，每行一个）",
+      "headers": "请求头（KEY=值，每行一个）",
+      "selectProject": "选择项目..."
+    },
+    "placeholders": {
+      "serverName": "我的服务"
+    },
+    "validation": {
+      "missingType": "缺少必填字段：type",
+      "stdioRequiresCommand": "stdio 类型需要 command 字段",
+      "httpRequiresUrl": "{{type}} 类型需要 url 字段",
+      "invalidJson": "无效的 JSON 格式",
+      "jsonHelp": "粘贴您的 MCP 服务器配置（JSON 格式）。示例格式：",
+      "jsonExampleStdio": "• stdio: {\"type\":\"stdio\",\"command\":\"npx\",\"args\":[\"@upstash/context7-mcp\"]}",
+      "jsonExampleHttp": "• http/sse: {\"type\":\"http\",\"url\":\"https://api.example.com/mcp\"}"
+    },
+    "configDetails": "配置详细信息（来自 {{configFile}}）",
+    "projectPath": "路径：{{path}}",
+    "actions": {
+      "cancel": "取消",
+      "saving": "保存中...",
+      "installing": "安装中...",
+      "installBundle": "安装 MCP 包",
+      "addServer": "添加服务器",
+      "updateServer": "更新服务器"
+    }
+  },
+  "saveStatus": {
+    "success": "设置保存成功！",
+    "error": "保存设置失败",
+    "saving": "保存中..."
+  },
+  "footerActions": {
+    "save": "保存设置",
+    "cancel": "取消"
+  },
+  "git": {
+    "title": "Git 配置",
+    "description": "配置您的 git 提交身份。这些设置将通过 git config --global 全局应用",
+    "name": {
+      "label": "Git 名称",
+      "help": "您的 git 提交名称"
+    },
+    "email": {
+      "label": "Git 邮箱",
+      "help": "您的 git 提交邮箱"
+    },
+    "actions": {
+      "save": "保存配置",
+      "saving": "保存中..."
+    },
+    "status": {
+      "success": "保存成功"
+    }
+  },
+  "connectors": {
+    "title": "连接器",
+    "description": "管理外部服务连接，按需配置邮箱接入方式。",
+    "status": {
+      "loading": "正在加载连接器状态...",
+      "configured": "已配置",
+      "notConfigured": "未配置"
+    },
+    "actions": {
+      "back": "返回"
+    },
+    "email": {
+      "title": "邮箱连接",
+      "description": "配置自动调研通知的收件与发件邮箱。"
+    },
+    "database": {
+      "title": "MedHelp 数据库连接",
+      "description": "配置远程 MedHelp 数据库 API 的 Base URL 与 PAT。"
+    }
+  },
+  "databaseApiAccess": {
+    "title": "数据库接入 API",
+    "description": "配置远程 MedHelp 数据库 API 的 Base URL 与 PAT，用于线上或其他机器访问 /api/v1 数据集接口；MedHelp App 内的智能体会自动使用该连接。",
+    "connection": {
+      "title": "远程数据库 API",
+      "connected": "已连接，当前 PAT 可访问 {{count}} 个数据源。",
+      "notConfigured": "尚未连接。",
+      "unverified": "PAT 已保存，但尚未通过连接验证。",
+      "invalidCredentials": "连接失败：PAT 无效、已过期或已撤销。",
+      "accessDenied": "连接失败：该 PAT 没有数据库访问权限。",
+      "unavailable": "暂时无法连接数据库 API，请重试。",
+      "invalidResponse": "目标地址不是兼容的 MedHelp 数据库 API。"
+    },
+    "baseUrl": {
+      "label": "API Base URL",
+      "help": "默认使用线上地址；系统会自动拼接 /api/v1。"
+    },
+    "token": {
+      "label": "Bearer PAT",
+      "placeholder": "粘贴 mdpat_ 开头的访问令牌",
+      "placeholderConfigured": "留空表示继续使用已保存的 PAT",
+      "help": "PAT 会存入当前用户的凭据库，并只注入当前用户的智能体会话；不会写入系统环境变量，也不会在列表接口中回传明文。",
+      "show": "显示访问令牌",
+      "hide": "隐藏访问令牌"
+    },
+    "curl": {
+      "title": "下载数据集示例"
+    },
+    "actions": {
+      "test": "测试连接",
+      "testing": "正在测试...",
+      "save": "连接并保存",
+      "saving": "正在连接...",
+      "clear": "清除",
+      "clearing": "清除中...",
+      "copyCurl": "复制 curl",
+      "copied": "已复制"
+    },
+    "status": {
+      "loading": "正在加载数据库 API 设置...",
+      "testSucceeded": "测试连接成功，可访问 {{count}} 个数据源；点击“连接并保存”后供 Agent 使用。",
+      "testSucceededSaved": "当前已保存连接测试成功，可访问 {{count}} 个数据源。",
+      "testFailed": "测试数据库 API 连接失败",
+      "saved": "数据库 API 已验证连接并保存。",
+      "cleared": "数据库 API 设置已清除。",
+      "loadFailed": "加载数据库 API 设置失败",
+      "invalidBaseUrl": "请输入有效的 API Base URL。",
+      "tokenRequired": "请先填写数据库 API PAT。",
+      "credentialsRejected": "PAT 无效、已过期或已撤销。",
+      "accessNotAuthorized": "该 PAT 没有数据库访问权限。",
+      "serviceUnavailable": "数据库 API 暂时无法连接，请稍后重试。",
+      "unexpectedResponse": "目标地址未返回兼容的数据库 API 响应。",
+      "saveFailed": "保存数据库 API 设置失败",
+      "clearFailed": "清除数据库 API 设置失败"
+    }
+  },
+  "apiKeys": {
+    "title": "API 密钥",
+    "description": "生成 API 密钥以从其他应用访问外部 API。",
+    "newKey": {
+      "alertTitle": "⚠️ 保存您的 API 密钥",
+      "alertMessage": "这是您唯一一次看到此密钥。请妥善保存。",
+      "iveSavedIt": "我已保存"
+    },
+    "form": {
+      "placeholder": "API 密钥名称（例如：生产服务器）",
+      "createButton": "创建",
+      "cancelButton": "取消"
+    },
+    "newButton": "新建 API 密钥",
+    "empty": "尚未创建 API 密钥。",
+    "list": {
+      "created": "创建时间：",
+      "lastUsed": "最后使用："
+    },
+    "confirmDelete": "确定要删除此 API 密钥吗？",
+    "status": {
+      "active": "已激活",
+      "inactive": "未激活"
+    },
+    "github": {
+      "title": "GitHub 令牌",
+      "description": "添加 GitHub 个人访问令牌以通过外部 API 克隆私有仓库。",
+      "descriptionAlt": "添加 GitHub 个人访问令牌以克隆私有仓库。您也可以直接在 API 请求中传递令牌而无需存储。",
+      "addButton": "添加令牌",
+      "form": {
+        "namePlaceholder": "令牌名称（例如：个人仓库）",
+        "tokenPlaceholder": "GitHub 个人访问令牌（ghp_...）",
+        "descriptionPlaceholder": "描述（可选）",
+        "addButton": "添加令牌",
+        "cancelButton": "取消",
+        "howToCreate": "如何创建 GitHub 个人访问令牌 →"
+      },
+      "empty": "尚未添加 GitHub 令牌。",
+      "added": "添加时间：",
+      "confirmDelete": "确定要删除此 GitHub 令牌吗？"
+    },
+    "gemini": {
+      "title": "Gemini API 密钥",
+      "purpose": "添加兼容 Gemini 的 API 密钥以覆盖服务器默认配置，并在研究论文中使用 gemini-3.1-flash-image-preview 及其他 Gemini 模型生成图像。你也可以在下方单独设置用户级 Gemini API Base URL。若未设置用户密钥或 Base URL，MedHelp® 会分别回退到服务器环境变量中的配置。",
+      "form": {
+        "keyLabel": "Gemini API 密钥",
+        "keyPlaceholder": "Gemini API 密钥（AIza... 或 sk-...）",
+        "saveButton": "保存配置"
+      },
+      "confirmDelete": "确定要删除此 Gemini API 密钥吗？",
+      "baseUrl": {
+        "title": "Gemini API Base URL",
+        "placeholder": "https://api.go-model.com",
+        "confirmDelete": "确定要删除此 Gemini Base URL 吗？",
+        "invalid": "请输入有效的 Gemini API Base URL。"
+      }
+    },
+    "apiDocsLink": "API 文档",
+    "documentation": {
+      "title": "外部 API 文档",
+      "description": "了解如何使用外部 API 从您的应用程序触发 Claude/Codex 会话。",
+      "viewLink": "查看 API 文档 →"
+    },
+    "loading": "加载中...",
+    "runtimeReset": {
+      "title": "运行时重置（紧急按钮）",
+      "description": "当后端卡住（会话一直处理但不输出）时，用它中断所有活跃会话并清空内存缓存。不会删除历史记录。",
+      "action": "立即重置运行时",
+      "resetting": "正在重置…",
+      "success": "已完成。",
+      "failed": "失败：",
+      "confirm": "确定要重置运行时吗？这会中断所有活跃会话并清空内存缓存，但不会删除会话历史。"
+    },
+    "version": {
+      "updateAvailable": "有可用更新：v{{version}}"
+    },
+    "zotero": {
+      "title": "Zotero 集成",
+      "addButton": "配置",
+      "description": "连接 Zotero 以同步您的全局文献库。本地应用会自动检测；如需云端访问，请提供 API Key 和用户 ID。",
+      "connected": "已通过 {{mode}} 连接",
+      "notConnected": "未连接 — 请启动 Zotero 桌面端或在下方配置 API Key",
+      "apiDisabled": "Zotero 正在运行，但本地 API 访问已禁用。请在 Zotero → 设置 → 高级 中启用。",
+      "empty": "尚未配置 Zotero Web API 凭据。本地应用将自动检测。",
+      "confirmDelete": "确定删除此 Zotero 凭据？",
+      "form": {
+        "apiKeyPlaceholder": "Zotero API Key",
+        "userIdPlaceholder": "Zotero 用户 ID（数字）",
+        "saveButton": "保存",
+        "howToCreate": "在 zotero.org/settings/keys 创建 Zotero API Key"
+      }
+    }
+  },
+  "emailSettings": {
+    "title": "邮件通知",
+    "description": "配置自动调研邮件通知的收件人、发件人和投递设置。",
+    "notificationEmail": {
+      "title": "通知邮箱",
+      "label": "收件邮箱",
+      "placeholder": "you@example.com",
+      "help": "启动自动调研前，必须先保存通知邮箱。"
+    },
+    "senderEmail": {
+      "title": "发件邮箱",
+      "label": "发件地址",
+      "placeholder": "noreply@example.com",
+      "help": "自动调研完成通知邮件将使用这个发件地址发送。"
+    },
+    "resend": {
+      "title": "Resend API 密钥",
+      "label": "投递密钥",
+      "placeholder": "re_...",
+      "help": "应用会使用该密钥通过 Resend 发送自动调研完成通知邮件。",
+      "currentKey": "当前密钥：{{key}}"
+    },
+    "actions": {
+      "saving": "保存中...",
+      "saveNotificationEmail": "保存通知邮箱",
+      "saveSenderEmail": "保存发件邮箱",
+      "saveResendKey": "保存 Resend API 密钥"
+    },
+    "status": {
+      "loadFailed": "加载邮件设置失败",
+      "notificationEmailSaved": "通知邮箱已保存。",
+      "notificationEmailSaveFailed": "保存通知邮箱失败",
+      "notificationEmailRequired": "通知邮箱不能为空",
+      "senderEmailSaved": "发件邮箱已保存。",
+      "senderEmailSaveFailed": "保存发件邮箱失败",
+      "senderEmailRequired": "发件邮箱不能为空",
+      "resendKeySaved": "Resend API 密钥已保存。",
+      "resendKeySaveFailed": "保存 Resend API 密钥失败",
+      "resendKeyRequired": "Resend API 密钥不能为空",
+      "invalidEmailFormat": "邮箱格式无效",
+      "senderEmailLoadFailed": "获取自动调研发件邮箱失败",
+      "resendKeyLoadFailed": "获取 Resend 密钥失败"
+    }
+  },
+  "tasks": {
+    "checking": "正在检查 TaskMaster 安装...",
+    "notInstalled": {
+      "title": "未安装 TaskMaster AI CLI",
+      "description": "需要 TaskMaster CLI 才能使用任务管理功能。安装它以开始使用：",
+      "installCommand": "npm install -g task-master-ai",
+      "viewOnGitHub": "在 GitHub 上查看",
+      "afterInstallation": "安装后：",
+      "steps": {
+        "restart": "重启此应用程序",
+        "autoAvailable": "TaskMaster 功能将自动可用",
+        "initCommand": "在项目目录中使用 task-master init"
+      }
+    },
+    "settings": {
+      "enableLabel": "启用 TaskMaster 集成",
+      "enableDescription": "在整个界面中显示 TaskMaster 任务、横幅和侧边栏指示器"
+    }
+  },
+  "agents": {
+    "categories": {
+      "api": "API 提供商",
+      "models": "模型管理"
+    },
+    "authStatus": {
+      "checking": "检查中...",
+      "connected": "已连接",
+      "notConnected": "未连接",
+      "installRequired": "需要安装",
+      "disconnected": "已断开",
+      "checkingAuth": "正在检查认证状态...",
+      "cliMissing": "未安装 {{command}}",
+      "loggedInAs": "登录为 {{email}}",
+      "authenticatedUser": "已认证用户",
+      "piConfigured": "已配置：{{model}}",
+      "piRuntimeReady": "运行环境已就绪，请添加 API 提供商和模型"
+    },
+    "error": "错误：{{error}}"
+  },
+  "piProvider": {
+    "loading": "正在加载 medhelpOS 配置...",
+    "save": "保存",
+    "cancel": "取消",
+    "api": {
+      "title": "API 提供商",
+      "description": "管理 medhelpOS 可以调用的 API 服务。提供商凭据与模型选择分别配置。",
+      "add": "添加 API",
+      "addCustom": "自定义 API",
+      "domesticTitle": "模型提供商快捷配置",
+      "domesticDescription": "提供商目录同时包含对话、视觉、语音、图像、视频、向量与重排模型；选择后会填入 API 地址并预置模型。",
+      "domesticSelectLabel": "模型提供商",
+      "domesticSelectPlaceholder": "请选择模型提供商",
+      "customVendor": "自定义",
+      "presetAdded": "已添加",
+      "presetModelCount": "{{count}} 个模型",
+      "presetRegions": {
+        "official": "国际官方 API",
+        "china": "中国站",
+        "global": "国际站",
+        "chinaSubscription": "中国站 · 套餐订阅",
+        "globalSubscription": "国际站 · 套餐订阅"
+      },
+      "presetIncludes": "已选择 {{name}}。保存 API Key 后将自动添加 {{count}} 个模型。",
+      "getApiKey": "获取 API Key",
+      "secretNotice": "API Key 只写入。保存后，设置接口不会返回完整密钥。",
+      "name": "提供商名称",
+      "type": "API 兼容性",
+      "remoteType": "OpenAI 兼容 API",
+      "geminiType": "Gemini 原生 API",
+      "anthropicType": "Anthropic 兼容 API（Claude）",
+      "localType": "本地 OpenAI 兼容 API",
+      "baseUrl": "API 基础地址",
+      "protocol": "模型 API 协议",
+      "chatCompletions": "OpenAI Chat Completions",
+      "responses": "OpenAI Responses",
+      "anthropicMessages": "Anthropic Messages",
+      "geminiGenerateContent": "Gemini GenerateContent（生图/编辑）",
+      "apiKey": "API Key",
+      "replaceKey": "替换 API Key（可选）",
+      "keepKeyPlaceholder": "留空则保留已保存的密钥",
+      "test": "测试连接",
+      "testing": "正在测试...",
+      "testSuccess": "连接成功，发现 {{count}} 个模型。",
+      "testSuccessNoModels": "连接成功。",
+      "testFailed": "连接失败：{{message}}",
+      "testKeyRequired": "请先填写 API Key。",
+      "testBaseUrlInvalid": "API 基础地址无效。",
+      "testTimeout": "连接超时，请检查 API 基础地址。",
+      "testUnreachable": "无法连接到该 API 地址。",
+      "testRejected": "API 拒绝了请求，请检查地址和密钥。",
+      "enabled": "启用此提供商",
+      "empty": "还没有 medhelpOS API 提供商，请先添加一个。",
+      "active": "当前使用",
+      "disabled": "已停用",
+      "openAIBadge": "OpenAI 兼容",
+      "geminiBadge": "Gemini 原生 API",
+      "claudeBadge": "Anthropic 兼容",
+      "keyConfigured": "密钥已保存 · 末四位 {{last4}}",
+      "keyMissing": "未配置 API Key",
+      "modelCount": "已启用 {{count}} 个模型",
+      "use": "使用",
+      "edit": "编辑提供商",
+      "delete": "删除提供商",
+      "deleteConfirm": "删除 {{name}} 及其已保存的 API Key？"
+    },
+    "models": {
+      "title": "模型管理",
+      "description": "从 API 获取或手动添加模型，并按任务配置 medhelpOS 可用的聊天、多模态、语音和生成模型。",
+      "byCapability": "按能力找模型",
+      "noProvider": "请先添加 API 提供商，再配置模型。",
+      "provider": "API 提供商",
+      "manualPlaceholder": "模型 ID，例如 gpt-5.2",
+      "manualCapabilityPlaceholder": "添加{{capability}}模型 ID",
+      "addManual": "添加模型",
+      "discover": "获取模型",
+      "presetCatalogIncluded": "套餐模型已预置",
+      "empty": "还没有模型。可从 API 获取，或手动添加模型 ID。",
+      "enableModel": "启用 {{model}}",
+      "enabled": "启用",
+      "assignCapability": "将 {{model}} 配置为{{capability}}模型",
+      "configured": "已配置",
+      "notConfigured": "未分配",
+      "configuredCount": "已配置 {{count}} 个",
+      "noConfiguredProviderForCapability": "尚未配置支持此能力的提供商；请到“API 提供商”添加 OpenAI、智谱、MiniMax、StepFun、MiMo 等服务。",
+      "agentCallable": "Pi 可调用",
+      "adapterRequired": "需调用适配器",
+      "capabilityProtocol": "能力调用协议",
+      "capabilityProtocolPlaceholder": "例如 gemini.generate_content",
+      "capabilityEndpoint": "自定义接口路径（可选）",
+      "capabilityEndpointPlaceholder": "例如 models/{model}:generateContent",
+      "customCapabilityHelp": "自定义模型可以修改协议和接口路径；{model} 会自动替换为当前模型 ID。只有已有执行适配器的协议才会显示“Pi 可调用”。",
+      "capabilities": "模型能力",
+      "defaultForCapability": "此能力的默认模型",
+      "visionRoutingHelp": "视觉是聊天模型的图片输入能力。图片消息会优先使用当前会话所选且已启用视觉能力的聊天模型。",
+      "sections": {
+        "chat": "对话",
+        "realtime_conversation": "实时语音会话",
+        "speech_recognition": "语音识别",
+        "speech_synthesis": "语音合成",
+        "vision": "视觉",
+        "image_generation": "图像生成",
+        "image_edit": "图像编辑",
+        "video_generation": "视频生成",
+        "embedding": "向量嵌入",
+        "rerank": "重排"
+      },
+      "sectionDescriptions": {
+        "chat": "负责普通对话、推理和工具编排；与其他生成模型保持独立。",
+        "realtime_conversation": "配置原生双向实时音频会话模型，不与普通聊天请求混用。",
+        "speech_recognition": "把项目中的音频转写为文本，Agent 可通过原生语音识别工具调用。",
+        "speech_synthesis": "把文本合成为音频并保存到项目，Agent 可通过原生语音合成工具调用。",
+        "vision": "筛选并配置能够接收图片输入的聊天模型。",
+        "image_generation": "根据提示词生成图片并保存为项目制品，Agent 可直接调用。",
+        "image_edit": "对项目中的已有图片进行编辑，使用独立的图片编辑能力。",
+        "video_generation": "配置视频生成模型；具体调用协议按供应商适配器执行。",
+        "embedding": "为知识检索生成向量，默认由检索流程内部调用。",
+        "rerank": "对检索候选进行相关性重排，默认由检索流程内部调用。"
+      },
+      "runtime": {
+        "agent": "AI 可直接调用",
+        "conversation": "会话运行时",
+        "retrieval": "检索流程调用",
+        "configured": "已纳入能力目录"
+      },
+      "taskDefaultsTitle": "各任务默认模型",
+      "taskDefaultsDescription": "medhelpOS Agent 会按任务自动使用这里指定的模型；图片和语音结果会保存到当前项目。",
+      "tasks": {
+        "chat": "聊天",
+        "realtime_conversation": "实时对话",
+        "image_generation": "图片生成",
+        "image_edit": "图片编辑",
+        "video_generation": "视频生成",
+        "speech_synthesis": "语音合成",
+        "speech_recognition": "语音识别",
+        "embedding": "向量嵌入",
+        "rerank": "重排"
+      },
+      "reasoning": "支持思考强度",
+      "vision": "支持图片输入",
+      "default": "默认",
+      "removeModel": "移除 {{model}}",
+      "save": "保存模型"
+    },
+    "permissions": {
+      "title": "medhelpOS 权限策略",
+      "description": "medhelpOS 默认使用 Auto 模式，可自动调用项目文件、Shell 和本机资源检测；危险系统命令仍会拦截。你也可以在聊天输入框切换为询问、只读或计划模式。"
+    },
+    "mcp": {
+      "title": "medhelpOS MCP 访问",
+      "description": "medhelpOS 可接收 MedHelp 内置的远程计算桥，以及通过 MedHelp 安装并信任的 MCP 服务器；不会读取全局 medhelpOS 配置或任意外部 MCP 定义。"
+    }
+  },
+  "permissions": {
+    "title": "权限设置",
+    "skipPermissions": {
+      "label": "跳过权限提示（请谨慎使用）",
+      "claudeDescription": "等同于 --dangerously-skip-permissions 标志"
+    },
+    "allowedTools": {
+      "title": "允许的工具",
+      "description": "无需权限提示即可自动使用的工具",
+      "placeholder": "例如：\"Bash(git log:*)\" 或 \"Write\"",
+      "quickAdd": "快速添加常用工具：",
+      "empty": "未配置允许的工具"
+    },
+    "blockedTools": {
+      "title": "禁用的工具",
+      "description": "无需权限提示即可自动禁用的工具",
+      "placeholder": "例如：\"Bash(rm:*)\"",
+      "empty": "未配置禁用的工具"
+    },
+    "allowedCommands": {
+      "title": "允许的 Shell 命令",
+      "description": "无需权限提示即可自动执行的 Shell 命令",
+      "placeholder": "例如：\"Shell(ls)\" 或 \"Shell(git status)\"",
+      "quickAdd": "快速添加常用命令：",
+      "empty": "未配置允许的命令"
+    },
+    "blockedCommands": {
+      "title": "阻止的 Shell 命令",
+      "description": "自动阻止的 Shell 命令",
+      "placeholder": "例如：\"Shell(rm -rf)\" 或 \"Shell(sudo)\"",
+      "empty": "未配置阻止的命令"
+    },
+    "toolExamples": {
+      "title": "工具模式示例：",
+      "bashGitLog": "- 允许所有 git log 命令",
+      "bashGitDiff": "- 允许所有 git diff 命令",
+      "write": "- 允许所有 Write 工具使用",
+      "bashRm": "- 阻止所有 rm 命令（危险）"
+    },
+    "shellExamples": {
+      "title": "Shell 命令示例：",
+      "ls": "- 允许 ls 命令",
+      "gitStatus": "- 允许 git status",
+      "npmInstall": "- 允许 npm install",
+      "rmRf": "- 阻止递归删除"
+    },
+    "codex": {
+      "permissionMode": "权限模式",
+      "description": "控制 Codex 如何处理文件修改和命令执行",
+      "modes": {
+        "default": {
+          "title": "默认",
+          "description": "只有受信任的命令（ls、cat、grep、git status 等）会自动运行。其他命令将被跳过。可以写入项目。"
+        },
+        "acceptEdits": {
+          "title": "接受编辑",
+          "description": "所有命令在项目内自动运行。具有沙箱执行的全自动模式。"
+        },
+        "bypassPermissions": {
+          "title": "绕过权限",
+          "description": "完全系统访问，无任何限制。所有命令自动运行，具有完整的磁盘和网络访问权限。请谨慎使用。"
+        }
+      },
+      "technicalDetails": "技术详情",
+      "technicalInfo": {
+        "default": "sandboxMode=workspace-write, approvalPolicy=untrusted。受信任的命令：cat、cd、grep、head、ls、pwd、tail、git status/log/diff/show、find（不带 -exec）等。",
+        "acceptEdits": "sandboxMode=workspace-write, approvalPolicy=never。所有命令在项目目录内自动执行。",
+        "bypassPermissions": "sandboxMode=danger-full-access, approvalPolicy=never。完全系统访问权限，仅在可信环境中使用。",
+        "overrideNote": "您可以使用聊天界面中的模式按钮按会话覆盖此设置。"
+      }
+    },
+    "actions": {
+      "add": "添加"
+    }
+  },
+  "mcpServers": {
+    "title": "MCP 服务器",
+    "description": {
+      "claude": "Model Context Protocol 服务器为 Claude 提供额外的工具和数据源",
+      "codex": "Model Context Protocol 服务器为 Codex 提供额外的工具和数据源"
+    },
+    "addButton": "添加 MCP 服务器",
+    "empty": "未配置 MCP 服务器",
+    "serverType": "类型",
+    "scope": {
+      "local": "本地",
+      "user": "用户"
+    },
+    "config": {
+      "command": "命令",
+      "url": "URL",
+      "args": "参数",
+      "environment": "环境变量"
+    },
+    "tools": {
+      "title": "工具",
+      "count": "（{{count}}）：",
+      "more": "还有 {{count}} 个"
+    },
+    "actions": {
+      "edit": "编辑服务器",
+      "delete": "删除服务器"
+    },
+    "help": {
+      "title": "关于 Codex MCP",
+      "description": "Codex 支持基于 stdio 的 MCP 服务器。您可以添加服务器，通过额外的工具和资源来扩展 Codex 的功能。"
+    }
+  }
+}

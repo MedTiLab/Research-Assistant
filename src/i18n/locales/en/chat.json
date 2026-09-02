@@ -1,0 +1,1213 @@
+{
+  "codeBlock": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyCode": "Copy code"
+  },
+  "gitPanel": {
+    "selectProject": "Select a project to view source control",
+    "openFile": "Click to open file",
+    "discardChanges": "Discard changes",
+    "discard": "Discard",
+    "discardConfirm": "Discard all changes to “{{file}}”? This action cannot be undone.",
+    "modified": "Modified",
+    "added": "Added",
+    "deleted": "Deleted",
+    "untracked": "Untracked",
+    "horizontalScroll": "Switch to horizontal scroll",
+    "textWrap": "Switch to text wrap",
+    "scroll": "Scroll",
+    "wrap": "Wrap",
+    "ahead": "{{count}} commit ahead",
+    "ahead_other": "{{count}} commits ahead",
+    "behind": "{{count}} commit behind",
+    "behind_other": "{{count}} commits behind",
+    "upToDate": "Up to date with remote",
+    "createBranch": "Create new branch",
+    "publishConfirm": "Publish branch “{{branch}}” to {{remote}}?",
+    "publishTitle": "Publish branch “{{branch}}” to {{remote}}",
+    "publishing": "Publishing...",
+    "publish": "Publish",
+    "pullConfirm": "Pull {{count}} commit from {{remote}}?",
+    "pullConfirm_other": "Pull {{count}} commits from {{remote}}?",
+    "pulling": "Pulling...",
+    "pull": "Pull {{count}}",
+    "pushConfirm": "Push {{count}} commit to {{remote}}?",
+    "pushConfirm_other": "Push {{count}} commits to {{remote}}?",
+    "pushing": "Pushing...",
+    "push": "Push {{count}}",
+    "fetchTitle": "Fetch from {{remote}}",
+    "fetching": "Fetching...",
+    "fetch": "Fetch",
+    "enableFailed": "Failed to enable Git for this project",
+    "unavailableTitle": "Git isn't enabled for this project yet",
+    "unavailableDescription": "Git keeps a history of your files, shows what changed, and lets you safely return to an earlier version.",
+    "unavailableHelp": "You don't need to use the terminal. Click below and the app will set it up for you.",
+    "enabling": "Enabling Git...",
+    "enable": "Enable Git for this project",
+    "afterSetupPrefix": "After setup, you can create your first snapshot here. Advanced users can still run",
+    "afterSetupSuffix": "in the project folder.",
+    "changes": "Changes",
+    "history": "History",
+    "commitFiles": "Commit {{count}} file",
+    "commitFiles_other": "Commit {{count}} files",
+    "commitChanges": "Commit changes",
+    "messagePlaceholder": "Message (Ctrl+Enter to commit)",
+    "generateMessage": "Generate commit message",
+    "filesSelected": "{{count}} file selected",
+    "filesSelected_other": "{{count}} files selected",
+    "commitConfirm": "Commit {{count}} file with message: “{{message}}”?",
+    "commitConfirm_other": "Commit {{count}} files with message: “{{message}}”?",
+    "committing": "Committing...",
+    "commit": "Commit",
+    "selectedOfTotal": "{{selected}} of {{total}} files selected",
+    "all": "All",
+    "selectAll": "Select all",
+    "none": "None",
+    "deselectAll": "Deselect all",
+    "statusGuide": "File status guide",
+    "noCommitsTitle": "No commits yet",
+    "noCommitsDescription": "This repository has no commits yet. Create the first commit to start tracking changes.",
+    "creatingInitialCommit": "Creating initial commit...",
+    "createInitialCommit": "Create initial commit",
+    "initialCommitFailed": "Failed to create initial commit",
+    "noChanges": "No changes detected",
+    "noCommitsFound": "No commits found",
+    "newBranchTitle": "Create new branch",
+    "branchName": "Branch name",
+    "branchPlaceholder": "feature/new-feature",
+    "branchHelp": "This creates a new branch from {{branch}}.",
+    "cancel": "Cancel",
+    "creating": "Creating...",
+    "confirmDiscard": "Discard changes",
+    "confirmDelete": "Delete file",
+    "confirmCommit": "Confirm commit",
+    "confirmPull": "Confirm pull",
+    "confirmPublish": "Publish branch",
+    "confirmPush": "Confirm push",
+    "delete": "Delete",
+    "pullAction": "Pull",
+    "pushAction": "Push"
+  },
+  "messageTypes": {
+    "user": "U",
+    "error": "Error",
+    "tool": "Tool",
+    "claude": "Claude",
+    "codex": "Codex",
+    "pi": "medhelpOS"
+  },
+  "queue": {
+    "count": "{{count}} queued",
+    "position": "{{current}} / {{total}}",
+    "edit": "Edit message",
+    "save": "Save edit",
+    "cancelEdit": "Cancel edit",
+    "remove": "Remove from queue",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "drag": "Drag to reorder",
+    "doubleClickEdit": "Double-click to edit",
+    "more": "More actions",
+    "clear": "Clear queue",
+    "close": "Close queue",
+    "send": "Add to queue"
+  },
+  "steer": {
+    "send": "Push now",
+    "hint": "Push into the active run without stopping the AI",
+    "accepted": "Pushed; the AI is adjusting",
+    "failed": "Immediate push failed. Try again or add it to the queue."
+  },
+  "error": {
+    "retry": "Retry",
+    "usageLimitHint": "You can retry when your usage limit resets"
+  },
+  "tools": {
+    "settings": "Tool Settings",
+    "error": "Tool Error",
+    "result": "Tool Result",
+    "viewParams": "View input parameters",
+    "viewRawParams": "View raw parameters",
+    "viewDiff": "View edit diff for",
+    "creatingFile": "Creating new file:",
+    "updatingTodo": "Updating Todo List",
+    "read": "Read",
+    "readFile": "Read file",
+    "updateTodo": "Update todo list",
+    "readTodo": "Read todo list",
+    "searchResults": "results"
+  },
+  "search": {
+    "found": "Found {{count}} {{type}}",
+    "file": "file",
+    "files": "files",
+    "pattern": "pattern:",
+    "in": "in:"
+  },
+  "fileOperations": {
+    "updated": "File updated successfully",
+    "created": "File created successfully",
+    "written": "File written successfully",
+    "diff": "Diff",
+    "newFile": "New File",
+    "viewContent": "View file content",
+    "viewFullOutput": "View full output ({{count}} chars)",
+    "contentDisplayed": "The file content is displayed in the diff view above"
+  },
+  "interactive": {
+    "title": "Interactive Prompt",
+    "waiting": "Waiting for your response in the CLI",
+    "instruction": "Please select an option in your terminal where Claude is running.",
+    "selectedOption": "✓ Claude selected option {{number}}",
+    "instructionDetail": "In the CLI, you would select this option interactively using arrow keys or by typing the number."
+  },
+  "thinking": {
+    "title": "Thinking...",
+    "emoji": "💭 Thinking..."
+  },
+  "agentTurn": {
+    "thought": "Thought",
+    "usedTools": "Used {{count}} tools",
+    "usedSkills": "Loaded {{count}} skills",
+    "steps": "Agent steps",
+    "streaming": "Streaming..."
+  },
+  "skill": {
+    "contentLoaded": "Skill Content Loaded",
+    "contentBadge": "Skill"
+  },
+  "json": {
+    "response": "JSON Response"
+  },
+  "messageShare": {
+    "button": "Share",
+    "creating": "Sharing...",
+    "failed": "Failed to create share link.",
+    "title": "Share answer",
+    "description": "Copy this read-only link to share this answer.",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "messageActions": {
+    "copyAnswer": "Copy answer",
+    "copied": "Copied",
+    "copyFailed": "Copy failed",
+    "retryAnswer": "Regenerate",
+    "rewindCurrentChanges": "Undo current changes and files",
+    "rewindDescription": "Undo the changes and files associated with the latest AI answer",
+    "rewindDialogTitle": "Undo current changes and files",
+    "rewindConfirm": "This will undo the changes and files associated with the latest AI answer. Continue?",
+    "rewindCancel": "Cancel",
+    "rewindAction": "Undo changes",
+    "saveAsLesson": "Save as lesson"
+  },
+  "permissions": {
+    "grant": "Grant permission for {{tool}}",
+    "added": "Permission added",
+    "addTo": "Adds {{entry}} to Allowed Tools.",
+    "retry": "Permission saved. Retry the request to use the tool.",
+    "error": "Unable to update permissions. Please try again.",
+    "openSettings": "Open settings"
+  },
+  "todo": {
+    "updated": "Todo list has been updated successfully",
+    "current": "Current Todo List"
+  },
+  "plan": {
+    "viewPlan": "📋 View implementation plan",
+    "title": "Implementation Plan"
+  },
+  "status": {
+    "thinking": "Thinking",
+    "processing": "Processing",
+    "analyzing": "Analyzing",
+    "working": "Working",
+    "computing": "Computing",
+    "reasoning": "Reasoning",
+    "runningCode": "Running code",
+    "creatingProject": "Creating project",
+    "resuming": "Resuming",
+    "initializing": "Initializing",
+    "restarting": "Restarting"
+  },
+  "usageLimit": {
+    "resetAt": "Claude usage limit reached. Your limit will reset at **{{time}} {{timezone}}** - {{date}}"
+  },
+  "tokenUsage": {
+    "pendingTitle": "Waiting for context usage data",
+    "unavailable": "Context N/A",
+    "unavailableTitle": "Current context usage is unavailable for this session.",
+    "title": "Context breakdown",
+    "openBreakdown": "Open context breakdown",
+    "close": "Close context breakdown",
+    "unknownModel": "Unknown model",
+    "remaining": "remaining",
+    "estimated": "Usage estimated",
+    "measured": "Usage measured",
+    "runtimeWindow": "Runtime context window",
+    "fallbackWindow": "256K fallback window",
+    "autoCompact": "Auto compact: model managed",
+    "latestTurn": "Latest turn telemetry",
+    "mechanism": "The total is the effective context sent to the model. After compaction, the full transcript remains visible, while the model receives a summary plus newer messages. The runtime chooses the automatic threshold for the active model.",
+    "breakdown": {
+      "input": "Input",
+      "cacheRead": "Cached input",
+      "cacheCreation": "Cache write",
+      "output": "Output",
+      "reasoning": "Reasoning output"
+    },
+    "compact": {
+      "button": "Compact now",
+      "running": "Compacting…",
+      "started": "Compaction started",
+      "failed": "Compaction failed",
+      "noSession": "Open a saved Codex session first.",
+      "waitForTurn": "Wait for the current turn to finish"
+    }
+  },
+  "analysisLanguage": {
+    "selector": {
+      "title": "Analysis Language",
+      "label": "Analysis language",
+      "description": "Controls the default language agents should prefer for analysis code. This affects prompt guidance only and does not create or switch a real runtime environment."
+    },
+    "options": {
+      "auto": "Auto",
+      "python": "Python",
+      "r": "R"
+    }
+  },
+  "codex": {
+    "permissionMode": "Permission Mode",
+    "modes": {
+      "auto": "Auto Mode",
+      "readOnly": "Read Only",
+      "default": "Default Mode",
+      "acceptEdits": "Accept Edits",
+      "bypassPermissions": "Bypass Permissions",
+      "ask": "Ask Before Changes",
+      "plan": "Plan Mode"
+    },
+    "descriptions": {
+      "auto": "Pi automatically uses project files, shell, and installed Pi tools; dangerous system commands remain blocked.",
+      "readOnly": "Inspect project files without writing or running shell commands.",
+      "default": "Only trusted commands (ls, cat, grep, git status, etc.) run automatically. Other commands are skipped. Can write to workspace.",
+      "acceptEdits": "All commands run automatically within the workspace. Full auto mode with sandboxed execution.",
+      "bypassPermissions": "Full system access with no restrictions. All commands run automatically with full disk and network access. Use with caution.",
+      "ask": "Read freely; ask for explicit approval before each write, edit, or shell command.",
+      "plan": "Planning mode - no commands are executed"
+    },
+    "technicalDetails": "Technical details"
+  },
+  "stagePlaceholder": {
+    "literature": "Share the topic, disease, population, or keywords; I will start with the literature baseline, evidence scope, and references...",
+    "ideation": "Describe the research question or clinical hypothesis; I will help refine PICO, novelty, feasibility, and the minimum protocol...",
+    "experiment": "Tell me the cohort, variables, model, or analysis goal; I will route to data, statistics, and visualization tasks...",
+    "publication": "Which section, figure/table, manuscript, or rebuttal do you need? I will draft against publication outputs...",
+    "promotion": "What presentation, slides, poster, homepage, or dissemination material do you need? I will organize promotion outputs..."
+  },
+  "input": {
+    "placeholder": "Type / for commands, @ for files, or ask medhelpOS anything...",
+    "placeholderDefault": "Type your message...",
+    "disabled": "Input disabled",
+    "attachMenu": "Add content",
+    "attachFiles": "Attach files",
+    "attachReferences": "Attach references",
+    "openFolder": "Open folder",
+    "connectedFolder": "Current project folder: {{name}}",
+    "connectedProjectPlaceholder": "Start by learning this project: repo structure, existing files, and current progress. Then tell me what you want to inspect or work on...",
+    "removeFolder": "Remove folder from this conversation",
+    "attachImages": "Attach images",
+    "dropFilesHere": "Drop files here",
+    "attachmentOnlyFallback": "Please inspect the attached files and help me with them.",
+    "send": "Send",
+    "stop": "Stop",
+    "hintText": {
+      "ctrlEnter": "Ctrl+Enter to send • Shift+Enter for new line • Tab to change modes • / for slash commands",
+      "enter": "Enter to send • Shift+Enter for new line • Tab to change modes • / for slash commands"
+    },
+    "clickToChangeMode": "Click to change permission mode (or press Tab in input)",
+    "showAllCommands": "Show all commands",
+    "clearInput": "Clear input",
+    "scrollToBottom": "Scroll to bottom",
+    "computeResource": {
+      "label": "Compute resource: {{name}}",
+      "menuTitle": "Select compute resource",
+      "local": "Local machine",
+      "remote": "Remote node",
+      "slurm": "Slurm cluster",
+      "noRemoteNodes": "No remote nodes yet. Add one in Settings → Compute Resources.",
+      "loadFailed": "Unable to load compute resource nodes",
+      "selectFailed": "Unable to switch compute resource nodes"
+    }
+  },
+  "thinkingMode": {
+    "selector": {
+      "title": "Thinking Effort",
+      "description": "Use Claude SDK thinking / effort levels",
+      "active": "Active",
+      "tip": "Higher effort usually improves hard-task quality, but increases latency"
+    },
+    "modes": {
+      "none": {
+        "name": "Default",
+        "description": "Do not override the Claude SDK default"
+      },
+      "low": {
+        "name": "Low",
+        "description": "Minimal thinking, fastest responses"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "Moderate thinking"
+      },
+      "high": {
+        "name": "High",
+        "description": "Deep reasoning"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "Deeper than high"
+      },
+      "max": {
+        "name": "Max",
+        "description": "Maximum effort"
+      }
+    },
+    "buttonTitle": "Thinking effort: {{mode}}"
+  },
+  "piThinkingMode": {
+    "selector": {
+      "title": "Pi Thinking Effort",
+      "description": "Pass the selected reasoning level to the active Pi model",
+      "active": "Active",
+      "tip": "The model must have Reasoning controls enabled in Pi model settings; higher levels usually add latency."
+    },
+    "modes": {
+      "none": {
+        "name": "Off",
+        "description": "Disable explicit reasoning effort"
+      },
+      "minimal": {
+        "name": "Minimal",
+        "description": "Use Pi's lowest explicit reasoning effort"
+      },
+      "low": {
+        "name": "Low",
+        "description": "Lower effort and faster responses"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "Moderate reasoning effort"
+      },
+      "high": {
+        "name": "High",
+        "description": "Deep reasoning"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "Deeper than high"
+      },
+      "max": {
+        "name": "Max",
+        "description": "Maximum reasoning effort"
+      }
+    },
+    "buttonTitle": "Pi thinking effort: {{mode}}"
+  },
+  "codexReasoningEffort": {
+    "selector": {
+      "title": "Reasoning Effort",
+      "description": "Pass the matching model_reasoning_effort value to Codex",
+      "active": "Active",
+      "tip": "Default sends no override; every other option is passed directly."
+    },
+    "levels": {
+      "default": {
+        "name": "Default",
+        "description": "Use the model default"
+      },
+      "minimal": {
+        "name": "Minimal",
+        "description": "Set model_reasoning_effort to minimal"
+      },
+      "low": {
+        "name": "Low",
+        "description": "Set model_reasoning_effort to low"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "Set model_reasoning_effort to medium"
+      },
+      "high": {
+        "name": "High",
+        "description": "Set model_reasoning_effort to high"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "Set model_reasoning_effort to xhigh"
+      },
+      "max": {
+        "name": "Max",
+        "description": "Set model_reasoning_effort to max"
+      }
+    },
+    "buttonTitle": "Reasoning effort: {{level}}"
+  },
+  "providerSelection": {
+    "title": "Choose Your AI Assistant",
+    "description": "Select a provider to start a new conversation",
+    "selectModel": "Select Model",
+    "notInstalled": "Not installed",
+    "piNotConfigured": "Not configured",
+    "piConfigurationRequired": "Add a Pi API provider and enable a model in Settings.",
+    "installRequired": "{{provider}} CLI is not installed",
+    "notLoggedIn": "Not logged in",
+    "loginRequired": "{{provider}} CLI is not logged in",
+    "authRequiredHint": "No authenticated model CLI was detected. Reconnect an available provider in Settings before starting a chat.",
+    "unavailableHint": "Some CLI backends are unavailable on this machine. Install the missing tools in Settings before using them.",
+    "proOnly": "Pro only",
+    "codexUpgradeHint": "Codex is available on the Pro plan. Free accounts cannot use it.",
+    "agentUpgradeHint": "Claude and Codex are available on the Pro plan. Free accounts can use Pi Agent.",
+    "managedFreePrivacy": "Prompts and read-only tool results may be sent to a server-managed third-party endpoint. Do not include sensitive or regulated data.",
+    "managedFreePrivacyShort": "Privacy notice",
+    "managedFreePrice": "Listed as free by the current catalog; availability and pricing may change.",
+    "managedFreeRetryAt": "Catalog refresh may retry after {{time}}.",
+    "managedFreeHealth": {
+      "healthy": "Managed free",
+      "degraded": "Free catalog cached",
+      "disabled": "Free catalog disabled",
+      "rate_limited": "Free catalog limited",
+      "unavailable": "Free catalog unavailable"
+    },
+    "providerInfo": {
+      "anthropic": "by Anthropic",
+      "openai": "by OpenAI",
+      "google": "by Google",
+      "local": "Run on Your GPU"
+    },
+    "readyPrompt": {
+      "claude": "Ready to use Claude with {{model}}. Start typing your message below.",
+      "codex": "Ready to use Codex with {{model}}. Start typing your message below.",
+      "local": "Ready to use Local GPU with {{model}}. Start typing your message below.",
+      "default": "Select a provider above to begin"
+    }
+  },
+  "session": {
+    "mode": {
+      "title": "Choose Session Type",
+      "subtitle": "Decide whether this session should drive research planning or stay focused on workspace questions.",
+      "badge": "{{count}} options",
+      "research": "Research",
+      "workspaceQa": "Files Q&A",
+      "researchTitle": "Research Session",
+      "researchDescription": "Use the project research workflow, onboarding prompts, and pipeline guidance.",
+      "workspaceQaTitle": "Workspace Q&A",
+      "workspaceQaDescription": "Ask about files, modules, and implementation details without triggering the research workflow.",
+      "workspaceQaPlaceholder": "Ask about any file, module, or implementation detail...",
+      "workspaceQaGreeting": "I can help inspect this workspace: trace code paths, explain modules, debug behavior, and make targeted fixes.\n\nAsk about any file, bug, or implementation detail you want to understand or change.",
+      "workspaceQaHint": "This session stays focused on repository questions unless you explicitly ask to start research planning."
+    },
+    "continue": {
+      "title": "Continue your analysis chat",
+      "description": "Ask about study design, statistical plans, implementation details, or request concrete changes and execution help"
+    },
+    "loading": {
+      "olderMessages": "Loading older messages...",
+      "loadOlderMessages": "Load earlier messages",
+      "sessionMessages": "Loading session messages..."
+    },
+    "messages": {
+      "showingOf": "Showing {{shown}} of {{total}} messages",
+      "scrollToLoad": "Scroll up to load more",
+      "loadMoreHistory": "Load more history",
+      "showingLast": "Showing last {{count}} messages ({{total}} total)",
+      "loadEarlier": "Load earlier messages",
+      "loadAll": "Load all messages",
+      "loadingAll": "Loading all messages...",
+      "allLoaded": "All messages loaded",
+      "perfWarning": "All messages loaded — scrolling may be slower. Click \"Scroll to bottom\" to restore performance."
+    }
+  },
+  "sessionContext": {
+    "title": "Session context",
+    "description": "Files, tasks, and outputs observed in this session trace.",
+    "memory": {
+      "title": "AI Memory Summary",
+      "actions": {
+        "summarize": "Summarize"
+      },
+      "prompts": {
+        "review": "Review this conversation and save confirmed long-term context to `.medhelpsec/MEMORY.md`."
+      },
+      "messages": {
+        "notEnough": "There is no conversation content to summarize yet, or this view cannot send to the current conversation.",
+        "proLocked": "AI project Memory summaries are a Pro feature.",
+        "loading": "Loading MEMORY.md…"
+      }
+    },
+    "codexNotice": "Codex visibility is only partially available depending on tool events exposed at runtime.",
+    "traceError": "Could not load the full session trace. Showing in-memory live messages only.",
+    "stats": {
+      "mode": "Mode",
+      "provider": "Provider",
+      "contextFiles": "Context files",
+      "unreadOutputs": "Unread outputs",
+      "dataSources": "Data Sources",
+      "dataSourcesHint": "Injected directories & variables",
+      "workingData": "Working Data",
+      "workingDataHint": "Files in this session context",
+      "outputs": "Manuscript Outputs",
+      "outputsHintAllReviewed": "All reviewed",
+      "outputsHintUnread": "{{count}} awaiting review"
+    },
+    "sections": {
+      "injectedContext": "Injected context",
+      "taskContext": "Session task activity",
+      "reviewQueue": "Review queue",
+      "fileReview": "File review"
+    },
+    "actions": {
+      "collapse": "Collapse context sidebar",
+      "expand": "Expand context sidebar",
+      "expandBrowser": "Expand browser",
+      "restoreBrowser": "Restore browser size",
+      "resize": "Drag to resize width",
+      "more": "More",
+      "workspaceTools": "Workspace tools"
+    },
+    "sidebarTabs": {
+      "context": "Context",
+      "research": "Research",
+      "files": "Files",
+      "browser": "Browser",
+      "download": "Download",
+      "shell": "Shell",
+      "git": "Git"
+    },
+    "browser": {
+      "title": "Simple browser",
+      "addressLabel": "Address or search terms",
+      "placeholder": "Enter an address or search terms",
+      "go": "Go",
+      "back": "Back",
+      "forward": "Forward",
+      "reload": "Reload",
+      "home": "Home",
+      "openExternal": "Open in system browser",
+      "loadError": "The page could not be loaded. Check the address or your network connection.",
+      "tryAgain": "Try again",
+      "embedNotice": "Some sites block embedding. Use the top-right button to open them in your system browser."
+    },
+    "filters": {
+      "all": "All",
+      "unread": "Unread",
+      "reviewed": "Reviewed"
+    },
+    "kinds": {
+      "task": "Task",
+      "todo": "Todo",
+      "skill": "Skill",
+      "directory": "Directory"
+    },
+    "empty": {
+      "injectedContext": "No file or directory context observed yet.",
+      "taskContext": "No task or todo activity collected from this session yet.",
+      "reviewQueue": "No files generated in this session yet."
+    },
+    "preview": {
+      "titleFallback": "Preview",
+      "largeTitle": "Large file preview",
+      "selectFile": "Select a file to preview",
+      "open": "Open",
+      "openEditor": "Edit",
+      "previewMode": "Preview",
+      "dragTitle": "Drag to move preview",
+      "resize": "Drag to resize preview",
+      "resetSize": "Reset preview size",
+      "maximize": "Maximize preview",
+      "restoreSize": "Restore preview size",
+      "loading": "Loading preview…",
+      "loadError": "Could not load preview: {{error}}",
+      "missingTitle": "Referenced file is unavailable",
+      "missingHint": "This chat still contains the file path, but the file is no longer present in the workspace. It may have been deleted, renamed, moved, or generated in an older project state.",
+      "missingPathLabel": "Path:",
+      "truncatedNotice": "Large file — only the first {{previewSize}} is loaded for preview (file is about {{totalSize}}). Use Open to view the full file in the editor.",
+      "downloadFormats": {
+        "choose": "Choose download format",
+        "markdown": "Original Markdown",
+        "markdownHint": "Keep the .md source file",
+        "word": "Word document (DOCX)",
+        "wordHint": "Preserve headings, lists, tables, and links",
+        "pdf": "PDF document",
+        "pdfHint": "Ready for printing and sharing",
+        "failed": "Download failed"
+      },
+      "table": {
+        "empty": "No table rows to preview.",
+        "column": "Column {{index}}",
+        "limitNotice": "Showing first {{rows}} rows and {{columns}} columns."
+      },
+      "xlsx": {
+        "parsing": "Reading workbook…",
+        "worksheets": "Worksheets",
+        "emptyWorkbook": "This workbook has no worksheets to preview.",
+        "emptySheet": "This worksheet is empty.",
+        "limitNotice": "Showing the first {{rows}} rows and {{columns}} columns of this worksheet.",
+        "errorTitle": "Could not preview this workbook",
+        "errorHint": "The XLSX file may be damaged, encrypted, or use an unsupported workbook feature. {{error}}"
+      },
+      "selectToReview": "Select a file to review",
+      "unreadHint": "Output files stay unread until opened from the review queue.",
+      "move": {
+        "title": "Move to another folder",
+        "projectRoot": "Project root",
+        "currentFolder": "Current folder: {{path}}",
+        "targetPlaceholder": "Type or pick a target folder, for example Literature/notes",
+        "loadingFolders": "Loading folders…",
+        "noFolders": "No other folders are available.",
+        "targetRequired": "Please choose a destination folder first.",
+        "sameFolder": "The destination folder is the same as the current folder.",
+        "confirm": "Move file",
+        "moveFailed": "Failed to move file.",
+        "loadFoldersError": "Failed to load folders."
+      }
+    }
+  },
+  "shell": {
+    "selectProject": {
+      "title": "Select a Project",
+      "description": "Choose a project to open an interactive shell in that directory"
+    },
+    "disabled": {
+      "title": "Terminal is off",
+      "description": "Bare terminal access has been disabled. Continue work from Chat or an Agent session."
+    },
+    "status": {
+      "newSession": "New Session",
+      "initializing": "Initializing...",
+      "restarting": "Restarting..."
+    },
+    "actions": {
+      "disconnect": "Disconnect",
+      "disconnectTitle": "Disconnect from shell",
+      "clear": "Clear",
+      "clearTitle": "Clear visible terminal history and reconnect replay buffer",
+      "restart": "Restart",
+      "restartTitle": "Restart shell and stop the current terminal process",
+      "autoRestart": "Auto restart",
+      "autoRestartTitle": "Restart this launched dev/watch command if it exits unexpectedly",
+      "connect": "Continue in Shell",
+      "connectTitle": "Connect to shell"
+    },
+    "autoRestart": {
+      "scheduled": "Auto restart {{attempt}}/{{count}} in {{seconds}}s",
+      "stopped": "Auto restart stopped after {{count}} failed attempts"
+    },
+    "loading": "Loading terminal...",
+    "connecting": "Connecting to shell...",
+    "startSession": "Start a new Claude session",
+    "resumeSession": "Resume session: {{displayName}}...",
+    "runCommand": "Run {{command}} in {{projectName}}",
+    "openTerminal": "Open terminal in {{projectName}}",
+    "startCli": "Starting Claude CLI in {{projectName}}",
+    "historyEdit": {
+      "action": "Edit message history",
+      "promptTitle": "Continue history edits in Shell",
+      "promptDescription": "Web Chat does not rewrite message history directly. To use the model's native edit, rewind, or retry flow, continue in Shell.",
+      "cancel": "Cancel",
+      "confirm": "Open Shell",
+      "bannerTitle": "This session is now open in Shell",
+      "bannerDescription": "Use the model's native history edit, rewind, or retry flow here. Web Chat only displays the conversation and does not rewrite history directly."
+    },
+    "workspace": {
+      "currentSession": "Current Session",
+      "newShell": "New shell",
+      "tabTitle": "Shell {{index}}",
+      "closeShell": "Close {{title}}"
+    }
+  },
+  "projectSelection": {
+    "startChatWithProvider": "Select a research workspace to start an analysis chat with {{provider}}",
+    "createProjectUnavailable": "Project creation is not available yet. Please try again after the workspace finishes loading.",
+    "createProjectFailed": "Failed to create the project: {{message}}"
+  },
+  "tasks": {
+    "nextTaskPrompt": "Start the next task",
+    "compact": {
+      "projectLabel": "Project task progress",
+      "progress": "{{done}}/{{total}} done · {{pending}} pending",
+      "useInChat": "Use in Analysis Chat",
+      "allDone": "All tasks completed",
+      "stageLabel": "Stage",
+      "stageOnly": "Project task progress · Stage {{stage}}",
+      "stageProgress": "Project task progress · Stage {{stage}} · {{done}}/{{total}} done",
+      "done": "Done",
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "expand": "Expand task progress",
+      "collapse": "Collapse task progress",
+      "noTasks": "No tasks yet. Start an analysis chat first.",
+      "emptyTitle": "Task progress unavailable",
+      "emptyHint": "Use Analysis Chat to generate and configure the research pipeline."
+    },
+    "stages": {
+      "survey": "Literature",
+      "literature": "Literature",
+      "ideation": "Ideation",
+      "experiment": "Experiment",
+      "publication": "Publication",
+      "promotion": "Promotion"
+    },
+    "loading": "Loading tasks..."
+  },
+  "skillShortcuts": {
+    "title": "Medical Research Skill Shortcuts",
+    "useAll": "Use All",
+    "useAutoRoute": "Auto-select",
+    "useCore": "Use core skills",
+    "useSelected": "Use selected ({{count}})",
+    "clearSelected": "Clear selected",
+    "useSingle": "Use this skill only",
+    "showAdvanced": "More skills ({{count}})",
+    "hideAdvanced": "Hide more skills",
+    "skillCount": "{{count}} skills",
+    "coreCount": "Core {{count}} / {{total}}",
+    "categories": {
+      "pipeline": "Study Pathway Planning",
+      "deepResearch": "Medical Evidence Search",
+      "deepLiteratureSearch": "Deep Search",
+      "literatureDatabases": "Literature Databases",
+      "citationTrace": "Citation Tracing",
+      "paperReading": "Paper Reading Tools",
+      "researchMonitoring": "Research Monitoring",
+      "databaseAccess": "Database Extraction",
+      "ideation": "Clinical Study Ideation",
+      "preAnalysis": "Data Analysis",
+      "statisticalModeling": "Statistical Modeling & Testing",
+      "medicalViz": "Medical Visualization",
+      "resultsIntegration": "Results Integration & Drafting",
+      "paperWriting": "Medical Manuscript Writing",
+      "paperPolishing": "Manuscript Polishing",
+      "graphicalAbstract": "Graphical Abstract",
+      "paperReview": "Medical Paper Review",
+      "grantWriting": "Medical Grant Writing",
+      "promotion": "Academic Presentation & Translation",
+      "other": "Other"
+    },
+    "promptSingle": "Please use the {{skill}} skill to help me with this task.\n\nDescribe your task here:",
+    "promptMulti": "Please use the following skills for this task: {{skills}}.\n\nDescribe your research task here:",
+    "prompts": {
+      "pipeline": "Please help me with \"Study pathway planning\". First decide whether the current content is a literature question, registry cohort, paper reproduction, existing data analysis, or manuscript output; then break the work into evidence, data, pre-analysis, statistical modeling, results integration, and submission/presentation steps. Available skills: {{skills}}.\n\nMy task:",
+      "deepResearch": "Please help me with \"Medical evidence search\". First clarify PICO, disease/exposure/outcome, population boundary, time window, and evidence type; then organize search, screening, evidence matrix, research gaps, and database-study opportunities. Available skills: {{skills}}.\n\nMy task:",
+      "deepLiteratureSearch": "Please help me with \"Deep search\". First decompose the question into keywords, synonyms, PICO elements, and evidence types; then choose the smallest necessary search tools, search strings, candidate papers, and a screening plan. Available skills: {{skills}}.\n\nMy task:",
+      "literatureDatabases": "Please help me with \"Literature databases\". First decide whether PubMed, OpenAlex, or bioRxiv best fits the question; then provide search strings, screening rules, metadata fields, and an auditable result table. Available skills: {{skills}}.\n\nMy task:",
+      "citationTrace": "Please help me with \"Citation tracing\". First verify core papers, DOIs, references, and citation chains; then identify key evidence, missing citations, citation errors, and target-venue citation output. Available skills: {{skills}}.\n\nMy task:",
+      "paperReading": "Please help me with \"Paper reading tools\". First identify the papers to read or compare; then extract the question, design, inclusion/exclusion criteria, variable definitions, statistical models, figures, and reproducibility risks. Available skills: {{skills}}.\n\nMy task:",
+      "researchMonitoring": "Please help me with \"Research monitoring\". First define topic, time window, sources, and exclusion rules; then summarize recent representative papers, trends, translatable questions, and the next monitoring recommendation. Available skills: {{skills}}.\n\nMy task:",
+      "databaseAccess": "Please help me with \"Database extraction\". Use the 1 API base + 27 independent database skills + optional cross-database router pattern. Prefer api.medtimehelp.com and fall back to a healthy 127.0.0.1:8787 service only when the public endpoint is unavailable. Decide whether routing is needed; distinguish Chinese databases, SHARE/HRS-family, UKB, NHANES, ICU/EHR, perioperative, and cancer-registry sources; state structural risks such as patient/stay/wave/cycle/timeline/coding-era semantics, locate real tables and fields, and extract only task-needed variables with source paths. Available skills: {{skills}}.\n\nMy task:",
+      "ideation": "Please help me with \"Clinical study ideation\". First evaluate evidence gap, available database, clinical relevance, and statistical feasibility; then form PICO, core hypothesis, novelty claim, candidate data source, main model, and minimum viable analysis. Available skills: {{skills}}.\n\nMy task:",
+      "preAnalysis": "Please help me with \"Data analysis\". Inspect the data structure, variable types, missingness, outliers, and analysis objective first. Keep database-specific analyses, baseline tables, descriptive statistics, tests, and modeling in this category, select the smallest necessary skill set, and produce diagnostics, visualization, effect sizes, and reproducible outputs. Available skills: {{skills}}.\n\nMy data or analysis question:",
+      "statisticalModeling": "Please help me with \"Statistical modeling and testing\". Use only the selected skills and clarify the model/test target, variable roles, assumptions, diagnostics, effect sizes, and manuscript reporting for the current research question. Available skills: {{skills}}.\n\nMy task:",
+      "medicalViz": "Please help me with \"Medical visualization\". Use only the skills I selected. First identify the figure type, then provide layout, palette, typography, legend, panel labels, figure-caption points, and PDF/PNG export requirements. Default journal-level figure design to nature-figure; pair clinical/biomedical statistical plots with data-visualization-biomedical; use scientific-visualization for general journal figure layout; use matplotlib, seaborn, plotly, or data-viz-plots only when lower-level plotting code is needed. Available skills: {{skills}}.\n\nMy task:",
+      "resultsIntegration": "Please help me with \"Results integration and drafting\". First integrate existing Table 1, model outputs, figures, and sensitivity analyses; then organize main results, subgroups, robustness checks, interpretation boundaries, and submission-ready wording under STROBE/CONSORT logic. Available skills: {{skills}}.\n\nMy task:",
+      "graphicalAbstract": "Please help me with \"Graphical abstract\". First distill the research question, data source, core method, key finding, and clinical implication; then propose a single-figure structure, visual hierarchy, icons/process elements, and submission-ready text. Available skills: {{skills}}.\n\nMy task:",
+      "paperWriting": "Please help me with \"Medical manuscript writing\". First confirm target journal/article type, study design, primary results, and citation materials; use nature-data when drafting or auditing Data Availability statements, repository plans, dataset citations, or FAIR metadata; then proceed through Title, Abstract, Introduction, Methods, Results, Discussion, and reference validation. Available skills: {{skills}}.\n\nMy task:",
+      "paperPolishing": "Please help me with \"Manuscript polishing\". First confirm target journal/article type, the sections or paragraphs to polish, and the tone (strict submission-ready vs slightly more human/natural). Default to nature-polishing for Nature-leaning academic English and section logic; use medhelp-humanizer when you need more natural, less templated phrasing and readability; pair with scientific-writing for IMRAD-level scientific prose; use citation-management to tighten references and citation formatting; use venue-templates to align structure and conventions with a specific journal or conference. Available skills: {{skills}}.\n\nMy task:",
+      "paperReview": "Please help me with \"Medical paper review\". First check study design, statistical validity, evidence chain, causal language, figure/table consistency, and submission standards; then separate must-fix issues from recommended edits and acceptable content. Available skills: {{skills}}.\n\nMy task:",
+      "grantWriting": "Please help me with \"Medical grant writing\". First clarify the scientific question, clinical/public-health significance, preliminary basis, innovation, aims, and technical route; then organize rationale, research plan, feasibility, and risk alternatives. Available skills: {{skills}}.\n\nMy task:",
+      "promotion": "Please help me with \"Academic presentation and translation\". First define audience, duration, core message, and available assets; then compress the paper into background, methods, results, clinical meaning, limitations, and next steps. Available skills: {{skills}}.\n\nMy task:"
+    },
+    "routePrompts": {
+      "statisticalModeling": "Please help me with \"Statistical modeling and testing\". Route my statistical task to the smallest necessary skill set first. Do not call the entire skill group by default.\n\nRouting rules:\n1. Statistical analysis plan, test selection, hypotheses, effect sizes, power, APA or manuscript reporting: use statistical-analysis.\n2. Directly running specified t-tests, ANOVA, chi-square, correlations, non-parametric tests, or multiple-testing correction: use data-stats-analysis.\n3. Linear, logistic, Poisson/negative binomial, mixed models, ARIMA/time series, robust standard errors, diagnostics, and coefficient tables: use statsmodels.\n4. Cox, KM, survival outcomes, censored data, competing risks, or time-dependent AUC: use scikit-survival.\n5. Bayesian, hierarchical, MCMC, prior/posterior predictive checks, or uncertainty quantification: use pymc.\n6. UK Biobank-specific cohort fields, endpoints, covariates, and sensitivity analysis: use ukb-cohort-analysis.\n7. Integrating finished statistical outputs, tables, figures, and Results text: use medhelp-experiment-analysis.\n\nDefault principles: for unclear clinical/epidemiologic analysis, start with statistical-analysis; add statsmodels, scikit-survival, or pymc only once the modeling target is clear.\n\nFirst state the selected skill set and reason in one sentence, then start the work.\n\nMy task:",
+      "medicalVisualization": "Please help me with \"Medical visualization\". Route my medical visualization task to the smallest necessary skill set first. Do not call the entire visualization skill group by default.\n\nRouting rules:\n1. Journal-level layout, Nature/Lancet/JAMA style, multi-panel structure, palettes, and export requirements: use nature-figure.\n2. Clinical/biomedical statistical figures, KM curves, forest plots, volcano plots, heatmaps, subgroup figures, or model-result displays: use data-visualization-biomedical.\n3. General scientific figures, visual hierarchy, narrative figure design, and submission-ready visual conventions: use scientific-visualization.\n4. Explicit Python plotting code or lower-level graphics control: use matplotlib, seaborn, plotly, or data-viz-plots as needed.\n\nFirst identify the figure type, state the selected skill set and reason in one sentence, then provide layout, palette, typography, legend, panel labels, figure-caption points, and PDF/PNG export requirements.\n\nMy task:"
+    }
+  },
+  "guidedStarter": {
+    "greeting": "Hi {{username}}",
+    "title": "What should we do next?",
+    "connectedProjectTitle": "Let's learn this project first",
+    "description": "One entry point for registry cohorts (UKB, NHANES, All of Us, MIMIC, SEER, etc.) and general research flows. Each tile merges the former database + general skill lists (medhelp-* first).",
+    "refresh": "Randomize",
+    "recommendedSkills": "Related skills (installed first)",
+    "selectSkillsHint": "The template is already in the composer. Adjust the Skills for this run here.",
+    "closeSkillPicker": "Choose later",
+    "applySelectedSkills": "Apply selection ({{count}})",
+    "groups": {
+      "evidence": "Ideas & evidence",
+      "design": "Design & analysis",
+      "visual": "Figures & visuals",
+      "writing": "Writing & publishing",
+      "daily": "Daily work",
+      "news": "News",
+      "create": "Creation & automation"
+    },
+    "loadingSkills": "Checking available skills...",
+    "noAvailableSkills": "No matched installed skills for this option yet.",
+    "noAvailableSkillsFallback": "No installed match found, showing the default recommended skills for this option.",
+    "useAllSkills": "Use all skills",
+    "useAutoRoute": "Auto-select skills",
+    "stageFilter": {
+      "activeLabel": "{{stage}} Stage",
+      "allLabel": "All Stages",
+      "showAll": "Show all (+{{count}})",
+      "backToStage": "Back to {{stage}}",
+      "empty": "No scenarios mapped to this stage yet — click \"Show all\" to browse the full library."
+    },
+    "template": {
+      "intro": "Please help me with \"{{scenario}}\". First identify which part of the research workflow this task belongs to, then use only the necessary skills: {{skills}}.",
+      "background": "Research background:",
+      "goal": "Goal and expected outcome:",
+      "database": "Target database / cohort:",
+      "question": "Core research question (population / exposure / outcome):",
+      "variables": "Key variables, phenotype definitions, and covariates:",
+      "design": "Study design / statistical analysis plan:",
+      "inputs": "Current data, code, data dictionary, or reference papers:",
+      "constraints": "Constraints (time / compute / data access / venue / etc.):",
+      "output": "Please provide a step-by-step plan and start with the first actionable task."
+    },
+    "prompts": {
+      "researchIdeation": "Use the relevant research-ideation skills to develop a valuable, feasible topic. Evaluate clinical significance, evidence gaps, data availability, novelty, and statistical feasibility; then provide a PICO, core hypothesis, candidate data sources, and a minimum viable analysis. Available skills: {{skills}}.\n\nMy research direction:",
+      "readPaper": "Use paper-reading skills to help me analyze this paper. Extract the research question, design, eligibility criteria, variable definitions, statistical methods, key results, figures, limitations, and reproducibility risks, and distinguish the authors' claims from what the evidence actually supports. Available skills: {{skills}}.\n\nPaper or file:",
+      "paperCard": "Use paper-card skills to produce a source-grounded deep analysis of one paper. Organize the research question, background route, pain point, core insight, method modules, essential formulas, experiment-to-claim evidence, conclusion boundaries, limitations, critical analysis, knowledge connections, and testable ideas as a structured Paper Card. Available skills: {{skills}}.\n\nPaper, DOI, or file:",
+      "verifyReferences": "Use reference-verification skills to audit my citations one by one. Cross-check authors, title, year, volume, issue, pages, DOI, and source across multiple databases; separate must-fix, review-needed, and verified entries while preserving traceable sources. Never invent a citation. Available skills: {{skills}}.\n\nReferences or manuscript to verify:",
+      "deepResearch": "Use deep-research skills to conduct a systematic, traceable investigation. Define the scope and evidence standard, search multiple sources, verify evidence, compare perspectives, identify gaps, and produce a structured report with sources. Available skills: {{skills}}.\n\nMy research topic:",
+      "writingAssistant": "Use the reduce-AI-rate skills to rewrite the text. First confirm the document type, target audience or journal, passages to edit, and tone. Use nature-polishing for Nature-leaning academic English and section logic; use medhelp-humanizer to remove templated phrasing and make the prose more natural; use citation-management to check citations, bibliography, and citation format, with nature-citation when a citation chain needs tracing. scientific-writing and nature-writing can still help with outlines, sections, or full drafts. Available skills: {{skills}}.\n\nText to de-AI:",
+      "makePresentation": "Use the most relevant presentation skills to help me make a slide deck. First confirm the audience, setting, duration, core message, and available source material; then create a slide-by-slide outline, visual direction, and narrative flow, and generate an editable PPTX once the requirements are sufficient. Available skills: {{skills}}.\n\nMy presentation topic:",
+      "searchLiterature": "Use real literature-search skills to find evidence for me. First clarify the research question, PICO/keywords, databases, date range, and eligibility criteria; then provide verifiable papers, search strings, evidence summaries, and research gaps. Never invent titles, DOIs, or citations. Available skills: {{skills}}.\n\nMy topic:",
+      "downloadLiterature": "Use literature-acquisition skills to download the requested full text. First identify the target papers from the supplied titles, DOIs, PMIDs, PMCIDs, arXiv IDs, literature list, or Zotero records. Then check existing project files, Zotero attachments, PMC/Europe PMC, Unpaywall, arXiv, and other lawful open sources in that order; never bypass a paywall. Save the files and report the source, status, local path, and failure reason, and parse PDFs when needed. Available skills: {{skills}}.\n\nLiterature to download:",
+      "dataAnalysis": "Use data-analysis skills to help me analyze data. Inspect the data structure, variable types, missingness, outliers, and analysis objective first; include database-specific analysis, baseline tables, descriptive statistics, tests, or models as needed, then complete diagnostics, visualization, effect-size reporting, and reproducible outputs. Never invent results without inspecting real data. Available skills: {{skills}}.\n\nMy data or analysis question:",
+      "experimentLog": "Use the experiment-log skill to organize this experiment. Read the supplied images, audio, or text; standardize experiment IDs, sample batches, equipment, conditions, observations, results, anomalies, and next actions; and produce a traceable Markdown log with YAML frontmatter. Available skills: {{skills}}.\n\nExperiment materials:",
+      "researchDesign": "Use research-design skills to help me develop a study plan. Clarify the question, PICO, population, exposure/intervention, outcome, time zero, and available data; then define eligibility criteria, variables, bias control, sample size, and the statistical analysis plan. Available skills: {{skills}}.\n\nMy research question:",
+      "databaseExtraction": "Use database-extraction skills to help me obtain real data. Confirm the research question, target database, cohort structure, and required variables; locate real tables and fields, verify timeline and coding semantics, and extract only task-relevant data while preserving source paths and reproducibility records. Available skills: {{skills}}.\n\nMy database task:",
+      "baselineTableQuick": "Use baseline-table skills to create a submission-ready Table 1. Confirm the grouping variable, continuous and categorical variables, weighting or matching needs, missing-data display, and statistical conventions; then produce the table, SMD/group tests, and manuscript-ready methods text. Available skills: {{skills}}.\n\nMy data and groups:",
+      "submitManuscript": "Use the relevant submission skills to help me submit a manuscript. First confirm the target journal, article type, manuscript status, and available files; then check journal requirements, the submission checklist, formatting, references, cover letter, declarations, and final submission risks. Available skills: {{skills}}.\n\nMy submission task:",
+      "proposalWriting": "Use research-proposal skills to draft or revise a proposal, opening report, research plan, or grant application. Establish the evidence base, central argument, and aims before organizing the technical route, innovation, feasibility, risk alternatives, and quality review. Available skills: {{skills}}.\n\nMy proposal task:",
+      "paperToPatent": "Use the paper-to-patent skill to identify protectable technical points from papers, reports, code, figures, or inventor notes; build a feature-to-evidence map; compare prior art; draft a technical disclosure or Chinese invention patent; and audit claim support and consistency. Available skills: {{skills}}.\n\nMy paper or technical materials:",
+      "reviewManuscript": "Use mock-review skills to assess this manuscript from an independent referee perspective before submission. Evaluate novelty, significance, technical soundness, statistics, evidence, and presentation; then produce Major Concerns, Minor Comments, and blocking flags. Do not write an author rebuttal. Available skills: {{skills}}.\n\nManuscript to review:",
+      "statisticsAudit": "Use statistical-audit skills to inspect the manuscript's reporting. Check sample size, replicate type, randomization, blinding, model assumptions, effect sizes, confidence intervals, p values, multiple comparisons, figure legends, and Results wording, and provide directly actionable revisions. Available skills: {{skills}}.\n\nContent to audit:",
+      "replyReviewers": "Use nature-response to process the editor decision and reviewer comments. First confirm Major Revision or Minor Revision from the decision letter; number, classify, and track editor and reviewer items separately; keep mutually blind reviewers isolated; draft point-by-point responses; and map every claimed change to the manuscript. Never invent experiments, citations, line numbers, or completed changes; mark missing information as AUTHOR_INPUT_NEEDED. Available skills: {{skills}}.\n\nDecision letter, reviewer comments, and current manuscript:",
+      "scientificFigure": "Use scientific-figure skills to create a submission-ready figure. Identify the figure type that best matches the data and conclusion, define layout, palette, statistical annotations, legend, panel labels, and export specifications, and generate a reproducible figure from real data. Available skills: {{skills}}.\n\nThe figure I need:",
+      "mechanismDiagram": "Use scientific-schematic skills to create a mechanism diagram. Organize the entities, pathways, causal or regulatory relationships, evidence strength, and visual hierarchy, then produce a manuscript- or grant-ready structure and high-quality image prompt. Available skills: {{skills}}.\n\nThe mechanism I need to show:",
+      "graphicalAbstractQuick": "Use graphical-abstract skills to compress the research question, data source, core method, key finding, and significance into one submission-ready visual with a clear layout and concise text. Available skills: {{skills}}.\n\nMy research content:",
+      "mindMap": "Use scientific-schematic skills to organize the current topic, paper, or plan as a clear mind map. Identify the central question and hierarchy, then structure branches, dependencies, evidence, and next actions. Available skills: {{skills}}.\n\nWhat I need to organize:",
+      "todayTasks": "Based on the current project, existing conversation, and explicit deadlines, organize today's tasks. Rank them as must finish, important progress, or deferrable; include estimated time, dependencies, and the next action. Point out missing evidence instead of inventing tasks.\n\nItems to include today:",
+      "replyAdvisor": "Help me reply to my advisor. First identify the questions, feedback, tasks, and deadlines in the advisor's message; then draft a polite, concise, natural response that is ready to send, followed by a separate action-item list. Do not invent progress or commitments. Available skills: {{skills}}.\n\nThe advisor's message or content to reply to:",
+      "createKnowledgeBase": "Help me create a searchable, maintainable knowledge base. First confirm its topic, source materials, file formats, update process, and use cases; then organize the documents, design categories and metadata, deduplicate and chunk the content, and create a structure suitable for retrieval and question answering. Available skills: {{skills}}.\n\nThe knowledge base I want to create:",
+      "researchInsights": "Use research-monitoring skills to summarize recent developments. Confirm the topic, time window, sources, and exclusion rules; then provide verifiable new papers, trend changes, important debates, potential research topics, and recommendations for continued monitoring. Available skills: {{skills}}.\n\nThe field I want to track:",
+      "watchNews": "First use agent-reach to look up news and platform updates. Do not invent posts from memory. Confirm the topic, platforms, and time window; if I do not name a platform, choose Xiaohongshu, Bilibili, or other public pages that fit the task. Prefer agent-reach to search, read, and summarize real content. If agent-reach is unavailable, the platform has no working backend, or it returns no content, fall back to the isolated agent browser: use browser_open to open pages and browser_snapshot / browser_action to search, browse, and filter. When you find posts, videos, or articles worth viewing, keep show_in_sidebar=true or use browser_show so they open in the sidebar browser for me. Finish with a source-by-source list of titles, links, timestamps, key points, and evidence you actually saw. If login, CAPTCHA, or the browser blocks a page, say so and use browser_show to hand the URL to the sidebar. Do not post, comment, like, or log in on my behalf. Available skills: {{skills}}.\n\nWhat I want to look at:",
+      "createSkill": "Use skill-creator to build a reusable Skill. First define its triggers, scope, inputs and outputs, workflow, required references or scripts, and validation approach; then create or update SKILL.md and the necessary resources according to the standard. Available skills: {{skills}}.\n\nThe Skill I want to create:",
+      "createProgram": "Help me create an app for My Apps. First confirm the target user, core features, primary inputs and outputs, data and privacy requirements, and visual preferences. Once the requirements are clear, generate and verify a self-contained single-file HTML app, then publish it to My Apps with app_publish. If I specify a brand or website style, also use popular-web-designs. Available skills: {{skills}}.\n\nThe app I want to create:",
+      "createAutomation": "Help me create an automation. First confirm the recurring task, trigger time or frequency, timezone, input sources, delivery method, and failure handling. Once the information is sufficient, create the real automation and clearly state its next run time.\n\nThe task I want to automate:",
+      "startFullProject": "Please help me with \"{{scenario}}\". First decide whether the entry point is a literature question, registry cohort, paper reproduction, or existing dataset; then structure the workflow into evidence review, data/variable confirmation, pre-analysis, statistical modeling, results integration, and manuscript/figure/presentation output. List the missing information and the first actionable step. Available skills: {{skills}}.\n\nMy research topic, data, or existing materials:",
+      "paperReproduction": "Please help me with \"{{scenario}}\". First break down the research question, PICO/cohort, inclusion and exclusion criteria, variable definitions, statistical models, main figures, and conclusions; then distinguish conceptual reproduction, data reproduction, code reproduction, and result verification. Available skills: {{skills}}.\n\nPaper, code, or data to reproduce:",
+      "literatureSurvey": "Please help me with \"{{scenario}}\". First clarify disease/exposure/intervention/outcome, population boundaries, time window, and evidence type; then produce search terms, inclusion/exclusion criteria, an evidence matrix, research gaps, and database-study opportunities. Available skills: {{skills}}.\n\nMy review topic:",
+      "databaseAccess": "Please help me with \"{{scenario}}\". Use the 1 API base + 27 independent database skills + optional cross-database router pattern. Prefer api.medtimehelp.com and fall back to a healthy 127.0.0.1:8787 service only when the public endpoint is unavailable. Decide whether routing is needed; distinguish Chinese databases, SHARE/HRS-family, UKB, NHANES, ICU/EHR, perioperative, and cancer-registry sources; state the key structural risk such as patient/stay/wave/cycle/timeline/coding-era semantics, locate real tables and fields, and extract only task-needed variables with source paths. Available skills: {{skills}}.\n\nMy research question and target database:",
+      "researchIdea": "Please help me with \"{{scenario}}\". First evaluate evidence gap, available data, clinical relevance, and statistical feasibility; then form a clear PICO, core hypothesis, novelty claim, candidate data source, main model, and minimum viable analysis. Available skills: {{skills}}.\n\nMy research direction or initial idea:",
+      "preAnalysis": "Please help me with \"{{scenario}}\". First confirm exposure, outcome, time variables, and minimal covariates; then check sample size, missingness, event count, distributions, overlap, crude effect, and minimally adjusted effect, and conclude continue, pause, or revise. Available skills: {{skills}}.\n\nMy data, variables, and pre-analysis objective:",
+      "baselineTable": "Please help me with \"{{scenario}}\". First confirm grouping variable, continuous/categorical variables, weighting or matching needs, missingness display, and statistical conventions; then produce Table 1, SMD/group tests, and manuscript-ready methods text. Available skills: {{skills}}.\n\nMy data, groups, and variables:",
+      "medicalVisualization": "Please help me with \"{{scenario}}\". Use only the selected skills. First identify the figure type such as KM curve, forest plot, volcano plot, heatmap, flow diagram, multi-panel results figure, or graphical abstract. Then specify Nature-style layout, color palette, typography, legend, panel labels, figure-caption points, and PDF/PNG export requirements. Avoid generic charts; prioritize submission-ready interpretation and statistical clarity. Available skills: {{skills}}.\n\nMy data and figure objective:",
+      "resultsIntegration": "Please help me with \"{{scenario}}\". First read existing Table 1, model outputs, figures, and sensitivity analyses; then organize main findings, subgroups, robustness checks, interpretation boundaries, and manuscript-ready wording under STROBE/CONSORT logic. Available skills: {{skills}}.\n\nMy tables, model outputs, and figures:",
+      "graphicalAbstract": "Please help me with \"{{scenario}}\". First distill the research question, data source, core method, key finding, and clinical implication; then propose a single-figure structure, visual hierarchy, icons/process elements, and concise submission-ready text. Available skills: {{skills}}.\n\nMy research content and core finding:",
+      "paperWriting": "Please help me with \"{{scenario}}\". First confirm target journal/article type, study design, primary results, and citation materials; use nature-data when drafting or auditing Data Availability statements, repository plans, dataset citations, or FAIR metadata; then proceed through Title, Abstract, Introduction, Methods, Results, Discussion, and reference validation. Available skills: {{skills}}.\n\nMy manuscript, materials, and writing objective:",
+      "paperPolishing": "Please help me with \"{{scenario}}\". First confirm target journal/article type, the sections or paragraphs to polish, and the tone (strict submission-ready vs slightly more human/natural). Default to nature-polishing for Nature-leaning academic English and section logic; use medhelp-humanizer when you need more natural, less templated phrasing; pair with scientific-writing for IMRAD-level prose; use citation-management for references; use venue-templates for venue-specific structure. Available skills: {{skills}}.\n\nText to polish and target journal:",
+      "manuscriptReview": "Please help me with \"{{scenario}}\". First check study design, statistical validity, evidence chain, causal language, figure/table consistency, and submission standards; then separate must-fix issues from recommended edits and acceptable content. Available skills: {{skills}}.\n\nManuscript to review:",
+      "rebuttalResponse": "Please help me with \"{{scenario}}\". First classify each comment as methods, statistics, data definition, result interpretation, writing, or formatting; then design added analyses, sensitivity checks, text revisions, and point-by-point responses. Available skills: {{skills}}.\n\nDecision letter, reviewer comments, and current manuscript:",
+      "presentationPromotion": "Please help me with \"{{scenario}}\". First define audience, duration, core message, and available assets; then compress the paper into background, methods, results, clinical meaning, limitations, and next steps. Available skills: {{skills}}.\n\nMy presentation topic, audience, and materials:",
+      "grantProposal": "Please help me with \"{{scenario}}\". First clarify the scientific question, clinical/public-health significance, preliminary basis, innovation, aims, and technical route; then organize rationale, research plan, feasibility, and risk alternatives. Available skills: {{skills}}.\n\nMy proposal topic and existing materials:"
+    },
+    "routePrompts": {
+      "statisticalModeling": "Please help me with \"Statistical modeling & testing\". First route the task to the smallest necessary skill set based on the task details. Do not call all statistical modeling skills by default.\n\nRouting rules:\n1. Statistical analysis plan, test selection, hypotheses, effect sizes, power, APA or manuscript reporting: use statistical-analysis.\n2. Directly running specified t-tests, ANOVA, chi-square, correlations, non-parametric tests, or multiple-testing correction: use data-stats-analysis.\n3. Linear, logistic, Poisson/negative binomial, mixed models, ARIMA/time series, robust standard errors, diagnostics, and coefficient tables: use statsmodels.\n4. Cox, KM, survival outcomes, censored data, competing risks, or time-dependent AUC: use scikit-survival.\n5. Bayesian, hierarchical, MCMC, prior/posterior predictive checks, or uncertainty quantification: use pymc.\n6. UK Biobank-specific cohort fields, endpoints, covariates, and sensitivity analysis: use ukb-cohort-analysis.\n7. Integrating finished statistical outputs, tables, figures, and Results text: use medhelp-experiment-analysis.\n\nDefault principles: for unclear clinical/epidemiologic analysis, start with statistical-analysis; add statsmodels, scikit-survival, or pymc only once the modeling target is clear.\n\nFirst state the selected skill set and reason in one sentence, then start the work.\n\nMy data, variables, and statistical objective:",
+      "medicalVisualization": "Please help me with \"Medical visualization\". Route my medical visualization task to the smallest necessary skill set first. Do not call the entire visualization skill group by default.\n\nRouting rules:\n1. Journal-level layout, Nature/Lancet/JAMA style, multi-panel structure, palettes, and export requirements: use nature-figure.\n2. Clinical/biomedical statistical figures, KM curves, forest plots, volcano plots, heatmaps, subgroup figures, or model-result displays: use data-visualization-biomedical.\n3. General scientific figures, visual hierarchy, narrative figure design, and submission-ready visual conventions: use scientific-visualization.\n4. Explicit Python plotting code or lower-level graphics control: use matplotlib, seaborn, plotly, or data-viz-plots as needed.\n\nFirst identify the figure type, state the selected skill set and reason in one sentence, then provide layout, palette, typography, legend, panel labels, figure-caption points, and PDF/PNG export requirements.\n\nMy data and figure objective:"
+    },
+    "scenarios": {
+      "researchIdeation": {
+        "title": "Research ideas",
+        "description": "Develop feasible topics from clinical value, evidence gaps, data, and statistical feasibility."
+      },
+      "readPaper": {
+        "title": "Read papers",
+        "description": "Analyze study design, variables, methods, results, figures, limitations, and reproducibility risks."
+      },
+      "paperCard": {
+        "title": "Paper card",
+        "description": "Turn one paper into a source-grounded card with evidence chains, boundaries, and research ideas."
+      },
+      "verifyReferences": {
+        "title": "Verify citations",
+        "description": "Cross-check authors, title, year, volume, issue, pages, and DOI for every reference."
+      },
+      "deepResearch": {
+        "title": "Deep research",
+        "description": "Conduct a traceable multi-source investigation and produce an evidence-backed report."
+      },
+      "writingAssistant": {
+        "title": "Reduce AI rate",
+        "description": "Nature polishing, humanized rewriting, and citation checks."
+      },
+      "makePresentation": {
+        "title": "Make PPT",
+        "description": "Turn a topic or source material into a clear, editable presentation using installed slide skills first."
+      },
+      "searchLiterature": {
+        "title": "Find literature",
+        "description": "Find verifiable papers and organize search strings, evidence summaries, and research gaps."
+      },
+      "downloadLiterature": {
+        "title": "Download papers",
+        "description": "Retrieve lawful full text by DOI, PMID, title, arXiv ID, or Zotero record."
+      },
+      "dataAnalysis": {
+        "title": "Data analysis",
+        "description": "Inspect real data and perform statistics, testing, modeling, diagnostics, and visualization."
+      },
+      "experimentLog": {
+        "title": "Experiment log",
+        "description": "Convert images, audio, and text into a consistent, traceable experiment record."
+      },
+      "researchDesign": {
+        "title": "Research design",
+        "description": "Define PICO, eligibility, variables, bias control, sample size, and the analysis plan."
+      },
+      "databaseExtraction": {
+        "title": "Database extraction",
+        "description": "Locate real database tables and fields and extract traceable task-specific data."
+      },
+      "baselineTableQuick": {
+        "title": "Baseline table",
+        "description": "Create submission-ready Table 1, SMD, group tests, and methods text."
+      },
+      "submitManuscript": {
+        "title": "Submit",
+        "description": "Match journal requirements and prepare the checklist, formatting, references, cover letter, and declarations."
+      },
+      "proposalWriting": {
+        "title": "Research proposal",
+        "description": "Draft or audit proposals, opening reports, research plans, and grant applications."
+      },
+      "paperToPatent": {
+        "title": "Paper to patent",
+        "description": "Extract patentable ideas and draft a technical disclosure or patent from research materials."
+      },
+      "reviewManuscript": {
+        "title": "Mock peer review",
+        "description": "Produce referee-style major concerns, minor comments, and blocking flags."
+      },
+      "statisticsAudit": {
+        "title": "Statistics audit",
+        "description": "Audit sample size, models, p values, intervals, replicates, and statistical reporting."
+      },
+      "replyReviewers": {
+        "title": "Reply to reviewers",
+        "description": "Draft point-by-point responses, track revisions, and assemble the revision package."
+      },
+      "scientificFigure": {
+        "title": "Scientific figures",
+        "description": "Generate statistically clear, submission-ready figures from real data."
+      },
+      "mechanismDiagram": {
+        "title": "Mechanism diagram",
+        "description": "Organize pathways, regulation, and causal relationships into a manuscript- or grant-ready schematic."
+      },
+      "graphicalAbstractQuick": {
+        "title": "Graphical abstract",
+        "description": "Compress the research question, method, findings, and significance into one submission-ready visual."
+      },
+      "mindMap": {
+        "title": "Mind map",
+        "description": "Organize a topic, paper, or plan into a hierarchical, actionable mind map."
+      },
+      "todayTasks": {
+        "title": "Today's tasks",
+        "description": "Use the current project and deadlines to identify the most valuable work for today."
+      },
+      "replyAdvisor": {
+        "title": "Reply to advisor",
+        "description": "Understand the advisor's feedback and draft a natural, respectful reply with explicit action items."
+      },
+      "createKnowledgeBase": {
+        "title": "Create knowledge base",
+        "description": "Organize sources, categories, and metadata into a searchable, maintainable project knowledge base."
+      },
+      "researchInsights": {
+        "title": "Research insights",
+        "description": "Track recent verifiable studies, trends, debates, and translatable research opportunities."
+      },
+      "watchNews": {
+        "title": "Watch news",
+        "description": "Use agent-reach to browse Xiaohongshu, Bilibili, and similar feeds; fall back to the agent browser if needed, then open useful pages in the sidebar."
+      },
+      "createSkill": {
+        "title": "Create skill",
+        "description": "Use skill-creator to package recurring work as a standard, reusable, and testable Skill."
+      },
+      "createProgram": {
+        "title": "Create app",
+        "description": "Clarify requirements with the Agent, design and verify the app, then publish it to My Apps."
+      },
+      "createAutomation": {
+        "title": "Create automation",
+        "description": "Schedule a recurring task with clear delivery and failure handling."
+      },
+      "startFullProject": {
+        "title": "Start a research project",
+        "description": "From an idea or a registry cohort, define the pipeline, question, variables or experiments, and an actionable plan."
+      },
+      "paperReproduction": {
+        "title": "Reproduce a paper",
+        "description": "Understand methods and implementation; for cohort work, align inclusion/exclusion, variables, and statistical models."
+      },
+      "literatureSurvey": {
+        "title": "Medical Evidence Search",
+        "description": "Synthesize trends, gaps, and debates in the literature; optionally contrast with common cohorts and databases without making this the primary data-source picker."
+      },
+      "databaseAccess": {
+        "title": "Database Extraction",
+        "description": "Route within the database workspace, verify tables and structure, and extract real source-backed fields using 1 API base, 27 independent database skills, and an optional cross-database router. It covers Chinese surveys, SHARE/HRS-family, UKB, NHANES, MIMIC, NWICU, eICU, SICdb, PIC, INSPIRE, and SEER, with public-API-first and healthy-loopback fallback behavior."
+      },
+      "researchIdea": {
+        "title": "Clinical Study Ideation",
+        "description": "Turn a vague direction into hypotheses and novelty; for cohort studies, clarify exposure and outcome."
+      },
+      "preAnalysis": {
+        "title": "Clinical & Epi Pre-Analysis",
+        "description": "Before Table 1 or full modeling, extract the key exposure, core outcome, time variables, and minimal covariates, then combine clinical screening with epidemiologic checks such as prevalence / incidence / person-time summaries, crude and minimally adjusted effect measures, and confounding or overlap review to decide whether to continue, pause, or revise the study design."
+      },
+      "baselineTable": {
+        "title": "Baseline Table (Table 1)",
+        "description": "Generate three-line baseline tables: single/multi-database, disease-stratified, exposure-stratified, weighted statistics, and SMD for PSM."
+      },
+      "statisticalModeling": {
+        "title": "Statistical Modeling & Testing",
+        "description": "Hypothesis testing, logistic/linear/Cox regression, survival analysis, subgroup analysis, sensitivity checks, and Bayesian modeling."
+      },
+      "medicalVisualization": {
+        "title": "Medical Visualization",
+        "description": "Publication-quality figures: KM curves, forest plots, volcano plots, heatmaps, and multi-panel layouts for Nature/Lancet/JAMA style journals, with emphasis on statistical clarity, reproducible exports, and submission-ready figure design."
+      },
+      "resultsIntegration": {
+        "title": "Results Integration & Drafting",
+        "description": "Combine Table 1, statistical outputs, and figures into a manuscript-ready Results section with STROBE/CONSORT compliance."
+      },
+      "paperWriting": {
+        "title": "Medical Manuscript Writing",
+        "description": "Structure sections and claims; use nature-data for Data Availability statements, repository plans, dataset citations, and FAIR metadata checks; use citation-management to organize/validate citations & references; after drafting, use the \"Manuscript polishing\" shortcut for Nature-style edits and humanized phrasing."
+      },
+      "paperPolishing": {
+        "title": "Manuscript Polishing",
+        "description": "Refine near-final prose: nature-polishing for Nature-leaning English and flow; medhelp-humanizer for natural, less AI-templated phrasing; optionally scientific-writing, citation-management, and venue-templates for the target venue."
+      },
+      "graphicalAbstract": {
+        "title": "Graphical Abstract",
+        "description": "Compress the paper's core question, method flow, and key findings into a single submission-ready visual summary."
+      },
+      "manuscriptReview": {
+        "title": "Medical Paper Review",
+        "description": "Reviewer-style checks plus interpreting findings, clinical impact, limitations, and narrative framing."
+      },
+      "rebuttalResponse": {
+        "title": "Rebuttal & causal/sensitivity",
+        "description": "Respond to reviewers; strengthen confounding control, robustness, alternate definitions, and causal framing."
+      },
+      "grantProposal": {
+        "title": "Medical Grant Writing",
+        "description": "Plan and write funding proposals—rationale, aims, and revisions aligned with sponsor requirements."
+      },
+      "dataPlatformSurvey": {
+        "title": "Data sources & cohorts",
+        "description": "Compare and shortlist public cohorts or databases (e.g. UKB, NHANES, MIMIC) for fit with your question, availability, and analysis path."
+      },
+      "presentationPromotion": {
+        "title": "Academic Presentation & Translation",
+        "description": "Slides and lab-meeting materials; or narration scripts, audio, and demo video assets."
+      }
+    }
+  },
+  "attachedPrompt": {
+    "showPrompt": "Show prompt",
+    "hidePrompt": "Hide prompt",
+    "remove": "Remove"
+  },
+  "pipelineOnboarding": {
+    "noBrief": {
+      "title": "Set Up Your Research Pipeline",
+      "description": "Describe your research idea below and the agent will interactively build your pipeline, generating a research brief and task list.",
+      "stepsLabel": "What to include",
+      "step1": "Your research topic and high-level goal",
+      "step2": "Scope, boundaries, and target venue (if any)",
+      "step3": "Preferred methods and evaluation approach",
+      "buttonLabel": "Use Analysis Template"
+    },
+    "noTasks": {
+      "title": "Generate Tasks from Your Brief",
+      "description": "A research brief exists but no tasks have been generated yet. You can generate tasks directly now, or continue in Analysis Chat and let the agent refine the brief first.",
+      "briefExists": "research_brief.json detected",
+      "buttonLabel": "Generate Tasks Now",
+      "buttonLoadingLabel": "Generating tasks...",
+      "secondaryButtonLabel": "Continue in Analysis Chat"
+    }
+  },
+  "importedProject": {
+    "title": "Analyze imported project?",
+    "description": "Start a new session to scan this workspace, analyze the project structure and implementation, and summarize next steps.",
+    "provider": "Provider",
+    "model": "Model",
+    "notInstalled": "Not installed",
+    "notLoggedIn": "Not logged in",
+    "notAvailable": "Selected provider is not available.",
+    "notNow": "Not now",
+    "analyzeProject": "Analyze project"
+  },
+  "selectionConsultation": {
+    "search": "Search",
+    "contextMenu": "Explain in side project Q&A",
+    "title": "Project Q&A · Selection",
+    "readOnly": "Independent read-only chat; project changes are disabled",
+    "selectedText": "Selected text",
+    "initialQuestion": "Explain the selected text in context, including its meaning, purpose, and anything important to note.",
+    "thinking": "Explaining with conversation context…",
+    "placeholder": "Ask a follow-up about this text…",
+    "send": "Send",
+    "close": "Close consultation",
+    "cleanupError": "Could not close; the temporary consultation has not been deleted",
+    "error": "Consultation failed. Please try again."
+  },
+  "taskMaster": {
+    "initFailed": "Failed to initialize TaskMaster: {{message}}",
+    "initError": "Error initializing TaskMaster. Please try again.",
+    "createFailed": "Failed to create task: {{message}}",
+    "createError": "Error creating task. Please try again.",
+    "templateError": "Error: {{message}}",
+    "setupTitle": "TaskMaster setup",
+    "setupSubtitle": "Interactive CLI for {{project}}",
+    "setupFooter": "TaskMaster initialization will start automatically",
+    "close": "Close",
+    "createTaskTitle": "Create New Task",
+    "useAiGenerate": "Use AI to generate task details",
+    "taskDescAi": "Task description (AI will generate details)",
+    "taskDescAiPlaceholder": "Describe what you want to accomplish...",
+    "taskTitle": "Task title",
+    "taskTitlePlaceholder": "Enter task title...",
+    "description": "Description",
+    "taskDescPlaceholder": "Describe the task...",
+    "priority": "Priority",
+    "priorityLow": "Low",
+    "priorityMedium": "Medium",
+    "priorityHigh": "High",
+    "creating": "Creating...",
+    "createTask": "Create Task",
+    "loadingTemplates": "Loading templates...",
+    "selectPrdTemplate": "Select PRD template",
+    "customizeTemplateStep": "Customize template",
+    "generatingTasksStep": "Generating tasks",
+    "fileName": "File name",
+    "customizeTemplateLabel": "Customize template",
+    "enterFieldPlaceholder": "Enter {{field}}",
+    "back": "Back",
+    "applying": "Applying...",
+    "applyGenerateTasks": "Apply & generate tasks",
+    "templateSuccessTitle": "Template applied successfully!",
+    "templateSuccessBody": "Your PRD has been created and tasks are being generated..."
+  }
+}

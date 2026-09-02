@@ -1,0 +1,209 @@
+{
+  "literature": {
+    "base": [
+      "literature-review",
+      "pubmed-database",
+      "real-literature-trace",
+      "citation-management"
+    ],
+    "byTaskType": {
+      "analysis": [
+        "literature-review",
+        "citation-management",
+        "research-lookup"
+      ],
+      "exploration": [
+        "literature-review",
+        "pubmed-database",
+        "real-literature-trace",
+        "research-lookup"
+      ]
+    }
+  },
+  "ideation": {
+    "base": [
+      "medhelp-pipeline-planner",
+      "medhelp-prepare-resources",
+      "medhelp-deep-research",
+      "dataset-discovery",
+      "medhelp-idea-generation",
+      "medhelp-idea-eval",
+      "biorxiv-database",
+      "academic-researcher"
+    ],
+    "byTaskType": {
+      "analysis": [
+        "medhelp-idea-generation",
+        "medhelp-idea-eval",
+        "medhelp-deep-research",
+        "academic-researcher"
+      ],
+      "exploration": [
+        "medhelp-idea-generation",
+        "medhelp-deep-research",
+        "dataset-discovery",
+        "biorxiv-database",
+        "academic-researcher"
+      ],
+      "implementation": [
+        "medhelp-prepare-resources"
+      ]
+    }
+  },
+  "experiment": {
+    "base": [
+      "dataset-discovery",
+      "medhelp-experiment-analysis"
+    ],
+    "byTaskType": {
+      "implementation": [],
+      "analysis": [
+        "medhelp-experiment-analysis"
+      ],
+      "exploration": [
+        "dataset-discovery",
+        "medhelp-deep-research",
+        "biorxiv-database"
+      ]
+    }
+  },
+  "dataAnalysis": {
+    "base": [
+      "clinical-preanalysis",
+      "baseline-table",
+      "data-stats-analysis",
+      "medhelp-experiment-analysis",
+      "data-transform",
+      "data-visualization-biomedical",
+      "scientific-visualization"
+    ],
+    "byTaskType": {
+      "dataAccess": [
+        "medhelp-database-api-access",
+        "cfps-skill",
+        "cgss-skill",
+        "charls-skill",
+        "class-skill",
+        "chfs-skill",
+        "chip-skill",
+        "chns-skill",
+        "clds-skill",
+        "clhls-skill",
+        "css-skill",
+        "share-skill",
+        "hrs-skill",
+        "elsa-skill",
+        "klosa-skill",
+        "lasi-skill",
+        "mhas-skill",
+        "ukb-skill",
+        "nhanes-skill",
+        "mimiciii-skill",
+        "mimiciv-skill",
+        "mimiciv31-skill",
+        "nwicu-skill",
+        "eicu-skill",
+        "sicdb-skill",
+        "pic-skill",
+        "inspire-skill",
+        "seer-skill",
+        "geo-database",
+        "datacommons-client"
+      ],
+      "preprocessing": [
+        "data-transform",
+        "exploratory-data-analysis"
+      ],
+      "preAnalysis": [
+        "clinical-preanalysis",
+        "data-transform",
+        "statistical-analysis",
+        "statsmodels",
+        "scikit-survival"
+      ],
+      "baselineTable": [
+        "baseline-table"
+      ],
+      "inference": [
+        "data-stats-analysis",
+        "statistical-analysis",
+        "statsmodels"
+      ],
+      "regression": [
+        "statsmodels",
+        "ukb-cohort-analysis"
+      ],
+      "survival": [
+        "scikit-survival",
+        "ukb-cohort-analysis"
+      ],
+      "advanced": [
+        "pymc",
+        "hypothesis-generation"
+      ],
+      "visualization": [
+        "data-visualization-biomedical",
+        "scientific-visualization",
+        "data-viz-plots",
+        "data-visualization-expert",
+        "matplotlib",
+        "seaborn",
+        "plotly"
+      ],
+      "resultsIntegration": [
+        "medhelp-experiment-analysis"
+      ]
+    }
+  },
+  "publication": {
+    "base": [
+      "medhelp-paper-writing",
+      "medhelp-figure-gen",
+      "medhelp-paper-reviewer",
+      "medhelp-rebuttal",
+      "medhelp-humanizer",
+      "medhelp-reference-audit",
+      "medhelp-rclone-to-overleaf",
+      "scientific-writing",
+      "medhelp-grant-proposal"
+    ],
+    "byTaskType": {
+      "writing": [
+        "medhelp-paper-writing",
+        "medhelp-figure-gen",
+        "medhelp-rebuttal",
+        "medhelp-humanizer",
+        "scientific-writing",
+        "medhelp-grant-proposal"
+      ],
+      "analysis": [
+        "medhelp-paper-reviewer",
+        "medhelp-rebuttal",
+        "medhelp-reference-audit",
+        "medhelp-deep-research"
+      ],
+      "delivery": [
+        "medhelp-rclone-to-overleaf"
+      ]
+    }
+  },
+  "promotion": {
+    "base": [
+      "making-academic-presentations"
+    ],
+    "byTaskType": {
+      "scripting": [
+        "making-academic-presentations"
+      ],
+      "rendering": [
+        "making-academic-presentations"
+      ],
+      "narration": [
+        "making-academic-presentations"
+      ],
+      "delivery": [
+        "making-academic-presentations"
+      ]
+    }
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "announcement": {
+    "badge": "新版",
+    "text": "MedHelp v1.1 — 科研技能库、PubMed 最新追踪与插件生态现已支持",
+    "link": "查看技能 →"
+  },
+  "nav": {
+    "intro": "介绍",
+    "pricing": "定价",
+    "database": "数据库介绍",
+    "skills": "科研技能库",
+    "pubmed": "PubMed 最新",
+    "plugins": "插件生态",
+    "docs": "帮助文档",
+    "contact": "联系我们",
+    "features": "核心功能",
+    "pipeline": "研究流水线",
+    "compatibility": "数据兼容",
+    "signIn": "登录",
+    "getStarted": "开始使用"
+  },
+  "hero": {
+    "badge": "你的科研管理管家",
+    "titleLine1": "从研究问题",
+    "titleLine2": "到可复现产物",
+    "subtitle": "MedHelp® 将智能体对话、文献动态、资源库、任务流水线、文件管理和计算资源整合到同一个入口，帮助团队持续推进临床数据研究。",
+    "ctaPrimary": "免费开始",
+    "ctaSecondary": "查看演示",
+    "metrics": {
+      "pipeline": { "value": "5", "label": "阶段流水线" },
+      "backends": { "value": "2+", "label": "AI 后端" },
+      "skills": { "value": "160+", "label": "科研技能" },
+      "formats": { "value": "20+", "label": "数据库类型" },
+      "agents": { "value": "∞", "label": "多智能体" },
+      "workspace": { "value": "1", "label": "统一工作区" }
+    }
+  },
+  "trust": {
+    "title": "服务于顶尖研究机构的科研人员"
+  },
+  "capabilities": {
+    "title": "平台一览",
+    "subtitle": "临床研究团队所需的一切，整合在一个智能工作区中。",
+    "items": {
+      "pipeline": { "value": "5", "label": "阶段研究流水线", "desc": "证据采集 → 方案设计 → 研究执行 → 报告撰写 → 成果传播" },
+      "skills": { "value": "160+", "label": "科研技能", "desc": "文献、数据库、统计、图表、写作与投稿全流程覆盖" },
+      "backends": { "value": "2+", "label": "AI 执行后端", "desc": "Claude Code 和 OpenAI Codex" },
+      "formats": { "value": "20+", "label": "数据库类型", "desc": "MySQL、PostgreSQL、MongoDB、SQLite 等主流数据库" },
+      "agents": { "value": "∞", "label": "多智能体工作流", "desc": "面向复杂研究的并行智能体调度" },
+      "workspace": { "value": "1", "label": "统一工作区", "desc": "对话、文件、任务、流水线 — 一个入口" }
+    }
+  },
+  "ecosystem": {
+    "badge": "科研技能库",
+    "title": "把常用科研动作",
+    "titleHighlight": "做成可复用 Skill",
+    "subtitle": "从 PubMed 最新文献到真实世界数据库提取，MedHelp 将高频研究步骤沉淀为可调用的技能、模板和插件，让新项目不必每次从零开始。",
+    "tabsLabel": "科研能力展示",
+    "tabs": {
+      "database": "数据库介绍",
+      "skills": "科研技能库",
+      "pubmed": "PubMed 最新",
+      "pricing": "定价",
+      "plugins": "插件生态",
+      "docs": "帮助文档",
+      "contact": "联系我们"
+    },
+    "database": {
+      "title": "医学数据库与数据接入",
+      "subtitle": "数据库能力是 MedHelp 的基础层，不是 Skill 的替代项。平台保留数据库介绍、权限边界、变量检索和导出能力，再由科研技能调用这些能力完成研究任务。",
+      "featureTitle": "从数据库到可分析变量",
+      "featureDesc": "支持临床队列、公共数据库、文件型数据和私有数据服务的统一入口，适合按权限授权给个人、团队或客户使用。",
+      "metrics": [
+        { "value": "20+", "label": "数据库与数据格式" },
+        { "value": "4", "label": "接入路径" },
+        { "value": "1", "label": "统一变量检索入口" },
+        { "value": "按权限", "label": "用户与 API 授权" }
+      ],
+      "groups": {
+        "catalog": {
+          "title": "数据库目录",
+          "desc": "把数据库来源、变量目录、数据字典和可用状态集中展示，先让用户知道有什么数据可用。",
+          "tags": ["数据库列表", "变量字典", "数据状态"]
+        },
+        "sources": {
+          "title": "多源数据接入",
+          "desc": "兼容关系型数据库、医学公共库、队列文件、Parquet/CSV/XLSX 和机构私有数据服务。",
+          "tags": ["MIMIC", "NHANES", "CHARLS", "CSV/Parquet"]
+        },
+        "permissions": {
+          "title": "权限与交付边界",
+          "desc": "支持按用户、团队或 API Token 控制数据库权限，适合不直接复制原始数据库的服务交付。",
+          "tags": ["用户授权", "API Token", "私有化"]
+        },
+        "exports": {
+          "title": "变量检索与导出",
+          "desc": "面向研究问题检索变量、生成字段包、SQL/提取方案和结果导出，供后续统计分析使用。",
+          "tags": ["变量检索", "SQL", "导出包"]
+        }
+      }
+    },
+    "spotlight": {
+      "title": "PubMed 最新追踪",
+      "desc": "围绕研究主题自动检索新文献，并把变量、终点、证据句沉淀到知识库。",
+      "steps": ["生成检索式", "抽取候选变量", "沉淀证据卡片"],
+      "details": [
+        { "title": "按主题刷新", "desc": "围绕疾病、暴露、结局或数据库名称生成可复用检索式。" },
+        { "title": "变量候选识别", "desc": "从标题和摘要中捕获变量、评分、终点和研究设计线索。" },
+        { "title": "进入知识库", "desc": "把 PMID、证据句和匹配状态沉淀为后续研究可追踪资产。" }
+      ]
+    },
+    "skills": {
+      "items": {
+        "pubmed": {
+          "title": "PubMed / 文献更新",
+          "desc": "追踪最新论文、识别变量和风险评分，支持从摘要到证据句的结构化整理。",
+          "meta": "实时更新",
+          "tags": ["PubMed", "文献筛选", "证据句"]
+        },
+        "literature": {
+          "title": "系统综述与真实引用",
+          "desc": "围绕 PICO、纳排标准和研究问题组织检索、筛选、追踪引用与证据等级。",
+          "meta": "Review",
+          "tags": ["PICO", "引用管理", "证据追踪"]
+        },
+        "database": {
+          "title": "医学数据库提取",
+          "desc": "面向 MIMIC、NHANES、CHARLS 等数据源准备变量表、SQL 和导出包。",
+          "meta": "Data",
+          "tags": ["变量提取", "SQL", "队列构建"]
+        },
+        "analysis": {
+          "title": "统计建模与可视化",
+          "desc": "覆盖基线表、生存分析、回归模型、敏感性分析和投稿级图表生成。",
+          "meta": "Stats",
+          "tags": ["基线表", "生存分析", "图表"]
+        },
+        "writing": {
+          "title": "论文写作与润色",
+          "desc": "从结果段、讨论段到投稿信和 rebuttal，把研究产物转成可发表文本。",
+          "meta": "Paper",
+          "tags": ["Manuscript", "Rebuttal", "润色"]
+        },
+        "pipeline": {
+          "title": "研究项目流水线",
+          "desc": "把想法拆成证据、方案、执行、报告、传播五个阶段，并自动生成可执行任务。",
+          "meta": "Workflow",
+          "tags": ["任务拆解", "PRD", "多智能体"]
+        }
+      }
+    },
+    "plugins": {
+      "title": "插件生态",
+      "subtitle": "把团队方法、私有数据和专用工具接进同一工作区。",
+      "items": {
+        "skillUpload": {
+          "title": "团队 Skill 上传",
+          "desc": "把本地 SOP、统计模板和代码片段打包成团队可复用能力。"
+        },
+        "agentRouting": {
+          "title": "智能路由与分类",
+          "desc": "按研究场景自动推荐合适技能，减少用户手动挑选和提示词维护。"
+        },
+        "privateStack": {
+          "title": "私有化扩展",
+          "desc": "支持自有 Key、内网数据库和机构插件，适合真实研究团队长期使用。"
+        }
+      }
+    },
+    "docs": {
+      "title": "帮助文档",
+      "subtitle": "把常用说明入口收在一个 tab 里，先选主题，再进入完整文档。",
+      "items": {
+        "api": {
+          "title": "API 与部署文档",
+          "desc": "查看服务接口、部署变量、鉴权方式和本地/服务器启动说明。"
+        },
+        "skills": {
+          "title": "Skill 使用指南",
+          "desc": "了解如何上传、分类、调用和维护团队自己的科研技能。"
+        },
+        "database": {
+          "title": "数据库接入说明",
+          "desc": "梳理数据源连接、变量检索、导出包和权限边界。"
+        },
+        "pipeline": {
+          "title": "研究流水线手册",
+          "desc": "从想法、方案、执行、报告到传播，按阶段推进项目。"
+        }
+      }
+    },
+    "contact": {
+      "title": "需要采购支持或定制服务？",
+      "desc": "如果你需要团队席位、私有化部署、插件迁移或数据库接入，我们可以按真实研究场景一起配置。",
+      "cta": "联系 MedHelp",
+      "items": [
+        { "title": "内测开通", "desc": "适合先试用个人工作区和科研技能库。" },
+        { "title": "团队部署", "desc": "适合课题组、科室或机构统一管理。" },
+        { "title": "插件迁移", "desc": "把现有 SOP、脚本和模板整理成可调用插件。" }
+      ]
+    }
+  },
+  "plans": {
+    "badge": "内测支持计划",
+    "title": "选择适合你的研究方案",
+    "subtitle": "Free 用于体验基础项目与对话流程，Pro 解锁自动化、知识沉淀和完整研究工作台。",
+    "recommended": "推荐",
+    "items": {
+      "free": {
+        "name": "FREE",
+        "desc": "体验基础项目、对话和文件浏览。",
+        "price": "免费",
+        "period": "适合首次体验 MedHelp 工作流",
+        "cta": "开始使用",
+        "features": ["基础研究对话", "单设备使用", "项目文件浏览与预览", "精选基础能力"]
+      },
+      "pro": {
+        "name": "PRO",
+        "desc": "完整研究工作台与自动化能力。",
+        "price": "专业版",
+        "period": "适合文献追踪、数据库研究和论文产出",
+        "cta": "开通内测",
+        "featured": true,
+        "features": ["任务面板与自动化 Pipeline", "文献动态与变量自动发现", "项目记忆与完整对话归档", "Codex、文件高级操作与更高额度"]
+      }
+    }
+  },
+  "features": {
+    "badge": "核心功能",
+    "title": "临床数据研究",
+    "titleHighlight": "所需的一切",
+    "subtitle": "一个深度理解临床研究生命周期的专用工作区。",
+    "items": {
+      "chat": {
+        "title": "智能体对话",
+        "desc": "多模型对话，无缝切换 Claude Code 和 Codex。面向临床研究工作流的上下文感知提示。"
+      },
+      "evidence": {
+        "title": "证据流水线",
+        "desc": "五阶段临床证据管理：证据采集、方案设计、研究执行、报告撰写和成果传播 — 全程可追踪、可审计。"
+      },
+      "knowledge": {
+        "title": "变量知识库",
+        "desc": "结构化变量知识库，集成 PubMed 发现功能。在整个研究组合中捕获、引用和追踪证据。"
+      },
+      "files": {
+        "title": "文件与 Git",
+        "desc": "内置文件管理器，支持语法高亮、差异对比和 Git 集成。将研究资产与代码一起进行版本控制。"
+      },
+      "tasks": {
+        "title": "任务自动化",
+        "desc": "TaskMaster 驱动的任务分解，自动生成 PRD。将复杂研究拆分为可追踪、可执行的子任务，AI 全程辅助。"
+      }
+    }
+  },
+  "pipeline": {
+    "badge": "研究流水线",
+    "title": "五个阶段，一个工作区",
+    "subtitle": "从证据收集到论文发表，与临床研究生命周期完全对应的结构化流水线。",
+    "stages": {
+      "intake": { "title": "证据采集", "desc": "系统性文献检索、PubMed 集成和自动化证据分级。从已发表研究中捕获变量、终点和纳入标准。" },
+      "design": { "title": "方案设计", "desc": "AI 辅助方案起草，提供结构化模板。定义研究分组、终点指标、样本量计算和统计分析计划。" },
+      "execution": { "title": "研究执行", "desc": "跟踪入组、数据采集和不良事件。通过集成的工作流工具直接在计算环境中运行分析。" },
+      "reporting": { "title": "报告撰写", "desc": "生成表格、图表和统计摘要。导出符合 CONSORT/STROBE 规范的可发表论文稿件。" },
+      "dissemination": { "title": "成果传播", "desc": "准备期刊和会议投稿。归档数据集、共享可复现分析笔记本，并跟踪研究影响力。" }
+    }
+  },
+  "compatibility": {
+    "badge": "数据库分析",
+    "title": "连接",
+    "titleHighlight": "20+",
+    "titleEnd": "种主流数据库",
+    "subtitle": "从关系型数据库到文档数据库 — 直接连接、查询、分析和可视化你的临床研究数据。"
+  },
+  "prosCons": {
+    "title": "实际",
+    "titleHighlight": "MedHelp",
+    "titleEnd": "取舍",
+    "subtitle": "更适合医学科研流程，但也需要正确配置和复核。",
+    "cons": {
+      "title": "需要注意",
+      "subtitle": "上线前要确认数据、权限和流程",
+      "items": {
+        "evidence": "证据结论仍需人工复核",
+        "knowledge": "变量库需要持续维护",
+        "pubmed": "文献检索依赖关键词质量",
+        "tasks": "复杂研究要先拆清任务",
+        "agents": "Agent 需要按场景配置",
+        "artifacts": "产物管理依赖团队规范",
+        "context": "医学判断不能完全自动化",
+        "workflow": "初次使用有学习成本"
+      }
+    },
+    "pros": {
+      "title": "实际优势",
+      "subtitle": "把常用科研流程集中到一个工作区",
+      "items": {
+        "chat": "多模型按任务切换",
+        "evidence": "证据流程更结构化",
+        "knowledge": "变量知识可沉淀",
+        "pubmed": "PubMed 更新可追踪",
+        "files": "文件与 Git 集中管理",
+        "tasks": "任务拆解可执行",
+        "agents": "专属 Agent 协同",
+        "artifacts": "方案到稿件可追溯"
+      }
+    }
+  },
+  "cta": {
+    "title": "准备好加速",
+    "titleHighlight": "你的研究了吗？",
+    "subtitle": "几分钟内部署 MedHelp，用 AI 驱动的自动化简化你的临床研究工作流。",
+    "deploy": "立即开始",
+    "docs": "查看文档"
+  },
+  "footer": {
+    "tagline": "AI 驱动的临床研究工作区。",
+    "product": "产品",
+    "resources": "资源",
+    "support": "支持",
+    "links": {
+      "features": "核心功能",
+      "database": "数据库介绍",
+      "skills": "科研技能库",
+      "pricing": "定价",
+      "pipeline": "研究流水线",
+      "formats": "数据格式",
+      "docs": "文档",
+      "api": "API 参考",
+      "contact": "联系我们"
+    },
+    "builtWith": "使用 React、Vite、Tailwind CSS 和 Node.js 构建"
+  }
+}

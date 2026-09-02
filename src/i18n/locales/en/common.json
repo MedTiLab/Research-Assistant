@@ -1,0 +1,845 @@
+{
+  "app": {
+    "documentTitle": "MedHelp — Your Graduate AI Assistant"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "search": "Search",
+    "clear": "Clear",
+    "copy": "Copy",
+    "download": "Download",
+    "upload": "Upload",
+    "browse": "Browse"
+  },
+  "entitlements": {
+    "proBadge": "PRO ONLY",
+    "proOnly": "Pro only",
+    "contactAdmin": "Contact your administrator to upgrade to Pro",
+    "lockedAction": "Available with Pro",
+    "features": {
+      "computeResources": {
+        "title": "Compute Resources are a Pro feature",
+        "description": "Upgrade to configure local or remote compute nodes, monitor CPU/GPU resources, and run Slurm workloads."
+      },
+      "skillCatalog": {
+        "title": "The Skills Catalog is a Pro feature",
+        "description": "Upgrade to browse the full skills catalog, inspect skill details, and manage skill packages. Skill names in chat remain available."
+      },
+      "researchTasks": {
+        "title": "Task workspace is a Pro feature",
+        "description": "Upgrade to break down research tasks, track stage progress, and manage Pipeline outputs."
+      },
+      "literatureMonitor": {
+        "title": "Literature Monitor is a Pro feature",
+        "description": "Upgrade for multi-source monitoring, automated retrieval, scoring, and candidate ingestion."
+      },
+      "researchPipeline": {
+        "title": "Automated Pipeline is a Pro feature",
+        "description": "Upgrade to start, resume, and manage automated research pipelines."
+      },
+      "variableCatalog": {
+        "title": "Variable Tags is a Pro feature",
+        "description": "Upgrade to maintain variable tags, evidence links, and reusable cross-project knowledge."
+      },
+      "variableDiscovery": {
+        "title": "Variable Discovery is a Pro feature",
+        "description": "Upgrade to extract candidate variables from PubMed and review them before cataloging."
+      },
+      "projectMemory": {
+        "title": "Memory Summaries are a Pro feature",
+        "description": "Upgrade to retain project lessons, templates, SOPs, and cross-project memory."
+      },
+      "conversationArchive": {
+        "title": "Conversation History is a Pro feature",
+        "description": "Upgrade for account-level archives, search, and cross-device conversation sync."
+      }
+    }
+  },
+  "headerActions": {
+    "restart": "Restart",
+    "restarting": "Restarting...",
+    "restartTitle": "Restart the app and backend in one click",
+    "restartFailed": "Failed to restart. Please try again."
+  },
+  "downloadDialog": {
+    "title": "Choose Download",
+    "description": "By default, downloads use the browser or desktop download location. Hidden paths, symlinks, model memory/context files, raw-data paths, and files over 50 MB are excluded.",
+    "chooseLocation": "Choose save location",
+    "options": {
+      "all": "All folders",
+      "publication": "Publication folder",
+      "experimentAnalysis": "Experiment folder with code"
+    }
+  },
+  "tabs": {
+    "dashboard": "Today's Status",
+    "projectProgress": "Project Progress",
+    "today": "Today",
+    "submissions": "Submission Center",
+    "thesis": "Thesis",
+    "dailyReview": "Daily Review",
+    "meetings": "Meeting Routine",
+    "advisor": "Advisor Actions",
+    "automation": "Automation",
+    "companions": "Desktop Companions",
+    "miniApps": "My Apps",
+    "settings": "Settings",
+    "trash": "Trash",
+    "chat": "Evidence & Analysis Chat",
+    "context": "Context",
+    "survey": "Evidence Review",
+    "shell": "Shell",
+    "files": "Files & Data",
+    "git": "Version Control",
+    "skills": "Skills",
+    "compute": "Compute Resources",
+    "news": "Literature Tracking",
+    "medlibrary": "Resource Library",
+    "conversationHistory": "Conversation History",
+    "variableOverview": "Variable tags",
+    "variableKnowledgePubmedDiscovery": "PubMed Auto Discovery",
+    "memorySummary": "Memory summary"
+  },
+  "explorer": {
+    "openNav": "Open navigation",
+    "clearSearch": "Clear search",
+    "resizeList": "Resize list pane",
+    "resizeHint": "Drag to resize the list pane; double-click to restore the default",
+    "resizeNav": "Resize navigation",
+    "resizeProjects": "Resize project pane"
+  },
+  "myApps": {
+    "searchPlaceholder": "Search my apps",
+    "loading": "Loading apps…",
+    "noMatch": "No matching apps",
+    "emptyList": "No apps yet.",
+    "noDescription": "No description",
+    "selectApp": "Select an app",
+    "description": "Turn recurring research workflows into sandboxed personal apps you can open anytime.",
+    "refresh": "Refresh",
+    "openApp": "Open app",
+    "clone": "Create a copy",
+    "export": "Export HTML",
+    "exportAria": "Export app",
+    "editSource": "Edit source",
+    "deleteConfirm": "Delete {{name}}?",
+    "importHtml": "Import HTML",
+    "createWithAgent": "Create with Agent",
+    "emptyPick": "Select an app on the left to run it",
+    "emptyTitle": "No apps yet",
+    "emptyHint": "Chat with the agent to clarify, design, and publish an app, or import existing HTML.",
+    "createTitle": "Create app",
+    "editTitle": "Edit {{name}}",
+    "saveAndRun": "Save and run",
+    "icon": "Icon",
+    "name": "Name",
+    "desc": "Description",
+    "source": "App source (single-file HTML)",
+    "preview": "Live preview",
+    "fileTooLarge": "HTML files cannot exceed 2 MiB",
+    "importedName": "Imported app",
+    "importedDescription": "Imported from a local HTML file",
+    "starterName": "Research widget",
+    "starterDescription": "A self-contained HTML research app",
+    "copySuffix": "{{name}} copy"
+  },
+  "conversationHistory": {
+    "title": "Conversation history",
+    "subtitle": "Sign in with the same account to view saved conversations across devices.",
+    "directoryEyebrow": "Archive",
+    "directoryTitle": "Conversations",
+    "conversationCount": "{{count}}",
+    "results": "Conversation",
+    "searchPlaceholder": "Search titles or projects",
+    "emptyTitle": "No cloud conversation history yet",
+    "emptyDescription": "After a conversation finishes, visible user and assistant messages are saved to your account automatically.",
+    "selectHint": "Select a conversation to view it",
+    "messages": "messages",
+    "loadMore": "Load more",
+    "loadFailed": "Failed to load conversation history",
+    "deleteFailed": "Failed to delete conversation history",
+    "deleteConfirm": "Delete this conversation from your account? The original local session will not be affected.",
+    "unknownProject": "Unlabeled project",
+    "privacyNote": "Stores visible chat text only, without local files, tool parameters, reasoning, or system prompts",
+    "you": "You",
+    "assistant": "Assistant"
+  },
+  "variableKnowledge": {
+    "title": "Variables & discovery",
+    "overview": "Overview",
+    "library": "Variable Library",
+    "pubmedDiscovery": "PubMed Auto Discovery",
+    "pubmedDiscoverySubtitle": "Discover candidate variables, derived indices, composite indicators, and risk scores",
+    "candidatePool": "Candidate Pool",
+    "favorites": "Favorites",
+    "comingSoon": "Coming soon"
+  },
+  "researchStages": {
+    "title": "Research Workflow",
+    "literature": "Literature",
+    "literatureBar": "Lit Review",
+    "literatureHint": "Evidence intake · literature baseline",
+    "ideation": "Ideation",
+    "ideationBar": "Study Idea",
+    "ideationHint": "Research question · protocol setup",
+    "experiment": "Experiment",
+    "experimentBar": "Analysis",
+    "experimentHint": "Data · modeling · results",
+    "publication": "Publication",
+    "publicationBar": "Manuscript",
+    "publicationHint": "Figures · manuscript · review",
+    "promotion": "Promotion",
+    "promotionBar": "Outreach",
+    "promotionHint": "Slides · homepage · dissemination",
+    "currentStage": "Current stage",
+    "completed": "Completed",
+    "upcoming": "Upcoming",
+    "artifactsLine": "{{count}} artifacts",
+    "waiting": "Waiting"
+  },
+  "status": {
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "failed": "Failed",
+    "pending": "Pending",
+    "completed": "Completed",
+    "inProgress": "In Progress"
+  },
+  "messages": {
+    "savedSuccessfully": "Saved successfully",
+    "deletedSuccessfully": "Deleted successfully",
+    "updatedSuccessfully": "Updated successfully",
+    "operationFailed": "Operation failed",
+    "networkError": "Network error. Please check your connection.",
+    "unauthorized": "Unauthorized. Please log in.",
+    "notFound": "Not found",
+    "invalidInput": "Invalid input",
+    "requiredField": "This field is required",
+    "unknownError": "An unknown error occurred"
+  },
+  "navigation": {
+    "settings": "Settings",
+    "home": "Home",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "logout": "Logout"
+  },
+  "mobileNav": {
+    "survey": "Literature",
+    "context": "Context",
+    "files": "Files",
+    "git": "Git",
+    "trash": "Trash"
+  },
+  "surveyPage": {
+    "title": "Literature",
+    "description": "Review project-related papers, literature graphs, literature notes, and stage tasks in one place.",
+    "filterPlaceholder": "Filter papers, graphs, and notes...",
+    "loading": "Loading literature materials...",
+    "summary": {
+      "papers": "Papers",
+      "reports": "Reports",
+      "graphs": "Graphs",
+      "tasks": "Literature Tasks"
+    },
+    "labels": {
+      "workspaceTag": "Literature Workspace",
+      "focusTag": "Literature Review",
+      "library": "Literature Library",
+      "preview": "Preview"
+    },
+    "actions": {
+      "collapse": "Collapse",
+      "expand": "Expand"
+    },
+    "sections": {
+      "papers": "Project Papers",
+      "reports": "Literature Reports",
+      "graphs": "Literature Graphs",
+      "notes": "Literature Notes",
+      "tasks": "Stage Tasks",
+      "references": "Project References"
+    },
+    "errors": {
+      "loadFailed": "Failed to load literature data for this project."
+    },
+    "empty": {
+      "noSurveyFiles": "No literature-related files were found under Literature/ yet.",
+      "noSectionFiles": "No {{section}} files match the current filter.",
+      "noTasks": "No literature-stage tasks are available yet.",
+      "noSelection": "Select a paper, graph, report, note, or task to inspect it here.",
+      "noTaskDescription": "This task does not have a description yet."
+    },
+    "preview": {
+      "loading": "Loading preview...",
+      "failed": "Failed to load the selected literature item.",
+      "unsupported": "This file type is not previewable yet in the Literature page.",
+      "surveyTask": "Literature Task",
+      "taskDescription": "Task Description",
+      "dragHint": "Drag to pan the diagram",
+      "zoomIn": "Zoom In",
+      "zoomOut": "Zoom Out",
+      "fit": "Fit",
+      "resetZoom": "Reset",
+      "openInWindow": "Open in Window",
+      "windowLoadFailed": "Failed to open the diagram in a separate window."
+    }
+  },
+  "common": {
+    "language": "Language",
+    "theme": "Theme",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "name": "Name",
+    "description": "Description",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "optional": "Optional",
+    "version": "Version",
+    "select": "Select",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All"
+  },
+  "time": {
+    "justNow": "Just now",
+    "oneMinuteAgo": "1 min ago",
+    "minutesAgo": "{{count}} mins ago",
+    "oneHourAgo": "1 hour ago",
+    "hoursAgo": "{{count}} hours ago",
+    "oneDayAgo": "1 day ago",
+    "daysAgo": "{{count}} days ago",
+    "yesterday": "Yesterday"
+  },
+  "fileOperations": {
+    "newFile": "New File",
+    "newFolder": "New Folder",
+    "rename": "Rename",
+    "move": "Move",
+    "copyPath": "Copy relative path",
+    "openInEditor": "Open in Editor"
+  },
+  "mainContent": {
+    "loading": "Loading MedHelp®",
+    "settingUpWorkspace": "Setting up your workspace...",
+    "chooseProject": "Choose a Clinical Study Workspace",
+    "selectProjectDescription": "Select a clinical study workspace from the sidebar to review evidence & analysis chats, files and data, and study outputs. Each workspace keeps its session history and file history together.",
+    "tip": "Tip",
+    "createProjectMobile": "Tap the menu button above to access clinical study workspaces",
+    "createProjectDesktop": "Create a clinical study workspace from the folder button in the sidebar",
+    "newSession": "New Analysis Session",
+    "untitledSession": "Untitled Session",
+    "projectFiles": "Files & Data"
+  },
+  "projectDashboard": {
+    "title": "Clinical Data Workspace",
+    "trashTitle": "Workspace Trash",
+    "trashSubtitle": "Workspaces removed from Clinical Study Overview are moved here first so you can restore them or remove records and local files separately.",
+    "trashBadge": "Trash",
+    "trashEmptyTitle": "Trash is empty",
+    "trashEmptyDescription": "Workspaces removed from Clinical Study Overview are moved here first instead of being erased immediately.",
+    "trashDeletedAt": "Deleted {{time}}",
+    "trashSessions": "{{count}} conversations",
+    "trashFilesMissing": "Workspace files already missing",
+    "restoreProject": "Restore Workspace",
+    "deleteFromTrash": "Remove from Trash",
+    "trashDeleteTitle": "Choose how to delete this workspace",
+    "trashDeleteDescription": "Logical delete removes the database record only. Physical delete also permanently removes files still stored in trash.",
+    "logicalDelete": "Delete Record Only",
+    "physicalDelete": "Delete Files Permanently",
+    "subtitle": "Manage clinical datasets, analysis sessions, and generated outputs.",
+    "overviewBadge": "Clinical Data Console",
+    "sharedBadge": "Shared Capability",
+    "skillsTitle": "Skills",
+    "skillsDescription": "Review shared skills for clinical study design, biostatistical analysis, evidence synthesis, and research automation from one global workspace surface.",
+    "openSkillsLibrary": "Open skills list",
+    "activityTitle": "Recent Updates",
+    "projectsSectionTitle": "Clinical Data Projects",
+    "projectsSectionSubtitle": "Quickly open active clinical data projects, review analysis status, last analysis, and output entry points.",
+    "emptyTitle": "No clinical data projects yet",
+    "emptyDescription": "Create or add a project from the sidebar to view dataset paths, analysis progress, workflow state, and output entry points here.",
+    "summary": {
+      "projects": "Clinical Projects",
+      "sessions": "Analysis Sessions",
+      "tracked": "Active Analyses",
+      "progress": "Average Analysis Progress",
+      "todayTokens": "Today Tokens",
+      "weekTokens": "This Week Tokens"
+    },
+    "metrics": {
+      "sessions": "Analysis Sessions",
+      "tasks": "Analysis Tasks",
+      "completed": "Completed Tasks",
+      "todayTokens": "Today Tokens",
+      "weekTokens": "This Week Tokens"
+    },
+    "actions": {
+      "chat": "Analysis Chat",
+      "files": "Data Files",
+      "shell": "Terminal"
+    },
+    "datasetPath": "Dataset Path",
+    "openProject": "Open Workspace",
+    "progressTitle": "Analysis Progress",
+    "progressBadge": "{{progress}}% complete",
+    "progressValue": "{{progress}}% complete",
+    "notTracked": "No tracked progress",
+    "notTrackedShort": "Untracked",
+    "lastActivity": "Last analysis {{time}}",
+    "pipelineUpdated": "Workflow updated {{time}}",
+    "noRecentActivity": "No recent analysis",
+    "autoResearch": {
+      "title": "Analysis Workflow",
+      "running": "Running {{completed}}/{{total}}{{currentTask}}",
+      "currentTaskSuffix": ", task {{id}}",
+      "readyVia": "Ready via {{provider}}",
+      "resumeAvailable": "Resume is available for the latest workflow.",
+      "nextTask": "Next task: {{title}}",
+      "nextTaskFallback": "Next task",
+      "lastStatus": "Last status: {{status}}",
+      "resumeTarget": "Resume target: {{title}}{{status}}",
+      "resumeStatusSuffix": " from {{status}} run",
+      "stageLine": "Workflow stage: {{current}}{{next}}",
+      "stageNextSuffix": " -> {{next}}",
+      "checkpointLine": "Last checkpoint: {{value}}",
+      "eventLine": "Last event: {{value}}{{time}}",
+      "eventTimeSuffix": " ({{time}})",
+      "noRecentEvent": "No recent event",
+      "provider": "Provider",
+      "model": "Model",
+      "permissionMode": "Permission",
+      "permissionModes": {
+        "default": "Ask before tools",
+        "acceptEdits": "Auto-edit only",
+        "bypassPermissions": "Full bypass"
+      },
+      "bypassConfirm": "Full bypass gives Auto Research unrestricted file, command, and network access for this run. Start with full bypass?",
+      "resumable": "Resumable",
+      "unavailable": "Not ready",
+      "openSession": "Open Session",
+      "preparingSession": "Preparing analysis...",
+      "sessionUnavailable": "Analysis unavailable",
+      "working": "Working...",
+      "cancel": "Cancel Workflow",
+      "resume": "Resume Workflow",
+      "startFresh": "Start Fresh",
+      "start": "Start Workflow",
+      "reason": {
+        "notificationEmailMissing": "Add a notification email in Settings",
+        "researchBriefMissing": "Analysis brief is missing. Open Analysis Lab to generate one before starting the workflow.",
+        "researchBriefInvalid": "Analysis brief JSON is invalid. Regenerate it in Analysis Lab before starting the workflow.",
+        "tasksFileMissing": "Analysis task list is missing. Open Analysis Lab and generate tasks before starting the workflow.",
+        "tasksFileInvalid": "Analysis task list JSON is invalid. Regenerate it in Analysis Lab before starting the workflow.",
+        "noActionableTasks": "No pending analysis tasks found. Add pending tasks in Analysis Lab and start again.",
+        "runInProgress": "Workflow already in progress",
+        "default": "Unavailable"
+      },
+      "hint": {
+        "needNotificationEmail": "Set your notification email in Settings before starting the workflow.",
+        "needSenderEmail": "Set the workflow sender email in Settings before expecting email delivery.",
+        "emailsConfigured": "Completion emails will use the saved sender and notification email settings."
+      },
+      "events": {
+        "queued": "Queued",
+        "runStarted": "Run started",
+        "resumeQueued": "Resume queued",
+        "runResumed": "Run resumed",
+        "sessionCreated": "Analysis session created",
+        "taskStarted": "Started: {{title}}",
+        "taskStartedGeneric": "Task started",
+        "taskCompleted": "Completed: {{title}}",
+        "taskCompletedGeneric": "Task completed",
+        "stageCompleted": "{{stage}} complete",
+        "stageCompletedGeneric": "Stage complete",
+        "stageContractWarning": "Stage contract warning",
+        "stageContractFailed": "Stage contract failed",
+        "runCompleted": "Run completed",
+        "runCancelling": "Cancelling",
+        "runCancelled": "Run cancelled",
+        "runFailed": "Failed: {{error}}",
+        "runFailedGeneric": "Run failed"
+      }
+    }
+  },
+  "fileTree": {
+    "loading": "Loading files...",
+    "files": "Files",
+    "simpleView": "Simple view",
+    "compactView": "Compact view",
+    "detailedView": "Detailed view",
+    "expandAll": "Expand first-level folders",
+    "collapseAll": "Collapse all folders",
+    "refresh": "Refresh files",
+    "autoRefresh": "Auto refresh interval",
+    "autoRefreshOptions": {
+      "0": "Off",
+      "5000": "5s",
+      "15000": "15s",
+      "30000": "30s",
+      "60000": "60s"
+    },
+    "searchPlaceholder": "Search files and folders...",
+    "clearSearch": "Clear search",
+    "name": "Name",
+    "size": "Size",
+    "modified": "Modified",
+    "permissions": "Permissions",
+    "noFilesFound": "No files found",
+    "checkProjectPath": "Check if the project path is accessible",
+    "folderEmpty": "This folder is empty",
+    "folderEmptyHint": "Create a folder or upload files here.",
+    "noFolderConnected": "This conversation does not have its own folder yet",
+    "noFolderConnectedHint": "After the first message in a new conversation, its own folder opens automatically.",
+    "noMatchesFound": "No matches found",
+    "tryDifferentSearch": "Try a different search term or clear the search",
+    "justNow": "just now",
+    "minAgo": "{{count}} min ago",
+    "hoursAgo": "{{count}} hours ago",
+    "daysAgo": "{{count}} days ago",
+    "uploadFiles": "Upload files",
+    "uploading": "Uploading...",
+    "uploadSuccess": "{{count}} item(s) uploaded successfully",
+    "uploadError": "Upload failed",
+    "folderReadError": "Failed to read the dropped folder",
+    "moveSuccess": "Moved {{name}} to {{folder}}",
+    "moveError": "Failed to move item",
+    "dropFilesHere": "Drop files here",
+    "uploadHere": "Upload here…",
+    "newFile": "New file…",
+    "newFilePlaceholder": "File name, e.g. notes.md",
+    "createFileTitle": "Create file",
+    "createFileAction": "Create file",
+    "createFileSuccess": "Created {{name}}",
+    "createFileError": "Failed to create file",
+    "newFolder": "New folder",
+    "newFolderPlaceholder": "Folder name",
+    "createFolder": "Create folder",
+    "cancelFolder": "Cancel",
+    "createFolderSuccess": "Created {{name}} in {{folder}}",
+    "createFolderError": "Failed to create folder",
+    "invalidFolderName": "Enter a valid folder name without a leading dot or path separators",
+    "invalidItemName": "Enter a valid name without a leading dot or system-reserved characters",
+    "itemActions": "Actions for {{name}}",
+    "rename": "Rename…",
+    "renameTitle": "Rename",
+    "renamePlaceholder": "New name",
+    "renameAction": "Save name",
+    "renameSuccess": "Renamed to {{name}}",
+    "renameError": "Failed to rename item",
+    "copyItem": "Copy",
+    "pasteItem": "Paste",
+    "copyItemReady": "Copied {{name}}; right-click the destination folder to paste",
+    "copyItemSuccess": "Pasted as {{name}}",
+    "copyItemError": "Failed to copy item",
+    "moveItem": "Move…",
+    "moveTitle": "Move {{name}}",
+    "chooseMoveDestination": "Choose a destination folder",
+    "moveAction": "Move here",
+    "loadingFolders": "Loading folders…",
+    "loadFoldersError": "Failed to load folders",
+    "noMoveDestinations": "No other destination folders are available",
+    "projectRoot": "Project root",
+    "fileOperationError": "File operation failed",
+    "copyPath": "Copy relative path",
+    "deleteFile": "Delete",
+    "confirmDelete": "Are you sure you want to delete \"{{name}}\"?",
+    "deleteConfirmTitle": "Confirm delete",
+    "deleteConfirmWarning": "This action cannot be undone.",
+    "deleteConfirmAction": "Delete",
+    "deletingFile": "Deleting...",
+    "deleteSuccess": "Deleted successfully",
+    "uploadToFolder": "Upload to this folder",
+    "openInFileManager": "Open in file manager",
+    "openInFileManagerSuccess": "Opened in the native file manager",
+    "openInFileManagerError": "Unable to open the native file manager",
+    "askAboutFile": "Ask about this file",
+    "askAboutDirectory": "Ask about this folder",
+    "addToNewChat": "Add to new chat",
+    "askAboutFilePrompt": "Please explain the file `{{path}}`. What does it do, how is it used in this project, and what should I know before editing it?",
+    "askAboutDirectoryPrompt": "Please explain the folder `{{path}}`. What is its purpose, what are the important files or submodules inside it, and how does it fit into this project?",
+    "imageViewer": {
+      "loading": "Loading image…",
+      "loadError": "Unable to load image",
+      "previous": "Previous image",
+      "next": "Next image",
+      "position": "{{current}} / {{total}}"
+    }
+  },
+  "projectWizard": {
+    "connect": {
+      "title": "Open Folder",
+      "select": "Open",
+      "useThisFolder": "Open this folder",
+      "connecting": "Opening…"
+    },
+    "title": "Create Clinical Study Workspace",
+    "steps": {
+      "type": "Type",
+      "configure": "Configure",
+      "confirm": "Confirm"
+    },
+    "step1": {
+      "question": "Do you already have a clinical study workspace, or would you like to create a new one?",
+      "existing": {
+        "title": "Existing Workspace",
+        "description": "I already have a clinical study workspace on this computer and just need to add it to the workspace list"
+      },
+      "new": {
+        "title": "New Workspace",
+        "description": "Create a new clinical study workspace, optionally clone from a GitHub repository"
+      }
+    },
+    "step2": {
+      "existingPath": "Workspace Path",
+      "newPath": "Workspace Path",
+      "existingPlaceholder": "/path/to/existing/workspace",
+      "newPlaceholder": "/path/to/new/workspace",
+      "existingHelp": "Full path to your existing clinical study workspace directory",
+      "newHelp": "Full path to your clinical study workspace directory",
+      "projectName": "Workspace Name",
+      "projectNamePlaceholder": "Enter project name",
+      "projectNameHelp": "A recognizable name for this workspace.",
+      "githubUrl": "GitHub URL (Optional)",
+      "githubPlaceholder": "https://github.com/username/repository",
+      "githubHelp": "Optional: provide a GitHub URL to clone a repository",
+      "githubAuth": "GitHub Authentication (Optional)",
+      "githubAuthHelp": "Only required for private repositories. Public repos can be cloned without authentication.",
+      "loadingTokens": "Loading stored tokens...",
+      "storedToken": "Stored Token",
+      "newToken": "New Token",
+      "nonePublic": "None (Public)",
+      "selectToken": "Select Token",
+      "selectTokenPlaceholder": "-- Select a token --",
+      "tokenPlaceholder": "ghp_...",
+      "tokenHelp": "This token will be used only for this operation",
+      "publicRepoInfo": "Public repositories don't require authentication. You can skip providing a token if cloning a public repo.",
+      "noTokensHelp": "No stored tokens available. You can add tokens in Settings → API Keys for easier reuse.",
+      "optionalTokenPublic": "GitHub Token (Optional for Public Repos)",
+      "tokenPublicPlaceholder": "ghp_... (leave empty for public repos)"
+    },
+    "step3": {
+      "reviewConfig": "Review Your Configuration",
+      "workspaceType": "Workspace Type:",
+      "existingWorkspace": "Existing Workspace",
+      "newWorkspace": "New Workspace",
+      "path": "Path:",
+      "cloneFrom": "Clone From:",
+      "authentication": "Authentication:",
+      "usingStoredToken": "Using stored token:",
+      "usingProvidedToken": "Using provided token",
+      "noAuthentication": "No authentication",
+      "sshKey": "SSH Key",
+      "existingInfo": "The workspace will be added to your sidebar list and will be available for analysis sessions.",
+      "newWithClone": "The repository will be cloned from this folder.",
+      "newEmpty": "The workspace will be added to your sidebar list and will be available for analysis sessions.",
+      "cloningRepository": "Cloning repository..."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "back": "Back",
+      "next": "Next",
+      "createProject": "Create Workspace",
+      "creating": "Creating...",
+      "cloning": "Cloning..."
+    },
+    "folderBrowser": {
+      "regenerateName": "Generate new name"
+    },
+    "errors": {
+      "selectType": "Please select whether you have an existing workspace or want to create a new one",
+      "providePath": "Please provide a workspace path",
+      "failedToCreate": "Failed to create workspace",
+      "failedToConnect": "Failed to connect folder",
+      "failedToCreateFolder": "Failed to create folder"
+    }
+  },
+  "localKernel": {
+    "productName": "MedHelp Local Engine",
+    "badgeLabel": "Local Engine",
+    "entryBadgeLabel": "Signed-in setup",
+    "gateTitle": "Signed in — connecting to the desktop app",
+    "deviceSlotHint": "Signing in to the website does not use a device slot. This device is registered only after the browser connects to the desktop app. Registered devices can be removed in device management.",
+    "gateSubtitle": "The web app automatically connects to MedHelp Desktop running on this computer. After its window is closed, the desktop app can remain online in the system tray.",
+    "endpointLabel": "Local Engine",
+    "browserRecoveryHint": "Open MedHelp Desktop first. If it is already running in the system tray, allow Local Network Access for app.medtimehelp.com, then retry.",
+    "localNetworkPermission": {
+      "title": "Allow this page to connect to the App engine",
+      "description": "The desktop App can provide its Local Engine to this browser; this is not an account restriction. Chrome and Edge separately ask whether this site may access services on this computer.",
+      "instructions": "Open the site information control on the left of the address bar, set Local Network Access to Allow, then refresh or select “Retry after allowing”. This only connects to 127.0.0.1 on this computer and does not expose the engine to the internet.",
+      "retry": "Retry after allowing"
+    },
+    "appDownload": {
+      "badge": "Recommended",
+      "title": "Download the MedHelp Desktop App",
+      "description": "The Local Engine is built into the desktop app. Install it and keep it running so website sign-in can connect automatically.",
+      "benefits": {
+        "builtIn": "The Local Engine is included—no terminal commands to copy",
+        "simple": "Automatic launch, connection, updates, and tray background mode",
+        "secure": "Research files and execution remain on this computer"
+      },
+      "windowsAction": "Download for Windows",
+      "windowsNote": "Windows 10/11 · x64",
+      "macAction": "Download for macOS",
+      "macNote": "Apple Silicon · M-series",
+      "windowsInstallTitle": "Windows installation",
+      "windowsInstallBody": "Run the downloaded EXE. If Microsoft Defender SmartScreen appears, first confirm that the file came from this site, then choose More info → Run anyway.",
+      "macInstallTitle": "macOS installation and developer approval",
+      "macInstallBody": "Open the DMG and drag MedHelp into Applications. If macOS says the developer cannot be verified, try opening the app once, then go to System Settings → Privacy & Security → Security and choose Open Anyway.",
+      "macDamagedHint": "If macOS reports that the app is damaged, open Terminal and run:",
+      "copyCommand": "Copy command",
+      "ccTitle": "Download CC Switch",
+      "ccDescription": "Other CC Switch installers on this server are available here as direct downloads."
+    },
+    "desktop": {
+      "subtitle": "The desktop app starts and connects the Local Engine automatically. No terminal command is required.",
+      "title": "Connecting the built-in Local Engine",
+      "description": "MedHelp Local Engine was started by the desktop app and is connecting your signed-in session to this computer.",
+      "offlineDescription": "The desktop app tried to connect the built-in Local Engine, but this page has not received a local session yet. Retry the connection; if it still fails, restart MedHelp.",
+      "endpoint": "Local service address",
+      "retry": "Reconnect",
+      "recoveryHint": "No terminal is needed. Retry the connection first; if it still fails, quit and reopen MedHelp.",
+      "states": {
+        "offline": {
+          "title": "Local Engine not connected",
+          "description": "The app has started the Local Engine and is reconnecting this desktop window to the local service."
+        }
+      }
+    },
+    "states": {
+      "probing": {
+        "title": "Checking the Local Engine",
+        "description": "MedHelp is checking this computer for an available Local Engine."
+      },
+      "invalidEndpoint": {
+        "title": "Endpoint blocked",
+        "description": "To protect your computer, this page can only connect to a Local Engine running on this device."
+      },
+      "offline": {
+        "title": "Local Engine not connected",
+        "description": "Open MedHelp Desktop. If it is already running in the system tray, the browser may be blocking local access; allow Local Network Access, then retry."
+      },
+      "sessionPending": {
+        "title": "Local Engine detected",
+        "description": "MedHelp is securely connecting this browser to the Local Engine with your current account."
+      }
+    },
+    "actions": {
+      "retry": "Retry",
+      "copyCommand": "Copy command",
+      "copied": "Copied",
+      "disconnect": "Disconnect",
+      "stop": "Stop Local Engine",
+      "stopping": "Stopping...",
+      "stopConfirm": "Stop the Local Engine on this computer? You can start it again later.",
+      "stopFailed": "Failed to stop the Local Engine."
+    },
+    "status": {
+      "connected": "Local Engine connected"
+    },
+    "diagnostics": {
+      "title": "Connection diagnostics",
+      "discovery": "Detection",
+      "discoveryHint": "This page only checks this computer for a Local Engine and does not show technical connection details.",
+      "kernel": "Local Engine",
+      "notDetected": "Not detected",
+      "security": "Security boundary",
+      "securityHint": "Cloud login only connects your account; execution stays on this computer."
+    },
+    "errors": {
+      "empty_endpoint": "Enter Local Engine connection information.",
+      "invalid_endpoint": "The Local Engine connection information is not valid.",
+      "unsupported_protocol": "Use http, https, ws, or wss.",
+      "non_loopback_host": "The default mode only connects to a Local Engine on this computer.",
+      "unknown": "Local Engine connection failed."
+    }
+  },
+  "versionUpdate": {
+    "title": "Update Available",
+    "newVersionReady": "A new version is ready",
+    "currentVersion": "Current Version",
+    "latestVersion": "Latest Version",
+    "whatsNew": "What's New:",
+    "viewFullRelease": "View full release",
+    "updateProgress": "Update Progress:",
+    "manualUpgrade": "Manual upgrade:",
+    "npmUpgradeCommand": "npm install -g medhelp@latest",
+    "manualUpgradeHint": "Or click \"Update Now\" to run the update automatically.",
+    "updateCompleted": "Update completed successfully!",
+    "restartServer": "Please restart the server to apply changes.",
+    "updateFailed": "Update failed",
+    "buttons": {
+      "close": "Close",
+      "later": "Later",
+      "copyCommand": "Copy Command",
+      "downloadKernel": "Download Local Engine Update",
+      "downloadDesktop": "Download Desktop Installer",
+      "updateNow": "Update Now",
+      "updating": "Updating..."
+    },
+    "desktop": {
+      "autoUpdateStarting": "Downloading and verifying the desktop update in the background. MedHelp will quit, install it, and reopen automatically when ready.",
+      "manualUpgrade": "Update the desktop app:",
+      "manualUpgradeHint": "This desktop client predates in-app updates. Download and install the desktop package once; after 1.1.15 is installed, future releases can be downloaded and verified inside the app.",
+      "downloadBytes": "{{downloaded}} MB / {{total}} MB",
+      "progressStates": {
+        "checking": "Checking desktop release",
+        "downloading": "Downloading update in the background",
+        "verifying": "Verifying update package",
+        "ready": "Update is ready",
+        "installing": "Quitting to install automatically",
+        "restarting": "Reopening MedHelp",
+        "awaiting_manual_restart": "Waiting to reopen",
+        "completed": "Update complete",
+        "failed": "Update failed"
+      },
+      "statusBarDownloading": "Downloading {{progress}}%",
+      "statusBarVerifying": "Verifying",
+      "statusBarInstalling": "Installing",
+      "statusBarRetry": "Retry update"
+    },
+    "localKernel": {
+      "title": "Local Engine Update Available",
+      "newVersionReady": "A new Local Engine version is ready",
+      "currentVersion": "Current Local Engine Version",
+      "latestVersion": "Latest Local Engine Version",
+      "manualUpgrade": "Update Local Engine:",
+      "manualUpgradeHint": "Download and install the latest MedHelp Desktop app; the web app will reconnect automatically.",
+      "autoUpdateStarting": "Preparing the bundled Desktop engine update...",
+      "autoUpdateComplete": "Quit and reopen MedHelp Desktop to finish the update.",
+      "autoUpdateUnavailable": "The bundled engine is updated with MedHelp Desktop. Install the latest desktop package.",
+      "downloadBytes": "{{downloaded}} MB / {{total}} MB",
+      "progressStates": {
+        "checking": "Checking signed release",
+        "downloading": "Downloading update package",
+        "verifying": "Verifying signature and checksum",
+        "ready": "Preparing desktop update",
+        "installing": "Installing Local Engine update",
+        "restarting": "Restarting and reconnecting",
+        "awaiting_manual_restart": "Waiting for MedHelp Desktop to reopen",
+        "completed": "Update complete",
+        "failed": "Update failed"
+      },
+      "statusBarCheck": "Check update",
+      "statusBarChecking": "Checking",
+      "statusBarUpdate": "Update Local Engine v{{version}}"
+    },
+    "ariaLabels": {
+      "closeModal": "Close version upgrade modal",
+      "showSidebar": "Show sidebar",
+      "settings": "Settings",
+      "updateAvailable": "Update available",
+      "localKernelUpdateAvailable": "Local Engine update available",
+      "closeSidebar": "Close sidebar"
+    }
+  }
+}

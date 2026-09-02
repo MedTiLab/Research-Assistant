@@ -1,0 +1,397 @@
+{
+  "academic-researcher": {
+    "primaryIntent": "research",
+    "intents": [
+      "research",
+      "writing"
+    ],
+    "capabilities": [
+      "search-retrieval"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "biorxiv-database": {
+    "primaryIntent": "research",
+    "intents": [
+      "research",
+      "data"
+    ],
+    "capabilities": [
+      "search-retrieval",
+      "data-processing"
+    ],
+    "domains": [
+      "bioinformatics"
+    ]
+  },
+  "conversation-memory": {
+    "primaryIntent": "deployment",
+    "intents": [
+      "deployment"
+    ],
+    "capabilities": [
+      "agent-workflow",
+      "prompt-structured-output"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "dataset-discovery": {
+    "primaryIntent": "data",
+    "intents": [
+      "data",
+      "research"
+    ],
+    "capabilities": [
+      "search-retrieval",
+      "data-processing"
+    ],
+    "domains": [
+      "data-engineering"
+    ]
+  },
+  "medhelp-deep-research": {
+    "primaryIntent": "research",
+    "intents": [
+      "research"
+    ],
+    "capabilities": [
+      "search-retrieval"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-experiment-analysis": {
+    "primaryIntent": "evaluation",
+    "intents": [
+      "evaluation",
+      "experiment"
+    ],
+    "capabilities": [
+      "evaluation-benchmarking"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-figure-gen": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing"
+    ],
+    "capabilities": [
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-grant-proposal": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing",
+      "research"
+    ],
+    "capabilities": [
+      "visualization-reporting",
+      "research-planning"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-humanizer": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing"
+    ],
+    "capabilities": [
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-idea-eval": {
+    "primaryIntent": "ideation",
+    "intents": [
+      "ideation",
+      "evaluation"
+    ],
+    "capabilities": [
+      "research-planning"
+    ],
+    "domains": [
+      "medical"
+    ]
+  },
+  "medhelp-idea-generation": {
+    "primaryIntent": "ideation",
+    "intents": [
+      "ideation",
+      "research"
+    ],
+    "capabilities": [
+      "research-planning"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-paper-reviewer": {
+    "primaryIntent": "evaluation",
+    "intents": [
+      "evaluation",
+      "writing"
+    ],
+    "capabilities": [
+      "evaluation-benchmarking"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-rebuttal": {
+    "primaryIntent": "evaluation",
+    "intents": [
+      "evaluation",
+      "writing"
+    ],
+    "capabilities": [
+      "evaluation-benchmarking"
+    ],
+    "domains": [
+      "cs-ai",
+      "vision"
+    ]
+  },
+  "medhelp-paper-writing": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing",
+      "research"
+    ],
+    "capabilities": [
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-pipeline-planner": {
+    "primaryIntent": "research",
+    "intents": [
+      "research",
+      "experiment"
+    ],
+    "capabilities": [
+      "research-planning",
+      "agent-workflow"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-prepare-resources": {
+    "primaryIntent": "data",
+    "intents": [
+      "data",
+      "research"
+    ],
+    "capabilities": [
+      "research-planning",
+      "data-processing"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-rclone-to-overleaf": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing",
+      "deployment"
+    ],
+    "capabilities": [
+      "infrastructure-ops",
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "medhelp-reference-audit": {
+    "primaryIntent": "evaluation",
+    "intents": [
+      "evaluation",
+      "writing"
+    ],
+    "capabilities": [
+      "evaluation-benchmarking",
+      "search-retrieval"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "making-academic-presentations": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing"
+    ],
+    "capabilities": [
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "scientific-writing": {
+    "primaryIntent": "writing",
+    "intents": [
+      "writing",
+      "research"
+    ],
+    "capabilities": [
+      "visualization-reporting"
+    ],
+    "domains": [
+      "general"
+    ]
+  },
+  "Academic Figure Prompt": {
+    "domains": [
+      "vision"
+    ]
+  },
+  "init-analysis": {
+    "domains": [
+      "bioinformatics"
+    ]
+  },
+  "data-stats-analysis": {
+    "domains": [
+      "medical"
+    ]
+  },
+  "data-transform": {
+    "domains": [
+      "general"
+    ]
+  },
+  "data-visualization-expert": {
+    "domains": [
+      "general"
+    ]
+  },
+  "data-viz-plots": {
+    "domains": [
+      "general"
+    ]
+  },
+  "docx": {
+    "domains": [
+      "general"
+    ]
+  },
+  "pdf": {
+    "domains": [
+      "general"
+    ]
+  },
+  "geo-database": {
+    "domains": [
+      "bioinformatics"
+    ]
+  },
+  "legal-pdf-acquisition": {
+    "domains": [
+      "medical"
+    ]
+  },
+  "markitdown": {
+    "domains": [
+      "general"
+    ]
+  },
+  "meta-zotero-fulltext-handoff": {
+    "domains": [
+      "medical"
+    ]
+  },
+  "nature-citation": {
+    "domains": [
+      "general",
+      "bioinformatics"
+    ]
+  },
+  "nature-data": {
+    "domains": [
+      "general"
+    ]
+  },
+  "nature-downloader": {
+    "domains": [
+      "general"
+    ]
+  },
+  "nature-paper-card": {
+    "domains": [
+      "general"
+    ]
+  },
+  "nature-paper2ppt": {
+    "domains": [
+      "general"
+    ]
+  },
+  "nature-reader": {
+    "domains": [
+      "general"
+    ]
+  },
+  "nature-response": {
+    "domains": [
+      "general"
+    ]
+  },
+  "paper-analyzer": {
+    "domains": [
+      "general"
+    ]
+  },
+  "paper-finder": {
+    "domains": [
+      "general"
+    ]
+  },
+  "paper-image-extractor": {
+    "domains": [
+      "vision"
+    ]
+  },
+  "public-literature-download": {
+    "domains": [
+      "medical"
+    ]
+  },
+  "research-news": {
+    "domains": [
+      "general"
+    ]
+  },
+  "venue-templates": {
+    "domains": [
+      "general"
+    ]
+  },
+  "zotero-medautodata-library": {
+    "domains": [
+      "medical"
+    ]
+  }
+}

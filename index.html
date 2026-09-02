@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>MedHelp — 你的研究生 AI 助理</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- iOS Safari PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MedHelp" />
+
+    <!-- iOS Safari Icons -->
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1e3048" />
+    <meta name="msapplication-TileColor" content="#1e3048" />
+
+    <!-- Prevent zoom on iOS -->
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Apply saved theme (dark + accent color) before paint to avoid flash -->
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var savedTheme = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+          if (isDark) {
+            root.classList.add('dark');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.style.colorScheme = 'light';
+          }
+          var validAccents = ['emerald', 'azure', 'terracotta', 'violet', 'amber'];
+          var accent = localStorage.getItem('accent');
+          root.setAttribute('data-accent', validAccents.indexOf(accent) !== -1 ? accent : 'emerald');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

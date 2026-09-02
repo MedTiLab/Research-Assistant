@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+import { ComputeNode } from '../compute-node.js';
+import path from 'path';
+
+// Parse args
+const args = process.argv.slice(2);
+const command = args[0];
+
+// Check for --no-sync flag
+const noSync = args.includes('--no-sync');
+
+// Check for --node <id> flag
+let nodeId = null;
+const nodeIdx = args.indexOf('--node');
+if (nodeIdx >= 0 && args[nodeIdx + 1]) {
+  nodeId = args[nodeIdx + 1];
+}
+
+// Filter out flags
+const filteredArgs = args.filter((a, i) => {
+  if (a === '--no-sync') return false;
+  if (a === '--node') return false;
+  if (i > 0 && args[i - 1] === '--node') return false;
+  return true;
+});
+
+async function main() {
+  try {
+    if (command === 'configure') {
+      const config = {};
+      for (let i = 1; i < filteredArgs.length; i++) {
+        if (filteredArgs[i].startsWith('--')) {
+          const key = filteredArgs[i].substring(2);
+          const value = filteredArgs[i+1];
+          config[key] = value;
+          i++;
+        }
+      }
+      console.log(await ComputeNode.configure(config));
+    }
+    else if (command === 'sync') {
+      const direction = filteredArgs[1] || 'up';
+      console.log(await ComputeNode.sync({ nodeId, direction, cwd: process.cwd() }));
+    }
+    else if (command === 'run') {
+      const cmd = filteredArgs.slice(1).join(' ');
+      console.log(await ComputeNode.run({
+        nodeId,
+        command: cmd,
+        cwd: noSync ? undefined : process.cwd(),
+        skipSync: noSync
+      }));
+    }
+    else {
+      console.log("Usage: compute-node [configure|sync|run] [--node <id>] [--no-sync]");
+      console.log("  configure --host X --user Y --workDir Z");
+      console.log("  sync [up|down]                     (sync active node)");
+      console.log("  sync --node <id> [up|down]         (sync specific node)");
+      console.log("  run \"command\"                      (auto-syncs code first)");
+      console.log("  run --no-sync \"command\"            (run without syncing)");
+      console.log("  run --node <id> --no-sync \"cmd\"    (run on specific node)");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+    process.exit(1);
+  }
+}
+
+main();

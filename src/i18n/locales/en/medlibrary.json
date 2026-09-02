@@ -1,0 +1,927 @@
+{
+  "hero": {
+    "badge": "Research resources, variables & skills",
+    "title": "Resource Library",
+    "compactSubtitle": "Databases, skills, variables & memory summary",
+    "subtitle": "Keeps database listings, the skills list, variable discovery, project records, and conversation lessons in one archive. Variable work starts from PubMed monitoring, moves through candidate extraction, human review, and evidence alignment, then lands in the variable overview; project reports, dataset indexes, and correction lessons are preserved for direct reuse.",
+    "workflowTitle": "Workflow",
+    "workflow": [
+      "Use databases and skills as a reusable resource base",
+      "Discover candidate variables from PubMed updates, review them, then merge into the variable overview",
+      "Preserve project reports, stage summaries, and dataset indexes",
+      "Turn correction lessons and conversation memory into reusable rules"
+    ]
+  },
+  "overview": {
+    "title": "Research Center Overview",
+    "lead": "Database listings, skills, variable discovery and review, conversation lessons, project records, and supporting references converge here into one unified knowledge view across your research workflow.",
+    "loadingShort": "Loading",
+    "notAvailable": "Not recorded yet",
+    "fetchFailed": "The global overview is temporarily unavailable. You can still browse local databases and example entries below.",
+    "cards": {
+      "databases": {
+        "label": "Database list",
+        "subtitle": ""
+      },
+      "variables": {
+        "label": "Variable tags",
+        "subtitle": ""
+      },
+      "memory": {
+        "label": "Conversation lessons",
+        "subtitle": ""
+      },
+      "skills": {
+        "label": "Skills list",
+        "subtitle": ""
+      },
+      "reports": {
+        "label": "Memory summary",
+        "subtitle": ""
+      },
+      "references": {
+        "label": "Supporting references",
+        "subtitle": "",
+        "hint": ""
+      }
+    },
+    "referenceSignals": {
+      "title": "Current literature signals",
+      "breakdown": "Imported references currently include {{zotero}} from Zotero, {{bibtex}} from BibTeX, and {{news}} from literature monitoring.",
+      "linked": "{{linkedReferences}} of them are already linked to projects, spanning {{linkedProjects}} projects.",
+      "pdfs": "{{cachedPdfs}} PDFs are already cached and can feed project artifacts and evidence notes."
+    },
+    "roadmap": {
+      "title": "Next upgrade path",
+      "concepts": "The next phase adds a formal concept layer so indicators, diseases, subtypes, and risk scores can be curated with explicit evidence.",
+      "candidates": "After that, literature monitoring will feed a review queue instead of writing new findings directly into the stable library.",
+      "latestUpdate": "Latest literature-library update: {{date}}."
+    }
+  },
+  "reportPreview": {
+    "title": "Project reports",
+    "lead": "Scanned automatically from each project's report directories (Literature/reports, Research/reports, Survey/reports, Publication, reports, drafts, and uploads/notes/news under .pipeline/docs/kb), listing the md, pdf, docx, html, and tex files found there. The list always follows what is on disk — nothing to add by hand.",
+    "loading": "Loading list…",
+    "empty": "No files in this project's report directories yet.",
+    "emptyHint": "Drop an AI-written report into the project's reports, drafts, or Publication directory and it will appear here.",
+    "fetchFailed": "Could not load the report preview list.",
+    "stats": {
+      "projects": "Archived projects",
+      "items": "Archived items"
+    },
+    "groups": {
+      "title": "Grouped by project",
+      "lead": "Start from the project, then drill into its reports, stage summaries, and archived materials.",
+      "expand": "Expand",
+      "collapse": "Collapse"
+    },
+    "projectLabel": "Project",
+    "groupMeta": "{{count}} items · latest archived {{date}}",
+    "groupCount": "{{count}} items",
+    "pathHint": "Original path",
+    "added": "Last modified {{date}}",
+    "viewFile": "View file",
+    "closePreview": "Close preview",
+    "previewLoading": "Loading file preview…",
+    "previewError": "Could not load file preview: {{message}}",
+    "unsupportedType": "This file type cannot be previewed online. Please download it instead.",
+    "download": "Download file"
+  },
+  "memoryWorkspace": {
+    "title": "Memory summary",
+    "lead": "Projects on the left; on the right, that project's memory files: the AI summary, the markdown reports you added, and the lessons it has accumulated.",
+    "directoryEyebrow": "Projects",
+    "directoryTitle": "Project list",
+    "projectCount": "{{count}} projects",
+    "searchPlaceholder": "Search projects",
+    "searchEmpty": "No matching project.",
+    "empty": "No project memory yet. Add an AI-written report to a project, or write a lesson, and it will show up here.",
+    "fileCount": "{{count}} files",
+    "assetsEntry": "Shared templates & SOPs",
+    "assetsLead": "Templates and SOPs that do not belong to a single project live here, and stay editable.",
+    "briefTitle": "AI summary",
+    "noBrief": "No AI summary for this project yet.",
+    "reportsTitle": "Report files",
+    "reportsEmpty": "No files in this project's report directories yet. Drop a markdown report into reports, drafts, or Publication.",
+    "lessonsTitle": "Project lessons",
+    "lessonsEmpty": "No lessons captured for this project yet.",
+    "selectAria": "Select {{title}}",
+    "updatedAt": "Last updated: {{date}}"
+  },
+  "lessonComposer": {
+    "callout": "Automatic capture only recognises a few fixed patterns. The lessons worth keeping are the ones you jot down right after hitting the problem.",
+    "title": "Write a lesson",
+    "lead": "Two things are enough: when it applies, and what to do instead. Once saved it is injected into every later conversation.",
+    "editTitle": "Edit lesson",
+    "editLead": "Changes take effect immediately in the rules injected into later conversations.",
+    "fields": {
+      "project": "Project",
+      "noProjects": "No projects available",
+      "trigger": "When it applies",
+      "triggerPlaceholder": "e.g. When building the depression score from CHARLS data",
+      "correctPattern": "What to do next time",
+      "correctPatternPlaceholder": "e.g. Reverse items 5 and 7 per the official codebook before summing, never sum directly",
+      "title": "Title (leave blank to auto-generate)",
+      "titlePlaceholder": "One line summarising this lesson",
+      "severity": "Severity",
+      "stage": "Stage",
+      "evidence": "Source excerpt"
+    },
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "stage": {
+      "literature": "Literature",
+      "experiment": "Experiment",
+      "publication": "Publication"
+    },
+    "labels": {
+      "manual": "Hand-written",
+      "injectedCount": "Injected into {{count}} conversations"
+    },
+    "actions": {
+      "open": "Write a lesson",
+      "save": "Save",
+      "saveSelected": "Save {{count}} selected",
+      "cancel": "Cancel",
+      "draft": "Draft from this session with AI",
+      "backToManual": "Back to manual",
+      "edit": "Edit",
+      "delete": "Delete",
+      "saveFromMessage": "Save as lesson"
+    },
+    "draft": {
+      "reviewTitle": "Review AI-drafted lessons",
+      "reviewLead": "These candidates come from the current session. Delete what is useless, fix what is wrong, save the rest.",
+      "noResults": "No sufficiently specific lesson could be extracted from this session. You can write one by hand instead."
+    },
+    "messages": {
+      "saved": "Saved {{count}} lesson(s). Later conversations will pick them up automatically.",
+      "deleted": "Lesson deleted.",
+      "confirmDelete": "Delete this lesson?"
+    },
+    "errors": {
+      "saveFailed": "Failed to save the lesson.",
+      "draftFailed": "AI drafting failed.",
+      "deleteFailed": "Failed to delete the lesson."
+    },
+    "sendToChat": {
+      "action": "Send to conversation",
+      "prefix": "Follow this lesson for this task:",
+      "when": " (when {{value}})",
+      "sent": "Put \"{{title}}\" in the conversation input."
+    }
+  },
+  "projectMemory": {
+    "title": "Conversation lessons",
+    "lead": "Collect method lessons, error lessons, correction rules, and execution memory from each project so they become reusable long-term system knowledge.",
+    "loading": "Loading conversation lessons.",
+    "empty": "No conversation lessons are available yet. Once a project accumulates explicit corrections, rules, or reusable lessons, they will surface here.",
+    "fetchFailed": "Conversation lessons are temporarily unavailable.",
+    "stats": {
+      "projects": "Projects with memory",
+      "activeProjects": "Active projects",
+      "historicalProjects": "Historical projects",
+      "manualLessons": "Hand-written lessons",
+      "confirmed": "Confirmed lessons",
+      "candidate": "Candidate lessons"
+    },
+    "sections": {
+      "formalAssets": {
+        "title": "Formal asset zone",
+        "lead": "This area holds the templates and SOPs you froze by hand, as maintainable and editable knowledge objects."
+      },
+      "formalTemplates": {
+        "title": "Formal templates",
+        "lead": "Freeze high-reuse templates into editable, maintainable assets.",
+        "empty": "No formal templates have been created yet."
+      },
+      "formalSops": {
+        "title": "Formal SOPs",
+        "lead": "Freeze stable process patterns into explicit operating procedures.",
+        "empty": "No formal SOPs have been created yet."
+      },
+      "activeProjects": {
+        "title": "Active projects",
+        "lead": "These knowledge cards belong to projects with recent activity and should stay close to the main working surface.",
+        "empty": "No projects are currently classified as active."
+      },
+      "historicalProjects": {
+        "title": "Historical projects",
+        "lead": "These cards have moved into archive mode and stay compressed by default so they do not crowd the main view.",
+        "empty": "There are no historical project memory cards yet."
+      },
+      "recent": {
+        "title": "Recent lesson updates",
+        "lead": "This feed highlights rules, corrections, and lessons that were newly added or recently re-verified.",
+        "empty": "There are no recent lesson updates yet."
+      }
+    },
+    "labels": {
+      "confirmed": "Confirmed",
+      "candidate": "Candidate",
+      "severityHigh": "High risk",
+      "severityMedium": "Medium risk",
+      "severityLow": "General",
+      "project": "Project: {{value}}",
+      "projectCount": "{{count}} projects",
+      "templateCount": "{{count}} templates",
+      "sopCount": "{{count}} SOPs",
+      "updated": "Updated: {{date}}",
+      "recentActivity": "Recent activity: {{date}}",
+      "seen": "Seen {{count}} times",
+      "reuseCount": "Reused {{count}} times",
+      "lastVerified": "Last verified: {{date}}",
+      "trigger": "Trigger",
+      "rule": "Recommended pattern",
+      "noRule": "No explicit rule has been added yet.",
+      "stage": "Stage: {{value}}",
+      "brief": "Research brief",
+      "coreQuestion": "Core question",
+      "scope": "Scope: {{value}}",
+      "noBrief": "No research brief is available yet.",
+      "reportArchive": "Report archive",
+      "reportCount": "{{count}} archived items",
+      "latestReport": "Latest archived: {{date}}",
+      "noReports": "No project materials have been archived into the Resource Library yet.",
+      "lessonSummary": "Lessons and correction rules",
+      "lessonCount": "{{count}} lessons",
+      "itemCount": "{{count}} items",
+      "stepCount": "{{count}} steps",
+      "itemIndex": "Item {{count}}",
+      "description": "Asset description",
+      "templateVerify": "Verify first",
+      "templatePattern": "Recommended handling",
+      "step": "Step {{count}}",
+      "noLessons": "No project lessons have been captured yet.",
+      "expand": "Expand details",
+      "collapse": "Collapse"
+    },
+    "actions": {
+      "newTemplate": "New template",
+      "newSop": "New SOP",
+      "editAsset": "Edit",
+      "deleteAsset": "Delete",
+      "saveAsset": "Save asset",
+      "cancel": "Cancel",
+      "addItem": "Add item",
+      "addStep": "Add step",
+      "removeItem": "Remove item",
+      "removeStep": "Remove step"
+    },
+    "fields": {
+      "title": "Title",
+      "titlePlaceholder": "For example: Validation template / Pre-delivery review template",
+      "stageKey": "Stage key",
+      "stageKeyPlaceholder": "For example: analysis / delivery / review",
+      "stageLabel": "Stage label",
+      "stageLabelPlaceholder": "For example: Analysis / Pre-delivery",
+      "description": "Description",
+      "descriptionPlaceholder": "Explain when this asset should be used and why it was frozen into a formal object.",
+      "itemHeading": "Item heading",
+      "itemHeadingPlaceholder": "For example: Verify result framing",
+      "verify": "What to verify",
+      "verifyPlaceholder": "Describe what must be checked before applying this template.",
+      "pattern": "Recommended pattern",
+      "patternPlaceholder": "Describe the preferred handling pattern.",
+      "stepTitle": "Step title",
+      "stepTitlePlaceholder": "For example: Confirm the scope of the research question",
+      "instruction": "Instruction",
+      "instructionPlaceholder": "Write the step as a clear, executable instruction."
+    },
+    "compact": {
+      "showMoreProjects": "Show more projects (+{{count}})",
+      "hiddenProjects": "{{count}} more project-memory cards are currently hidden.",
+      "showMoreActiveProjects": "Show more active projects (+{{count}})",
+      "hiddenActiveProjects": "{{count}} more active projects are currently hidden.",
+      "showMoreHistoricalProjects": "Show more historical projects (+{{count}})",
+      "hiddenHistoricalProjects": "{{count}} more historical projects are currently hidden.",
+      "showMoreRecent": "Show more recent lessons (+{{count}})",
+      "hiddenRecent": "{{count}} more recent lessons are currently hidden.",
+      "showLess": "Collapse list"
+    },
+    "messages": {
+      "assetCreated": "Formal asset created.",
+      "assetUpdated": "Formal asset updated.",
+      "assetDeleted": "Formal asset deleted.",
+      "assetSaveError": "Failed to save the formal asset.",
+      "assetDeleteError": "Failed to delete the formal asset.",
+      "assetDeleteConfirm": "Delete this formal asset? This will not affect the derived views.",
+      "assetTitleRequired": "Please add a title for the formal asset first.",
+      "assetTemplateRequired": "Keep at least one template item with content.",
+      "assetSopRequired": "Keep at least one SOP step with content."
+    },
+    "editor": {
+      "createTemplateTitle": "Freeze formal template",
+      "editTemplateTitle": "Edit formal template",
+      "createSopTitle": "Freeze formal SOP",
+      "editSopTitle": "Edit formal SOP",
+      "templateLead": "Turn a derived template into a formal asset that can be maintained, rewritten, and expanded over time.",
+      "sopLead": "Turn a derived SOP into a formal operating procedure that can be maintained over time.",
+      "templateItemsTitle": "Template items",
+      "templateItemsLead": "Each item should capture one check point and one recommended pattern.",
+      "sopStepsTitle": "SOP steps",
+      "sopStepsLead": "Write the procedure as a stable, ordered, handoff-ready sequence.",
+      "footerHint": "After saving, this content will be maintained as an independent formal asset instead of being overwritten by derived output."
+    }
+  },
+  "monitorCenter": {
+    "title": "Automated Monitor",
+    "lead": "This section keeps only source trigger buttons for literature-monitor runs.",
+    "loading": "Loading automated monitor status.",
+    "empty": "No automated monitor sources are available yet.",
+    "summary": {
+      "title": "Scheduler and recent signals",
+      "lead": "Tune the collection cadence here and immediately see the latest high-priority hits retained from the most recent searches.",
+      "stats": "{{enabled}} of {{total}} sources are currently enabled for automatic monitoring.",
+      "configured": "The scheduler configuration is already persisted and will continue running on the saved cadence.",
+      "pendingSetup": "Save the scheduler once to start automatic runs.",
+      "currentExtractor": "Current chat model: {{provider}} / {{model}}"
+    },
+    "fields": {
+      "globalEnabled": "Global automation",
+      "sourceEnabled": "Source toggle",
+      "frequencyHours": "Run every (hours)",
+      "ingestLimit": "Max new papers per run",
+      "extractorProvider": "Extraction provider",
+      "extractorModel": "Extraction model"
+    },
+    "actions": {
+      "refresh": "Refresh",
+      "save": "Save scheduler",
+      "runNow": "Run now",
+      "followChat": "Use current chat model"
+    },
+    "statuses": {
+      "idle": "Idle",
+      "running": "Running",
+      "ok": "Recently successful",
+      "error": "Recently failed"
+    },
+    "labels": {
+      "schedulerEnabled": "Automatic monitoring is enabled",
+      "schedulerPaused": "Automatic monitoring is paused",
+      "sourceEnabled": "This source is enabled",
+      "sourcePaused": "This source is paused",
+      "lastRun": "Last run: {{value}}",
+      "nextRun": "Next run: {{value}}",
+      "latestSearch": "Latest search: {{value}}",
+      "resultCount": "Latest result count: {{value}}",
+      "ingestedCount": "Latest newly ingested: {{value}}"
+    },
+    "preview": {
+      "title": "Recent monitor hits",
+      "empty": "No recent monitor hits are available yet.",
+      "noDomain": "No matched domain"
+    },
+    "messages": {
+      "unsaved": "Scheduler changes are pending and have not been saved yet.",
+      "saveSuccess": "The automated monitor settings have been saved.",
+      "saveError": "Failed to save the automated monitor settings.",
+      "runSuccess": "{{source}} finished this run and ingested {{count}} new papers.",
+      "runError": "The automated run failed."
+    }
+  },
+  "curatedConcepts": {
+    "title": "Curated Concepts",
+    "lead": "This section shows concepts that are now formally stored in the library. The first pass covers indicators, diseases, subtypes, risk scores, and stratifiers, with richer review flows coming next.",
+    "loading": "Loading concept-layer content.",
+    "empty": "There are no curated concepts yet. The next step is to ingest new indicators, diseases, and stratification ideas from literature through the new concept API or future form-based entry points.",
+    "fetchFailed": "The concept layer is temporarily unavailable, though the backend schema and APIs are already in place.",
+    "groups": {
+      "indicators": {
+        "title": "Indicators, Scores, and Outcomes",
+        "lead": "Reusable concepts for laboratory metrics, risk scores, and outcome definitions.",
+        "empty": "No curated indicator-style concepts are available yet."
+      },
+      "diseases": {
+        "title": "Diseases, Subtypes, and Stratifiers",
+        "lead": "Reusable concepts for disease entities, subtypes, and study stratification factors.",
+        "empty": "No curated disease or stratification concepts are available yet."
+      }
+    },
+    "types": {
+      "indicator": "Indicator",
+      "drug": "Drug",
+      "disease": "Disease",
+      "subtype": "Subtype",
+      "stratifier": "Stratifier",
+      "risk_score": "Risk score",
+      "outcome": "Outcome"
+    },
+    "statuses": {
+      "candidate": "Candidate",
+      "reviewed": "Reviewed",
+      "stable": "Stable",
+      "rejected": "Rejected"
+    },
+    "labels": {
+      "alias": "Alias",
+      "evidenceCount": "{{count}} evidence items",
+      "updated": "Last updated: {{date}}",
+      "noDescription": "No description added yet."
+    }
+  },
+  "quickCapture": {
+    "title": "Literature Intake and Concept Extraction",
+    "lead": "Sync Zotero manually or upload a BibTeX file first, then extract candidate concepts from the selected papers.",
+    "zotero": {
+      "title": "Manual Zotero sync",
+      "lead": "Pull the newest papers from your local Zotero library into the research center before extracting concept candidates.",
+      "statusChecking": "Checking Zotero connectivity.",
+      "statusConnected": "Zotero is connected and ready to sync.",
+      "statusUnavailable": "Zotero is currently unavailable. Make sure the desktop app is running and the local API is enabled."
+    },
+    "bibtex": {
+      "title": "BibTeX / .bib upload",
+      "lead": "Upload an exported reference file, then immediately extract indicator, drug, disease, and stratification candidates from those papers."
+    },
+    "extract": {
+      "title": "Extract candidate concepts from papers",
+      "lead": "Select recently imported papers, then split their titles and abstracts into candidate indicators, drugs, diseases, and stratifiers.",
+      "selection": "{{count}} references are currently selected for extraction.",
+      "summary": "This run processed {{references}} references and generated {{candidates}} candidate concepts for review.",
+      "referenceResult": "{{count}} candidates",
+      "referenceListTitle": "Recently imported references",
+      "loadingReferences": "Loading recently imported references.",
+      "emptyReferences": "No references are available for extraction yet.",
+      "lastImported": "Just imported"
+    },
+    "extractor": {
+      "title": "Extraction model",
+      "lead": "Manual intake and automated monitoring both try to use the same LLM JSON extraction flow so you get multiple indicators, drugs, diseases, and stratifier candidates in one pass.",
+      "provider": "Extraction provider",
+      "model": "Extraction model",
+      "followChat": "Current chat model: {{provider}} / {{model}}"
+    },
+    "messages": {
+      "zoteroSuccess": "Zotero sync finished. {{count}} references were added or refreshed.",
+      "bibtexSuccess": "BibTeX import finished. {{count}} references were written to the library.",
+      "importError": "Failed to import references.",
+      "noReferencesSelected": "Select at least one reference first.",
+      "extractSuccess": "Extracted {{candidates}} candidate concepts from {{references}} references.",
+      "extractError": "Failed to extract concepts from the selected references.",
+      "deleteConfirm": "Delete these {{count}} included references?",
+      "deleteSuccess": "Deleted {{count}} included references.",
+      "deleteError": "Failed to delete included references."
+    },
+    "actions": {
+      "refreshStatus": "Refresh status",
+      "syncZotero": "Sync Zotero",
+      "browseZotero": "Choose Zotero papers",
+      "syncAllZotero": "Full Zotero sync",
+      "uploadBibtex": "Upload BibTeX",
+      "extract": "Extract concepts",
+      "useLastImported": "Use last import",
+      "followChat": "Use current chat model",
+      "deleteSelected": "Delete selected references",
+      "reset": "Reset",
+      "submit": "Create concept"
+    }
+  },
+  "candidateReview": {
+    "title": "Research Discoveries",
+    "lead": "Candidate indicators, drugs, diseases, and stratifiers extracted from imported literature are gathered here. Review and promote valuable findings into the stable concept library.",
+    "loading": "Loading pending candidates.",
+    "empty": "There are no pending candidates yet. Use automated monitoring or manual literature intake first, then trigger concept extraction.",
+    "fetchFailed": "The candidate queue is temporarily unavailable.",
+    "acceptSuccess": "The candidate was accepted and written into the concept layer.",
+    "acceptError": "Failed to accept candidate.",
+    "rejectSuccess": "The candidate was rejected.",
+    "rejectError": "Failed to reject candidate.",
+    "statuses": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "merged": "Merged",
+      "rejected": "Rejected"
+    },
+    "actions": {
+      "accept": "Accept",
+      "reject": "Reject"
+    },
+    "labels": {
+      "confidence": "Confidence {{value}}",
+      "source": "Source {{value}}",
+      "reference": "Reference {{value}}",
+      "updated": "Last updated: {{date}}"
+    }
+  },
+  "sections": {
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "tabs": {
+    "capture": "Import & Monitor",
+    "review": "Discoveries",
+    "concepts": "Concept Radar",
+    "databases": "Database list",
+    "skills": "Skills list",
+    "variableOverview": "Variable tags",
+    "variableDiscovery": "Variable discovery",
+    "memory": "Conversation lessons",
+    "reports": "Memory summary",
+    "reference": "Indicators & Diseases"
+  },
+  "conceptRadar": {
+    "title": "Concept Radar",
+    "lead": "Aggregates the latest indicators, drugs, diseases, and literature co-occurrence links to help you quickly spot research inspiration and frontier signals.",
+    "intro": {
+      "title": "Research-center main board",
+      "lead": "Curated concepts and fresh candidates are shown together here so you can quickly spot the newest indicators, drugs, and concept-disease links."
+    },
+    "groups": {
+      "entities": {
+        "title": "Latest indicators, drugs, and scores",
+        "lead": "Prioritize recently updated curated concepts, then fill in with newly extracted candidate signals.",
+        "empty": "No recent indicator or drug signals are available yet."
+      },
+      "diseases": {
+        "title": "Latest diseases, subtypes, and stratifiers",
+        "lead": "Keep diseases, subtypes, and study stratifiers in one merged view instead of splitting them across duplicated cards.",
+        "empty": "No recent disease or stratification signals are available yet."
+      },
+      "relations": {
+        "title": "Concept-disease link hints",
+        "lead": "These hints come from concepts and diseases co-occurring within the same paper and are useful inputs for later chat-based analysis.",
+        "empty": "No concept-disease link hints are available yet."
+      }
+    },
+    "labels": {
+      "noSummary": "No summary added yet.",
+      "relationSummary": "{{concepts}} and {{diseases}} appear together in the same paper"
+    },
+    "actions": {
+      "delete": "Delete",
+      "deleting": "Deleting",
+      "deleteConfirm": "Delete this concept? This action cannot be undone.",
+      "deleteSuccess": "Concept deleted.",
+      "deleteError": "Failed to delete concept."
+    },
+    "sources": {
+      "curated": "Curated concept",
+      "candidate": "Candidate signal"
+    }
+  },
+  "variableKnowledge": {
+    "title": "Variable tags & PubMed auto-discovery",
+    "lead": "Variables and PubMed discovery now live inside the Resource Library: start blank, run PubMed discovery, manually review candidates, then promote accepted variables into the overview.",
+    "overviewTitle": "Variable tags",
+    "overviewLead": "Reviewed variable tags live here so naming stays consistent across projects. Candidates that pass discovery review are promoted into this list.",
+    "discoveryTitle": "Variable discovery",
+    "discoveryLead": "Candidate variables are extracted from PubMed literature, enter a human review queue, and only then are promoted into variable tags."
+  },
+  "footnote": {
+    "databases": "Use this database list as a quick map of official entry points and dataset scope. Always follow each source's data-use agreement and citation rules.",
+    "skills": "Use the skills list to browse and reuse Agent capability guides. Verify trusted sources before importing or editing local skills, and follow applicable licenses when citing external skills.",
+    "variableOverview": "The variable overview lists reviewed variable tags for consistent naming and reuse. Always verify against original literature and database field definitions before extraction or analysis.",
+    "variableDiscovery": "Variable discovery extracts candidate variables from PubMed literature and requires manual review before promotion. Do not use unreviewed candidates for formal analysis or publication.",
+    "reports": "Memory summary archives project materials and conversation lessons for reuse. Verify original files and evidence sources before formal citation or publication."
+  },
+  "mirroredDatabases": {
+    "title": "Databases",
+    "lead": "Grouped by research scenario, the catalog currently includes {{count}} database sources spanning critical-care EHR, aging panels, cancer surveillance, population health, and socioeconomic surveys.",
+    "localPathLabel": "Local folder",
+    "officialSite": "Official site",
+    "categoryDetailLabel": "Category notes",
+    "databaseDetailLabel": "Database notes",
+    "categoryItemsLabel": "Databases in this category",
+    "categoryCount": "{{count}} databases",
+    "directoryEyebrow": "Directory",
+    "browserEyebrow": "Select",
+    "browserTitle": "Database directory",
+    "allCategories": "All databases",
+    "results": "Results",
+    "resultsSummary": "{{shown}} databases shown",
+    "descriptionTitle": "Description",
+    "relatedTitle": "Related links",
+    "routeLabel": "Local skill route",
+    "routeHint": "Use this as the local extraction source name. Before extraction, verify access approval, version, and schema.",
+    "checklistTitle": "Before extraction",
+    "checklistBody": "Confirm access authorization, version/wave, sample grain, timeline semantics, join keys, missing-value rules, and citation requirements before variable search or small-scale extraction.",
+    "selectCategoryAria": "View category notes for {{title}}",
+    "selectDatabaseAria": "View database notes for {{name}}",
+    "sections": [
+      {
+        "title": "Critical care & ICU EHR databases",
+        "lead": "MIMIC releases, NWICU, eICU, and PIC ICU/EHR sources. Confirm patient, admission, ICU/PICU stay, event tables, and timeline semantics before extraction; do not mix schema assumptions across versions.",
+        "items": [
+          {
+            "name": "MIMIC-III",
+            "summary": "Classic ICU EHR database for reproducing earlier critical-care studies, diagnosis/treatment/lab trajectories, and ICU outcome models. Use the independent mimiciii source and version-specific schema.",
+            "url": "https://physionet.org/content/mimiciii/",
+            "localPath": "mimiciii",
+            "usagePolicy": "Requires the user to complete PhysioNet credentialing, CITI/equivalent training, and the applicable DUA. Use only a lawfully obtained copy within the approved research scope; do not share accounts, credentials, or raw data."
+          },
+          {
+            "name": "MIMIC-IV 1.0",
+            "summary": "PhysioNet MIMIC-IV 1.0 database organized around core, hosp, and icu modules with patient, admission, stay, and event-level tables for ICU trajectories, labs, and treatments.",
+            "url": "https://physionet.org/content/mimiciv/",
+            "localPath": "mimiciv",
+            "usagePolicy": "Requires independent PhysioNet credentialing, CITI/equivalent training, and the applicable DUA. Version, module, and citation rules must follow the official page; the platform does not fetch or redistribute raw data."
+          },
+          {
+            "name": "MIMIC-IV 3.1",
+            "summary": "Newer local MIMIC-IV entry. Re-check variables through the 3.1 schema, concept, join, and guardrail indexes instead of reusing MIMIC-IV 1.0 table assumptions.",
+            "url": "https://physionet.org/content/mimiciv/",
+            "localPath": "mimiciv31",
+            "usagePolicy": "Use only after independent authorization for the official MIMIC-IV 3.1 release and re-check the 3.1 schema. Do not mix 1.0 authorization, table assumptions, or data copies with this version."
+          },
+          {
+            "name": "NWICU",
+            "summary": "Northwestern Memorial HealthCare de-identified ICU/EHR data from 2020-2022. The local entry includes hosp and icu modules with admissions, patients, labevents, diagnoses, prescriptions, eMAR, ICU stays, charted events, and procedure events; use the independent nwicu source to verify table grain, join keys, and time fields.",
+            "url": "https://physionet.org/content/nwicu-northwestern-icu/",
+            "localPath": "nwicu",
+            "usagePolicy": "A restricted PhysioNet health dataset. Users must independently complete access requirements and upload their lawful copy; outputs must not expose re-identifying information or raw tables."
+          },
+          {
+            "name": "eICU-CRD",
+            "summary": "Multi-center ICU database where many analyses depend on `patientunitstayid` and ICU-relative offset semantics for charted and treatment events.",
+            "url": "https://www.physionet.org/content/eicu-crd/",
+            "localPath": "eicu",
+            "usagePolicy": "Requires PhysioNet credentialed access and the applicable DUA. Do not redistribute patientunitstayid-level raw data or credentials, and follow official citation requirements in publications."
+          },
+          {
+            "name": "PIC",
+            "summary": "Paediatric Intensive Care database from the Children's Hospital, Zhejiang University School of Medicine, with demographics, admissions, PICU stays, labs, medication, symptoms, surgery, and event tables. Confirm patient/admission/PICU-stay grain and pediatric timeline semantics before extraction.",
+            "url": "https://physionet.org/content/picdb/",
+            "localPath": "pic",
+            "usagePolicy": "Follow PhysioNet/PICDB restricted-data terms. Pediatric ICU data must remain within de-identified research boundaries, with no re-identification attempts or raw-data sharing."
+          }
+        ]
+      },
+      {
+        "title": "Cancer registries & global cancer statistics",
+        "lead": "GCO / GLOBOCAN provides country- and region-level incidence, mortality, prevalence, and projection statistics, while SEER provides tumor-level U.S. registry research data. Distinguish aggregate statistics from tumor records and verify release, year coverage, staging conventions, and access agreements.",
+        "items": [
+          {
+            "name": "GCO / GLOBOCAN",
+            "summary": "IARC global cancer statistics source. The current query pack covers GLOBOCAN 2022 v1.1, CI5plus October 2024, and UNDP HDR 2021–22 for incidence, mortality, prevalence, cancer rankings, and 2022–2050 projections.",
+            "url": "https://gco.iarc.who.int/",
+            "localPath": "gco",
+            "usagePolicy": "Follow IARC/GCO terms for use, citation, and redistribution, and identify the exact data product and version in outputs. The local gco source allows filtered queries only; full extraction and bulk download are disabled."
+          },
+          {
+            "name": "SEER Research Data (17 Registries)",
+            "summary": "U.S. NCI tumor-registry research data. The current local query pack uses the November 2025 submission for 17 registries and tumor records diagnosed in 2000–2023, including demographics, cancer site, stage, treatment, and survival fields.",
+            "url": "https://seer.cancer.gov/data/",
+            "localPath": "seer",
+            "usagePolicy": "Every data user must apply separately and accept the current SEER Data Use Agreement. Research Plus, NCCR, and specialized databases have additional account and location restrictions. Do not share accounts or raw data, attempt re-identification, or perform prohibited person-level linkage."
+          }
+        ]
+      },
+      {
+        "title": "International aging longitudinal panels",
+        "lead": "SHARE, HRS, ELSA, KLoSA, LASI, MHAS, and related international aging panels. Route by country, wave, sample grain, and weighting; check comparability before cross-cohort analyses.",
+        "items": [
+          {
+            "name": "ELSA",
+            "summary": "English Longitudinal Study of Ageing, with repeated measures of health, social participation, and retirement transitions for trajectory-focused aging analyses.",
+            "url": "https://www.elsa-project.ac.uk/",
+            "localPath": "ELSA_data",
+            "usagePolicy": "Usually obtained through UK Data Service or another official channel under licence. Follow the End User Licence, do not redistribute, and cite ELSA/UKDS as required."
+          },
+          {
+            "name": "HRS",
+            "summary": "Health and Retirement Study in the U.S., a foundational panel for aging, cognition, family, and wealth dynamics across waves.",
+            "url": "https://hrs.isr.umich.edu/",
+            "localPath": "HRS_data",
+            "usagePolicy": "Requires registration through the HRS official data portal and acceptance of data-use terms. Use only for permitted research/teaching purposes; do not redistribute or re-identify."
+          },
+          {
+            "name": "KLoSA",
+            "summary": "Korean Longitudinal Study of Aging for East-Asian aging trajectories, labor exit, and social support analyses with wave-aware extraction.",
+            "url": "https://survey.keis.or.kr/eng/klosa/klosa01.jsp",
+            "localPath": "KLOSA_data",
+            "usagePolicy": "Obtain data through KEIS/KLoSA official channels and follow their download and use rules. Cross-wave analyses should report wave, sample, and weighting choices."
+          },
+          {
+            "name": "LASI",
+            "summary": "Longitudinal Aging Study in India, covering chronic disease, functional status, and household support for LMIC aging comparisons.",
+            "url": "https://www.iipsindia.ac.in/lasi",
+            "localPath": "LASI_data",
+            "usagePolicy": "Obtain through IIPS/LASI or an authorized data platform under its access rules. Do not resell, redistribute, or identify respondents; acknowledge and cite the official project."
+          },
+          {
+            "name": "MHAS",
+            "summary": "Mexican Health and Aging Study, suited for chronic burden, functional outcomes, and family-care structure analyses in Latin America.",
+            "url": "https://www.mhasweb.org/",
+            "localPath": "MHAS_data",
+            "usagePolicy": "Use data downloaded/registered through official MHAS channels under their conditions. Do not redistribute, and cite the relevant wave, data files, and project source."
+          },
+          {
+            "name": "SHARE",
+            "summary": "Survey of Health, Ageing and Retirement in Europe, enabling country-comparative policy and health-inequality analyses across harmonized waves.",
+            "url": "https://share-eric.eu/",
+            "localPath": "SHARE_data",
+            "usagePolicy": "Requires SHARE Research Data Center registration and acceptance of the Conditions of Use. Use is for scientific research only; redistribution, commercial resale, and re-identification are prohibited."
+          }
+        ]
+      },
+      {
+        "title": "China aging longitudinal panels",
+        "lead": "CHARLS, CLHLS, and CLASS support China aging-health research on retirement, family support, mortality, disability, ADL, cognition, social participation, and healthy-aging trajectories.",
+        "items": [
+          {
+            "name": "CHARLS",
+            "summary": "China Health and Retirement Longitudinal Study: adults 45+ and spouses, covering health, economics, family, retirement, and social participation for aging research in China.",
+            "url": "https://charls.pku.edu.cn/",
+            "localPath": "charls",
+            "usagePolicy": "Users or institutions must register, apply, and accept terms through the CHARLS official site. Do not share data-access credentials or provide copies to unauthorized people."
+          },
+          {
+            "name": "CLHLS",
+            "summary": "Chinese Longitudinal Healthy Longevity Survey for oldest-old and longevity research, including mortality, disability, ADL, cognition, and determinants of healthy aging.",
+            "url": "https://www.duke-nus.edu.sg/cra/clhls",
+            "localPath": "clhls",
+            "usagePolicy": "Apply and cite through the CLHLS official data platform/project rules. Maintain anonymity for older-adult respondent data and do not transmit individual-level raw data."
+          },
+          {
+            "name": "CLASS",
+            "summary": "Chinese Longitudinal Aging Social Survey, a continuing nationwide survey led by Renmin University of China. The current query pack covers five waves—2014, 2016, 2018, 2020, and 2023—for health, aging support, economics, family, and social participation research.",
+            "url": "https://class.ruc.edu.cn/",
+            "localPath": "class",
+            "usagePolicy": "Obtain and use the data under the official CLASS application instructions, checking approved waves and versions. Do not provide person-level raw data or credentials to unauthorized people or attempt respondent identification."
+          }
+        ]
+      },
+      {
+        "title": "UKB / NHANES",
+        "lead": "UK Biobank multimodal cohort and U.S. NHANES representative health surveys. Confirm field/instance/array coverage, cycle, weights, and endpoint sources in the local package.",
+        "items": [
+          {
+            "name": "UK Biobank",
+            "summary": "Large UK prospective cohort with genetics, imaging, and linked health records; the local package may also include matched proteomics / Olink layers.",
+            "url": "https://www.ukbiobank.ac.uk/",
+            "localPath": "UKB_data",
+            "usagePolicy": "Requires an approved project through the UK Biobank Access Management System and the applicable access/material agreement. Use is limited to approved purposes, approved researchers, and authorized fields."
+          },
+          {
+            "name": "NHANES",
+            "summary": "U.S. National Health and Nutrition Examination Survey: nationally representative cross-sectional waves with exams, labs, and questionnaires for U.S. population health research.",
+            "url": "https://www.cdc.gov/nchs/nhanes/",
+            "localPath": "NHANES_data",
+            "usagePolicy": "Public-use files still require CDC/NCHS citation, confidentiality, and survey-design compliance. Do not attempt respondent re-identification; report cycle, weights, and sampling design."
+          }
+        ]
+      },
+      {
+        "title": "China community health & nutrition surveys",
+        "lead": "CHNS and related community/household health, diet, exam, and policy-change data. Analyses often require explicit joins across topic sub-tables; confirm wave and table structure first.",
+        "items": [
+          {
+            "name": "CHNS",
+            "summary": "China Health and Nutrition Survey: longitudinal community and household data on health, diet, physical exam, and policy change, typically requiring explicit joins across topic sub-tables.",
+            "url": "https://www.cpc.unc.edu/projects/china-health-and-nutrition-survey",
+            "localPath": "chns",
+            "usagePolicy": "Obtain through the UNC/CPC CHNS official channel and follow data-use and citation requirements. Do not redistribute household/person-level data; report survey year and table source."
+          }
+        ]
+      },
+      {
+        "title": "China household panel & general social surveys",
+        "lead": "CFPS and CGSS cover household, person-level, social attitude, stratification, and quality-of-life topics. Distinguish panel data from repeated cross-sections before variable search.",
+        "items": [
+          {
+            "name": "CFPS",
+            "summary": "China Family Panel Studies: longitudinal microdata on families and individuals for economics, education, health, and social change.",
+            "url": "https://www.isss.pku.edu.cn/cfps/en/",
+            "localPath": "CFPS_data",
+            "usagePolicy": "Register/apply through the official CFPS data platform and follow the user agreement. Do not transfer, share, or commercialize raw microdata."
+          },
+          {
+            "name": "CGSS",
+            "summary": "Chinese General Social Survey: repeated cross-sections on social attitudes, stratification, and quality of life.",
+            "url": "http://cgss.ruc.edu.cn/English/Home/Index",
+            "localPath": "CGSS_data",
+            "usagePolicy": "Obtain through the official CGSS data platform under its user agreement. Cite survey year/version and the official source; do not transmit raw data."
+          }
+        ]
+      },
+      {
+        "title": "China finance, income & labor surveys",
+        "lead": "CHFS, CHIP, CLDS, and CSS cover household finance, income distribution, labor-force dynamics, and national social conditions. Confirm person/household/community grain, year scope, and weights before extraction.",
+        "items": [
+          {
+            "name": "CHFS",
+            "summary": "China Household Finance Survey: assets, debt, income, consumption, and financial behavior at household level.",
+            "url": "https://chfs.swufe.edu.cn/",
+            "localPath": "CHFS_data",
+            "usagePolicy": "Use under the official CHFS data-application and user-agreement rules. Household finance microdata must not be sold, rented, transferred, or provided to unauthorized third parties."
+          },
+          {
+            "name": "CHIP",
+            "summary": "Chinese Household Income Project: income distribution, inequality, and household surveys coordinated with institutional partners in China.",
+            "url": "https://www.ciidbnu.org/chip/en/",
+            "localPath": "CHIP_data",
+            "usagePolicy": "Obtain through official CHIP/China income-distribution research channels and follow data-use restrictions. Do not redistribute; protect respondent anonymity in income microdata analyses."
+          },
+          {
+            "name": "CLDS",
+            "summary": "China Labor-force Dynamics Survey: employment, mobility, and labor market outcomes (Sun Yat-sen University).",
+            "url": "https://css.sysu.edu.cn/clds/",
+            "localPath": "CLDS_data",
+            "usagePolicy": "Apply through official channels such as the Sun Yat-sen University survey center and follow the user agreement. Do not share raw individual, household, or community-level data."
+          },
+          {
+            "name": "CSS",
+            "summary": "Chinese Social Survey: national social conditions and public opinion (Renmin University of China).",
+            "url": "http://css.ruc.edu.cn/",
+            "localPath": "CSS_data",
+            "usagePolicy": "Obtain through the official survey/data platform and follow data-use rules. Use only within the authorized research scope and cite as required by the project."
+          }
+        ]
+      }
+    ],
+    "usagePolicyLabel": "Usage Rules"
+  },
+  "indicators": {
+    "title": "Common clinical & population-health metrics",
+    "lead": "Typical operationalizations in cohort and claims studies—align with your protocol’s time zero, units, and missing-data rules.",
+    "items": [
+      {
+        "name": "eGFR (CKD-EPI / MDRD)",
+        "summary": "Estimated GFR from creatinine (equation version sets covariates); CKD staging and drug safety analyses.",
+        "tags": [
+          "Renal",
+          "Lab"
+        ]
+      },
+      {
+        "name": "BMI",
+        "summary": "Weight (kg) / height (m)²; survey and cohort stratification; not a direct adiposity measure.",
+        "tags": [
+          "Anthropometry"
+        ]
+      },
+      {
+        "name": "Blood pressure / hypertension control",
+        "summary": "JNC/ACC-AHA thresholds vary by guideline; NHANES and many cohorts support standardized seated BP protocols.",
+        "tags": [
+          "Cardiovascular",
+          "Survey"
+        ]
+      },
+      {
+        "name": "Charlson / Elixhauser",
+        "summary": "Comorbidity scores from diagnosis codes for risk adjustment in administrative and EHR-linked research.",
+        "tags": [
+          "Comorbidity",
+          "ICD"
+        ]
+      },
+      {
+        "name": "ASCVD / Framingham-style risk",
+        "summary": "10-year cardiovascular risk tools using traditional factors; choose the equation that matches your population and guideline context.",
+        "tags": [
+          "Cardiovascular",
+          "Risk score"
+        ]
+      },
+      {
+        "name": "ADL / IADL disability scales",
+        "summary": "Activity limitations in aging surveys (e.g. CHARLS, CLHLS, HRS family); core for dependency and care demand analyses.",
+        "tags": [
+          "Aging",
+          "Function"
+        ]
+      }
+    ]
+  },
+  "diseases": {
+    "title": "High-volume themes in public-health data",
+    "lead": "Frequent topics in national surveys and aging cohorts—useful for keyword scoping and comparator selection.",
+    "items": [
+      {
+        "name": "Cardiometabolic disease",
+        "summary": "Hypertension, diabetes, dyslipidemia, obesity; tightly linked to NHANES labs and self-report in many national surveys.",
+        "tags": [
+          "Chronic disease"
+        ]
+      },
+      {
+        "name": "Aging & disability",
+        "summary": "Cognitive decline, falls, care needs; central to CHARLS, CLHLS, and comparable longitudinal studies.",
+        "tags": [
+          "Aging"
+        ]
+      },
+      {
+        "name": "Healthcare access & insurance",
+        "summary": "Coverage, OOP costs, and utilization—common in household finance and retirement surveys.",
+        "tags": [
+          "Policy",
+          "Economics"
+        ]
+      },
+      {
+        "name": "Mental health & well-being",
+        "summary": "Depression and anxiety symptom scales appear across CGSS, CFPS health modules, and aging cohorts.",
+        "tags": [
+          "Mental health"
+        ]
+      }
+    ]
+  }
+}

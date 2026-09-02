@@ -1,0 +1,365 @@
+import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
+import { api } from '../utils/api';
+import { useAuth } from './AuthContext';
+import { useWebSocket } from './WebSocketContext';
+import { useOptionalLocalKernel } from '../state/localKernelStore';
+import { CAPABILITIES, useEntitlements } from '../hooks/useEntitlements';
+
+const TaskMasterContext = createContext({
+  // TaskMaster project state
+  projects: [],
+  currentProject: null,
+  projectTaskMaster: null,
+  
+  // MCP server state
+  mcpServerStatus: null,
+  
+  // Tasks state
+  tasks: [],
+  nextTask: null,
+  
+  // Loading states
+  isLoading: false,
+  isLoadingTasks: false,
+  isLoadingMCP: false,
+  
+  // Error state
+  error: null,
+  
+  // Actions
+  refreshProjects: () => {},
+  setCurrentProject: () => {},
+  refreshTasks: () => {},
+  refreshMCPStatus: () => {},
+  clearError: () => {}
+});
+
+export const useTaskMaster = () => {
+  const context = useContext(TaskMasterContext);
+  if (!context) {
+    throw new Error('useTaskMaster must be used within a TaskMasterProvider');
+  }
+  return context;
+};
+
+export const TaskMasterProvider = ({ children }) => {
+  // Get WebSocket messages from shared context to avoid duplicate connections
+  const { latestMessage } = useWebSocket();
+  
+  // Authentication context
+  const { user, token, isLoading: authLoading } = useAuth();
+  const { can } = useEntitlements();
+  const canUseTasks = can(CAPABILITIES.researchTasks);
+  const localKernel = useOptionalLocalKernel();
+  const kernelBlocked = Boolean(localKernel?.isRequired && localKernel?.state !== 'connected');
+  
+  // State
+  const [projects, setProjects] = useState([]);
+  const [currentProject, setCurrentProjectState] = useState(null);
+  const [projectTaskMaster, setProjectTaskMaster] = useState(null);
+  const [mcpServerStatus, setMCPServerStatus] = useState(null);
+  const [tasks, setTasks] = useState([]);
+  const [nextTask, setNextTask] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingTasks, setIsLoadingTasks] = useState(false);
+  const [isLoadingMCP, setIsLoadingMCP] = useState(false);
+  const [error, setError] = useState(null);
+  const currentProjectName = currentProject?.name || null;
+  const currentProjectNameRef = useRef(currentProjectName);
+  currentProjectNameRef.current = currentProjectName;
+  const taskRequestRef = useRef(null);
+  const loadedTaskProjectRef = useRef(null);
+  const consumedMessageRef = useRef(null);
+
+  // Helper to handle API errors
+  const handleError = (error, context) => {
+    console.error(`TaskMaster ${context} error:`, error);
+    setError({
+      message: error.message || `Failed to ${context}`,
+      context,
+      timestamp: new Date().toISOString()
+    });
+  };
+
+  // Clear error state
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
+
+  // This will be defined after the functions are declared
+
+  // Refresh projects with TaskMaster metadata
+  const refreshProjects = useCallback(async () => {
+    // Only make API calls if user is authenticated
+    if (!user || !token) {
+      setProjects([]);
+      setCurrentProjectState(null); // This might be the problem!
+      return;
+    }
+    if (kernelBlocked) {
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      clearError();
+      const response = await api.get('/projects');
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch projects: ${response.status}`);
+      }
+      
+      const projectsData = await response.json();
+      
+      // Check if projectsData is an array
+      if (!Array.isArray(projectsData)) {
+        console.error('Projects API returned non-array data:', projectsData);
+        setProjects([]);
+        return;
+      }
+      
+      // Filter and enrich projects with TaskMaster data
+      const enrichedProjects = projectsData.map(project => ({
+        ...project,
+        taskMasterConfigured: project.taskmaster?.hasTaskmaster || false,
+        taskMasterStatus: project.taskmaster?.status || 'not-configured',
+        taskCount: project.taskmaster?.metadata?.taskCount || 0,
+        completedCount: project.taskmaster?.metadata?.completed || 0
+      }));
+      
+      setProjects(enrichedProjects);
+      
+      // If current project is set, update its TaskMaster data
+      if (currentProject) {
+        const updatedCurrent = enrichedProjects.find(p => p.name === currentProject.name);
+        if (updatedCurrent) {
+          setCurrentProjectState(updatedCurrent);
+          setProjectTaskMaster(updatedCurrent.taskmaster);
+        }
+      }
+    } catch (err) {
+      handleError(err, 'load projects');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [user, token, kernelBlocked]); // Remove currentProject dependency to avoid infinite loops
+
+  // Set current project and load its TaskMaster details
+  const setCurrentProject = useCallback(async (project) => {
+    try {
+      setCurrentProjectState(project);
+      if ((project?.name || null) !== currentProjectNameRef.current) {
+        currentProjectNameRef.current = project?.name || null;
+        taskRequestRef.current?.abort();
+        taskRequestRef.current = null;
+        loadedTaskProjectRef.current = null;
+        setTasks([]);
+        setNextTask(null);
+        setIsLoadingTasks(false);
+      }
+
+      setProjectTaskMaster(project?.taskmaster || null);
+    } catch (err) {
+      console.error('Error in setCurrentProject:', err);
+      handleError(err, 'set current project');
+      setProjectTaskMaster(project?.taskmaster || null);
+    }
+  }, []);
+
+  // Refresh MCP server status
+  const refreshMCPStatus = useCallback(async () => {
+    // Only make API calls if user is authenticated
+    if (!user || !token || !canUseTasks) {
+      setMCPServerStatus(null);
+      return;
+    }
+    if (kernelBlocked) {
+      return;
+    }
+
+    try {
+      setIsLoadingMCP(true);
+      clearError();
+      const mcpStatus = await api.get('/mcp-utils/taskmaster-server');
+      setMCPServerStatus(mcpStatus);
+    } catch (err) {
+      handleError(err, 'check MCP server status');
+    } finally {
+      setIsLoadingMCP(false);
+    }
+  }, [canUseTasks, user, token, kernelBlocked]);
+
+  // Refresh tasks for current project - load real TaskMaster data
+  const refreshTasks = useCallback(async () => {
+    if (!currentProjectName) {
+      setTasks([]);
+      setNextTask(null);
+      return;
+    }
+
+    // Only make API calls if user is authenticated
+    if (!user || !token || !canUseTasks) {
+      setTasks([]);
+      setNextTask(null);
+      return;
+    }
+    if (kernelBlocked) {
+      return;
+    }
+
+    if (taskRequestRef.current) return;
+    const controller = new AbortController();
+    taskRequestRef.current = controller;
+    const isCurrent = () => !controller.signal.aborted && currentProjectNameRef.current === currentProjectName;
+
+    try {
+      if (loadedTaskProjectRef.current !== currentProjectName) setIsLoadingTasks(true);
+      clearError();
+      
+      // Load tasks from the TaskMaster API endpoint
+      const response = await api.get(`/taskmaster/tasks/${encodeURIComponent(currentProjectName)}`, { signal: controller.signal });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to load tasks');
+      }
+      
+      const data = await response.json();
+      if (!isCurrent()) return;
+      
+      const loadedTasks = data.tasks || [];
+      setTasks(loadedTasks);
+
+      let resolvedNextTask = loadedTasks.find(task => task.status === 'in-progress')
+        || loadedTasks.find(task => task.status === 'review')
+        || loadedTasks.find(task => task.status === 'pending')
+        || null;
+
+      try {
+        const guidanceResponse = await api.get(`/taskmaster/next-guidance/${encodeURIComponent(currentProjectName)}`, { signal: controller.signal });
+        if (guidanceResponse.ok) {
+          const guidanceData = await guidanceResponse.json();
+          if (guidanceData?.nextTask) {
+            resolvedNextTask = {
+              ...guidanceData.nextTask,
+              guidance: guidanceData.guidance || null,
+            };
+          }
+        }
+      } catch (guidanceError) {
+        console.warn('Failed to load next guidance, falling back to local task ordering:', guidanceError);
+      }
+
+      if (!isCurrent()) return;
+      setNextTask(resolvedNextTask);
+      loadedTaskProjectRef.current = currentProjectName;
+      
+      
+    } catch (err) {
+      if (!isCurrent()) return;
+      console.error('Error loading tasks:', err);
+      handleError(err, 'load tasks');
+    } finally {
+      if (taskRequestRef.current === controller) taskRequestRef.current = null;
+      if (isCurrent()) setIsLoadingTasks(false);
+    }
+  }, [canUseTasks, currentProjectName, user?.id, token, kernelBlocked]);
+
+  useEffect(() => () => {
+    taskRequestRef.current?.abort();
+    taskRequestRef.current = null;
+  }, [currentProjectName, user?.id, token, kernelBlocked]);
+
+  // Load initial data on mount or when auth changes
+  useEffect(() => {
+    if (!authLoading && user && token && !kernelBlocked) {
+      refreshProjects();
+      if (canUseTasks) {
+        refreshMCPStatus();
+      }
+    } else {
+      console.log('Auth not ready, no user, or local Kernel pending; skipping project load:', {
+        authLoading,
+        user: !!user,
+        token: !!token,
+        kernelBlocked,
+      });
+    }
+  }, [canUseTasks, refreshProjects, refreshMCPStatus, authLoading, user, token, kernelBlocked, localKernel?.state]);
+
+  // Clear errors when authentication changes
+  useEffect(() => {
+    if (user && token) {
+      clearError();
+    }
+  }, [user, token, clearError]);
+
+  // Refresh tasks when current project changes
+  useEffect(() => {
+    if (currentProject?.name && user && token && !kernelBlocked) {
+      refreshTasks();
+    }
+  }, [currentProject?.name, user, token, refreshTasks, kernelBlocked, localKernel?.state]);
+
+  // Handle WebSocket latestMessage for TaskMaster updates
+  useEffect(() => {
+    if (!latestMessage || consumedMessageRef.current === latestMessage) return;
+    consumedMessageRef.current = latestMessage;
+
+
+    switch (latestMessage.type) {
+      case 'taskmaster-project-updated':
+        // Refresh projects when TaskMaster state changes
+        if (latestMessage.projectName) {
+          refreshProjects();
+        }
+        break;
+        
+      case 'taskmaster-tasks-updated':
+        // Refresh tasks for the current project
+        if (latestMessage.projectName === currentProject?.name) {
+          refreshTasks();
+        }
+        break;
+        
+      case 'taskmaster-mcp-status-changed':
+        // Refresh MCP server status
+        refreshMCPStatus();
+        break;
+        
+      default:
+        // Ignore non-TaskMaster messages
+        break;
+    }
+  }, [latestMessage, refreshProjects, refreshTasks, refreshMCPStatus, currentProject]);
+
+  // Context value
+  const contextValue = {
+    // State
+    projects,
+    currentProject,
+    projectTaskMaster,
+    mcpServerStatus,
+    tasks,
+    nextTask,
+    isLoading,
+    isLoadingTasks,
+    isLoadingMCP,
+    error,
+    
+    // Actions
+    refreshProjects,
+    setCurrentProject,
+    refreshTasks,
+    refreshMCPStatus,
+    clearError
+  };
+
+  return (
+    <TaskMasterContext.Provider value={contextValue}>
+      {children}
+    </TaskMasterContext.Provider>
+  );
+};
+
+export default TaskMasterContext;

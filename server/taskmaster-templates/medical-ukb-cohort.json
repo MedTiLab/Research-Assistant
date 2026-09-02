@@ -1,0 +1,269 @@
+{
+  "id": "medical-ukb-cohort",
+  "name": "Medical — UK Biobank (shortcut)",
+  "description": "UK Biobank–only form with the same pipeline shape. For NHANES, All of Us, MIMIC, SEER, or mixed registry studies, start with template **Database research — UKB, NHANES, All of Us, MIMIC, SEER** (medical-database-research).",
+  "domain": "medical-research",
+  "category": "medical-research",
+  "listPriority": 10,
+  "format": "research-brief-json",
+  "fileName": "research_brief.json",
+  "metaFields": [
+    { "key": "title", "label": "Study Title", "path": "meta.title", "placeholder": "Optional project title" },
+    { "key": "lead_author", "label": "Lead Author", "path": "meta.lead_author", "placeholder": "Optional lead author" },
+    { "key": "target_venue", "label": "Target Venue", "path": "meta.target_venue", "placeholder": "Optional journal or conference" },
+    { "key": "ukb_application_id", "label": "UKB Application ID", "path": "meta.ukb_application_id", "placeholder": "Approved UK Biobank application number" },
+    { "key": "database_version", "label": "UKB release / extraction version", "path": "meta.database_version", "placeholder": "Data release or extraction date" }
+  ],
+  "sectionFields": {
+    "literature": [
+      { "key": "core_research_question", "label": "Primary Clinical Research Question", "path": "sections.literature.core_research_question", "placeholder": "What exact exposure-outcome or cohort question should this UKB study answer?" },
+      { "key": "literature_scope", "label": "Clinical Question Scope", "path": "sections.literature.literature_scope", "placeholder": "Disease area, exposure, and outcome boundary" },
+      { "key": "knowledge_base_scope", "label": "Knowledge Base Scope", "path": "sections.literature.knowledge_base_scope", "placeholder": "Which phenotypes, exposures, covariates, endpoints, and modalities should stay in scope" },
+      { "key": "key_references", "label": "Key References", "path": "sections.literature.key_references", "type": "array", "placeholder": "One paper or UKB resource per line" },
+      { "key": "seed_papers", "label": "Seed Papers / UKB Anchors", "path": "sections.literature.seed_papers", "type": "array", "placeholder": "One seed cohort paper, code list source, or UKB resource per line" },
+      { "key": "synthesis_summary", "label": "Prior Evidence Summary", "path": "sections.literature.synthesis_summary", "placeholder": "What is already known vs unresolved in UKB-related literature" },
+      { "key": "open_gaps", "label": "Open Gaps", "path": "sections.literature.open_gaps", "type": "array", "placeholder": "One unresolved gap per line" },
+      { "key": "evidence_requirements", "label": "Evidence Requirements", "path": "sections.literature.evidence_requirements", "type": "array", "placeholder": "One must-have evidence item or design constraint per line" },
+      { "key": "ukb_assets", "label": "UKB Assets Needed", "path": "sections.literature.ukb_assets", "type": "array", "placeholder": "Primary care, HES, death registry, imaging, genetics, proteomics, etc." }
+    ],
+    "ideation": [
+      { "key": "research_goal", "label": "Research Goal", "path": "sections.ideation.research_goal", "placeholder": "Association, prediction, causal inference, or descriptive epidemiology goal" },
+      { "key": "clinical_or_scientific_gap", "label": "Clinical / Scientific Gap", "path": "sections.ideation.clinical_or_scientific_gap", "placeholder": "Which clinical uncertainty or methodological gap should this cohort analysis close?" },
+      { "key": "problem_framing", "label": "Cohort Framing", "path": "sections.ideation.problem_framing", "placeholder": "Target population, index date, follow-up logic, and study design" },
+      { "key": "evidence_plan", "label": "Phenotype and Endpoint Plan", "path": "sections.ideation.evidence_plan", "placeholder": "How case/control definitions, covariates, and endpoints will be operationalized" },
+      { "key": "population_setting", "label": "Population and setting", "path": "sections.ideation.population_setting", "placeholder": "UKB source population and analytic setting" },
+      { "key": "inclusion_criteria", "label": "Inclusion criteria", "path": "sections.ideation.inclusion_criteria", "type": "array", "placeholder": "One operational inclusion rule per line" },
+      { "key": "exclusion_criteria", "label": "Exclusion criteria", "path": "sections.ideation.exclusion_criteria", "type": "array", "placeholder": "One operational exclusion rule per line" },
+      { "key": "time_zero", "label": "Time zero", "path": "sections.ideation.time_zero", "placeholder": "Exact index event/date" },
+      { "key": "follow_up", "label": "Follow-up", "path": "sections.ideation.follow_up", "placeholder": "Duration and censoring rules" },
+      { "key": "biomarker_or_exposure", "label": "Primary biomarker / exposure", "path": "sections.ideation.biomarker_or_exposure", "placeholder": "One primary exposure or biomarker" },
+      { "key": "measurement_type", "label": "Measurement type", "path": "sections.ideation.measurement_type", "placeholder": "exposure | biomarker" },
+      { "key": "comparator", "label": "Comparator", "path": "sections.ideation.comparator", "placeholder": "Reference group" },
+      { "key": "primary_outcome", "label": "Primary outcome", "path": "sections.ideation.primary_outcome", "placeholder": "One concise endpoint" },
+      { "key": "outcome_definition", "label": "Outcome definition", "path": "sections.ideation.outcome_definition", "placeholder": "Operational phenotype / event definition" },
+      { "key": "outcome_time_horizon", "label": "Outcome time horizon", "path": "sections.ideation.outcome_time_horizon", "placeholder": "e.g. 30 days, 1 year" },
+      { "key": "study_design", "label": "Study design", "path": "sections.ideation.study_design", "placeholder": "Retrospective cohort, target trial emulation, etc." },
+      { "key": "estimand", "label": "Estimand", "path": "sections.ideation.estimand", "placeholder": "Population, contrast, outcome, horizon, and effect scale" },
+      { "key": "specimen", "label": "Specimen (biomarker studies)", "path": "sections.ideation.specimen", "placeholder": "Plasma, serum, etc." },
+      { "key": "assay_platform", "label": "Assay platform", "path": "sections.ideation.assay_platform", "placeholder": "Platform and version" },
+      { "key": "unit", "label": "Measurement unit", "path": "sections.ideation.unit", "placeholder": "Canonical unit" },
+      { "key": "measurement_window", "label": "Measurement window", "path": "sections.ideation.measurement_window", "placeholder": "Window relative to time zero" },
+      { "key": "success_criteria", "label": "Success Criteria", "path": "sections.ideation.success_criteria", "type": "array", "placeholder": "One criterion per line" }
+    ],
+    "experiment": [
+      { "key": "hypothesis_or_validation_goal", "label": "Primary Analysis Goal", "path": "sections.experiment.hypothesis_or_validation_goal", "placeholder": "Primary endpoint, model objective, or causal contrast" },
+      { "key": "dataset_or_data_source", "label": "UKB Data Source Plan", "path": "sections.experiment.dataset_or_data_source", "placeholder": "Exact data returns, table sources, field IDs, instances, and linkage assets" },
+      { "key": "method_or_protocol", "label": "Cohort Construction Protocol", "path": "sections.experiment.method_or_protocol", "placeholder": "Inclusion/exclusion, covariates, missingness strategy, and derivation rules" },
+      { "key": "evaluation_plan", "label": "Statistical Evaluation Plan", "path": "sections.experiment.evaluation_plan", "placeholder": "Model family, validation design, calibration, sensitivity analyses, and subgroup checks" },
+      { "key": "primary_model", "label": "Primary model", "path": "sections.experiment.primary_model", "placeholder": "Prespecified model and effect scale" },
+      { "key": "mandatory_covariates", "label": "Mandatory covariates", "path": "sections.experiment.mandatory_covariates", "type": "array", "placeholder": "One required covariate per line" },
+      { "key": "sensitivity_plan", "label": "Sensitivity Analyses", "path": "sections.experiment.sensitivity_plan", "type": "array", "placeholder": "One robustness check per line" }
+    ],
+    "publication": [
+      { "key": "paper_outline", "label": "Paper Outline", "path": "sections.publication.paper_outline", "placeholder": "How to structure introduction, cohort methods, and key results" },
+      { "key": "figures_tables_plan", "label": "Figures/Tables Plan", "path": "sections.publication.figures_tables_plan", "placeholder": "Flowchart, baseline table, forest plots, calibration, subgroup analyses" },
+      { "key": "artifact_plan", "label": "Reproducibility Artifact Plan", "path": "sections.publication.artifact_plan", "placeholder": "Field manifest, cohort derivation spec, codebook, and analysis notebook outputs" },
+      { "key": "submission_checklist", "label": "Submission Checklist", "path": "sections.publication.submission_checklist", "type": "array", "placeholder": "One item per line" }
+    ],
+    "promotion": [
+      { "key": "slide_outline", "label": "Slide Outline", "path": "sections.promotion.slide_outline", "placeholder": "Clinical problem, cohort, results, and impact story" },
+      { "key": "deck_style", "label": "Deck Style", "path": "sections.promotion.deck_style", "placeholder": "Preferred scientific presentation style" },
+      { "key": "homepage_plan", "label": "Homepage Plan", "path": "sections.promotion.homepage_plan", "placeholder": "Project page structure and key visuals" },
+      { "key": "tts_config", "label": "TTS Config", "path": "sections.promotion.tts_config", "placeholder": "Voice and narration settings" },
+      { "key": "video_assembly_plan", "label": "Video Assembly Plan", "path": "sections.promotion.video_assembly_plan", "placeholder": "How to combine slides, charts, and narration" }
+    ]
+  },
+  "pipeline": {
+    "version": "1.1",
+    "mode": "idea",
+    "startStage": "literature",
+    "stages": {
+      "literature": {
+        "required_elements": [
+          "sections.literature.core_research_question",
+          "sections.literature.literature_scope",
+          "sections.literature.synthesis_summary",
+          "sections.literature.ukb_assets"
+        ],
+        "optional_elements": [
+          "sections.literature.key_references",
+          "sections.literature.knowledge_base_scope",
+          "sections.literature.seed_papers",
+          "sections.literature.open_gaps",
+          "sections.literature.evidence_requirements"
+        ],
+        "quality_gate": [
+          "The primary clinical research question is precise enough to map to a UKB cohort design",
+          "Knowledge-base scope, required UKB assets, and linked datasets are explicitly listed",
+          "Prior UKB literature and unresolved gaps are summarized concretely"
+        ],
+        "task_blueprints": [
+          {
+            "id": "ukb_literature_and_asset_mapping",
+            "title": "Map prior UKB literature and required UKB assets",
+            "description": "Summarize relevant UKB studies, list necessary field groups and linked resources, and note known design caveats.",
+            "taskType": "exploration",
+            "recommended_skills": ["medhelp-deep-research", "ukb-cohort-analysis", "research-lookup"]
+          },
+          {
+            "id": "ukb_question_positioning",
+            "title": "Position the clinical question against known UKB evidence",
+            "description": "Clarify what is already established, what remains uncertain, and why this cohort analysis is worth running.",
+            "taskType": "analysis",
+            "recommended_skills": ["medhelp-deep-research", "ukb-cohort-analysis", "literature-review"]
+          }
+        ],
+        "recommended_skills": ["medhelp-deep-research", "ukb-cohort-analysis", "research-lookup", "literature-review"]
+      },
+      "ideation": {
+        "required_elements": [
+          "sections.ideation.research_goal",
+          "sections.ideation.clinical_or_scientific_gap",
+          "sections.ideation.problem_framing",
+          "sections.ideation.evidence_plan"
+        ],
+        "optional_elements": [
+          "sections.ideation.success_criteria"
+        ],
+        "quality_gate": [
+          "A concrete clinical or scientific gap is stated clearly",
+          "Study design, cohort window, and endpoints are operationally defined",
+          "Phenotype definitions and covariate strategy are specific enough to implement",
+          "Success criteria cover both validity and clinical usefulness"
+        ],
+        "task_blueprints": [
+          {
+            "id": "ukb_cohort_design",
+            "title": "Define cohort logic, endpoints, and phenotype rules",
+            "description": "Specify inclusion and exclusion logic, outcome definitions, and derivation rules for exposures and covariates.",
+            "taskType": "analysis",
+            "recommended_skills": ["medhelp-pipeline-planner", "ukb-cohort-analysis", "medhelp-idea-generation"]
+          },
+          {
+            "id": "ukb_field_and_manifest_plan",
+            "title": "Draft the UKB extraction manifest and field map",
+            "description": "Create a field-level plan covering data returns, instances, coding tables, and derived variables.",
+            "taskType": "implementation",
+            "recommended_skills": ["medhelp-prepare-resources", "ukb-cohort-analysis", "statistical-analysis"]
+          }
+        ],
+        "recommended_skills": ["medhelp-pipeline-planner", "ukb-cohort-analysis", "medhelp-idea-generation", "medhelp-prepare-resources"]
+      },
+      "experiment": {
+        "required_elements": [
+          "sections.experiment.hypothesis_or_validation_goal",
+          "sections.experiment.dataset_or_data_source",
+          "sections.experiment.method_or_protocol",
+          "sections.experiment.evaluation_plan"
+        ],
+        "optional_elements": [
+          "sections.experiment.sensitivity_plan"
+        ],
+        "quality_gate": [
+          "Cohort extraction and derivation logic are reproducible",
+          "Pre-analysis statistics and cohort characterization are documented before formal modeling",
+          "The analysis plan includes missingness handling, confounding control, and validation strategy",
+          "Sensitivity analyses are sufficient to challenge the main claim"
+        ],
+        "task_blueprints": [
+          {
+            "id": "ukb_dataset_intake_and_qc",
+            "title": "Build the analysis-ready UKB cohort dataset",
+            "description": "Ingest approved UKB returns, produce a cohort manifest, perform QC, and save a cleaned analysis-ready table.",
+            "taskType": "implementation",
+            "recommended_skills": ["medhelp-prepare-resources", "ukb-cohort-analysis", "statistical-analysis"]
+          },
+          {
+            "id": "ukb_preanalysis_gate",
+            "title": "Run UKB pre-analysis statistics and go/no-go assessment",
+            "description": "Using the analysis-ready UKB cohort table, screen the key exposure, core outcome, event-time structure, and essential covariates with a combined clinical and epidemiologic pre-analysis to judge prevalence or incidence support, crude and minimally adjusted effects, overlap, confounding signals, and whether the study should continue, pause, or be revised.",
+            "taskType": "analysis",
+            "dependencies": ["ukb_dataset_intake_and_qc"],
+            "recommended_skills": ["clinical-preanalysis", "ukb-cohort-analysis", "statistical-analysis", "statsmodels", "scikit-survival"]
+          },
+          {
+            "id": "ukb_baseline_table",
+            "title": "Generate the UKB baseline table after pre-analysis sign-off",
+            "description": "Produce Table 1 and the cohort characterization only after the pre-analysis screen confirms that the design, exposure, outcome, and covariates are aligned or after the cohort plan has been revised.",
+            "taskType": "analysis",
+            "dependencies": ["ukb_preanalysis_gate"],
+            "recommended_skills": ["baseline-table", "ukb-cohort-analysis", "data-transform"]
+          },
+          {
+            "id": "ukb_primary_and_sensitivity_analysis",
+            "title": "Run the primary statistical analysis and sensitivity checks",
+            "description": "Execute the main model, validate assumptions, and summarize robustness checks and clinically meaningful effect sizes.",
+            "taskType": "analysis",
+            "dependencies": ["ukb_baseline_table"],
+            "recommended_skills": ["medhelp-experiment-analysis", "ukb-cohort-analysis", "statsmodels"]
+          }
+        ],
+        "recommended_skills": ["medhelp-experiment-analysis", "clinical-preanalysis", "baseline-table", "ukb-cohort-analysis", "statistical-analysis", "statsmodels"]
+      },
+      "publication": {
+        "required_elements": [
+          "sections.publication.paper_outline",
+          "sections.publication.figures_tables_plan",
+          "sections.publication.submission_checklist"
+        ],
+        "optional_elements": [
+          "sections.publication.artifact_plan"
+        ],
+        "quality_gate": [
+          "Methods and cohort derivation are documented precisely enough for peer review",
+          "Figures and tables cover cohort flow, baseline characteristics, and primary/sensitivity results",
+          "Reproducibility artifacts are clearly scoped within UKB access constraints"
+        ],
+        "task_blueprints": [
+          {
+            "id": "ukb_methods_and_results_writeup",
+            "title": "Draft cohort methods and results for publication",
+            "description": "Write the paper sections covering cohort derivation, statistical methods, and key findings with appropriate tables and figures.",
+            "taskType": "writing",
+            "recommended_skills": ["medhelp-paper-writing", "ukb-cohort-analysis", "medhelp-humanizer"]
+          },
+          {
+            "id": "ukb_reproducibility_bundle",
+            "title": "Prepare the reproducibility bundle and submission checklist",
+            "description": "Package the field manifest, analysis specification, and submission checklist while respecting UKB sharing constraints.",
+            "taskType": "analysis",
+            "recommended_skills": ["medhelp-reference-audit", "ukb-cohort-analysis", "medhelp-rclone-to-overleaf"]
+          }
+        ],
+        "recommended_skills": ["medhelp-paper-writing", "ukb-cohort-analysis", "medhelp-reference-audit", "medhelp-rclone-to-overleaf"]
+      },
+      "promotion": {
+        "required_elements": [
+          "sections.promotion.slide_outline"
+        ],
+        "optional_elements": [
+          "sections.promotion.deck_style",
+          "sections.promotion.homepage_plan",
+          "sections.promotion.tts_config",
+          "sections.promotion.video_assembly_plan"
+        ],
+        "quality_gate": [
+          "Presentation assets communicate cohort design, effect sizes, and practical significance clearly",
+          "Public-facing materials respect UKB data-use and sharing constraints"
+        ],
+        "task_blueprints": [
+          {
+            "id": "ukb_storyline_for_presentation",
+            "title": "Build the clinical storyline for slides and homepage",
+            "description": "Translate the study design and main findings into a concise, clinically meaningful narrative.",
+            "taskType": "scripting",
+            "recommended_skills": ["medhelp-figure-gen", "ukb-cohort-analysis", "scientific-slides"]
+          },
+          {
+            "id": "ukb_visual_delivery_assets",
+            "title": "Assemble figures, narration notes, and delivery assets",
+            "description": "Prepare a presentation-ready asset bundle with charts, talk notes, and any permitted public-facing visuals.",
+            "taskType": "delivery",
+            "recommended_skills": ["medhelp-figure-gen", "ukb-cohort-analysis", "paper-2-web"]
+          }
+        ],
+        "recommended_skills": ["medhelp-figure-gen", "ukb-cohort-analysis", "scientific-slides", "paper-2-web"]
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "badge": "Biomedical Literature Monitor",
+    "title": "Literature Monitor",
+    "compactDescription": "PubMed, Europe PMC, medRxiv & arXiv",
+    "description": "Monitor recent biomedical papers and preprints from PubMed, Europe PMC, medRxiv, and arXiv, then review them as a screening list organized by topic match, recency, source signal, and abstract quality.",
+    "chatTarget": "Current project target for intake: {{project}}",
+    "selectProjectHint": "Select a project in the sidebar first, then send papers into chat for analysis intake."
+  },
+  "sources": {
+    "pubmed": "PubMed",
+    "europepmc": "Europe PMC",
+    "medrxiv": "medRxiv",
+    "arxiv": "arXiv",
+    "zoteroLibrary": "Zotero Literature Center"
+  },
+  "zotero": {
+    "description": "Choose and import references from Zotero folders or upload BibTeX, then search, organize, manage, and send them to project chat.",
+    "import": "Import"
+  },
+  "actions": {
+    "settings": "Settings",
+    "refresh": "Update",
+    "clear": "Clear",
+    "searchAll": "Fetch Latest",
+    "searching": "Searching...",
+    "startSearch": "Start Search",
+    "openSettings": "Open Settings",
+    "resetDefaults": "Restore Defaults",
+    "save": "Save Changes",
+    "close": "Close",
+    "researchFromPaper": "Intake Analysis",
+    "selectProjectFirst": "Select a project first"
+  },
+  "status": {
+    "loading": "Loading literature monitor...",
+    "noActiveSources": "No active sources selected.",
+    "noResults": "No results yet",
+    "noResultsHint": "Complete the setup above, then click \"Start Search\"",
+    "resultsCount": "{{count}} results",
+    "resultsWithTotal": "{{count}} results from {{total}} scanned"
+  },
+  "view": {
+    "list": "List",
+    "card": "Cards"
+  },
+  "list": {
+    "rankSignal": "Rank / Final Score",
+    "paperSummary": "Paper Summary",
+    "screeningPanel": "Actions / Details"
+  },
+  "card": {
+    "abstract": "Abstract",
+    "showMore": "View abstract & screening signal",
+    "showLess": "Collapse",
+    "relevance": "Relevance",
+    "recency": "Recency",
+    "popularity": "Journal Signal",
+    "quality": "Quality",
+    "final": "Final",
+    "pdf": "PDF",
+    "comments": "comments",
+    "scoreBreakdown": "Screening Signal",
+    "matchedKeywords": "Matched keywords:",
+    "source": "Source",
+    "indexed": "Indexed",
+    "domain": "Domain"
+  },
+  "setup": {
+    "title": "Setup Guide",
+    "arxiv": {
+      "steps": [
+        "Click \"Settings\" to configure your research domains and keywords",
+        "Add arXiv categories that match your biomedical preprint interests",
+        "Adjust \"Results to show\" and \"Max results to scan\" as needed",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "pubmed": {
+      "steps": [
+        "Click \"Settings\" to define disease, cohort, or methods keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "PubMed will fetch recent records with abstracts and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "europepmc": {
+      "steps": [
+        "Click \"Settings\" to define cohort, disease, or methodology keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "Europe PMC will pull recent indexed papers with abstracts and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "medrxiv": {
+      "steps": [
+        "Click \"Settings\" to define translational, cohort, or disease keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "medRxiv will fetch recent preprints and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    }
+  },
+  "footer": {
+    "poweredBy": "Powered by"
+  },
+  "settings": {
+    "arxivTitle": "arXiv Settings",
+    "pubmedTitle": "PubMed Settings",
+    "europepmcTitle": "Europe PMC Settings",
+    "medrxivTitle": "medRxiv Settings",
+    "resultsToShow": "Results to show",
+    "maxArxivResults": "Max arXiv results to scan",
+    "maxPubmedResults": "Max PubMed results to scan",
+    "maxEuropepmcResults": "Max Europe PMC results to scan",
+    "maxMedrxivResults": "Max medRxiv results to scan",
+    "dateRangeDays": "Lookback days",
+    "researchDomains": "Research Domains",
+    "newDomainPlaceholder": "New domain name...",
+    "addDomain": "Add Domain",
+    "priority": "Priority",
+    "keywords": "Keywords",
+    "addPlaceholder": "Add...",
+    "arxivCategories": "arXiv Categories",
+    "credentialRequired": "Credential required"
+  }
+}

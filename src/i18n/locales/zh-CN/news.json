@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "badge": "生物医学文献动态",
+    "title": "文献动态",
+    "compactDescription": "PubMed、Europe PMC、medRxiv 与 arXiv",
+    "description": "监测来自 PubMed、Europe PMC、medRxiv 与 arXiv 的近期医学文献与预印本，并按主题匹配、时效性、来源信号与摘要质量整理成便于纳入分析的筛选列表。",
+    "chatTarget": "当前纳入目标项目：{{project}}",
+    "selectProjectHint": "先在侧边栏选择一个项目，再把论文送入聊天做纳入分析。"
+  },
+  "sources": {
+    "pubmed": "PubMed",
+    "europepmc": "Europe PMC",
+    "medrxiv": "medRxiv",
+    "arxiv": "arXiv",
+    "zoteroLibrary": "Zotero 文献中心"
+  },
+  "zotero": {
+    "description": "从 Zotero 文件夹选择并导入文献，也可上传 BibTeX；导入后可搜索、分类、批量管理并发送到项目聊天。",
+    "import": "导入"
+  },
+  "actions": {
+    "settings": "设置",
+    "refresh": "更新",
+    "clear": "清除",
+    "searchAll": "获取最新",
+    "searching": "搜索中...",
+    "startSearch": "开始搜索",
+    "openSettings": "打开设置",
+    "resetDefaults": "恢复默认",
+    "save": "保存更改",
+    "close": "关闭",
+    "researchFromPaper": "纳入分析",
+    "selectProjectFirst": "请先选择项目"
+  },
+  "status": {
+    "loading": "正在加载文献动态...",
+    "noActiveSources": "未选择任何来源。",
+    "noResults": "暂无结果",
+    "noResultsHint": "完成上方设置后，点击「开始搜索」",
+    "resultsCount": "{{count}} 条结果",
+    "resultsWithTotal": "{{count}} 条结果（共扫描 {{total}} 条）"
+  },
+  "view": {
+    "list": "条目",
+    "card": "卡片"
+  },
+  "list": {
+    "rankSignal": "排序 / 综合分",
+    "paperSummary": "文献题录",
+    "screeningPanel": "操作 / 详情"
+  },
+  "card": {
+    "abstract": "摘要",
+    "showMore": "查看摘要与筛选信号",
+    "showLess": "收起",
+    "relevance": "相关性",
+    "recency": "时效性",
+    "popularity": "期刊信号",
+    "quality": "质量",
+    "final": "综合",
+    "pdf": "PDF",
+    "comments": "评论",
+    "scoreBreakdown": "筛选信号",
+    "matchedKeywords": "匹配关键词：",
+    "source": "来源",
+    "indexed": "收录时间",
+    "domain": "匹配领域"
+  },
+  "setup": {
+    "title": "设置指南",
+    "arxiv": {
+      "steps": [
+        "点击「设置」配置你的研究领域和关键词",
+        "为每个领域补充合适的 arXiv 分类以筛选相关预印本",
+        "根据需要调整「显示结果数」和「最大扫描结果数」",
+        "点击「开始搜索」获取最新论文"
+      ]
+    },
+    "pubmed": {
+      "steps": [
+        "点击「设置」配置你的疾病、队列或方法学关键词",
+        "根据监测频率调整「回溯天数」与「最大扫描结果数」",
+        "PubMed 会自动抓取带摘要的近期文献并按相关性排序",
+        "点击「开始搜索」获取最新论文"
+      ]
+    },
+    "europepmc": {
+      "steps": [
+        "点击「设置」配置你的疾病、队列或方法学关键词",
+        "根据监测频率调整「回溯天数」与「最大扫描结果数」",
+        "Europe PMC 会自动抓取带摘要的近期文献并按相关性排序",
+        "点击「开始搜索」获取最新论文"
+      ]
+    },
+    "medrxiv": {
+      "steps": [
+        "点击「设置」配置你的转化医学、队列或疾病关键词",
+        "根据监测频率调整「回溯天数」与「最大扫描结果数」",
+        "medRxiv 会自动抓取近期预印本并按相关性排序",
+        "点击「开始搜索」获取最新论文"
+      ]
+    }
+  },
+  "footer": {
+    "poweredBy": "数据来源"
+  },
+  "settings": {
+    "arxivTitle": "arXiv 设置",
+    "pubmedTitle": "PubMed 设置",
+    "europepmcTitle": "Europe PMC 设置",
+    "medrxivTitle": "medRxiv 设置",
+    "resultsToShow": "显示结果数",
+    "maxArxivResults": "最大 arXiv 扫描结果数",
+    "maxPubmedResults": "最大 PubMed 扫描结果数",
+    "maxEuropepmcResults": "最大 Europe PMC 扫描结果数",
+    "maxMedrxivResults": "最大 medRxiv 扫描结果数",
+    "dateRangeDays": "回溯天数",
+    "researchDomains": "研究领域",
+    "newDomainPlaceholder": "新领域名称...",
+    "addDomain": "添加领域",
+    "priority": "优先级",
+    "keywords": "关键词",
+    "addPlaceholder": "添加...",
+    "arxivCategories": "arXiv 分类",
+    "credentialRequired": "需要凭证"
+  }
+}

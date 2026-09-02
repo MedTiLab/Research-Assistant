@@ -1,0 +1,597 @@
+{
+  "version": 1,
+  "stageOverrides": {
+    "medhelp-prepare-resources": {
+      "zh": "阶段: 资源准备",
+      "en": "Stage: Resource Prep"
+    },
+    "medhelp-idea-generation": {
+      "zh": "阶段: Idea生成",
+      "en": "Stage: Idea Generation"
+    },
+    "medhelp-idea-eval": {
+      "zh": "阶段: Idea评估",
+      "en": "Stage: Idea Evaluation"
+    },
+    "medhelp-deep-research": {
+      "zh": "阶段: 文献",
+      "en": "Stage: Literature"
+    },
+    "medhelp-experiment-analysis": {
+      "zh": "阶段: 实验分析",
+      "en": "Stage: Analysis"
+    },
+    "medhelp-paper-writing": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "medhelp-paper-reviewer": {
+      "zh": "阶段: 论文评审",
+      "en": "Stage: Paper Review"
+    },
+    "medhelp-reference-audit": {
+      "zh": "阶段: 论文评审",
+      "en": "Stage: Paper Review"
+    },
+    "medhelp-humanizer": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "medhelp-grant-proposal": {
+      "zh": "阶段: 基金撰写",
+      "en": "Stage: Grant Writing"
+    },
+    "medhelp-rclone-to-overleaf": {
+      "zh": "阶段: 发布同步",
+      "en": "Stage: Publication Sync"
+    },
+    "medhelp-rebuttal": {
+      "zh": "阶段: 论文评审",
+      "en": "Stage: Paper Review"
+    },
+    "making-academic-presentations": {
+      "zh": "阶段: 成果推广",
+      "en": "Stage: Promotion"
+    },
+    "medhelp-figure-gen": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "biorxiv-database": {
+      "zh": "阶段: 资源准备",
+      "en": "Stage: Resource Prep"
+    },
+    "scientific-writing": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "nature-data": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "nature-polishing": {
+      "zh": "阶段: 论文撰写",
+      "en": "Stage: Paper Writing"
+    },
+    "academic-researcher": {
+      "zh": "阶段: 文献",
+      "en": "Stage: Literature"
+    },
+    "ukb-cohort-analysis": {
+      "zh": "阶段: 实验分析",
+      "en": "Stage: Analysis"
+    },
+    "research-news": {
+      "zh": "阶段: 论文发现",
+      "en": "Stage: Paper Discovery"
+    },
+    "paper-analyzer": {
+      "zh": "阶段: 论文分析",
+      "en": "Stage: Paper Analysis"
+    },
+    "paper-image-extractor": {
+      "zh": "阶段: 图片提取",
+      "en": "Stage: Image Extraction"
+    },
+    "paper-finder": {
+      "zh": "阶段: 论文搜索",
+      "en": "Stage: Paper Search"
+    },
+    "legal-pdf-acquisition": {
+      "zh": "阶段: 文献获取",
+      "en": "Stage: Literature Acquisition"
+    },
+    "public-literature-download": {
+      "zh": "阶段: 文献获取",
+      "en": "Stage: Literature Acquisition"
+    },
+    "paper-download": {
+      "zh": "阶段: 文献获取",
+      "en": "Stage: Literature Acquisition"
+    },
+    "research-paper-downloader": {
+      "zh": "阶段: 文献获取",
+      "en": "Stage: Literature Acquisition"
+    },
+    "meta-zotero-fulltext-handoff": {
+      "zh": "阶段: 文献获取",
+      "en": "Stage: Literature Acquisition"
+    },
+    "zotero-medautodata-library": {
+      "zh": "阶段: 文献管理",
+      "en": "Stage: Literature Management"
+    },
+    "baseline-table": {
+      "zh": "分析: 三线表/基线表",
+      "en": "Analysis: Baseline Table"
+    },
+    "clinical-preanalysis": {
+      "zh": "分析: 预分析统计",
+      "en": "Analysis: Pre-Analysis"
+    },
+    "data-stats-analysis": {
+      "zh": "分析: 推断统计",
+      "en": "Analysis: Inferential Stats"
+    },
+    "statistical-analysis": {
+      "zh": "分析: 统计检验选择",
+      "en": "Analysis: Test Selection"
+    },
+    "statsmodels": {
+      "zh": "分析: 回归建模",
+      "en": "Analysis: Regression"
+    },
+    "scikit-survival": {
+      "zh": "分析: 生存分析",
+      "en": "Analysis: Survival"
+    },
+    "data-transform": {
+      "zh": "分析: 数据预处理",
+      "en": "Analysis: Preprocessing"
+    },
+    "exploratory-data-analysis": {
+      "zh": "分析: 探索性分析",
+      "en": "Analysis: EDA"
+    },
+    "data-visualization-biomedical": {
+      "zh": "分析: 医学可视化",
+      "en": "Analysis: Biomedical Viz"
+    },
+    "r-graph-selector": {
+      "zh": "分析: R图库选图",
+      "en": "Analysis: R Gallery Picker"
+    },
+    "data-viz-plots": {
+      "zh": "分析: 通用绘图",
+      "en": "Analysis: General Plots"
+    },
+    "data-visualization-expert": {
+      "zh": "分析: 叙事图表",
+      "en": "Analysis: Narrative Charts"
+    },
+    "scientific-visualization": {
+      "zh": "分析: 期刊图表",
+      "en": "Analysis: Journal Figures"
+    },
+    "pymc": {
+      "zh": "分析: 贝叶斯建模",
+      "en": "Analysis: Bayesian"
+    },
+    "medhelp-database-api-access": {
+      "zh": "数据库: 远程API",
+      "en": "Database: Remote API"
+    },
+    "mimiciii-skill": {
+      "zh": "数据库: MIMIC-III",
+      "en": "Database: MIMIC-III"
+    },
+    "mimiciv-skill": {
+      "zh": "数据库: MIMIC-IV 1.0",
+      "en": "Database: MIMIC-IV 1.0"
+    },
+    "mimiciv31-skill": {
+      "zh": "数据库: MIMIC-IV 3.1",
+      "en": "Database: MIMIC-IV 3.1"
+    },
+    "nwicu-skill": {
+      "zh": "数据库: NWICU",
+      "en": "Database: NWICU"
+    },
+    "eicu-skill": {
+      "zh": "数据库: eICU",
+      "en": "Database: eICU"
+    },
+    "sicdb-skill": {
+      "zh": "数据库: SICdb",
+      "en": "Database: SICdb"
+    },
+    "inspire-skill": {
+      "zh": "数据库: INSPIRE",
+      "en": "Database: INSPIRE"
+    },
+    "seer-skill": {
+      "zh": "数据库: SEER",
+      "en": "Database: SEER"
+    },
+    "pic-skill": {
+      "zh": "数据库: PIC",
+      "en": "Database: PIC"
+    },
+    "nhanes-skill": {
+      "zh": "数据库: NHANES",
+      "en": "Database: NHANES"
+    },
+    "elsa-skill": {
+      "zh": "数据库: ELSA",
+      "en": "Database: ELSA"
+    },
+    "hrs-skill": {
+      "zh": "数据库: HRS",
+      "en": "Database: HRS"
+    },
+    "klosa-skill": {
+      "zh": "数据库: KLoSA",
+      "en": "Database: KLoSA"
+    },
+    "lasi-skill": {
+      "zh": "数据库: LASI",
+      "en": "Database: LASI"
+    },
+    "mhas-skill": {
+      "zh": "数据库: MHAS",
+      "en": "Database: MHAS"
+    },
+    "share-skill": {
+      "zh": "数据库: SHARE",
+      "en": "Database: SHARE"
+    },
+    "charls-skill": {
+      "zh": "数据库: CHARLS",
+      "en": "Database: CHARLS"
+    },
+    "class-skill": {
+      "zh": "数据库: CLASS",
+      "en": "Database: CLASS"
+    },
+    "clhls-skill": {
+      "zh": "数据库: CLHLS",
+      "en": "Database: CLHLS"
+    },
+    "ukb-skill": {
+      "zh": "数据库: UK Biobank",
+      "en": "Database: UK Biobank"
+    },
+    "cfps-skill": {
+      "zh": "数据库: CFPS",
+      "en": "Database: CFPS"
+    },
+    "cgss-skill": {
+      "zh": "数据库: CGSS",
+      "en": "Database: CGSS"
+    },
+    "chfs-skill": {
+      "zh": "数据库: CHFS",
+      "en": "Database: CHFS"
+    },
+    "chip-skill": {
+      "zh": "数据库: CHIP",
+      "en": "Database: CHIP"
+    },
+    "chns-skill": {
+      "zh": "数据库: CHNS",
+      "en": "Database: CHNS"
+    },
+    "clds-skill": {
+      "zh": "数据库: CLDS",
+      "en": "Database: CLDS"
+    },
+    "css-skill": {
+      "zh": "数据库: CSS",
+      "en": "Database: CSS"
+    },
+    "geo-database": {
+      "zh": "数据库: GEO",
+      "en": "Database: GEO"
+    }
+  },
+  "domainOverrides": {
+    "biorxiv-database": {
+      "zh": "领域: q-bio",
+      "en": "Domain: q-bio"
+    },
+    "ukb-cohort-analysis": {
+      "zh": "领域: q-bio",
+      "en": "Domain: q-bio"
+    },
+    "scientific-writing": {
+      "zh": "领域: cs",
+      "en": "Domain: cs"
+    },
+    "academic-researcher": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "medhelp-grant-proposal": {
+      "zh": "领域: general",
+      "en": "Domain: general"
+    },
+    "research-news": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "paper-analyzer": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "paper-image-extractor": {
+      "zh": "领域: 视觉",
+      "en": "Domain: Vision"
+    },
+    "paper-finder": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "baseline-table": {
+      "zh": "领域: medical",
+      "en": "Domain: medical"
+    },
+    "clinical-preanalysis": {
+      "zh": "领域: medical",
+      "en": "Domain: medical"
+    },
+    "medhelp-database-api-access": {
+      "zh": "领域: general",
+      "en": "Domain: general"
+    },
+    "mimiciii-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "mimiciv-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "mimiciv31-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "nwicu-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "eicu-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "sicdb-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "inspire-skill": {
+      "zh": "领域: 围术期医学",
+      "en": "Domain: Perioperative Medicine"
+    },
+    "seer-skill": {
+      "zh": "领域: 肿瘤登记",
+      "en": "Domain: Cancer Registry"
+    },
+    "pic-skill": {
+      "zh": "领域: ICU/EHR",
+      "en": "Domain: ICU/EHR"
+    },
+    "nhanes-skill": {
+      "zh": "领域: 公共卫生调查",
+      "en": "Domain: Public Health Survey"
+    },
+    "elsa-skill": {
+      "zh": "领域: 老龄队列",
+      "en": "Domain: Aging Cohort"
+    },
+    "hrs-skill": {
+      "zh": "领域: 老龄队列",
+      "en": "Domain: Aging Cohort"
+    },
+    "klosa-skill": {
+      "zh": "领域: 老龄队列",
+      "en": "Domain: Aging Cohort"
+    },
+    "lasi-skill": {
+      "zh": "领域: 老龄队列",
+      "en": "Domain: Aging Cohort"
+    },
+    "mhas-skill": {
+      "zh": "领域: 老龄队列",
+      "en": "Domain: Aging Cohort"
+    },
+    "share-skill": {
+      "zh": "领域: SHARE/欧洲老龄队列",
+      "en": "Domain: SHARE/Aging Cohort"
+    },
+    "charls-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "class-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "clhls-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "ukb-skill": {
+      "zh": "领域: 生物样本库",
+      "en": "Domain: Biobank"
+    },
+    "cfps-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "cgss-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "chfs-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "chip-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "chns-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "clds-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "css-skill": {
+      "zh": "领域: 中国数据库",
+      "en": "Domain: China Database"
+    },
+    "data-visualization-biomedical": {
+      "zh": "领域: medical",
+      "en": "Domain: medical"
+    },
+    "r-graph-selector": {
+      "zh": "领域: medical",
+      "en": "Domain: medical"
+    },
+    "scikit-survival": {
+      "zh": "领域: medical",
+      "en": "Domain: medical"
+    },
+    "academic-figure-prompt": {
+      "zh": "领域: 视觉",
+      "en": "Domain: Vision"
+    },
+    "init-analysis": {
+      "zh": "领域: 生物信息学",
+      "en": "Domain: Bioinformatics"
+    },
+    "data-stats-analysis": {
+      "zh": "领域: 医疗",
+      "en": "Domain: Medical"
+    },
+    "data-transform": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "data-visualization-expert": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "data-viz-plots": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "docx": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "pdf": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "geo-database": {
+      "zh": "领域: 生物信息学",
+      "en": "Domain: Bioinformatics"
+    },
+    "legal-pdf-acquisition": {
+      "zh": "领域: 医疗",
+      "en": "Domain: Medical"
+    },
+    "markitdown": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "meta-zotero-fulltext-handoff": {
+      "zh": "领域: 医疗",
+      "en": "Domain: Medical"
+    },
+    "nature-citation": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-data": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-downloader": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-paper-card": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-paper2ppt": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-reader": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "nature-response": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "public-literature-download": {
+      "zh": "领域: 医疗",
+      "en": "Domain: Medical"
+    },
+    "venue-templates": {
+      "zh": "领域: 通用",
+      "en": "Domain: General"
+    },
+    "zotero-medautodata-library": {
+      "zh": "领域: 医疗",
+      "en": "Domain: Medical"
+    }
+  },
+  "platformNativeSkills": [
+    "clinical-preanalysis",
+    "dataset-discovery",
+    "medhelp-deep-research",
+    "medhelp-experiment-analysis",
+    "medhelp-figure-gen",
+    "medhelp-grant-proposal",
+    "medhelp-humanizer",
+    "medhelp-idea-eval",
+    "medhelp-idea-generation",
+    "medhelp-paper-reviewer",
+    "medhelp-paper-writing",
+    "medhelp-prepare-resources",
+    "medhelp-rclone-to-overleaf",
+    "medhelp-rebuttal",
+    "medhelp-reference-audit",
+    "legal-pdf-acquisition",
+    "public-literature-download",
+    "meta-zotero-fulltext-handoff",
+    "zotero-medautodata-library",
+    "ukb-cohort-analysis"
+  ],
+  "domainCsAiExceptions": [
+    "baseline-table",
+    "biorxiv-database",
+    "clinical-preanalysis",
+    "charls-skill",
+    "clhls-skill",
+    "data-stats-analysis",
+    "data-visualization-biomedical",
+    "r-graph-selector",
+    "elsa-skill",
+    "hrs-skill",
+    "klosa-skill",
+    "lasi-skill",
+    "mhas-skill",
+    "nhanes-skill",
+    "scikit-survival",
+    "share-skill",
+    "ukb-cohort-analysis",
+    "ukb-skill"
+  ]
+}
