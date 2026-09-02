@@ -1,0 +1,4 @@
+interface:
+  display_name: "MedHelp Database API Access And Router"
+  short_description: "Access MedHelp databases and preserve files and waves"
+  default_prompt: "Use $medhelp-database-api-access to verify source permissions, discover variables, preserve exact file/wave/column selections, and validate a bounded preview before exporting in a supported format without exposing tokens."

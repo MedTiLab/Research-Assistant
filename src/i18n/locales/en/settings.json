@@ -1,0 +1,1402 @@
+{
+  "title": "Settings",
+  "appVersion": "App version v{{version}}",
+  "resizeNav": "Drag to resize settings menu",
+  "tabs": {
+    "account": "Account",
+    "permissions": "Permissions",
+    "memory": "Memory",
+    "email": "Email",
+    "mcpServers": "MCP & Plugins",
+    "plugins": "Plugins & extensions",
+    "appearance": "◐ Appearance"
+  },
+  "piIntegrations": {
+    "scope": "Scope",
+    "userScope": "User",
+    "localScope": "Project",
+    "kernelScope": "Local Engine",
+    "userScopeHelp": "Saved for this account and available in every medhelpOS project.",
+    "localScopeHelp": "Available only in the selected project.",
+    "bundleVersion": "Version",
+    "testConnection": "Test connection",
+    "testSuccess": "Connected successfully",
+    "authorizationRequired": "Authorization required",
+    "moreTools": "{{count}} more",
+    "partialLoad": "MCP configuration failed to load for {{count}} projects; other configurations are shown.",
+    "nameExists": "This name already exists. Edit the existing connection or choose a new name.",
+    "title": "medhelpOS MCP & plugins",
+    "description": "Manage built-in plugins, offline bundles, and remote MCP connections together, with explicit per-item access for the agent.",
+    "accessHelp": "Research workbench access is allowed by default; other new plugins and connections default to off. medhelpOS loads an MCP only after access is allowed. Turning it off removes its tools and data from subsequent agent turns.",
+    "add": "Add MCP",
+    "project": "Project",
+    "selectProject": "Select a project to manage connections",
+    "refresh": "Refresh",
+    "plugins": "Plugins & extensions",
+    "scopeHelp": "Remote connections belong to your account and selected project. Bundles are shared by medhelpOS sessions on the current Local Engine.",
+    "saved": "Connection saved, but agent access is denied by default. Turn on Allow access before testing or authorizing it.",
+    "tested": "{{name}} connected successfully.",
+    "installed": "Bundle installed. medhelpOS will not load it until you turn on Allow access in the list.",
+    "mcpDisabled": "MCP is disabled on this Local Engine through MEDHELP_PI_MCP_ENABLED.",
+    "openAuthorization": "Authorize {{name}}, then return and select Test & tools",
+    "edit": "Edit",
+    "addMethod": "Connection method",
+    "remote": "Remote connection",
+    "json": "Import JSON",
+    "bundle": "Offline bundle",
+    "name": "Connection name",
+    "url": "MCP HTTPS URL",
+    "advanced": "Advanced settings (optional)",
+    "callback": "OAuth callback URL",
+    "remoteHelp": "Supports Streamable HTTP and OAuth, not custom authentication headers or legacy SSE. Saving does not call tools. Editing or disabling clears saved authorization.",
+    "save": "Save connection",
+    "jsonHelp": "Paste one server configuration, or an mcpServers object containing one server. Review the parsed fields before saving.",
+    "preview": "Parse & review",
+    "bundleHelp": "Install a self-contained Node.js .mcpb / .dxt bundle.",
+    "bundleFile": "Choose MCP bundle",
+    "trustBundle": "I trust this bundle's source and understand that using it runs its code on the current Local Engine.",
+    "bundleLimit": "Choose a .mcpb or .dxt file no larger than 256 MB.",
+    "install": "Install bundle",
+    "installing": "Installing…",
+    "cancel": "Close",
+    "search": "Search connection names or URLs",
+    "loading": "Loading…",
+    "noMatches": "No matching connections.",
+    "empty": "No MCP connections yet. Add a remote URL or install a bundle, then test it and inspect its tools here.",
+    "installedBundle": "Installed bundle · shared Local Engine",
+    "projectScope": "Project connection",
+    "testTools": "Test & tools",
+    "authorize": "Authorize",
+    "disable": "Disable",
+    "enable": "Enable",
+    "allowAccess": "Allow access",
+    "accessAllowed": "Allowed",
+    "accessToggle": "Toggle MCP access for {{name}}",
+    "delete": "Delete",
+    "deleteConfirm": "Delete “{{name}}” and its saved authorization? This does not uninstall bundles or undo completed operations.",
+    "toolsCount": "{{count}} tools discovered",
+    "searchTools": "Search tool names or descriptions",
+    "diagnostics": "{{count}} MCP loading notices",
+    "runtimeHelp": "Tests connect and read tool definitions without calling business tools. Access changes apply to the next agent turn; turning access off does not undo completed or in-flight operations.",
+    "builtins": {
+      "workbench": "Research workbench",
+      "workbenchHelp": "Read and update meetings, actions, theses, submissions, and today's status.",
+      "compute": "Compute resources",
+      "computeHelp": "Read configured local and remote compute nodes and run authorized compute tasks."
+    },
+    "status": {
+      "connected": "Connected",
+      "disconnected": "Not connected",
+      "needs_authorization": "Authorization needed",
+      "disabled": "Disabled"
+    },
+    "errors": {
+      "invalidJson": "Invalid JSON or field types.",
+      "oneServer": "Import one MCP server at a time.",
+      "useBundle": "This is a local command configuration. Use Offline bundle to install a trusted .mcpb / .dxt package.",
+      "httpOnly": "Streamable HTTP is supported; legacy SSE is not.",
+      "unsupportedCredentials": "This configuration contains authentication headers, environment variables or credentials. These cannot be imported or silently dropped. Use OAuth or an offline bundle.",
+      "httpsRequired": "Enter an HTTPS MCP URL without a username or password.",
+      "invalidName": "Names must start with a letter or digit and contain only letters, digits, dots, underscores or hyphens."
+    }
+  },
+  "piPlugins": {
+    "title": "medhelpOS plugins & extensions",
+    "description": "Inspect support and current runtime boundaries for native medhelpOS Extensions / Packages.",
+    "nativeTitle": "Native Extensions / Packages · Not enabled"
+  },
+  "memorySettings": {
+    "title": "Preferences",
+    "description": "Save explicit response-style, analysis-language, and workflow preferences. Supported agents share these preferences; they are not learned automatically and never mix with long-term memory.",
+    "categories": {
+      "general": "General",
+      "preference": "Preference",
+      "context": "Context",
+      "workflow": "Workflow"
+    },
+    "scopes": {
+      "user": "Global",
+      "project": "Project"
+    },
+    "actions": {
+      "add": "Add Preference",
+      "enable": "Enable preferences",
+      "disable": "Disable preferences",
+      "enableItem": "Enable this preference",
+      "disableItem": "Disable this preference"
+    },
+    "status": {
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "itemDisabled": "Disabled for prompt injection"
+    },
+    "form": {
+      "title": "Add a reusable preference",
+      "help": "Keep each item short and specific, for example preferred writing style, coding defaults, or recurring project context.",
+      "placeholder": "Example: Prefer concise executive summaries first, then detailed evidence. Use Python for analysis unless I ask otherwise.",
+      "selectProject": "Select a project...",
+      "counter": "{{count}} / {{max}}"
+    },
+    "list": {
+      "title": "Saved items ({{count}})",
+      "scope": "Applies across supported agents",
+      "empty": "No saved preferences yet."
+    },
+    "messages": {
+      "loading": "Loading preferences...",
+      "loadError": "Failed to load preferences",
+      "createError": "Failed to create preference",
+      "updateError": "Failed to update preference",
+      "deleteError": "Failed to delete preference",
+      "toggleError": "Failed to update global preference setting",
+      "toggleItemError": "Failed to update preference status",
+      "confirmDelete": "Delete this saved preference?",
+      "disabledNotice": "Preferences are currently disabled. Saved items remain stored, but they will not be injected into prompts."
+    }
+  },
+  "longTermMemorySettings": {
+    "title": "Long-term memory",
+    "description": "Stores durable facts, people, goals, and decisions across conversations. Preference instructions and project memory keep their own scopes so facts and behavioral instructions do not get mixed.",
+    "recall": {
+      "title": "Use memory in conversations",
+      "description": "When off, remembered content stays stored but is not carried into new conversations."
+    },
+    "autoCapture": {
+      "title": "Remember automatically",
+      "description": "Extract durable facts after completed turns. This setting is independent from memory recall above."
+    },
+    "safety": {
+      "title": "Safety check before saving",
+      "description": "Keys, passwords, access tokens, contact details, government IDs, and medical-record identifiers are rejected before storage. Automatic cleanup only removes older, unpinned automatic memories; manual memories are never evicted automatically."
+    },
+    "add": {
+      "title": "Ask the agent to remember",
+      "placeholder": "Example: My thesis is due in December 2026.",
+      "action": "Remember"
+    },
+    "list": {
+      "title": "Remembered facts ({{count}})",
+      "description": "Up to {{limit}} facts are stored. Recall is ranked by relevance to the current conversation, with pinned facts first.",
+      "search": "Search memory",
+      "clear": "Forget all",
+      "clearAutomatic": "Clean automatic",
+      "import": "Import",
+      "export": "Export",
+      "empty": "No long-term memories yet. Durable facts will appear here after conversations.",
+      "noMatches": "No memories match this search.",
+      "automatic": "Automatic",
+      "manual": "Manual",
+      "pinned": "Pinned",
+      "blockedSensitive": "Sensitive; excluded from recall",
+      "fromConversation": "Conversation {{id}}"
+    },
+    "filters": {
+      "all": "All {{count}}",
+      "manual": "Manual {{count}}",
+      "automatic": "Automatic {{count}}",
+      "pinned": "Pinned {{count}}"
+    },
+    "actions": {
+      "pin": "Pin memory",
+      "unpin": "Unpin memory",
+      "edit": "Edit memory",
+      "delete": "Delete memory",
+      "save": "Save changes",
+      "cancel": "Cancel editing"
+    },
+    "messages": {
+      "loading": "Loading memory...",
+      "loadError": "Failed to load memory",
+      "settingsError": "Failed to update memory settings",
+      "createError": "Failed to add memory",
+      "updateError": "Failed to update memory",
+      "deleteError": "Failed to forget this memory",
+      "pinError": "Failed to update pinned state",
+      "clearError": "Failed to clear memory",
+      "clearAutomaticError": "Failed to clean automatic memory",
+      "importError": "Failed to import long-term memory",
+      "importInvalid": "Choose a valid JSON file exported from long-term memory.",
+      "importTooLarge": "The import file must be 1 MB or smaller.",
+      "importResult": "Import complete: {{added}} added, {{skipped}} skipped, and {{rejected}} rejected for format or sensitive content.",
+      "sensitiveContent": "This content may contain a secret or personal identifier and was not saved. Remove sensitive information and try again.",
+      "limitReached": "Long-term memory is full. Unpin or delete an existing memory first.",
+      "confirmDelete": "Forget this memory?",
+      "confirmClear": "Forget all long-term memories? Preferences will not be affected.",
+      "confirmClearAutomatic": "Remove all unpinned automatic memories? Manual and pinned memories will be kept."
+    }
+  },
+  "memoryHub": {
+    "title": "Memory & preferences",
+    "description": "Long-term memory stores facts about you; preferences tell the agent how to respond and work. They share one management entry while remaining separate stores and prompt blocks. Project memory stays inside each project.",
+    "longTerm": "Long-term memory",
+    "preferences": "Preference instructions"
+  },
+  "account": {
+    "title": "Account",
+    "language": "Language",
+    "languageLabel": "Display Language",
+    "languageDescription": "Choose your preferred language for the interface",
+    "username": "Username",
+    "email": "Email",
+    "profile": "Profile",
+    "changePassword": "Change Password"
+  },
+  "mcp": {
+    "title": "MCP Servers",
+    "addServer": "Add Server",
+    "editServer": "Edit Server",
+    "deleteServer": "Delete Server",
+    "serverName": "Server Name",
+    "serverType": "Server Type",
+    "config": "Configuration",
+    "testConnection": "Test Connection",
+    "status": "Status",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "scope": {
+      "label": "Scope",
+      "user": "User",
+      "project": "Project"
+    }
+  },
+  "appearance": {
+    "title": "Appearance",
+    "theme": "Theme",
+    "codeEditor": "Code Editor",
+    "editorTheme": "Editor Theme",
+    "wordWrap": "Word Wrap",
+    "showMinimap": "Show Minimap",
+    "lineNumbers": "Line Numbers",
+    "fontSize": "Font Size"
+  },
+  "actions": {
+    "saveChanges": "Save Changes",
+    "resetToDefaults": "Reset to Defaults",
+    "cancelChanges": "Cancel Changes"
+  },
+  "quickSettings": {
+    "title": "Quick Settings",
+    "sections": {
+      "appearance": "◐ Appearance",
+      "toolDisplay": "Tool Display",
+      "viewOptions": "View Options",
+      "inputSettings": "Input Settings",
+      "whisperDictation": "Whisper Dictation"
+    },
+    "darkMode": "Dark Mode",
+    "autoExpandTools": "Auto-expand tools",
+    "showRawParameters": "Show raw parameters",
+    "showThinking": "Show thinking",
+    "autoScrollToBottom": "Auto-scroll to bottom",
+    "sendByCtrlEnter": "Send by Ctrl+Enter",
+    "sendByCtrlEnterDescription": "When enabled, pressing Ctrl+Enter will send the message instead of just Enter. This is useful for IME users to avoid accidental sends.",
+    "dragHandle": {
+      "dragging": "Dragging handle",
+      "closePanel": "Close settings panel",
+      "openPanel": "Open settings panel",
+      "draggingStatus": "Dragging...",
+      "toggleAndMove": "Click to toggle, drag to move"
+    },
+    "whisper": {
+      "modes": {
+        "default": "Default Mode",
+        "defaultDescription": "Direct transcription of your speech",
+        "prompt": "Prompt Enhancement",
+        "promptDescription": "Transform rough ideas into clear, detailed AI prompts",
+        "vibe": "Vibe Mode",
+        "vibeDescription": "Format ideas as clear agent instructions with details"
+      }
+    }
+  },
+  "mainTabs": {
+    "userAccount": "Personal Info",
+    "imChannels": "IM Channels",
+    "trash": "Trash",
+    "compute": "Compute Resources",
+    "agents": "Agents",
+    "mcp": "MCP & Plugins",
+    "models": "Models",
+    "preferences": "Preferences",
+    "memory": "Memory & preferences",
+    "email": "Email",
+    "appearance": "Appearance",
+    "dataPaths": "Data Drives",
+    "git": "Git",
+    "tokens": "Token",
+    "apiTokens": "Connectors",
+    "tasks": "Tasks"
+  },
+  "computePanel": {
+    "syncTarget": "Sync project",
+    "syncUpload": "Sync upload",
+    "syncDownload": "Sync download",
+    "syncingUpload": "Uploading…",
+    "syncingDownload": "Downloading…",
+    "syncUploadSuccess": "Project uploaded to the compute node.",
+    "syncDownloadSuccess": "Compute node results downloaded to this machine."
+  },
+  "tokenUsage": {
+    "title": "Token Statistics",
+    "description": "Summary of today's and this week's token usage across the current project list.",
+    "todayTokens": "Today Tokens",
+    "weekTokens": "This Week Tokens",
+    "generatedAt": "Generated at {{time}}",
+    "projectBreakdown": "Project Breakdown",
+    "empty": "No projects available for token statistics yet."
+  },
+  "trash": {
+    "title": "Project Trash",
+    "description": "Identify deleted projects by name and original path, then restore or remove the whole project.",
+    "loadFailed": "Could not load project trash. Please refresh to try again.",
+    "refresh": "Refresh"
+  },
+  "userAccount": {
+    "title": "Personal Info",
+    "description": "Manage your profile and signed-in state here, including switching accounts and signing out.",
+    "profile": {
+      "sections": {
+        "account": "Account",
+        "research": "Research Info"
+      },
+      "aboutYou": {
+        "title": "About You",
+        "label": "Your details",
+        "placeholder": "Example: You are a doctor who does clinical research and wants help reviewing papers, writing manuscripts, and analyzing data.",
+        "counter": "{{count}} / {{max}}"
+      },
+      "badges": {
+        "loginIdentity": "Sign-in identity",
+        "optional": "Optional"
+      },
+      "fields": {
+        "notificationEmail": "Email",
+        "displayName": "Display Name",
+        "fullName": "Full Name",
+        "institution": "Institution",
+        "organization": "Organization",
+        "academicTitle": "Title",
+        "researchField": "Research Field",
+        "usagePurpose": "Purpose",
+        "googleScholarUrl": "Google Scholar",
+        "websiteUrl": "Personal/Lab Website",
+        "orcid": "ORCID ID"
+      },
+      "placeholders": {
+        "notificationEmail": "name@example.com",
+        "displayName": "Name shown in the app",
+        "fullName": "Full name or publication name",
+        "institution": "Institution",
+        "organization": "Department, team, or lab",
+        "academicTitle": "Professor / Physician / Researcher",
+        "researchField": "Clinical prediction, lab biomarkers...",
+        "usagePurpose": "Manuscripts, grants, database analysis...",
+        "googleScholarUrl": "https://scholar.google.com/...",
+        "websiteUrl": "https://...",
+        "orcid": "0000-0000-0000-0000"
+      },
+      "actions": {
+        "edit": "Edit Personal Info",
+        "save": "Save Personal Info",
+        "saving": "Saving...",
+        "reset": "Reset"
+      },
+      "saved": "Personal info saved.",
+      "errors": {
+        "invalidEmail": "Enter a valid email address.",
+        "saveFailed": "Failed to save personal info",
+        "networkError": "Network error. Please try again."
+      }
+    },
+    "currentAccount": "Current account",
+    "currentUserFallback": "Unnamed user",
+    "noNotificationEmail": "No notification email set",
+    "switchHint": "Switching accounts replaces the current session directly, without sending you back to a separate login page first.",
+    "switchFormTitle": "Sign in to another account",
+    "switchFormDescription": "Use the form below to replace the current signed-in account.",
+    "replaceSessionHint": "After a successful sign-in, the current account will be replaced by the new one.",
+    "mode": {
+      "login": "Sign In",
+      "register": "Register"
+    },
+    "status": {
+      "loggedIn": "Signed in",
+      "loggedOut": "Signed out"
+    },
+    "actions": {
+      "switchAccount": "Switch Account",
+      "logout": "Sign Out"
+    },
+    "localKernelSettings": {
+      "eyebrow": "Local runtime",
+      "title": "Local Engine",
+      "description": "View the Local Engine connection, version, and available updates.",
+      "status": {
+        "disconnected": "Disconnected"
+      }
+    },
+    "avatar": {
+      "title": "Avatar",
+      "description": "Upload an image or choose from existing avatars.",
+      "currentLabel": "{{username}} avatar",
+      "uploadOption": "Upload",
+      "catalogOption": "Change",
+      "uploadButton": "Upload image",
+      "uploading": "Uploading...",
+      "uploadHint": "PNG, JPG, WebP, or GIF. 5MB max.",
+      "searchPlaceholder": "Search avatars",
+      "saved": "Avatar updated.",
+      "empty": "No avatars match this filter.",
+      "categories": {
+        "all": "All",
+        "medical": "Medical",
+        "research": "Research",
+        "data": "Data",
+        "nature": "Nature",
+        "abstract": "Abstract",
+        "classic": "Classic"
+      },
+      "errors": {
+        "saveFailed": "Failed to update avatar",
+        "uploadFailed": "Failed to upload avatar",
+        "invalidFile": "Choose an image file.",
+        "fileTooLarge": "Image must be 5MB or smaller.",
+        "networkError": "Network error. Please try again."
+      }
+    },
+    "projectActivity": {
+      "title": "Project activity",
+      "description": "Projects opened over the past year.",
+      "loading": "Loading project activity...",
+      "empty": "No project opens in the past year.",
+      "retry": "Retry",
+      "stats": {
+        "opens": "Opens",
+        "projects": "Projects",
+        "activeDays": "Active days"
+      },
+      "weekdays": {
+        "mon": "Mon",
+        "wed": "Wed",
+        "fri": "Fri"
+      },
+      "legend": {
+        "less": "Less",
+        "more": "More"
+      },
+      "tooltip": "{{date}}: {{projects}} projects opened, {{opens}} opens",
+      "errors": {
+        "loadFailed": "Failed to load project activity"
+      }
+    },
+    "password": {
+      "title": "Change Password",
+      "description": "Enter your current password and set a new sign-in password.",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "submit": "Update Password",
+      "loading": "Updating...",
+      "success": "Password updated. Use the new password the next time you sign in.",
+      "placeholders": {
+        "current": "Enter current password",
+        "new": "Enter new password",
+        "confirm": "Re-enter new password"
+      },
+      "errors": {
+        "requiredFields": "Please fill in all password fields",
+        "passwordLength": "New password must be at least 6 characters",
+        "passwordMismatch": "New passwords do not match",
+        "currentIncorrect": "Current password is incorrect",
+        "updateFailed": "Failed to update password",
+        "networkError": "Network error. Please try again."
+      }
+    }
+  },
+  "imChannels": {
+    "title": "IM Channels",
+    "description": "Configure domestic Chinese IM entry points. Every message is handled by the medhelpOS agent.",
+    "enabled": "Enabled",
+    "notConfigured": "Not configured",
+    "notConfiguredDetail": "No credentials have been saved for this channel yet.",
+    "unknown": "Unknown account",
+    "defaultAgent": {
+      "title": "Bound Agent",
+      "description": "All IM channels are fixed to the custom medhelpOS agent. Claude and Codex are not enabled here.",
+      "pi": "medhelpOS Agent"
+    },
+    "domestic": {
+      "title": "Chinese IM Channels",
+      "description": "Select a channel to configure. Green means connected; amber means configured with a connection issue."
+    },
+    "runtime": {
+      "running": "The live connection is running and messages are routed to medhelpOS.",
+      "stopped": "Saved, but the live connection is not running.",
+      "error": "Last error: {{error}}"
+    },
+    "commandHelp": {
+      "title": "IM Command Help",
+      "description": "All connected Chinese IM channels share these project and session commands.",
+      "badge": "Send in IM",
+      "items": [
+        {
+          "command": "/projects",
+          "description": "List projects available to this account"
+        },
+        {
+          "command": "/use 1",
+          "description": "Select a project by number or name"
+        },
+        {
+          "command": "/create Project Name",
+          "description": "Create and select a new workspace project"
+        },
+        {
+          "command": "/project",
+          "description": "Show the project bound to this chat"
+        },
+        {
+          "command": "/new",
+          "description": "Start a new agent session in the current project"
+        },
+        {
+          "command": "/help",
+          "description": "Show help in the IM conversation"
+        }
+      ]
+    },
+    "actions": {
+      "setup": "Set Up",
+      "edit": "Edit",
+      "save": "Save",
+      "disable": "Disable",
+      "dismiss": "Dismiss",
+      "retry": "Retry",
+      "testConnection": "Test Connection"
+    },
+    "messages": {
+      "loading": "Loading IM channel settings...",
+      "loadFailed": "Failed to load IM channel settings",
+      "connecting": "Connecting...",
+      "saved": "IM channel saved.",
+      "disabled": "IM channel disabled.",
+      "saveFailed": "Failed to save IM channel",
+      "disableFailed": "Failed to disable IM channel",
+      "testPassed": "Credentials verified",
+      "testFailed": "Connection test failed",
+      "qrFailed": "QR flow failed"
+    },
+    "feishu": {
+      "title": "Feishu",
+      "tileHint": "QR or app credentials",
+      "description": "Use a Feishu Open Platform bot or a scan-created personal agent app.",
+      "connectedAs": "Connected: {{appId}}",
+      "domain": "Domain",
+      "connectionMode": "Connection Mode",
+      "qrScan": "QR Code Scan",
+      "qrScanDesc": "Scan with Feishu to finish app registration",
+      "manualInput": "Manual Input",
+      "manualInputDesc": "Enter the Open Platform App ID and App Secret",
+      "startQr": "Generate QR Code",
+      "scanPrompt": "Open Feishu and scan the QR code",
+      "qrSuccess": "Feishu app created. Configuration has been saved and enabled.",
+      "qrAlt": "Feishu configuration QR code"
+    },
+    "dingtalk": {
+      "title": "DingTalk",
+      "tileHint": "Stream-mode bot",
+      "description": "Receive and send bot messages over a DingTalk Stream connection.",
+      "connectedAs": "Connected: {{id}}",
+      "idLabel": "Client ID / AppKey",
+      "secretLabel": "Client Secret / AppSecret"
+    },
+    "wecom": {
+      "title": "WeCom",
+      "tileHint": "Smart Bot connection",
+      "description": "Connect a WeCom Smart Bot through the official live connection.",
+      "connectedAs": "Connected: {{id}}",
+      "idLabel": "Bot ID",
+      "secretLabel": "Bot Secret"
+    },
+    "qq": {
+      "title": "QQ",
+      "tileHint": "QQ Open Platform bot",
+      "description": "Connect a QQ Open Platform bot for direct, group, and channel messages.",
+      "connectedAs": "Connected: {{id}}",
+      "idLabel": "App ID",
+      "secretLabel": "App Secret"
+    },
+    "weixin": {
+      "title": "WeChat (iLink)",
+      "tileHint": "Sign in with QR",
+      "description": "Connect a WeChat messaging channel with iLink credentials.",
+      "connectedAs": "Connected: {{accountId}}",
+      "runtimeRunning": "Background receiving is running; WeChat messages are routed to medhelpOS.",
+      "runtimeStopped": "Background receiving is not running. Save again or sign in with QR code.",
+      "runtimeError": "Last error: {{error}}",
+      "qrLogin": "QR Login",
+      "qrLoginDesc": "Generate a WeChat login QR code through weixin-ilink",
+      "relogin": "Re-login",
+      "loadingQr": "Generating QR code...",
+      "scanPrompt": "Open WeChat and scan the QR code to sign in",
+      "loginSuccess": "WeChat login succeeded. Credentials have been saved.",
+      "manualInput": "Manual Input",
+      "manualInputDesc": "Enter the iLink baseUrl and botToken",
+      "baseUrl": "iLink Base URL",
+      "botToken": "Bot Token",
+      "accountId": "Account ID",
+      "accountIdPlaceholder": "Optional",
+      "qrAlt": "WeChat login QR code"
+    }
+  },
+  "dataPathSettings": {
+    "title": "Data Drives",
+    "description": "Register folders outside the workspace, such as data drives D:/ or F:/, so agents and the file browser can read them. Only folders added here are allowed, not the whole drive.",
+    "localKernelRequired": "Connect the Local Engine on this computer before reading or saving local path settings.",
+    "workspaceRoot": {
+      "label": "Workspace root",
+      "description": "New projects start from this folder by default."
+    },
+    "allowedFolders": {
+      "label": "Allowed data folders",
+      "description": "Register data folders for read-only agent use; save analysis outputs in the project.",
+      "empty": "None yet. For now, only the workspace is accessible.",
+      "placeholder": "Absolute folder path, e.g. /data or D:\\experiments",
+      "help": "Paste an absolute path, click Add, then Save All. Agents receive the folders on the next turn without adding writable workspace roots. Terminal commands remain subject to each engine's sandbox settings; medhelpOS has no built-in directory sandbox.",
+      "browse": "Browse",
+      "add": "Add",
+      "select": "Select",
+      "selectFolderTitle": "Select data folder",
+      "useThisFolder": "Add this folder",
+      "thisPc": "This PC",
+      "missing": "Missing"
+    },
+    "saveAll": "Save All",
+    "saving": "Saving...",
+    "refresh": "Refresh",
+    "saved": "Path settings saved.",
+    "errors": {
+      "loadFailed": "Failed to load path settings",
+      "saveFailed": "Failed to save path settings"
+    }
+  },
+  "appearanceSettings": {
+    "fontScale": {
+      "title": "Font size",
+      "description": "Scale each area independently. Interface size is the baseline; chat size is applied on top. Changes are saved automatically.",
+      "interface": {
+        "label": "Interface",
+        "description": "The entire workspace, including the sidebar, panels, and dialogs."
+      },
+      "chat": {
+        "label": "Chat",
+        "description": "The conversation message area."
+      }
+    },
+    "darkMode": {
+      "label": "Dark Mode",
+      "description": "Toggle between light and pure black dark themes"
+    },
+    "completionSound": {
+      "label": "Task completion sound",
+      "description": "Play a sound when a task finishes while you are in another app, conversation, or workspace view.",
+      "preview": "Preview",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "accentColor": {
+      "label": "Color Theme",
+      "description": "Pick an accent color. Works in both light and dark mode.",
+      "themes": {
+        "emerald": "Emerald",
+        "azure": "Azure",
+        "terracotta": "Terracotta",
+        "violet": "Violet",
+        "amber": "Amber"
+      }
+    },
+    "telemetry": {
+      "label": "Data Transfer",
+      "description": "Off by default. When enabled, the client calls this app's telemetry API; the server does not store or forward data."
+    },
+    "appRestart": {
+      "label": "Restart Application",
+      "description": "Restart the desktop app and backend to apply changes or recover from a stuck state.",
+      "button": "Restart",
+      "restarting": "Restarting...",
+      "title": "Restart the app and backend",
+      "failed": "Failed to restart. Please try again."
+    },
+    "projectSorting": {
+      "label": "Project Sorting",
+      "description": "How projects are ordered in the sidebar",
+      "alphabetical": "Alphabetical",
+      "recentActivity": "Recent Activity",
+      "manual": "Manual"
+    },
+    "defaultProjectPath": {
+      "label": "Default Project Path",
+      "description": "Default starting folder for new projects. You can still choose any safe local folder in your home directory.",
+      "browse": "Browse",
+      "save": "Save",
+      "reset": "Reset",
+      "select": "Select",
+      "selectFolderTitle": "Select folder",
+      "useThisFolder": "Use this folder",
+      "path": "Path:",
+      "cancel": "Cancel",
+      "showHidden": "Show hidden folders",
+      "hideHidden": "Hide hidden folders",
+      "createFolder": "Create folder",
+      "newFolderName": "New folder name",
+      "create": "Create",
+      "noSubfolders": "No subfolders found",
+      "browseFailed": "Failed to load folders",
+      "createFolderFailed": "Failed to create folder",
+      "saved": "Saved",
+      "localKernelSource": "Saved through the Local Engine running on this computer.",
+      "invalidPath": "Invalid directory path"
+    },
+    "codeEditor": {
+      "title": "Code Editor",
+      "toolCallsDisplay": {
+        "label": "Auto-expand tool calls",
+        "description": "When off, tool cards stay compact until you click to view their full contents."
+      },
+      "rawParametersDisplay": {
+        "label": "Raw parameters display",
+        "description": "Show raw input parameters for tool calls."
+      },
+      "thinkingDisplay": {
+        "label": "Thinking process display",
+        "description": "Show thinking or reasoning content returned by the model."
+      },
+      "theme": {
+        "label": "Editor Theme",
+        "description": "Default theme for the code editor"
+      },
+      "wordWrap": {
+        "label": "Word Wrap",
+        "description": "Enable word wrapping by default in the editor"
+      },
+      "showMinimap": {
+        "label": "Show Minimap",
+        "description": "Display a minimap for easier navigation in diff view"
+      },
+      "lineNumbers": {
+        "label": "Show Line Numbers",
+        "description": "Display line numbers in the editor"
+      },
+      "fontSize": {
+        "label": "Font Size",
+        "description": "Editor font size in pixels"
+      },
+      "previewFontSize": {
+        "label": "Preview Font Size",
+        "description": "Markdown preview font size in pixels"
+      }
+    }
+  },
+  "mcpForm": {
+    "title": {
+      "add": "Add MCP Server",
+      "edit": "Edit MCP Server"
+    },
+    "importMode": {
+      "form": "Form Input",
+      "json": "JSON Import",
+      "bundle": "Local Package"
+    },
+    "bundle": {
+      "title": "Install a local MCP package",
+      "description": "Choose an .mcpb file. MedHelp validates and installs it locally, runs it with the Node.js runtime bundled with the app, and mounts it on medhelpOS automatically. No network connection or separate dependency installation is required.",
+      "chooseFile": "Choose an .mcpb file",
+      "supportedFiles": "Supports .mcpb and legacy .dxt files up to 256 MB",
+      "fileSize": "Selected · {{size}} MB",
+      "securityNotice": "Package code is not executed during installation, but it will run when Claude invokes its tools. MedHelp blocks unsafe paths, symbolic links, and malformed archives; only install MCP packages from sources you trust.",
+      "fileRequired": "Choose an MCP package first.",
+      "installFailed": "Failed to install the MCP package."
+    },
+    "scope": {
+      "label": "Scope",
+      "userGlobal": "User (Global)",
+      "projectLocal": "Project (Local)",
+      "userDescription": "User scope: Available across all projects on your machine",
+      "projectDescription": "Local scope: Only available in the selected project",
+      "cannotChange": "Scope cannot be changed when editing an existing server"
+    },
+    "fields": {
+      "serverName": "Server Name",
+      "transportType": "Transport Type",
+      "command": "Command",
+      "arguments": "Arguments (one per line)",
+      "jsonConfig": "JSON Configuration",
+      "url": "URL",
+      "envVars": "Environment Variables (KEY=value, one per line)",
+      "headers": "Headers (KEY=value, one per line)",
+      "selectProject": "Select a project..."
+    },
+    "placeholders": {
+      "serverName": "my-server"
+    },
+    "validation": {
+      "missingType": "Missing required field: type",
+      "stdioRequiresCommand": "stdio type requires a command field",
+      "httpRequiresUrl": "{{type}} type requires a url field",
+      "invalidJson": "Invalid JSON format",
+      "jsonHelp": "Paste your MCP server configuration in JSON format. Example formats:",
+      "jsonExampleStdio": "• stdio: {\"type\":\"stdio\",\"command\":\"npx\",\"args\":[\"@upstash/context7-mcp\"]}",
+      "jsonExampleHttp": "• http/sse: {\"type\":\"http\",\"url\":\"https://api.example.com/mcp\"}"
+    },
+    "configDetails": "Configuration Details (from {{configFile}})",
+    "projectPath": "Path: {{path}}",
+    "actions": {
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "installing": "Installing...",
+      "installBundle": "Install MCP Package",
+      "addServer": "Add Server",
+      "updateServer": "Update Server"
+    }
+  },
+  "saveStatus": {
+    "success": "Settings saved successfully!",
+    "error": "Failed to save settings",
+    "saving": "Saving..."
+  },
+  "footerActions": {
+    "save": "Save Settings",
+    "cancel": "Cancel"
+  },
+  "git": {
+    "title": "Git Configuration",
+    "description": "Configure your git identity for commits. These settings will be applied globally via git config --global",
+    "name": {
+      "label": "Git Name",
+      "help": "Your name for git commits"
+    },
+    "email": {
+      "label": "Git Email",
+      "help": "Your email for git commits"
+    },
+    "actions": {
+      "save": "Save Configuration",
+      "saving": "Saving..."
+    },
+    "status": {
+      "success": "Saved successfully"
+    }
+  },
+  "connectors": {
+    "title": "Connectors",
+    "description": "Manage external service connections such as email and database access.",
+    "status": {
+      "loading": "Loading connector status...",
+      "configured": "Configured",
+      "notConfigured": "Not configured"
+    },
+    "actions": {
+      "back": "Back"
+    },
+    "email": {
+      "title": "Email Connection",
+      "description": "Configure notification and sender email addresses for Auto Research."
+    },
+    "database": {
+      "title": "MedHelp Database Connection",
+      "description": "Configure the remote MedHelp database API Base URL and PAT."
+    }
+  },
+  "databaseApiAccess": {
+    "title": "Database Access API",
+    "description": "Configure the remote MedHelp database API Base URL and PAT for online or off-host /api/v1 dataset access; MedHelp App agents automatically use this connection.",
+    "connection": {
+      "title": "Remote Database API",
+      "connected": "Connected. This PAT can access {{count}} data sources.",
+      "notConfigured": "Not connected yet.",
+      "unverified": "A PAT is saved but has not passed connection verification.",
+      "invalidCredentials": "Connection failed: the PAT is invalid, expired, or revoked.",
+      "accessDenied": "Connection failed: this PAT has no database access.",
+      "unavailable": "The Database API is temporarily unavailable. Retry the connection.",
+      "invalidResponse": "The target is not a compatible MedHelp Database API."
+    },
+    "baseUrl": {
+      "label": "API Base URL",
+      "help": "Defaults to the production endpoint; /api/v1 is appended automatically."
+    },
+    "token": {
+      "label": "Bearer PAT",
+      "placeholder": "Paste an mdpat_ access token",
+      "placeholderConfigured": "Leave blank to keep the saved PAT",
+      "help": "The PAT is stored in the current user's credential store and injected only into the current user's agent sessions; it is not written to system environment variables or returned in list responses.",
+      "show": "Show access token",
+      "hide": "Hide access token"
+    },
+    "curl": {
+      "title": "Dataset download example"
+    },
+    "actions": {
+      "test": "Test connection",
+      "testing": "Testing...",
+      "save": "Connect and save",
+      "saving": "Connecting...",
+      "clear": "Clear",
+      "clearing": "Clearing...",
+      "copyCurl": "Copy curl",
+      "copied": "Copied"
+    },
+    "status": {
+      "loading": "Loading database API settings...",
+      "testSucceeded": "Connection test passed with {{count}} accessible data sources. Click Connect and save to make it available to agents.",
+      "testSucceededSaved": "The saved connection test passed with {{count}} accessible data sources.",
+      "testFailed": "Failed to test the Database API connection",
+      "saved": "Database API connection verified and saved.",
+      "cleared": "Database API settings cleared.",
+      "loadFailed": "Failed to load database API settings",
+      "invalidBaseUrl": "Enter a valid API Base URL.",
+      "tokenRequired": "Enter a database API PAT first.",
+      "credentialsRejected": "The PAT is invalid, expired, or revoked.",
+      "accessNotAuthorized": "This PAT has no database access.",
+      "serviceUnavailable": "The Database API is temporarily unavailable. Try again later.",
+      "unexpectedResponse": "The target did not return a compatible Database API response.",
+      "saveFailed": "Failed to save database API settings",
+      "clearFailed": "Failed to clear database API settings"
+    }
+  },
+  "apiKeys": {
+    "title": "API Keys",
+    "description": "Generate API keys to access the external API from other applications.",
+    "newKey": {
+      "alertTitle": "⚠️ Save Your API Key",
+      "alertMessage": "This is the only time you'll see this key. Store it securely.",
+      "iveSavedIt": "I've saved it"
+    },
+    "form": {
+      "placeholder": "API Key Name (e.g., Production Server)",
+      "createButton": "Create",
+      "cancelButton": "Cancel"
+    },
+    "newButton": "New API Key",
+    "empty": "No API keys created yet.",
+    "list": {
+      "created": "Created:",
+      "lastUsed": "Last used:"
+    },
+    "confirmDelete": "Are you sure you want to delete this API key?",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "github": {
+      "title": "GitHub Tokens",
+      "description": "Add GitHub Personal Access Tokens to clone private repositories via the external API.",
+      "descriptionAlt": "Add GitHub Personal Access Tokens to clone private repositories. You can also pass tokens directly in API requests without storing them.",
+      "addButton": "Add Token",
+      "form": {
+        "namePlaceholder": "Token Name (e.g., Personal Repos)",
+        "tokenPlaceholder": "GitHub Personal Access Token (ghp_...)",
+        "descriptionPlaceholder": "Description (optional)",
+        "addButton": "Add Token",
+        "cancelButton": "Cancel",
+        "howToCreate": "How to create a GitHub Personal Access Token →"
+      },
+      "empty": "No GitHub tokens added yet.",
+      "added": "Added:",
+      "confirmDelete": "Are you sure you want to delete this GitHub token?"
+    },
+    "gemini": {
+      "title": "Gemini API Key",
+      "purpose": "For paper image generation",
+      "form": {
+        "keyLabel": "Gemini API Key",
+        "keyPlaceholder": "Gemini API Key (AIza... or sk-...)",
+        "saveButton": "Save Configuration"
+      },
+      "confirmDelete": "Are you sure you want to delete this Gemini API key?",
+      "baseUrl": {
+        "title": "Gemini API Base URL",
+        "placeholder": "https://api.go-model.com",
+        "confirmDelete": "Are you sure you want to delete this Gemini Base URL?",
+        "invalid": "Please enter a valid Gemini API Base URL."
+      }
+    },
+    "apiDocsLink": "API Documentation",
+    "documentation": {
+      "title": "External API Documentation",
+      "description": "Learn how to use the external API to trigger Claude/Codex sessions from your applications.",
+      "viewLink": "View API Documentation →"
+    },
+    "loading": "Loading...",
+    "runtimeReset": {
+      "title": "Runtime reset (panic button)",
+      "description": "If the backend gets stuck (sessions keep processing and no output), abort active sessions and clear in-memory caches. History is not deleted.",
+      "action": "Reset runtime now",
+      "resetting": "Resetting…",
+      "success": "Done.",
+      "failed": "Failed:",
+      "confirm": "Reset runtime? This will abort all active sessions and clear in-memory caches. It will not delete session history."
+    },
+    "version": {
+      "updateAvailable": "Update available: v{{version}}"
+    },
+    "zotero": {
+      "title": "Zotero Integration",
+      "addButton": "Configure",
+      "description": "Connect to Zotero to sync your global reference library. The local app is auto-detected; for cloud access, provide your API key and user ID.",
+      "connected": "Connected via {{mode}}",
+      "notConnected": "Not connected — start Zotero desktop or configure API key below",
+      "apiDisabled": "Zotero is running but local API access is disabled. Enable it in Zotero → Settings → Advanced.",
+      "empty": "No Zotero Web API credentials configured. Local app will be auto-detected.",
+      "confirmDelete": "Delete this Zotero credential?",
+      "form": {
+        "apiKeyPlaceholder": "Zotero API Key",
+        "userIdPlaceholder": "Zotero User ID (numeric)",
+        "saveButton": "Save",
+        "howToCreate": "Create a Zotero API key at zotero.org/settings/keys"
+      }
+    }
+  },
+  "emailSettings": {
+    "title": "Email Notifications",
+    "description": "Configure recipient, sender, and delivery settings for Auto Research email notifications.",
+    "notificationEmail": {
+      "title": "Notification Email",
+      "label": "Recipient Email",
+      "placeholder": "you@example.com",
+      "help": "Auto Research requires a saved recipient email before execution can start."
+    },
+    "senderEmail": {
+      "title": "Sender Email",
+      "label": "From Address",
+      "placeholder": "noreply@example.com",
+      "help": "This is the sender address used by Auto Research completion emails."
+    },
+    "resend": {
+      "title": "Resend API Key",
+      "label": "Delivery Key",
+      "placeholder": "re_...",
+      "help": "This key is used by the app to send Auto Research completion emails through Resend.",
+      "currentKey": "Current key: {{key}}"
+    },
+    "actions": {
+      "saving": "Saving...",
+      "saveNotificationEmail": "Save Notification Email",
+      "saveSenderEmail": "Save Sender Email",
+      "saveResendKey": "Save Resend API Key"
+    },
+    "status": {
+      "loadFailed": "Failed to load email settings",
+      "notificationEmailSaved": "Notification email saved.",
+      "notificationEmailSaveFailed": "Failed to save notification email",
+      "notificationEmailRequired": "Notification email is required",
+      "senderEmailSaved": "Sender email saved.",
+      "senderEmailSaveFailed": "Failed to save sender email",
+      "senderEmailRequired": "Sender email is required",
+      "resendKeySaved": "Resend API key saved.",
+      "resendKeySaveFailed": "Failed to save Resend API key",
+      "resendKeyRequired": "Resend API key is required",
+      "invalidEmailFormat": "Invalid email format",
+      "senderEmailLoadFailed": "Failed to fetch Auto Research sender email",
+      "resendKeyLoadFailed": "Failed to fetch Auto Research Resend key"
+    }
+  },
+  "tasks": {
+    "checking": "Checking TaskMaster installation...",
+    "notInstalled": {
+      "title": "TaskMaster AI CLI Not Installed",
+      "description": "TaskMaster CLI is required to use task management features. Install it to get started:",
+      "installCommand": "npm install -g task-master-ai",
+      "viewOnGitHub": "View on GitHub",
+      "afterInstallation": "After installation:",
+      "steps": {
+        "restart": "Restart this application",
+        "autoAvailable": "TaskMaster features will automatically become available",
+        "initCommand": "Use task-master init in your project directory"
+      }
+    },
+    "settings": {
+      "enableLabel": "Enable TaskMaster Integration",
+      "enableDescription": "Show TaskMaster tasks, banners, and sidebar indicators across the interface"
+    }
+  },
+  "agents": {
+    "categories": {
+      "api": "API Providers",
+      "models": "Model management"
+    },
+    "authStatus": {
+      "checking": "Checking...",
+      "connected": "Connected",
+      "notConnected": "Not connected",
+      "installRequired": "Install required",
+      "disconnected": "Disconnected",
+      "checkingAuth": "Checking authentication status...",
+      "cliMissing": "{{command}} is not installed",
+      "loggedInAs": "Logged in as {{email}}",
+      "authenticatedUser": "authenticated user",
+      "piConfigured": "Configured: {{model}}",
+      "piRuntimeReady": "Runtime ready; add an API provider and model"
+    },
+    "error": "Error: {{error}}"
+  },
+  "piProvider": {
+    "loading": "Loading medhelpOS configuration...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "api": {
+      "title": "API Providers",
+      "description": "Manage the API services medhelpOS can call. Provider credentials are separate from model selection.",
+      "add": "Add API",
+      "addCustom": "Custom API",
+      "domesticTitle": "Model provider quick setup",
+      "domesticDescription": "The catalog includes chat, vision, speech, image, video, embedding, and rerank models. Choosing a provider fills its endpoint and seeds its model catalog.",
+      "domesticSelectLabel": "Model provider",
+      "domesticSelectPlaceholder": "Select a model provider",
+      "customVendor": "Custom",
+      "presetAdded": "Added",
+      "presetModelCount": "{{count}} model(s)",
+      "presetRegions": {
+        "official": "Official global APIs",
+        "china": "China region",
+        "global": "Global region",
+        "chinaSubscription": "China region · subscription",
+        "globalSubscription": "Global region · subscription"
+      },
+      "presetIncludes": "{{name}} selected. Saving the API key will automatically add {{count}} models.",
+      "getApiKey": "Get API key",
+      "secretNotice": "API keys are write-only. The settings API never returns the full key after it is saved.",
+      "name": "Provider name",
+      "type": "API compatibility",
+      "remoteType": "OpenAI-compatible API",
+      "geminiType": "Native Gemini API",
+      "anthropicType": "Anthropic-compatible API (Claude)",
+      "localType": "Local OpenAI-compatible API",
+      "baseUrl": "API Base URL",
+      "protocol": "Model API protocol",
+      "chatCompletions": "OpenAI Chat Completions",
+      "responses": "OpenAI Responses",
+      "anthropicMessages": "Anthropic Messages",
+      "geminiGenerateContent": "Gemini GenerateContent (generation/editing)",
+      "apiKey": "API Key",
+      "replaceKey": "Replace API Key (optional)",
+      "keepKeyPlaceholder": "Leave blank to keep the saved key",
+      "test": "Test connection",
+      "testing": "Testing...",
+      "testSuccess": "Connected. Found {{count}} model(s).",
+      "testSuccessNoModels": "Connected.",
+      "testFailed": "Connection failed: {{message}}",
+      "testKeyRequired": "Enter an API key first.",
+      "testBaseUrlInvalid": "The API base URL is invalid.",
+      "testTimeout": "The connection timed out. Check the API base URL.",
+      "testUnreachable": "Could not reach this API endpoint.",
+      "testRejected": "The API rejected the request. Check the URL and key.",
+      "enabled": "Enable this provider",
+      "empty": "No medhelpOS API providers yet. Add one to begin.",
+      "active": "Active",
+      "disabled": "Disabled",
+      "openAIBadge": "OpenAI-compatible",
+      "geminiBadge": "Native Gemini API",
+      "claudeBadge": "Anthropic-compatible",
+      "keyConfigured": "Key saved · ends in {{last4}}",
+      "keyMissing": "No API key",
+      "modelCount": "{{count}} enabled model(s)",
+      "use": "Use",
+      "edit": "Edit provider",
+      "delete": "Delete provider",
+      "deleteConfirm": "Delete {{name}} and its saved API key?"
+    },
+    "models": {
+      "title": "Model management",
+      "description": "Discover or add models, then configure medhelpOS chat, multimodal, speech, and generation capabilities by task.",
+      "byCapability": "Find models by capability",
+      "noProvider": "Add an API provider before configuring models.",
+      "provider": "API provider",
+      "manualPlaceholder": "Model ID, for example gpt-5.2",
+      "manualCapabilityPlaceholder": "Add a {{capability}} model ID",
+      "addManual": "Add model",
+      "discover": "Discover",
+      "presetCatalogIncluded": "Subscription models are preloaded",
+      "empty": "No models yet. Discover them or add a model ID manually.",
+      "enableModel": "Enable {{model}}",
+      "enabled": "Enabled",
+      "assignCapability": "Configure {{model}} for {{capability}}",
+      "configured": "Configured",
+      "notConfigured": "Not assigned",
+      "configuredCount": "{{count}} configured",
+      "noConfiguredProviderForCapability": "No provider is configured for this capability. Add OpenAI, Zhipu, MiniMax, StepFun, MiMo, or another service under API Providers.",
+      "agentCallable": "Callable by Pi",
+      "adapterRequired": "Adapter required",
+      "capabilityProtocol": "Capability protocol",
+      "capabilityProtocolPlaceholder": "For example, gemini.generate_content",
+      "capabilityEndpoint": "Custom endpoint path (optional)",
+      "capabilityEndpointPlaceholder": "For example, models/{model}:generateContent",
+      "customCapabilityHelp": "Custom models may override the protocol and endpoint path; {model} is replaced with the current model ID. Only protocols with an execution adapter are shown as callable by Pi.",
+      "capabilities": "Model capabilities",
+      "defaultForCapability": "Default model for this capability",
+      "visionRoutingHelp": "Vision is the image-input trait of a chat model. Image messages prefer the selected chat model when its vision capability is enabled.",
+      "sections": {
+        "chat": "Chat",
+        "realtime_conversation": "Realtime voice",
+        "speech_recognition": "Speech recognition",
+        "speech_synthesis": "Speech synthesis",
+        "vision": "Vision",
+        "image_generation": "Image generation",
+        "image_edit": "Image editing",
+        "video_generation": "Video generation",
+        "embedding": "Embedding",
+        "rerank": "Rerank"
+      },
+      "sectionDescriptions": {
+        "chat": "Runs ordinary conversation, reasoning, and tool orchestration independently of generation models.",
+        "realtime_conversation": "Configures native bidirectional audio sessions without mixing them with ordinary chat calls.",
+        "speech_recognition": "Transcribes project audio. The Agent can invoke this through a native speech tool.",
+        "speech_synthesis": "Synthesizes speech into a project audio artifact through a native Agent tool.",
+        "vision": "Filters and configures chat models that accept image input.",
+        "image_generation": "Generates project image artifacts from prompts through a native Agent tool.",
+        "image_edit": "Edits an existing project image through a separate image-edit capability.",
+        "video_generation": "Configures video-generation models for provider-specific adapters.",
+        "embedding": "Creates retrieval vectors and is normally called by the retrieval pipeline.",
+        "rerank": "Reranks retrieval candidates and is normally called by the retrieval pipeline."
+      },
+      "runtime": {
+        "agent": "Directly callable by AI",
+        "conversation": "Conversation runtime",
+        "retrieval": "Retrieval pipeline",
+        "configured": "Capability catalog"
+      },
+      "taskDefaultsTitle": "Default model for each task",
+      "taskDefaultsDescription": "medhelpOS Agent automatically routes each task to its selected model. Image and speech outputs are saved in the current project.",
+      "tasks": {
+        "chat": "Chat",
+        "realtime_conversation": "Realtime conversation",
+        "image_generation": "Image generation",
+        "image_edit": "Image editing",
+        "video_generation": "Video generation",
+        "speech_synthesis": "Speech synthesis",
+        "speech_recognition": "Speech recognition",
+        "embedding": "Embedding",
+        "rerank": "Rerank"
+      },
+      "reasoning": "Reasoning controls",
+      "vision": "Image input",
+      "default": "Default",
+      "removeModel": "Remove {{model}}",
+      "save": "Save models"
+    },
+    "permissions": {
+      "title": "medhelpOS permission policy",
+      "description": "medhelpOS defaults to Auto mode for project files, shell, and local resource inspection while dangerous system commands remain blocked. You can switch to Ask, Read Only, or Plan in the chat composer."
+    },
+    "mcp": {
+      "title": "medhelpOS MCP access",
+      "description": "medhelpOS receives the built-in MedHelp remote-compute bridge plus trusted MCP servers installed through MedHelp. Global medhelpOS configuration and arbitrary external MCP definitions are not loaded."
+    }
+  },
+  "permissions": {
+    "title": "Permission Settings",
+    "skipPermissions": {
+      "label": "Skip permission prompts (use with caution)",
+      "claudeDescription": "Equivalent to --dangerously-skip-permissions flag"
+    },
+    "allowedTools": {
+      "title": "Allowed Tools",
+      "description": "Tools that are automatically allowed without prompting for permission",
+      "placeholder": "e.g., \"Bash(git log:*)\" or \"Write\"",
+      "quickAdd": "Quick add common tools:",
+      "empty": "No allowed tools configured"
+    },
+    "blockedTools": {
+      "title": "Blocked Tools",
+      "description": "Tools that are automatically blocked without prompting for permission",
+      "placeholder": "e.g., \"Bash(rm:*)\"",
+      "empty": "No blocked tools configured"
+    },
+    "allowedCommands": {
+      "title": "Allowed Shell Commands",
+      "description": "Shell commands that are automatically allowed without prompting",
+      "placeholder": "e.g., \"Shell(ls)\" or \"Shell(git status)\"",
+      "quickAdd": "Quick add common commands:",
+      "empty": "No allowed commands configured"
+    },
+    "blockedCommands": {
+      "title": "Blocked Shell Commands",
+      "description": "Shell commands that are automatically blocked",
+      "placeholder": "e.g., \"Shell(rm -rf)\" or \"Shell(sudo)\"",
+      "empty": "No blocked commands configured"
+    },
+    "toolExamples": {
+      "title": "Tool Pattern Examples:",
+      "bashGitLog": "- Allow all git log commands",
+      "bashGitDiff": "- Allow all git diff commands",
+      "write": "- Allow all Write tool usage",
+      "bashRm": "- Block all rm commands (dangerous)"
+    },
+    "shellExamples": {
+      "title": "Shell Command Examples:",
+      "ls": "- Allow ls command",
+      "gitStatus": "- Allow git status",
+      "npmInstall": "- Allow npm install",
+      "rmRf": "- Block recursive delete"
+    },
+    "codex": {
+      "permissionMode": "Permission Mode",
+      "description": "Controls how Codex handles file modifications and command execution",
+      "modes": {
+        "default": {
+          "title": "Default",
+          "description": "Only trusted commands (ls, cat, grep, git status, etc.) run automatically. Other commands are skipped. Can write to workspace."
+        },
+        "acceptEdits": {
+          "title": "Accept Edits",
+          "description": "All commands run automatically within the workspace. Full auto mode with sandboxed execution."
+        },
+        "bypassPermissions": {
+          "title": "Bypass Permissions",
+          "description": "Full system access with no restrictions. All commands run automatically with full disk and network access. Use with caution."
+        }
+      },
+      "technicalDetails": "Technical details",
+      "technicalInfo": {
+        "default": "sandboxMode=workspace-write, approvalPolicy=untrusted. Trusted commands: cat, cd, grep, head, ls, pwd, tail, git status/log/diff/show, find (without -exec), etc.",
+        "acceptEdits": "sandboxMode=workspace-write, approvalPolicy=never. All commands auto-execute within project directory.",
+        "bypassPermissions": "sandboxMode=danger-full-access, approvalPolicy=never. Full system access, use only in trusted environments.",
+        "overrideNote": "You can override this per-session using the mode button in the chat interface."
+      }
+    },
+    "actions": {
+      "add": "Add"
+    }
+  },
+  "mcpServers": {
+    "title": "MCP Servers",
+    "description": {
+      "claude": "Model Context Protocol servers provide additional tools and data sources to Claude",
+      "codex": "Model Context Protocol servers provide additional tools and data sources to Codex"
+    },
+    "addButton": "Add MCP Server",
+    "empty": "No MCP servers configured",
+    "serverType": "Type",
+    "scope": {
+      "local": "local",
+      "user": "user"
+    },
+    "config": {
+      "command": "Command",
+      "url": "URL",
+      "args": "Args",
+      "environment": "Environment"
+    },
+    "tools": {
+      "title": "Tools",
+      "count": "({{count}}):",
+      "more": "+{{count}} more"
+    },
+    "actions": {
+      "edit": "Edit server",
+      "delete": "Delete server"
+    },
+    "help": {
+      "title": "About Codex MCP",
+      "description": "Codex supports stdio-based MCP servers. You can add servers that extend Codex's capabilities with additional tools and resources."
+    }
+  }
+}

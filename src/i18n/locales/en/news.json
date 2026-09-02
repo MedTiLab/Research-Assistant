@@ -1,0 +1,190 @@
+{
+  "hero": {
+    "badge": "Biomedical Literature Monitor",
+    "title": "Literature Monitor",
+    "compactDescription": "PubMed, Europe PMC, medRxiv, arXiv & WeChat signals",
+    "description": "Monitor recent biomedical papers, preprints, WeChat articles, and research notes from PubMed, Europe PMC, medRxiv, arXiv, WeChat 公众号, and Xiaohongshu, then review them as a screening list organized by topic match, recency, source signal, and abstract quality.",
+    "chatTarget": "Current project target for intake: {{project}}",
+    "selectProjectHint": "Select a project in the sidebar first, then send papers into chat for analysis intake."
+  },
+  "sources": {
+    "pubmed": "PubMed",
+    "europepmc": "Europe PMC",
+    "medrxiv": "medRxiv",
+    "arxiv": "arXiv",
+    "wechat": "WeChat 公众号",
+    "wechatShort": "公众号",
+    "wechatFeed": "WeChat 公众号 Articles",
+    "xiaohongshu": "Xiaohongshu"
+  },
+  "actions": {
+    "settings": "Settings",
+    "refresh": "Update",
+    "clear": "Clear",
+    "searchAll": "Fetch Latest",
+    "searching": "Searching...",
+    "startSearch": "Start Search",
+    "openSettings": "Open Settings",
+    "resetDefaults": "Restore Defaults",
+    "save": "Save Changes",
+    "close": "Close",
+    "researchFromPaper": "Intake Analysis",
+    "selectProjectFirst": "Select a project first",
+    "translate": "Chinese",
+    "showOriginal": "Original"
+  },
+  "status": {
+    "loading": "Loading literature monitor...",
+    "noActiveSources": "No active sources selected.",
+    "noResults": "No results yet",
+    "noResultsHint": "Complete the setup above, then click \"Start Search\"",
+    "resultsCount": "{{count}} results",
+    "resultsWithTotal": "{{count}} results from {{total}} scanned"
+  },
+  "view": {
+    "list": "List",
+    "card": "Cards"
+  },
+  "list": {
+    "rankSignal": "Rank / Final Score",
+    "paperSummary": "Paper Summary",
+    "screeningPanel": "Actions / Details"
+  },
+  "card": {
+    "abstract": "Abstract",
+    "showMore": "View abstract & screening signal",
+    "showLess": "Collapse",
+    "relevance": "Relevance",
+    "recency": "Recency",
+    "popularity": "Journal Signal",
+    "quality": "Quality",
+    "final": "Final",
+    "pdf": "PDF",
+    "comments": "comments",
+    "scoreBreakdown": "Screening Signal",
+    "matchedKeywords": "Matched keywords:",
+    "source": "Source",
+    "indexed": "Indexed",
+    "domain": "Domain",
+    "translating": "Translating...",
+    "translationFailed": "Translation failed",
+    "untitled": "(untitled)",
+    "openInWechat": "Read"
+  },
+  "setup": {
+    "title": "Setup Guide",
+    "arxiv": {
+      "steps": [
+        "Click \"Settings\" to configure your research domains and keywords",
+        "Add arXiv categories that match your biomedical preprint interests",
+        "Adjust \"Results to show\" and \"Max results to scan\" as needed",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "pubmed": {
+      "steps": [
+        "Click \"Settings\" to define disease, cohort, or methods keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "PubMed will fetch recent records with abstracts and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "europepmc": {
+      "steps": [
+        "Click \"Settings\" to define cohort, disease, or methodology keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "Europe PMC will pull recent indexed papers with abstracts and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "medrxiv": {
+      "steps": [
+        "Click \"Settings\" to define translational, cohort, or disease keywords",
+        "Adjust the lookback window and scan size for your monitoring cadence",
+        "medRxiv will fetch recent preprints and rank them automatically",
+        "Click \"Start Search\" to fetch the latest papers"
+      ]
+    },
+    "wechat": {
+      "steps": [
+        "WeChat 公众号 articles are fetched through RSSHub; the public instance works for a quick trial",
+        "Paste WeChat account routes in Settings, one per line, such as wechat/ce/huxiu_com",
+        "If the public RSSHub instance is rate-limited, point the instance URL at your own RSSHub",
+        "Optionally add research domains to filter articles by your interests",
+        "Click \"Start Search\" to fetch the latest articles"
+      ],
+      "note": "Public rsshub.app instances may be rate-limited. For reliable use, run RSSHub yourself: docker run -d -p 1200:1200 diygod/rsshub"
+    },
+    "xiaohongshu": {
+      "steps": [
+        "Use QR login or browser-cookie login first so Xiaohongshu searches can authenticate correctly",
+        "Configure search keywords for paper notes, methods summaries, or research commentary",
+        "Research domain keywords still drive relevance scoring, but Xiaohongshu posts are treated as research signals rather than formal papers",
+        "Click \"Start Search\" to fetch the latest posts"
+      ],
+      "note": "If xiaohongshu-cli is not installed, run this on the computer hosting MedHelp Local Engine: uv tool install xiaohongshu-cli"
+    }
+  },
+  "footer": {
+    "poweredBy": "Powered by"
+  },
+  "settings": {
+    "arxivTitle": "arXiv Settings",
+    "pubmedTitle": "PubMed Settings",
+    "europepmcTitle": "Europe PMC Settings",
+    "medrxivTitle": "medRxiv Settings",
+    "wechatTitle": "WeChat 公众号 Settings",
+    "xiaohongshuTitle": "Xiaohongshu Settings",
+    "apiToken": "Access Key",
+    "tokenHelp": "Stored securely in your account's credential store. Leave blank to keep any saved key unchanged.",
+    "tokenSavedPlaceholder": "Key already saved; paste to replace",
+    "tokenSavedIndicator": "Saved to your credential store",
+    "tokenClearAction": "Clear saved key",
+    "tokenPendingClear": "Will be removed from the credential store when you save.",
+    "revealToken": "Show key",
+    "hideToken": "Hide key",
+    "wechatRsshubTitle": "RSSHub Instance",
+    "wechatRsshubDescription": "WeChat 公众号 articles are fetched through RSSHub. The public instance is fine for light use; self-host for reliability.",
+    "wechatInstanceUrl": "Instance URL",
+    "wechatInstanceHelp": "Default: https://rsshub.app. Point this at your own RSSHub if the public instance is rate-limited.",
+    "wechatAccessKeyPlaceholder": "Optional access key for private RSSHub instances",
+    "wechatAccounts": "公众号 Routes",
+    "wechatAccountsHelp": "One route per line. Use a relative RSSHub path (wechat/ce/<id>), a full URL, or just the bare ID (auto-prefixed with wechat/ce/).",
+    "wechatAccountsFormat": "Tip: the most stable route is wechat/ce/<id> (chuansongme proxy). See docs.rsshub.app for more.",
+    "browserCookieAuth": "Browser Cookie Login",
+    "browserCookieDescription": "Read browser cookies from the computer running MedHelp Local Engine. Make sure a browser on that computer is already logged into xiaohongshu.com.",
+    "serviceMachineHint": "Xiaohongshu runs through the Local Engine. Cookies are read from that computer, not the web server or another device displaying this page. Prefer QR login for remote use.",
+    "cookieSource": "Browser Source",
+    "cookieSourceDescription": "If auto-detection fails, choose the browser installed on the Local Engine computer.",
+    "extractBrowserCookie": "Extract Browser Cookie",
+    "extracting": "Extracting...",
+    "cookieSuccess": "Cookie extraction successful!",
+    "cookieSuccessWithName": "Login successful. Current account: {{nickname}}",
+    "cookieFailure": "Login failed. Make sure a browser on the Local Engine computer is logged into xiaohongshu.com.",
+    "loginFailed": "Login failed",
+    "qrLoginTitle": "QR Code Login",
+    "qrLoginDescription": "Prefer this mode for remote deployments or Linux environments where browser-cookie extraction is less reliable.",
+    "loginViaQr": "Login via QR Code",
+    "qrLoggingIn": "Waiting for QR login...",
+    "qrSuccess": "QR login successful!",
+    "qrFailure": "QR login failed. Please try again.",
+    "qrRecommendedHint": "This looks like a remote-access setup, so QR login is recommended by default because it does not depend on reading browser cookies from the host machine.",
+    "recommendedTag": "Recommended",
+    "searchKeywords": "Search Keywords (comma-separated)",
+    "searchKeywordsPlaceholder": "medical paper, clinical research, medical AI, bioinformatics...",
+    "resultsToShow": "Results to show",
+    "maxArxivResults": "Max arXiv results to scan",
+    "maxPubmedResults": "Max PubMed results to scan",
+    "maxEuropepmcResults": "Max Europe PMC results to scan",
+    "maxMedrxivResults": "Max medRxiv results to scan",
+    "dateRangeDays": "Lookback days",
+    "researchDomains": "Research Domains",
+    "newDomainPlaceholder": "New domain name...",
+    "addDomain": "Add Domain",
+    "priority": "Priority",
+    "keywords": "Keywords",
+    "addPlaceholder": "Add...",
+    "arxivCategories": "arXiv Categories",
+    "credentialRequired": "Credential required"
+  }
+}

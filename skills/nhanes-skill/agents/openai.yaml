@@ -1,0 +1,4 @@
+interface:
+  display_name: "NHANES Skill"
+  short_description: "Use NHANES data, metadata, and official downloads"
+  default_prompt: "Use $nhanes-skill for source_id nhanes. Follow the strict order: API first, local Web_database files second, official CDC/NCHS public-use data and documentation third, user upload last. If public data is missing locally, download it from the official NHANES portal, then verify variables, units, code labels, cycle coverage, weights/PSU/strata, paths, and schema before extraction."

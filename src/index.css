@@ -1,0 +1,2095 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Medical workbench visual system ─────────────────────────────
+   Original MedHelp styling: a clinical research surface hierarchy for the
+   desktop shell, project navigation, evidence workspace and agent chat. */
+.medical-workbench-shell {
+  position: fixed;
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% -10%, hsl(var(--clinical-evidence) / 0.075), transparent 34%),
+    radial-gradient(circle at 12% 110%, hsl(var(--clinical-success) / 0.065), transparent 32%),
+    hsl(var(--clinical-canvas));
+  color: hsl(var(--foreground));
+  font-family: var(--font-ui);
+}
+
+.medical-workbench-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(hsl(var(--clinical-border-strong) / 0.22) 0.55px, transparent 0.55px);
+  background-size: 18px 18px;
+  content: "";
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.medical-workbench-sidebar-frame {
+  border-right-color: transparent !important;
+  background: hsl(var(--clinical-sidebar));
+  box-shadow: none;
+}
+
+.dark .medical-workbench-sidebar-frame {
+  box-shadow: none;
+}
+
+.medical-workbench-sidebar {
+  background: hsl(var(--clinical-sidebar));
+  backdrop-filter: none;
+}
+
+.medical-primary-nav {
+  min-width: 0;
+  border-right: 1px solid hsl(var(--clinical-border) / 0.82);
+  background: hsl(var(--clinical-sidebar));
+}
+
+.medical-project-pane {
+  background: hsl(var(--clinical-sidebar));
+}
+
+.medical-project-pane-header {
+  background: hsl(var(--clinical-sidebar));
+}
+
+.medical-sidebar-resize-handle::after {
+  position: absolute;
+  inset: 0 1px;
+  border-radius: 999px;
+  background: hsl(var(--clinical-border-strong) / 0.44);
+  content: "";
+  opacity: 0;
+  transition: opacity 120ms ease, background-color 120ms ease;
+}
+
+.medical-sidebar-resize-handle:hover::after,
+.medical-sidebar-resize-handle:active::after {
+  background: hsl(var(--clinical-success) / 0.72);
+  opacity: 1;
+}
+
+.medical-sidebar-header {
+  position: relative;
+  padding-bottom: 0.2rem;
+  background: linear-gradient(180deg, hsl(var(--clinical-surface-raised) / 0.68), transparent);
+}
+
+.medical-sidebar-header::after {
+  display: none;
+}
+
+.medical-brand-lockup h1,
+.medical-workbench-header h2 {
+  font-family: var(--font-display);
+  font-synthesis: none;
+  letter-spacing: -0.015em;
+}
+
+.medical-brand-lockup h1 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.medical-brand-lockup span {
+  color: hsl(var(--clinical-success));
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.medical-icon-rail {
+  background: hsl(var(--clinical-sidebar));
+}
+
+.medical-nav-tile {
+  position: relative;
+  overflow: hidden;
+  border-color: hsl(var(--clinical-border) / 0.88) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.66),
+    0 7px 18px -17px hsl(var(--clinical-shadow-color) / 0.5);
+}
+
+.medical-nav-tile::after {
+  position: absolute;
+  inset: auto -25% -68% 36%;
+  height: 78%;
+  border-radius: 999px;
+  background: hsl(var(--clinical-success) / 0.08);
+  content: "";
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+.medical-nav-tile:hover {
+  border-color: hsl(var(--clinical-border-strong) / 0.88) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.72),
+    0 12px 24px -18px hsl(var(--clinical-shadow-color) / 0.48);
+}
+
+.dark .medical-nav-tile {
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.055),
+    0 9px 22px -17px hsl(var(--clinical-shadow-color) / 0.9);
+}
+
+.medical-workbench-sidebar .nav-control-surface,
+.medical-workbench-sidebar .nav-search-input {
+  border: 1px solid hsl(var(--clinical-border) / 0.84);
+  background: hsl(var(--clinical-surface-raised) / 0.7);
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.62),
+    0 7px 18px -17px hsl(var(--clinical-shadow-color) / 0.52);
+}
+
+.medical-workbench-sidebar .nav-control-surface:hover,
+.medical-workbench-sidebar .nav-search-input:focus {
+  border-color: hsl(var(--clinical-success) / 0.34);
+  background: hsl(var(--clinical-surface-raised));
+  box-shadow:
+    0 0 0 3px hsl(var(--clinical-success) / 0.07),
+    var(--shadow-panel);
+}
+
+.medical-project-row > button,
+.medical-session-row > button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 0.625rem;
+}
+
+.medical-project-row > button:hover,
+.medical-session-row > button:hover {
+  border-color: hsl(var(--clinical-border) / 0.72);
+  background: hsl(var(--clinical-surface-raised) / 0.7) !important;
+  box-shadow: var(--shadow-panel);
+}
+
+.medical-project-row > button[data-state="open"],
+.medical-project-row > button.bg-accent,
+.medical-session-row > button.bg-accent {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.medical-project-row > button[data-state="open"]:hover,
+.medical-project-row > button.bg-accent:hover,
+.medical-session-row > button.bg-accent:hover {
+  border-color: transparent;
+}
+
+.medical-workbench-main {
+  position: relative;
+  background: hsl(var(--clinical-canvas) / 0.74);
+}
+
+.medical-workbench-header {
+  position: relative;
+  border-bottom-color: transparent !important;
+  background:
+    linear-gradient(90deg, hsl(var(--clinical-surface-raised) / 0.95), hsl(var(--clinical-surface) / 0.82));
+  box-shadow: none;
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.medical-workbench-header h2 {
+  font-weight: 700;
+}
+
+.medical-workbench-header h2 + div {
+  font-family: var(--font-ui);
+  letter-spacing: 0.01em;
+}
+
+.medical-research-stagebar {
+  border-bottom: 1px solid hsl(var(--clinical-border) / 0.62);
+  background: linear-gradient(180deg, hsl(var(--clinical-surface) / 0.91), hsl(var(--clinical-surface-subtle) / 0.78));
+  box-shadow: 0 10px 26px -27px hsl(var(--clinical-shadow-color) / 0.58);
+}
+
+.medical-research-stagebar--embedded {
+  border-bottom: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.medical-research-stage-track {
+  border-color: hsl(var(--clinical-border-strong) / 0.42) !important;
+  background: hsl(var(--clinical-surface-raised) / 0.72) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.72),
+    0 8px 22px -20px hsl(var(--clinical-shadow-color) / 0.55) !important;
+}
+
+.medical-chat-layout {
+  position: relative;
+  background:
+    linear-gradient(180deg, hsl(var(--clinical-surface-subtle) / 0.54), transparent 18%),
+    hsl(var(--clinical-canvas) / 0.58);
+}
+
+.medical-chat-primary {
+  position: relative;
+  background: hsl(var(--clinical-surface) / 0.52);
+}
+
+.medical-chat-feed {
+  position: relative;
+}
+
+.medical-chat-feed::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0, transparent calc(50% - 470px), hsl(var(--clinical-border) / 0.13) calc(50% - 470px), transparent calc(50% - 469px), transparent calc(50% + 469px), hsl(var(--clinical-border) / 0.13) calc(50% + 469px), transparent calc(50% + 470px));
+  content: "";
+  pointer-events: none;
+}
+
+.medical-chat-messages > div {
+  max-width: 940px;
+}
+
+/* Chat typography has its own multiplier on top of the interface baseline.
+   Keep spacing and controls stable while scaling the readable transcript. */
+.medical-chat-messages .medical-chat-message,
+.medical-chat-messages .prose-sm {
+  font-size: calc(0.875rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages .prose-md {
+  font-size: calc(1rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-xs"] {
+  font-size: calc(0.75rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-sm"] {
+  font-size: calc(0.875rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-base"] {
+  font-size: calc(1rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-lg"] {
+  font-size: calc(1.125rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-[10px]"] {
+  font-size: calc(0.625rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-[11px]"] {
+  font-size: calc(0.6875rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-[13px]"] {
+  font-size: calc(0.8125rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-[15px]"] {
+  font-size: calc(0.9375rem * var(--chat-font-scale));
+}
+
+.medical-chat-messages [class~="text-[15.5px]"] {
+  font-size: calc(0.96875rem * var(--chat-font-scale));
+}
+
+.medical-chat-message.user > div > div:nth-child(2) {
+  border: 1px solid hsl(var(--clinical-evidence) / 0.3);
+  background: linear-gradient(145deg, hsl(var(--clinical-evidence)), hsl(205 78% 34%));
+  box-shadow: 0 12px 28px -22px hsl(var(--clinical-evidence) / 0.8);
+}
+
+.medical-agent-turn {
+  border-radius: calc(var(--radius) + 0.25rem);
+}
+
+.medical-agent-turn > details > summary {
+  border: 1px solid transparent;
+}
+
+.medical-agent-turn > details > summary:hover {
+  border-color: hsl(var(--clinical-border) / 0.72);
+  background: hsl(var(--clinical-surface-subtle) / 0.78);
+}
+
+.medical-composer-dock {
+  position: relative;
+  padding-top: 0.7rem !important;
+  background: linear-gradient(180deg, transparent, hsl(var(--clinical-canvas) / 0.86) 34%, hsl(var(--clinical-canvas)) 72%);
+}
+
+.medical-composer-card {
+  border-color: hsl(var(--clinical-border-strong) / 0.72) !important;
+  border-radius: 1rem !important;
+  background:
+    linear-gradient(180deg, hsl(var(--clinical-surface-raised) / 0.96), hsl(var(--clinical-surface) / 0.96)) !important;
+  box-shadow: var(--shadow-floating) !important;
+}
+
+.medical-composer-card:focus-within {
+  border-color: hsl(var(--clinical-success) / 0.62) !important;
+  box-shadow:
+    0 0 0 3px hsl(var(--clinical-success) / 0.1),
+    var(--shadow-floating) !important;
+}
+
+.medical-composer-card textarea {
+  font-family: var(--font-ui);
+}
+
+.medical-composer-card > div:last-child {
+  border-top-color: hsl(var(--clinical-border) / 0.7) !important;
+  background: hsl(var(--clinical-surface-subtle) / 0.52);
+}
+
+@media (max-width: 767px) {
+  .medical-workbench-shell::before,
+  .medical-chat-feed::before {
+    display: none;
+  }
+
+  .medical-composer-card {
+    border-radius: 1.2rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medical-nav-tile:hover {
+    transform: none;
+  }
+}
+
+/* ─── Steadiness: no "jumping" hover motion inside the workbench ───
+   The workbench should feel like a solid instrument panel. Hover feedback is
+   carried by color / border / shadow — never by lifting or scaling an element,
+   which shifts neighbouring content and reads as jitter. We neutralise the
+   translate/scale hover utilities and keep a single, non-layout-shifting press
+   cue instead. Landing pages live outside `.medical-workbench-shell`, so their
+   marketing motion is untouched. */
+.medical-workbench-shell [class*="hover:-translate-y"]:hover,
+.medical-workbench-shell [class*="hover:translate-y"]:hover,
+.medical-workbench-shell [class*="hover:-translate-x"]:hover,
+.medical-workbench-shell [class*="hover:translate-x"]:hover,
+.medical-workbench-shell [class*="hover:scale-"]:hover {
+  transform: none !important;
+}
+
+.medical-workbench-shell [class*="active:scale-"]:active {
+  transform: scale(0.985) !important;
+}
+
+/* ─── Solidity: thicker, opaque research surfaces ─────────────────
+   Raise the ground planes so panels read as stacked paper rather than washes
+   of translucency. The dotted texture behind the shell still whispers through
+   the canvas, but every working surface now has real body. */
+.medical-workbench-main {
+  background: hsl(var(--clinical-canvas) / 0.94);
+}
+
+.medical-chat-layout {
+  background:
+    linear-gradient(180deg, hsl(var(--clinical-surface-subtle) / 0.7), transparent 20%),
+    hsl(var(--clinical-canvas) / 0.9);
+}
+
+.medical-chat-primary {
+  background: hsl(var(--clinical-surface) / 0.82);
+}
+
+.medical-workbench-header {
+  background:
+    linear-gradient(90deg, hsl(var(--clinical-surface-raised)), hsl(var(--clinical-surface) / 0.96));
+  backdrop-filter: blur(14px) saturate(1.05);
+}
+
+/* ─── Right project panel (session context) ──────────────────────
+   Bring the right rail into the same clinical language as the left navigation:
+   an opaque sidebar ground and cards that sit on solid paper instead of
+   translucent gradients. */
+.medical-context-sidebar {
+  position: relative;
+  background:
+    linear-gradient(180deg, hsl(var(--clinical-surface-raised) / 0.6), transparent 22%),
+    hsl(var(--clinical-sidebar)) !important;
+  backdrop-filter: none !important;
+  border-left: 1px solid hsl(var(--clinical-border) / 0.9);
+  box-shadow:
+    inset 1px 0 0 hsl(0 0% 100% / 0.4),
+    -18px 0 42px -38px hsl(var(--clinical-shadow-color) / 0.5) !important;
+}
+
+.dark .medical-context-sidebar {
+  box-shadow:
+    inset 1px 0 0 hsl(0 0% 100% / 0.04),
+    -18px 0 44px -34px hsl(var(--clinical-shadow-color) / 0.95) !important;
+}
+
+/* Cards inside the right rail: solid paper, real border, layered shadow, and a
+   quiet non-moving hover. Overrides the translucent gradient utilities. */
+.medical-context-sidebar [class*="bg-gradient-to-b"]:not([class*="h-px"]),
+.medical-context-sidebar [class*="bg-gradient-to-r"]:not([class*="h-px"]) {
+  background: hsl(var(--clinical-surface-raised)) !important;
+  border-color: hsl(var(--clinical-border) / 0.92) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.5),
+    0 8px 20px -18px hsl(var(--clinical-shadow-color) / 0.5) !important;
+}
+
+.dark .medical-context-sidebar [class*="bg-gradient-to-b"]:not([class*="h-px"]),
+.dark .medical-context-sidebar [class*="bg-gradient-to-r"]:not([class*="h-px"]) {
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.05),
+    0 10px 24px -18px hsl(var(--clinical-shadow-color) / 0.9) !important;
+}
+
+.medical-context-sidebar [class*="bg-gradient-to-r"]:not([class*="h-px"]):hover {
+  border-color: hsl(var(--clinical-success) / 0.4) !important;
+  background: hsl(var(--clinical-surface-raised)) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.55),
+    inset 3px 0 0 hsl(var(--clinical-success) / 0.55),
+    0 10px 22px -18px hsl(var(--clinical-shadow-color) / 0.55) !important;
+}
+
+/* ─── Settings workspace ─────────────────────────────────────────
+   The settings modal used generic gray cards on a flat sheet. Re-skin it as a
+   clinical console: a solid panel, a paper-toned navigation column, and cards
+   that match the research surfaces elsewhere — in both light and dark. */
+.medical-settings-modal,
+.medical-settings-page {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--clinical-surface)) !important;
+  border-color: hsl(var(--clinical-border) / 0.92) !important;
+}
+
+.medical-settings-modal > div:first-child {
+  background: linear-gradient(90deg, hsl(var(--clinical-surface-raised)), hsl(var(--clinical-surface) / 0.9));
+  border-bottom-color: hsl(var(--clinical-border) / 0.9) !important;
+}
+
+/* Left navigation column */
+.medical-settings-modal nav {
+  background:
+    linear-gradient(180deg, hsl(var(--clinical-surface-raised) / 0.7), transparent 30%),
+    hsl(var(--clinical-sidebar));
+  border-color: hsl(var(--clinical-border) / 0.9) !important;
+}
+
+.medical-settings-modal nav button:hover {
+  background: hsl(var(--clinical-surface-raised) / 0.85) !important;
+}
+
+.medical-settings-modal nav button.bg-blue-50,
+.medical-settings-modal nav .bg-blue-50 {
+  border: 1px solid hsl(var(--clinical-success) / 0.3);
+  background: hsl(var(--clinical-success) / 0.12) !important;
+  color: hsl(var(--clinical-success)) !important;
+  box-shadow: inset 2px 0 0 hsl(var(--clinical-success) / 0.75);
+}
+
+.dark .medical-settings-modal nav button.bg-blue-50,
+.dark .medical-settings-modal nav .bg-blue-50 {
+  background: hsl(var(--clinical-success) / 0.16) !important;
+}
+
+.medical-settings-modal nav .text-blue-600,
+.medical-settings-modal nav .dark\:text-blue-400 {
+  color: hsl(var(--clinical-success)) !important;
+}
+
+/* Content cards: light-mode gray utilities → clinical paper. Dark mode is
+   already remapped globally, so we only reinforce the border + shadow there. */
+.medical-settings-modal .bg-gray-50 {
+  background: hsl(var(--clinical-surface-raised)) !important;
+}
+
+.medical-settings-modal .bg-gray-50,
+.medical-settings-modal [class*="bg-gray-900"],
+.medical-settings-modal [class*="bg-gray-800"] {
+  border-color: hsl(var(--clinical-border) / 0.92) !important;
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.55),
+    0 8px 20px -18px hsl(var(--clinical-shadow-color) / 0.4);
+}
+
+.dark .medical-settings-modal .bg-gray-50,
+.dark .medical-settings-modal [class*="bg-gray-900"],
+.dark .medical-settings-modal [class*="bg-gray-800"] {
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.05),
+    0 10px 24px -18px hsl(var(--clinical-shadow-color) / 0.85);
+}
+
+.medical-settings-modal .border-gray-200 {
+  border-color: hsl(var(--clinical-border) / 0.92) !important;
+}
+
+.dark .medical-settings-modal .border-gray-700 {
+  border-color: hsl(var(--clinical-border)) !important;
+}
+
+/* Global spinner animation - defined early to ensure it loads */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@layer base {
+  :root {
+    --ui-font-scale: 1;
+    --chat-font-scale: 1;
+    font-size: calc(16px * var(--ui-font-scale));
+    --background: 210 24% 96%;
+    --foreground: 216 32% 12%;
+    --card: 40 30% 99%;
+    --card-foreground: 216 32% 12%;
+    --popover: 40 30% 99%;
+    --popover-foreground: 216 32% 12%;
+    --primary: 166 64% 28%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 204 23% 92%;
+    --secondary-foreground: 216 28% 16%;
+    --muted: 210 20% 93%;
+    --muted-foreground: 214 14% 42%;
+    --accent: 166 28% 91%;
+    --accent-foreground: 166 58% 22%;
+    --destructive: 350 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 17% 84%;
+    --input: 210 17% 84%;
+    --ring: 166 64% 28%;
+    --radius: 0.625rem;
+
+    /* Nav design tokens */
+    --nav-glass-bg: 0 0% 100% / 0.82;
+    --nav-glass-blur: 18px;
+    --nav-glass-saturate: 1.2;
+    --nav-tab-glow: 160 84% 35% / 0.13;
+    --nav-tab-ring: 160 84% 35% / 0.11;
+    --nav-float-shadow: 0 0% 0% / 0.08;
+    --nav-float-ring: 0 0% 87% / 0.78;
+    --nav-divider-color: 0 0% 87% / 0.78;
+    --nav-input-bg: 0 0% 93% / 0.72;
+    --nav-input-focus-ring: 160 84% 35% / 0.18;
+
+    /* Safe area CSS variables */
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+
+    /* Mobile navigation dimensions - Single source of truth */
+    /* Floating nav: ~52px bar + 8px bottom margin + 12px px-3 top spacing */
+    --mobile-nav-height: 52px;
+    --mobile-nav-padding: 20px;
+    --mobile-nav-total: calc(var(--mobile-nav-height) + var(--mobile-nav-padding) + env(safe-area-inset-bottom, 0px));
+
+    /* Header safe area dimensions */
+    --header-safe-area-top: env(safe-area-inset-top, 0px);
+    --header-base-padding: 8px;
+    --header-total-padding: calc(var(--header-safe-area-top) + var(--header-base-padding));
+
+    /* Desktop shell dimensions */
+    --desktop-titlebar-height: 36px;
+
+    /* Medical workbench surfaces */
+    --clinical-canvas: 210 24% 96%;
+    --clinical-sidebar: 207 26% 94%;
+    --clinical-surface: 40 30% 99%;
+    --clinical-surface-raised: 0 0% 100%;
+    --clinical-surface-subtle: 206 24% 95%;
+    --clinical-border: 210 17% 82%;
+    --clinical-border-strong: 207 18% 72%;
+    --clinical-evidence: 205 78% 39%;
+    --clinical-success: 166 64% 28%;
+    --clinical-warning: 35 88% 46%;
+    --clinical-shadow-color: 214 42% 12%;
+    --font-ui: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Noto Serif SC", "Songti SC", STSong, Georgia, serif;
+    --font-mono-clinical: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    --shadow-workbench: 0 1px 2px hsl(var(--clinical-shadow-color) / 0.05), 0 14px 34px -26px hsl(var(--clinical-shadow-color) / 0.32);
+    --shadow-panel: 0 1px 2px hsl(var(--clinical-shadow-color) / 0.06), 0 10px 28px -22px hsl(var(--clinical-shadow-color) / 0.28);
+    --shadow-floating: 0 18px 48px -28px hsl(var(--clinical-shadow-color) / 0.42), 0 2px 8px hsl(var(--clinical-shadow-color) / 0.08);
+  }
+
+  /* Fallback for older iOS versions */
+  @supports (padding-top: constant(safe-area-inset-top)) {
+    :root {
+      --safe-area-inset-top: constant(safe-area-inset-top);
+      --safe-area-inset-right: constant(safe-area-inset-right);
+      --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+      --safe-area-inset-left: constant(safe-area-inset-left);
+    }
+  }
+
+  .dark {
+    --background: 216 28% 7%;
+    --foreground: 210 20% 95%;
+    --card: 216 24% 10%;
+    --card-foreground: 210 20% 95%;
+    --popover: 216 24% 11%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 166 58% 45%;
+    --primary-foreground: 216 30% 7%;
+    --secondary: 214 21% 15%;
+    --secondary-foreground: 210 20% 95%;
+    --muted: 214 21% 13%;
+    --muted-foreground: 212 13% 65%;
+    --accent: 166 22% 16%;
+    --accent-foreground: 164 45% 82%;
+    --destructive: 350 72% 54%;
+    --destructive-foreground: 210 20% 96%;
+    --border: 214 17% 20%;
+    --input: 214 17% 23%;
+    --ring: 166 58% 45%;
+
+    /* Nav design tokens — pure black dark overrides */
+    --nav-glass-bg: 0 0% 4% / 0.78;
+    --nav-glass-blur: 22px;
+    --nav-glass-saturate: 1.2;
+    --nav-tab-glow: 160 84% 39% / 0.2;
+    --nav-tab-ring: 160 84% 39% / 0.16;
+    --nav-float-shadow: 0 0% 0% / 0.58;
+    --nav-float-ring: 0 0% 100% / 0.1;
+    --nav-divider-color: 0 0% 100% / 0.1;
+    --nav-input-bg: 0 0% 10% / 0.72;
+    --nav-input-focus-ring: 160 84% 39% / 0.28;
+
+    --clinical-canvas: 216 28% 7%;
+    --clinical-sidebar: 216 27% 8%;
+    --clinical-surface: 216 24% 10%;
+    --clinical-surface-raised: 215 23% 12%;
+    --clinical-surface-subtle: 215 22% 13%;
+    --clinical-border: 214 17% 20%;
+    --clinical-border-strong: 212 16% 30%;
+    --clinical-evidence: 205 82% 64%;
+    --clinical-success: 166 58% 45%;
+    --clinical-warning: 38 90% 60%;
+    --clinical-shadow-color: 220 55% 2%;
+    --shadow-workbench: 0 1px 2px hsl(var(--clinical-shadow-color) / 0.5), 0 18px 46px -28px hsl(var(--clinical-shadow-color) / 0.9);
+    --shadow-panel: 0 1px 2px hsl(var(--clinical-shadow-color) / 0.42), 0 12px 32px -22px hsl(var(--clinical-shadow-color) / 0.78);
+    --shadow-floating: 0 22px 56px -28px hsl(var(--clinical-shadow-color) / 0.95), 0 2px 10px hsl(var(--clinical-shadow-color) / 0.42);
+  }
+}
+
+/*
+ * Accent color themes.
+ * The default (emerald / 翠绿) lives in :root and .dark above.
+ * Selecting a color re-brands the primary / accent / nav / evidence tokens
+ * while keeping the light/dark ground untouched, so every color works in
+ * both light and dark mode. Applied via [data-accent] on <html>.
+ */
+@layer base {
+  /* 海蓝 Azure — light */
+  [data-accent="azure"] {
+    --primary: 206 84% 38%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 206 84% 38%;
+    --accent: 206 42% 91%;
+    --accent-foreground: 206 72% 26%;
+    --clinical-success: 206 84% 38%;
+    --clinical-evidence: 206 84% 42%;
+    --nav-tab-glow: 206 84% 45% / 0.14;
+    --nav-tab-ring: 206 84% 45% / 0.12;
+    --nav-input-focus-ring: 206 84% 45% / 0.2;
+  }
+  /* 海蓝 Azure — dark */
+  .dark[data-accent="azure"] {
+    --primary: 206 80% 60%;
+    --primary-foreground: 216 30% 7%;
+    --ring: 206 80% 60%;
+    --accent: 206 34% 18%;
+    --accent-foreground: 205 62% 82%;
+    --clinical-success: 206 80% 60%;
+    --clinical-evidence: 205 82% 66%;
+    --nav-tab-glow: 206 84% 58% / 0.22;
+    --nav-tab-ring: 206 84% 58% / 0.18;
+    --nav-input-focus-ring: 206 84% 58% / 0.3;
+  }
+
+  /* 朱砂 Terracotta — light */
+  [data-accent="terracotta"] {
+    --primary: 14 62% 40%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 14 62% 40%;
+    --accent: 16 52% 92%;
+    --accent-foreground: 14 60% 32%;
+    --clinical-success: 14 62% 40%;
+    --clinical-evidence: 14 66% 44%;
+    --nav-tab-glow: 14 70% 48% / 0.14;
+    --nav-tab-ring: 14 70% 48% / 0.12;
+    --nav-input-focus-ring: 14 70% 48% / 0.2;
+  }
+  /* 朱砂 Terracotta — dark */
+  .dark[data-accent="terracotta"] {
+    --primary: 16 70% 62%;
+    --primary-foreground: 216 30% 7%;
+    --ring: 16 70% 62%;
+    --accent: 14 34% 18%;
+    --accent-foreground: 18 64% 80%;
+    --clinical-success: 16 70% 62%;
+    --clinical-evidence: 16 74% 64%;
+    --nav-tab-glow: 16 74% 60% / 0.22;
+    --nav-tab-ring: 16 74% 60% / 0.18;
+    --nav-input-focus-ring: 16 74% 60% / 0.3;
+  }
+
+  /* 紫韵 Violet — light */
+  [data-accent="violet"] {
+    --primary: 262 52% 48%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 262 52% 48%;
+    --accent: 262 46% 93%;
+    --accent-foreground: 262 48% 34%;
+    --clinical-success: 262 52% 48%;
+    --clinical-evidence: 262 58% 52%;
+    --nav-tab-glow: 262 70% 55% / 0.14;
+    --nav-tab-ring: 262 70% 55% / 0.12;
+    --nav-input-focus-ring: 262 70% 55% / 0.2;
+  }
+  /* 紫韵 Violet — dark */
+  .dark[data-accent="violet"] {
+    --primary: 262 72% 70%;
+    --primary-foreground: 216 30% 7%;
+    --ring: 262 72% 70%;
+    --accent: 264 30% 20%;
+    --accent-foreground: 262 58% 85%;
+    --clinical-success: 262 72% 70%;
+    --clinical-evidence: 262 74% 72%;
+    --nav-tab-glow: 262 74% 66% / 0.22;
+    --nav-tab-ring: 262 74% 66% / 0.18;
+    --nav-input-focus-ring: 262 74% 66% / 0.3;
+  }
+
+  /* 琥珀 Amber — light */
+  [data-accent="amber"] {
+    --primary: 35 78% 42%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 35 78% 42%;
+    --accent: 40 60% 90%;
+    --accent-foreground: 32 62% 30%;
+    --clinical-success: 35 78% 42%;
+    --clinical-evidence: 35 80% 44%;
+    --nav-tab-glow: 38 85% 48% / 0.14;
+    --nav-tab-ring: 38 85% 48% / 0.12;
+    --nav-input-focus-ring: 38 85% 48% / 0.2;
+  }
+  /* 琥珀 Amber — dark */
+  .dark[data-accent="amber"] {
+    --primary: 38 82% 60%;
+    --primary-foreground: 216 30% 7%;
+    --ring: 38 82% 60%;
+    --accent: 36 34% 18%;
+    --accent-foreground: 40 64% 80%;
+    --clinical-success: 38 82% 60%;
+    --clinical-evidence: 40 84% 62%;
+    --nav-tab-glow: 40 88% 60% / 0.22;
+    --nav-tab-ring: 40 88% 60% / 0.18;
+    --nav-input-focus-ring: 40 88% 60% / 0.3;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+    transition: none;
+  }
+  
+  html {
+    /* Prevent horizontal layout shift when scroll lock toggles the scrollbar */
+    scrollbar-gutter: stable;
+  }
+
+  /* Match the reserved browser gutter and desktop window canvas to the fixed
+     project rail so the far-right edge does not read as a separate white bar. */
+  html:has(.medical-workbench-shell),
+  body:has(.medical-workbench-shell) {
+    background: var(--medhelp-desktop-chrome-surface, hsl(var(--clinical-sidebar)));
+  }
+
+  /* Electron owns the viewport and never needs the browser's reserved Windows
+     scrollbar track. Keeping that gutter would cover the right-side tool rail. */
+  html.medhelp-desktop-root {
+    --medhelp-desktop-chrome-surface: #eef2f5;
+    overflow: hidden;
+    scrollbar-gutter: auto;
+  }
+
+  html.dark.medhelp-desktop-root {
+    --medhelp-desktop-chrome-surface: #050505;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.medhelp-desktop-shell {
+    overflow: hidden;
+    background: var(--medhelp-desktop-chrome-surface);
+  }
+
+  body.medhelp-desktop-shell {
+    --medhelp-desktop-chrome-surface: #eef2f5;
+  }
+
+  .dark body.medhelp-desktop-shell {
+    --medhelp-desktop-chrome-surface: #050505;
+  }
+
+  body.medhelp-desktop-shell .medhelp-desktop-titlebar,
+  body.medhelp-desktop-shell .medical-workbench-sidebar-frame,
+  body.medhelp-desktop-shell .medical-workbench-sidebar,
+  body.medhelp-desktop-shell .medical-icon-rail,
+  body.medhelp-desktop-shell .medical-workbench-sidebar-frame > .h-full > div {
+    background: var(--medhelp-desktop-chrome-surface) !important;
+  }
+
+  body.medhelp-desktop-shell .medical-sidebar-header {
+    background: transparent !important;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Root element with safe area padding for PWA */
+  #root {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body.medhelp-desktop-shell #root {
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: var(--desktop-titlebar-height);
+    overflow: hidden;
+  }
+
+  body.medhelp-desktop-shell .min-h-screen {
+    min-height: calc(100vh - var(--desktop-titlebar-height));
+  }
+
+  /* First-run setup owns its viewport. On wide windows the form column scrolls
+     independently while the machine summary and save action stay available. */
+  .medhelp-initial-setup-page {
+    height: 100vh;
+    min-height: 0;
+    overscroll-behavior-y: contain;
+  }
+
+  body.medhelp-desktop-shell .medhelp-initial-setup-page {
+    height: 100%;
+  }
+
+  .medhelp-desktop-window {
+    padding-top: calc(var(--desktop-titlebar-height) + var(--desktop-runtime-banner-height, 0px));
+  }
+
+  body.medhelp-desktop-runtime-banner-visible {
+    --desktop-runtime-banner-height: 48px;
+  }
+
+  .medhelp-desktop-runtime-banner {
+    top: var(--desktop-titlebar-height);
+    -webkit-app-region: no-drag;
+  }
+
+  .medhelp-desktop-titlebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 80;
+    height: var(--desktop-titlebar-height);
+    -webkit-app-region: drag;
+    border-bottom: 1px solid transparent;
+    background: hsl(var(--background) / 0.9);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  }
+
+  .dark .medhelp-desktop-titlebar {
+    border-bottom-color: transparent;
+    background: hsl(var(--background) / 0.84);
+  }
+
+  body.medhelp-desktop-shell button,
+  body.medhelp-desktop-shell a,
+  body.medhelp-desktop-shell input,
+  body.medhelp-desktop-shell textarea,
+  body.medhelp-desktop-shell select,
+  body.medhelp-desktop-shell [role="button"],
+  body.medhelp-desktop-shell [contenteditable="true"] {
+    -webkit-app-region: no-drag;
+  }
+  
+  /* Apply safe area padding in standalone mode */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    @media (display-mode: standalone) {
+      #root {
+        padding-top: var(--safe-area-inset-top);
+        padding-left: var(--safe-area-inset-left);
+        padding-right: var(--safe-area-inset-right);
+      }
+    }
+  }
+
+  /* PWA mode detected by JavaScript - more reliable */
+  body.pwa-mode #root {
+    padding-left: var(--safe-area-inset-left);
+    padding-right: var(--safe-area-inset-right);
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Adjust fixed inset positioning in PWA mode */
+  body.pwa-mode .fixed.inset-0 {
+    top: var(--header-total-padding);
+    left: var(--safe-area-inset-left);
+    right: var(--safe-area-inset-right);
+    bottom: 0;
+  }
+  
+  /* Global transition defaults */
+  button, 
+  a, 
+  input, 
+  textarea, 
+  select,
+  [role="button"],
+  .transition-all {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Color transitions for theme switching - exclude interactive elements */
+  body, div, section, article, aside, header, footer, nav, main,
+  h1, h2, h3, h4, h5, h6, p, span, blockquote,
+  ul, ol, li, dl, dt, dd,
+  table, thead, tbody, tfoot, tr, td, th,
+  form, fieldset, legend, label {
+    transition: background-color 200ms ease-in-out, 
+                border-color 200ms ease-in-out,
+                color 200ms ease-in-out;
+  }
+  
+  /* Transform transitions */
+  .transition-transform {
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Opacity transitions */
+  .transition-opacity {
+    transition: opacity 200ms ease-in-out;
+  }
+  
+  /* Scale transitions for interactions */
+  .transition-scale {
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Shadow transitions */
+  .transition-shadow {
+    transition: box-shadow 200ms ease-in-out;
+  }
+  
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Smooth hover transitions for interactive elements */
+  button:hover,
+  a:hover,
+  [role="button"]:hover {
+    transition-duration: 100ms;
+  }
+  
+  /* Active state transitions */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transition-duration: 50ms;
+  }
+  
+  /* Focus transitions */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    transition: outline-offset 150ms ease-out, box-shadow 150ms ease-out;
+  }
+  
+  /* Sidebar transitions */
+  .sidebar-transition {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 300ms ease-in-out;
+  }
+
+  /* Nav glass surface — uses theme tokens */
+  .nav-glass {
+    background: hsl(var(--nav-glass-bg));
+    backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-saturate));
+  }
+
+  /* Nav tab active pill glow — uses theme tokens */
+  .nav-tab-active {
+    box-shadow: 0 1px 8px hsl(var(--nav-tab-glow)),
+                0 0 0 1px hsl(var(--nav-tab-ring));
+  }
+
+  /* Floating mobile nav bar — uses theme tokens */
+  .mobile-nav-float {
+    box-shadow: 0 -1px 20px hsl(var(--nav-float-shadow)),
+                0 0 0 1px hsl(var(--nav-float-ring));
+  }
+
+  /* Subtle sidebar divider — uses theme tokens */
+  .nav-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--nav-divider-color)) 20%, hsl(var(--nav-divider-color)) 80%, transparent);
+  }
+
+  /* Sidebar control surfaces — blank by default, surface only on hover/focus */
+  .nav-control-surface {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: box-shadow 150ms ease, background-color 150ms ease;
+  }
+
+  .nav-control-surface:hover {
+    background: hsl(var(--nav-input-bg));
+    box-shadow: 0 2px 6px hsl(var(--nav-float-shadow));
+  }
+
+  .nav-control-surface:focus-visible,
+  .nav-search-input:focus {
+    background: hsl(var(--background));
+    box-shadow: 0 0 0 2px hsl(var(--nav-input-focus-ring));
+  }
+
+  .nav-search-input {
+    background: hsl(var(--nav-input-bg));
+    border: none;
+    box-shadow: 0 1px 3px hsl(var(--nav-float-shadow));
+    transition: box-shadow 150ms ease, background-color 150ms ease;
+  }
+  
+  /* Modal and dropdown transitions */
+  .modal-transition {
+    transition: opacity 200ms ease-in-out,
+                transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Chat message transitions */
+  .message-transition {
+    transition: opacity 300ms ease-in-out,
+                transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Height transitions for expanding elements */
+  .height-transition {
+    transition: height 200ms ease-in-out,
+                max-height 200ms ease-in-out;
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.8);
+  }
+
+  .sidebar-scroll-area,
+  .sidebar-scroll-area > div,
+  .panel-scroll-area,
+  .panel-scroll-area > div {
+    scrollbar-gutter: auto !important;
+  }
+
+  .sidebar-scroll-area > div,
+  .panel-scroll-area > div,
+  .sidebar-scroll-area.panel-scroll-area,
+  .panel-scroll-area.overflow-y-auto {
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.42) transparent;
+  }
+
+  .sidebar-scroll-area > div::-webkit-scrollbar,
+  .panel-scroll-area > div::-webkit-scrollbar,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  .sidebar-scroll-area > div::-webkit-scrollbar-track,
+  .sidebar-scroll-area > div::-webkit-scrollbar-track-piece,
+  .sidebar-scroll-area > div::-webkit-scrollbar-corner,
+  .panel-scroll-area > div::-webkit-scrollbar-track,
+  .panel-scroll-area > div::-webkit-scrollbar-track-piece,
+  .panel-scroll-area > div::-webkit-scrollbar-corner,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-track,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-track-piece,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-corner,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-track,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-track-piece,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-corner {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  .sidebar-scroll-area > div::-webkit-scrollbar-thumb,
+  .panel-scroll-area > div::-webkit-scrollbar-thumb,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-thumb,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-thumb {
+    min-height: 42px;
+    border: 3px solid transparent !important;
+    border-radius: 999px;
+    background-color: hsl(var(--muted-foreground) / 0.34) !important;
+    background-clip: content-box;
+    box-shadow: none !important;
+    cursor: grab;
+    outline: 0 !important;
+  }
+
+  .sidebar-scroll-area > div::-webkit-scrollbar-thumb:hover,
+  .panel-scroll-area > div::-webkit-scrollbar-thumb:hover,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-thumb:hover,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--clinical-success) / 0.58) !important;
+  }
+
+  .sidebar-scroll-area > div::-webkit-scrollbar-thumb:active,
+  .panel-scroll-area > div::-webkit-scrollbar-thumb:active,
+  .sidebar-scroll-area.panel-scroll-area::-webkit-scrollbar-thumb:active,
+  .panel-scroll-area.overflow-y-auto::-webkit-scrollbar-thumb:active {
+    background-color: hsl(var(--clinical-success) / 0.78) !important;
+    cursor: grabbing;
+  }
+  
+  /* Dark mode scrollbar styles */
+  .dark .scrollbar-thin {
+    scrollbar-color: hsl(var(--muted-foreground) / 0.5) transparent;
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.46);
+    border-radius: 3px;
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.68);
+  }
+  
+  /* Global scrollbar styles for main content areas */
+  .dark::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dark::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  .dark::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.44);
+    border-radius: 4px;
+  }
+  
+  .dark::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.66);
+  }
+  
+  /* Firefox scrollbar styles */
+  .dark {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.48) hsl(var(--background));
+  }
+  
+  /* Ensure checkbox styling is preserved */
+  input[type="checkbox"] {
+    @apply accent-blue-600;
+    opacity: 1;
+  }
+  
+  input[type="checkbox"]:focus {
+    opacity: 1;
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+  
+  /* Fix checkbox appearance in dark mode */
+  .dark input[type="checkbox"] {
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    color: rgb(37 99 235); /* blue-600 */
+    color-scheme: dark;
+  }
+  
+  .dark input[type="checkbox"]:checked {
+    background-color: rgb(37 99 235); /* blue-600 */
+    border-color: rgb(37 99 235); /* blue-600 */
+  }
+  
+  .dark input[type="checkbox"]:focus {
+    --tw-ring-color: rgb(59 130 246); /* blue-500 */
+    --tw-ring-offset-color: hsl(var(--background));
+  }
+  
+  /* Fix radio button appearance in dark mode */
+  .dark input[type="radio"] {
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    color: rgb(37 99 235); /* blue-600 */
+    color-scheme: dark;
+  }
+  
+  .dark input[type="radio"]:checked {
+    background-color: rgb(37 99 235); /* blue-600 */
+    border-color: rgb(37 99 235); /* blue-600 */
+  }
+  
+  .dark input[type="radio"]:focus {
+    --tw-ring-color: rgb(59 130 246); /* blue-500 */
+    --tw-ring-offset-color: hsl(var(--background));
+  }
+  
+  /* Ensure textarea text is always visible in dark mode */
+  textarea {
+    color-scheme: light dark;
+  }
+  
+  .dark textarea {
+    color: rgb(243 244 246) !important; /* gray-100 */
+    -webkit-text-fill-color: rgb(243 244 246) !important;
+    caret-color: rgb(243 244 246) !important;
+  }
+  
+  /* Fix for focus state in dark mode */
+  .dark textarea:focus {
+    color: rgb(243 244 246) !important;
+    -webkit-text-fill-color: rgb(243 244 246) !important;
+  }
+  
+  /* Fix for iOS/Safari dark mode textarea issues */
+  @supports (-webkit-touch-callout: none) {
+    .dark textarea {
+      background-color: transparent !important;
+      color: rgb(243 244 246) !important;
+      -webkit-text-fill-color: rgb(243 244 246) !important;
+    }
+    
+    .dark textarea:focus {
+      background-color: transparent !important;
+      color: rgb(243 244 246) !important;
+      -webkit-text-fill-color: rgb(243 244 246) !important;
+    }
+  }
+  
+  /* Ensure parent container doesn't override textarea styles */
+  .dark [class~="bg-gray-800"] textarea {
+    color: rgb(243 244 246) !important;
+    -webkit-text-fill-color: rgb(243 244 246) !important;
+  }
+  
+  /* Fix focus-within container issues in dark mode */
+  .dark .focus-within\:ring-2:focus-within {
+    background-color: hsl(var(--card)) !important;
+  }
+  
+  /* Ensure textarea remains transparent with visible text */
+  .dark textarea[class~="bg-transparent"] {
+    background-color: transparent !important;
+    color: rgb(243 244 246) !important;
+    -webkit-text-fill-color: rgb(243 244 246) !important;
+  }
+  
+  /* Fix placeholder text color to be properly gray */
+  textarea::placeholder {
+    color: rgb(156 163 175) !important; /* gray-400 */
+    opacity: 1 !important;
+  }
+  
+  .dark textarea::placeholder {
+    color: rgb(75 85 99) !important; /* gray-600 - darker gray */
+    opacity: 1 !important;
+  }
+  
+  /* More specific selector for chat input textarea */
+  .dark [class~="bg-gray-800"] textarea::placeholder,
+  .dark textarea[class~="bg-transparent"]::placeholder {
+    color: rgb(75 85 99) !important; /* gray-600 - darker gray */
+    opacity: 1 !important;
+    -webkit-text-fill-color: rgb(75 85 99) !important;
+  }
+  
+  /* Custom class for chat input placeholder */
+  .chat-input-placeholder::placeholder {
+    color: rgb(156 163 175) !important;
+    opacity: 1 !important;
+  }
+
+  .dark .chat-input-placeholder::placeholder {
+    color: rgb(75 85 99) !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: rgb(75 85 99) !important;
+  }
+
+  .chat-input-placeholder::-webkit-input-placeholder {
+    color: rgb(156 163 175) !important;
+    opacity: 1 !important;
+  }
+
+  .dark .chat-input-placeholder::-webkit-input-placeholder {
+    color: rgb(75 85 99) !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: rgb(75 85 99) !important;
+  }
+  
+  /* WebKit specific placeholder styles */
+  textarea::-webkit-input-placeholder {
+    color: rgb(156 163 175) !important;
+    opacity: 1 !important;
+  }
+  
+  .dark textarea::-webkit-input-placeholder {
+    color: rgb(75 85 99) !important; /* gray-600 - darker gray */
+    opacity: 1 !important;
+  }
+  
+  /* Mozilla specific placeholder styles */
+  textarea::-moz-placeholder {
+    color: rgb(156 163 175) !important;
+    opacity: 1 !important;
+  }
+  
+  .dark textarea::-moz-placeholder {
+    color: rgb(75 85 99) !important; /* gray-600 - darker gray */
+    opacity: 1 !important;
+  }
+  
+  /* IE/Edge specific placeholder styles */
+  textarea:-ms-input-placeholder {
+    color: rgb(156 163 175) !important;
+    opacity: 1 !important;
+  }
+  
+  .dark textarea:-ms-input-placeholder {
+    color: rgb(75 85 99) !important; /* gray-600 - darker gray */
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile optimizations and components */
+@layer components {
+  /* Mobile touch optimization and safe areas */
+  @media (max-width: 768px) {
+    * {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Allow vertical scrolling in scroll containers */
+    .overflow-y-auto, [data-scroll-container] {
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Preserve checkbox visibility */
+    input[type="checkbox"] {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+      opacity: 1 !important;
+    }
+    
+    button, 
+    [role="button"],
+    .clickable,
+    a,
+    .cursor-pointer {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    /* Better mobile touch targets */
+    .mobile-touch-target {
+      @apply min-h-[44px] min-w-[44px];
+    }
+    
+    /* Chat message improvements */
+    .chat-message.user {
+      @apply justify-end;
+    }
+    
+    .chat-message.user > div {
+      @apply max-w-[85%];
+    }
+    
+    .chat-message.assistant > div,
+    .chat-message.error > div {
+      @apply w-full sm:max-w-[95%];
+    }
+    
+    /* Session name truncation on mobile */
+    .session-name-mobile {
+      @apply truncate;
+      max-width: calc(100vw - 120px); /* Account for sidebar padding and buttons */
+    }
+    
+    /* Enable text selection on mobile for terminal */
+    .xterm,
+    .xterm .xterm-viewport {
+      -webkit-user-select: text !important;
+      user-select: text !important;
+      -webkit-touch-callout: default !important;
+    }
+    
+    /* Fix mobile scrolling */
+    .overflow-y-auto {
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .chat-message {
+      touch-action: pan-y;
+    }
+    
+    /* Fix hover states on mobile */
+    .group:active .group-hover\:opacity-100,
+    .group .group-hover\:opacity-100 {
+      opacity: 1 !important;
+    }
+    
+    @media (hover: none) and (pointer: coarse) {
+      .group-hover\:opacity-100 {
+        opacity: 1 !important;
+      }
+      
+      .hover\:bg-gray-50:hover,
+      .hover\:bg-gray-100:hover,
+      .hover\:bg-red-200:hover,
+      .dark\:hover\:bg-gray-700:hover,
+      .dark\:hover\:bg-red-900\/50:hover {
+        background-color: inherit;
+      }
+    }
+  }
+  
+  /* Touch device optimizations for all screen sizes */
+  @media (hover: none) and (pointer: coarse) {
+    .touch\:opacity-100 {
+      opacity: 1 !important;
+    }
+    
+    /* Completely disable hover states on touch devices */
+    * {
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Preserve checkbox visibility on touch devices */
+    input[type="checkbox"] {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+      opacity: 1 !important;
+    }
+    
+    /* Only disable hover states for interactive elements, not containers */
+    button:hover,
+    [role="button"]:hover,
+    .cursor-pointer:hover,
+    a:hover,
+    .hover\:bg-gray-50:hover,
+    .hover\:bg-gray-100:hover,
+    .hover\:text-gray-900:hover,
+    .hover\:opacity-100:hover {
+      background-color: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      transform: inherit !important;
+    }
+    
+    /* Force buttons to be immediately clickable */
+    button, [role="button"], .cursor-pointer {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+    }
+    
+    /* Keep active states for immediate feedback */
+    .active\:scale-\[0\.98\]:active,
+    .active\:scale-95:active {
+      transform: scale(0.98) !important;
+    }
+  }
+  
+  /* Safe area support for iOS devices */
+  .ios-bottom-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* PWA specific header adjustments - uses CSS variables for consistency */
+  .pwa-header-safe {
+    padding-top: var(--header-base-padding);
+  }
+
+  /* When PWA mode is detected by JavaScript */
+  body.pwa-mode .pwa-header-safe {
+    /* Reset padding since #root already handles safe area */
+    padding-top: 0px !important;
+  }
+
+  /* For mobile PWA, add bottom padding for better spacing */
+  @media screen and (max-width: 768px) {
+    body.pwa-mode .pwa-header-safe {
+      padding-bottom: 8px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .chat-input-mobile {
+      padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    }
+  }
+
+  body[data-medhelp-project-wizard-open="true"] .medhelp-chat-composer,
+  body[data-medhelp-project-wizard-open="true"] .medhelp-guided-prompt-starter {
+    display: none !important;
+  }
+
+  body[data-medhelp-version-upgrade-open="true"] .medhelp-chat-composer,
+  body[data-medhelp-version-upgrade-open="true"] .medhelp-guided-prompt-starter {
+    display: none !important;
+  }
+
+  /* Text wrapping improvements */
+  .chat-message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Force wrap long URLs and code */
+  .chat-message pre,
+  .chat-message code {
+    white-space: pre-wrap !important;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  /* Prevent horizontal scroll in chat area */
+  .chat-message * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Hide scrollbar utility for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Hide markdown backticks in prose content */
+.prose code::before,
+.prose code::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Browser print should retain only the compact skill label, never the loaded
+   SKILL.md body, even if the details element was opened before printing. */
+@media print {
+  .skill-content-message details > :not(summary) {
+    display: none !important;
+  }
+
+  .skill-content-message,
+  .skill-activity-summary {
+    break-inside: avoid;
+  }
+}
+
+/* Custom spinner animation for mobile compatibility */
+@layer utilities {
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Force hardware acceleration for smoother animation on mobile */
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Improved textarea styling */
+  .chat-input-placeholder {
+    display: block !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+  }
+
+  /* Ensure container fits textarea tightly */
+  .chat-input-placeholder:not(:focus) {
+    height: auto;
+  }
+  
+  .chat-input-placeholder::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-input-placeholder::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+  }
+  
+  .chat-input-placeholder::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.3);
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+  
+  .chat-input-placeholder::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.5);
+  }
+  
+  .dark .chat-input-placeholder {
+    scrollbar-color: rgba(107, 114, 128, 0.3) transparent;
+  }
+  
+  .dark .chat-input-placeholder::-webkit-scrollbar-thumb {
+    background-color: rgba(107, 114, 128, 0.3);
+  }
+  
+  .dark .chat-input-placeholder::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(107, 114, 128, 0.5);
+  }
+  
+  /* Enhanced box shadow when textarea expands */
+  .chat-input-expanded {
+    box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .chat-input-expanded {
+    box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.3), 0 -4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fix focus ring offset color in dark mode */
+  .dark [class*="ring-offset"] {
+    --tw-ring-offset-color: hsl(var(--background));
+  }
+  
+  /* Ensure buttons don't show white backgrounds in dark mode */
+  .dark button:focus {
+    --tw-ring-offset-color: hsl(var(--background));
+  }
+  
+  /* Fix mobile select dropdown styling */
+  @supports (-webkit-touch-callout: none) {
+    select {
+      font-size: 16px !important;
+      -webkit-appearance: none;
+    }
+  }
+  
+  /* Improve select appearance in dark mode */
+  .dark select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Fix select option text in mobile */
+  select option {
+    font-size: 16px !important;
+    padding: 8px !important;
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+  }
+  
+  .dark select option {
+    background-color: hsl(var(--card)) !important;
+    color: rgb(243 244 246) !important;
+  }
+
+  /* Pure black theme compatibility for hard-coded Tailwind dark surfaces. */
+  .dark [class~="dark:bg-gray-950"],
+  .dark [class~="dark:bg-slate-950"],
+  .dark [class~="dark:bg-zinc-950"],
+  .dark [class~="dark:bg-neutral-950"],
+  .dark [class~="dark:bg-stone-950"] {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  .dark [class~="dark:bg-gray-950/50"],
+  .dark [class~="dark:bg-slate-950/50"],
+  .dark [class~="dark:bg-slate-950/46"],
+  .dark [class~="dark:bg-slate-950/45"],
+  .dark [class~="dark:bg-slate-950/42"],
+  .dark [class~="dark:bg-slate-950/40"],
+  .dark [class~="dark:bg-slate-950/35"],
+  .dark [class~="dark:bg-slate-950/25"],
+  .dark [class~="dark:bg-slate-950/20"] {
+    background-color: hsl(var(--background) / 0.72) !important;
+  }
+
+  .dark [class~="dark:bg-gray-900"],
+  .dark [class~="dark:bg-slate-900"],
+  .dark [class~="dark:bg-zinc-900"],
+  .dark [class~="dark:bg-neutral-900"],
+  .dark [class~="dark:bg-stone-900"] {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .dark [class~="dark:bg-gray-900/80"],
+  .dark [class~="dark:bg-gray-900/60"],
+  .dark [class~="dark:bg-gray-900/50"],
+  .dark [class~="dark:bg-gray-900/40"],
+  .dark [class~="dark:bg-gray-900/30"],
+  .dark [class~="dark:bg-gray-900/20"],
+  .dark [class~="dark:bg-slate-900/80"],
+  .dark [class~="dark:bg-slate-900/60"],
+  .dark [class~="dark:bg-slate-900/50"],
+  .dark [class~="dark:bg-slate-900/40"],
+  .dark [class~="dark:bg-slate-900/30"],
+  .dark [class~="dark:bg-slate-900/20"] {
+    background-color: hsl(var(--card) / 0.76) !important;
+  }
+
+  .dark [class~="dark:bg-gray-800"],
+  .dark [class~="dark:bg-slate-800"],
+  .dark [class~="dark:bg-zinc-800"],
+  .dark [class~="dark:bg-neutral-800"],
+  .dark [class~="dark:bg-stone-800"] {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  .dark [class~="dark:bg-gray-800/90"],
+  .dark [class~="dark:bg-gray-800/50"],
+  .dark [class~="dark:bg-gray-800/40"],
+  .dark [class~="dark:bg-gray-800/30"],
+  .dark [class~="dark:bg-slate-800/90"],
+  .dark [class~="dark:bg-slate-800/50"],
+  .dark [class~="dark:bg-slate-800/40"],
+  .dark [class~="dark:bg-slate-800/30"] {
+    background-color: hsl(var(--secondary) / 0.78) !important;
+  }
+
+  .dark [class~="dark:bg-gray-700"],
+  .dark [class~="dark:bg-slate-700"],
+  .dark [class~="dark:hover:bg-gray-700"]:hover,
+  .dark [class~="dark:hover:bg-gray-700/60"]:hover,
+  .dark [class~="dark:hover:bg-slate-700"]:hover,
+  .dark [class~="dark:hover:bg-slate-900"]:hover,
+  .dark [class~="dark:hover:bg-slate-900/40"]:hover {
+    background-color: hsl(var(--muted)) !important;
+  }
+
+  /* Tool details chevron animation */
+  details[open] .details-chevron,
+  details[open] summary svg[class*="group-open"] {
+    transform: rotate(180deg);
+  }
+
+  /* Smooth chevron transition */
+  .details-chevron,
+  summary svg[class*="transition-transform"] {
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+html.companion-window-root,
+html.companion-window-root body,
+html.companion-window-root #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+html.companion-window-root .medhelp-desktop-titlebar,
+html.companion-window-root #medhelp-online-desktop-toolbar,
+html.companion-window-root [data-medhelp-desktop-runtime-banner] {
+  display: none !important;
+}
+
+.companion-native-drag {
+  -webkit-app-region: drag;
+}
+
+.companion-native-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.companion-window-stage {
+  position: relative;
+  filter: drop-shadow(0 10px 12px rgb(15 23 42 / 0.16));
+}
+
+.companion-drag-handle {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 5;
+  display: grid;
+  width: 42px;
+  height: 22px;
+  place-items: center;
+  color: rgb(71 85 105 / 0.56);
+  cursor: grab;
+  transform: translateX(-50%);
+}
+
+.companion-drag-handle:active { cursor: grabbing; }
+.companion-drag-handle svg { width: 24px; height: 24px; }
+
+.companion-pet-button {
+  width: 160px;
+  height: 172px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.companion-pet-button:focus-visible {
+  outline: 2px solid rgb(59 130 246 / 0.9);
+  outline-offset: 3px;
+  border-radius: 34px;
+}
+
+.companion-pet-bubble {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  z-index: 4;
+  min-width: 112px;
+  padding: 7px 11px;
+  border: 1px solid rgb(255 255 255 / 0.78);
+  border-radius: 14px 14px 14px 5px;
+  background: rgb(255 255 255 / 0.91);
+  box-shadow: 0 6px 20px rgb(15 23 42 / 0.14);
+  color: #334155;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.3;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 5px) scale(.96);
+  transition: opacity .18s ease, transform .18s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+.companion-pet-button:hover .companion-pet-bubble,
+.companion-pet-button:focus-visible .companion-pet-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.companion-codex-pet-sprite {
+  position: absolute;
+  left: 14px;
+  bottom: 0;
+  display: block;
+  width: 132px;
+  height: 143px;
+  background-repeat: no-repeat;
+  background-size: 800% 1100%;
+  image-rendering: auto;
+}
+
+.companion-builtin-pet {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-origin: 50% 90%;
+}
+
+.companion-builtin-pet svg { width: 160px; height: 172px; overflow: visible; }
+.companion-builtin-pet .pet-shadow { fill: rgb(15 23 42 / .13); transform-origin: center; }
+.companion-builtin-pet .pet-body { transform-origin: 80px 140px; animation: companion-pet-breathe 2.7s ease-in-out infinite; }
+.companion-builtin-pet .pet-tail { transform-origin: 128px 112px; animation: companion-pet-tail 1.8s ease-in-out infinite; }
+.companion-builtin-pet .pet-eye { transform-box: fill-box; transform-origin: center; animation: companion-pet-blink 4.6s ease-in-out infinite; }
+.companion-builtin-pet .pet-arm-left { transform-origin: 42px 98px; }
+.companion-builtin-pet .pet-arm-right { transform-origin: 119px 98px; }
+.companion-builtin-pet .pet-sparkles { opacity: 0; }
+
+.companion-builtin-pet[data-state="waving"] .pet-arm-left {
+  animation: companion-pet-wave .24s ease-in-out infinite alternate;
+}
+.companion-builtin-pet[data-state="waving"] .pet-sparkles,
+.companion-builtin-pet[data-state="jumping"] .pet-sparkles { opacity: 1; animation: companion-pet-sparkle .5s ease-in-out infinite alternate; }
+.companion-builtin-pet[data-state="jumping"] { animation: companion-pet-jump .52s cubic-bezier(.3,.8,.4,1) infinite; }
+.companion-builtin-pet[data-state="running"] { animation: companion-pet-work .48s ease-in-out infinite; }
+.companion-builtin-pet[data-state="running"] .pet-tail { animation-duration: .35s; }
+.companion-builtin-pet[data-state="waiting"] { animation: companion-pet-wait 1.25s ease-in-out infinite; }
+.companion-builtin-pet[data-state="review"] .pet-body { animation: companion-pet-review 1.1s ease-in-out infinite alternate; }
+.companion-builtin-pet[data-state="failed"] .pet-body { transform: translateY(8px) rotate(3deg); animation: none; }
+.companion-builtin-pet[data-state="failed"] .pet-mouth { d: path("M72 91c5-6 11-6 16 0"); }
+.companion-builtin-pet[data-state="failed"] .pet-ear { transform-box: fill-box; transform-origin: bottom; transform: scaleY(.75); }
+
+.companion-pet-status-dot {
+  position: absolute;
+  right: 18px;
+  bottom: 13px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid rgb(255 255 255 / .92);
+  border-radius: 50%;
+  background: #94a3b8;
+  opacity: 0;
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+.companion-pet-status-dot[data-state="running"],
+.companion-pet-status-dot[data-state="waiting"],
+.companion-pet-status-dot[data-state="review"],
+.companion-pet-status-dot[data-state="failed"] { opacity: 1; }
+.companion-pet-status-dot[data-state="running"] { background: #3b82f6; }
+.companion-pet-status-dot[data-state="waiting"] { background: #f59e0b; animation: companion-pet-status-pulse 1.25s ease-in-out infinite; }
+.companion-pet-status-dot[data-state="review"] { background: #8b5cf6; }
+.companion-pet-status-dot[data-state="failed"] { background: #ef4444; }
+
+.companion-pet-label {
+  display: inline-flex;
+  max-width: 174px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid rgb(255 255 255 / .72);
+  border-radius: 999px;
+  background: rgb(255 255 255 / .88);
+  box-shadow: 0 4px 14px rgb(15 23 42 / .12);
+  color: #475569;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(9px);
+}
+.companion-pet-label-dot { width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; }
+.companion-pet-label-dot[data-state="running"] { background: #3b82f6; }
+.companion-pet-label-dot[data-state="waiting"] { background: #f59e0b; }
+.companion-pet-label-dot[data-state="review"] { background: #8b5cf6; }
+.companion-pet-label-dot[data-state="failed"] { background: #ef4444; }
+.companion-pet-label-dot[data-state="jumping"] { background: #22c55e; }
+
+@keyframes companion-pet-breathe { 0%, 100% { transform: translateY(1px) scale(1); } 50% { transform: translateY(-2px) scale(1.015); } }
+@keyframes companion-pet-tail { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(13deg); } }
+@keyframes companion-pet-blink { 0%, 44%, 48%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.08); } }
+@keyframes companion-pet-wave { from { transform: rotate(10deg); } to { transform: translate(-4px,-3px) rotate(58deg); } }
+@keyframes companion-pet-jump { 0%, 100% { transform: translateY(0) scale(1); } 45% { transform: translateY(-17px) scale(1.03); } }
+@keyframes companion-pet-work { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-5px) rotate(1.5deg); } }
+@keyframes companion-pet-wait { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes companion-pet-review { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(-3px); } }
+@keyframes companion-pet-sparkle { from { opacity: .25; transform: scale(.85); } to { opacity: 1; transform: scale(1.08); } }
+@keyframes companion-pet-status-pulse { 50% { box-shadow: 0 0 0 7px rgb(245 158 11 / .2); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .companion-builtin-pet,
+  .companion-builtin-pet *,
+  .companion-pet-status-dot { animation: none !important; }
+}

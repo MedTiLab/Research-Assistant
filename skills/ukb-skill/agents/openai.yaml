@@ -1,0 +1,4 @@
+interface:
+  display_name: "UKB Skill"
+  short_description: "Access ukb database safely"
+  default_prompt: "Use $ukb-skill to search source_id ukb, verify variables and paths, inspect schema, and extract only source-backed database data."

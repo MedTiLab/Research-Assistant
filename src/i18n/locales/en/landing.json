@@ -1,0 +1,336 @@
+{
+  "announcement": {
+    "badge": "NEW",
+    "text": "MedHelp v1.1 — Research skills, PubMed updates, and plugin ecosystem now supported",
+    "link": "Explore skills →"
+  },
+  "nav": {
+    "intro": "Intro",
+    "pricing": "Pricing",
+    "database": "Databases",
+    "skills": "Research Skills",
+    "pubmed": "Latest PubMed",
+    "plugins": "Plugins",
+    "docs": "Docs",
+    "contact": "Contact",
+    "features": "Features",
+    "pipeline": "Pipeline",
+    "compatibility": "Compatibility",
+    "signIn": "Sign In",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Your Research Management Companion",
+    "titleLine1": "From Research Question",
+    "titleLine2": "to Reproducible Output",
+    "subtitle": "MedHelp® brings agent chat, evidence monitoring, the resource library, task pipelines, files, and compute into one focused entry point for clinical data research.",
+    "ctaPrimary": "Get Started Free",
+    "ctaSecondary": "See It In Action",
+    "metrics": {
+      "pipeline": { "value": "5", "label": "Stage Pipeline" },
+      "backends": { "value": "2+", "label": "AI Backends" },
+      "skills": { "value": "160+", "label": "Research Skills" },
+      "formats": { "value": "20+", "label": "Databases" },
+      "agents": { "value": "∞", "label": "Multi-Agent" },
+      "workspace": { "value": "1", "label": "Unified Workspace" }
+    }
+  },
+  "trust": {
+    "title": "Built for researchers at leading institutions"
+  },
+  "capabilities": {
+    "title": "Platform at a Glance",
+    "subtitle": "Everything a clinical research team needs, unified in a single intelligent workspace.",
+    "items": {
+      "pipeline": { "value": "5", "label": "Stage Research Pipeline", "desc": "Evidence → Protocol → Execution → Reporting → Dissemination" },
+      "skills": { "value": "160+", "label": "Research Skills", "desc": "Literature, data, statistics, figures, writing, and submission workflows" },
+      "backends": { "value": "2+", "label": "AI Execution Backends", "desc": "Claude Code and OpenAI Codex" },
+      "formats": { "value": "20+", "label": "Database Types", "desc": "MySQL, PostgreSQL, MongoDB, SQLite and more" },
+      "agents": { "value": "∞", "label": "Multi-Agent Workflows", "desc": "Parallel agent orchestration for complex studies" },
+      "workspace": { "value": "1", "label": "Unified Workspace", "desc": "Chat, files, tasks, pipelines — one entry point" }
+    }
+  },
+  "ecosystem": {
+    "badge": "Research Skill Library",
+    "title": "Reusable Skills for",
+    "titleHighlight": "Every Research Step",
+    "subtitle": "From fresh PubMed literature to real-world database extraction, MedHelp turns repeated research work into callable skills, templates, and plugins so each new project starts with leverage.",
+    "tabsLabel": "Research capability showcase",
+    "tabs": {
+      "database": "Databases",
+      "skills": "Research Skills",
+      "pubmed": "Latest PubMed",
+      "pricing": "Pricing",
+      "plugins": "Plugins",
+      "docs": "Docs",
+      "contact": "Contact"
+    },
+    "database": {
+      "title": "Medical Databases and Data Access",
+      "subtitle": "Database access is MedHelp's foundation layer, not something replaced by skills. The platform keeps database introduction, permission boundaries, variable retrieval, and export workflows available for skills to call when research tasks need data.",
+      "featureTitle": "From database to analyzable variables",
+      "featureDesc": "Provide one entry point for clinical cohorts, public datasets, file-based data, and private data services, with access scoped for individuals, teams, or customers.",
+      "metrics": [
+        { "value": "20+", "label": "Database and file formats" },
+        { "value": "4", "label": "Access paths" },
+        { "value": "1", "label": "Unified variable search" },
+        { "value": "Scoped", "label": "User and API access" }
+      ],
+      "groups": {
+        "catalog": {
+          "title": "Database Catalog",
+          "desc": "Show data sources, variable directories, dictionaries, and availability before users start extracting data.",
+          "tags": ["Database list", "Data dictionary", "Status"]
+        },
+        "sources": {
+          "title": "Multi-Source Access",
+          "desc": "Support relational databases, public medical datasets, cohort files, Parquet/CSV/XLSX, and private institutional data services.",
+          "tags": ["MIMIC", "NHANES", "CHARLS", "CSV/Parquet"]
+        },
+        "permissions": {
+          "title": "Permissions and Delivery Boundaries",
+          "desc": "Control database access by user, team, or API token, useful when the raw database should not be copied to customers.",
+          "tags": ["User access", "API token", "Private deploy"]
+        },
+        "exports": {
+          "title": "Variable Search and Export",
+          "desc": "Search variables by research question, then produce field packages, SQL/extraction plans, and exports for statistical analysis.",
+          "tags": ["Variables", "SQL", "Export package"]
+        }
+      }
+    },
+    "spotlight": {
+      "title": "Latest PubMed Monitoring",
+      "desc": "Search new papers around your topic and save variables, endpoints, and evidence sentences into the knowledge base.",
+      "steps": ["Build the query", "Extract candidate variables", "Save evidence cards"],
+      "details": [
+        { "title": "Topic refresh", "desc": "Generate reusable queries around diseases, exposures, outcomes, or database names." },
+        { "title": "Candidate detection", "desc": "Capture variables, scores, endpoints, and design signals from titles and abstracts." },
+        { "title": "Knowledge capture", "desc": "Save PMID, evidence sentences, and match status as traceable research assets." }
+      ]
+    },
+    "skills": {
+      "items": {
+        "pubmed": {
+          "title": "PubMed / Literature Updates",
+          "desc": "Track recent papers, identify variables and risk scores, and structure abstracts into usable evidence snippets.",
+          "meta": "Live",
+          "tags": ["PubMed", "Screening", "Evidence"]
+        },
+        "literature": {
+          "title": "Reviews and Real Citations",
+          "desc": "Organize search, screening, citation tracing, and evidence grading around PICO and inclusion criteria.",
+          "meta": "Review",
+          "tags": ["PICO", "Citation", "Trace"]
+        },
+        "database": {
+          "title": "Medical Database Extraction",
+          "desc": "Prepare variable manifests, SQL, and export packages for MIMIC, NHANES, CHARLS, and more.",
+          "meta": "Data",
+          "tags": ["Variables", "SQL", "Cohorts"]
+        },
+        "analysis": {
+          "title": "Statistics and Visualization",
+          "desc": "Cover baseline tables, survival models, regressions, sensitivity checks, and publication-grade figures.",
+          "meta": "Stats",
+          "tags": ["Table 1", "Survival", "Figures"]
+        },
+        "writing": {
+          "title": "Manuscript Writing",
+          "desc": "Turn results into methods, results, discussion, cover letters, and rebuttal drafts.",
+          "meta": "Paper",
+          "tags": ["Manuscript", "Rebuttal", "Polish"]
+        },
+        "pipeline": {
+          "title": "Research Project Pipeline",
+          "desc": "Break ideas into evidence, protocol, execution, reporting, and dissemination tasks for agents to run.",
+          "meta": "Workflow",
+          "tags": ["Tasks", "PRD", "Agents"]
+        }
+      }
+    },
+    "plugins": {
+      "title": "Plugin Ecosystem",
+      "subtitle": "Connect team methods, private data, and specialized tools into one workspace.",
+      "items": {
+        "skillUpload": {
+          "title": "Team Skill Upload",
+          "desc": "Package local SOPs, statistical templates, and code snippets into reusable team capabilities."
+        },
+        "agentRouting": {
+          "title": "Smart Routing",
+          "desc": "Recommend the right skills by research scenario and reduce manual prompt maintenance."
+        },
+        "privateStack": {
+          "title": "Private Extensions",
+          "desc": "Support BYOK, internal databases, and institution-specific plugins for long-running teams."
+        }
+      }
+    },
+    "docs": {
+      "title": "Docs and Help",
+      "subtitle": "Keep common help entry points in one tab, then open the full docs when needed.",
+      "items": {
+        "api": {
+          "title": "API and Deployment Docs",
+          "desc": "Review service endpoints, deployment variables, auth, and local/server startup notes."
+        },
+        "skills": {
+          "title": "Skill Guide",
+          "desc": "Learn how to upload, categorize, call, and maintain team research skills."
+        },
+        "database": {
+          "title": "Database Access Notes",
+          "desc": "Map data-source connection, variable retrieval, export packages, and permission boundaries."
+        },
+        "pipeline": {
+          "title": "Research Pipeline Manual",
+          "desc": "Move projects through idea, protocol, execution, reporting, and dissemination stages."
+        }
+      }
+    },
+    "contact": {
+      "title": "Need procurement support or custom service?",
+      "desc": "For team seats, private deployment, plugin migration, or database access, we can configure MedHelp around your actual research workflow.",
+      "cta": "Contact MedHelp",
+      "items": [
+        { "title": "Beta access", "desc": "Best for trying the personal workspace and skill library first." },
+        { "title": "Team rollout", "desc": "Best for labs, departments, or institutions that need shared governance." },
+        { "title": "Plugin migration", "desc": "Turn existing SOPs, scripts, and templates into callable plugins." }
+      ]
+    }
+  },
+  "plans": {
+    "badge": "Beta Support Plans",
+    "title": "Choose Your Research Plan",
+    "subtitle": "Free covers the basic project and chat experience. Pro unlocks automation, durable knowledge, and the complete research workspace.",
+    "recommended": "Recommended",
+    "items": {
+      "free": {
+        "name": "FREE",
+        "desc": "Try basic projects, chat, and file browsing.",
+        "price": "Free",
+        "period": "Best for exploring the MedHelp workflow",
+        "cta": "Get Started",
+        "features": ["Basic research chat", "One device", "Project file browsing and preview", "Selected core capabilities"]
+      },
+      "pro": {
+        "name": "PRO",
+        "desc": "The complete research workspace with automation.",
+        "price": "Professional",
+        "period": "Best for monitoring, cohort studies, and manuscripts",
+        "cta": "Join Beta",
+        "featured": true,
+        "features": ["Task workspace and automated Pipeline", "Literature Monitor and variable discovery", "Project memory and full conversation archive", "Codex, advanced file actions, and higher limits"]
+      }
+    }
+  },
+  "features": {
+    "badge": "Core Features",
+    "title": "Everything You Need for",
+    "titleHighlight": "Clinical Data Research",
+    "subtitle": "A purpose-built workspace that understands the clinical research lifecycle.",
+    "items": {
+      "chat": {
+        "title": "Agent Chat",
+        "desc": "Multi-model conversations with seamless switching between Claude Code and Codex. Context-aware prompting for clinical research workflows."
+      },
+      "evidence": {
+        "title": "Evidence Pipeline",
+        "desc": "Five-stage clinical evidence management: intake, protocol design, study execution, reporting, and dissemination — all tracked and auditable."
+      },
+      "knowledge": {
+        "title": "Variable Knowledge",
+        "desc": "Structured variable knowledge base with PubMed discovery integration. Capture, cite, and trace evidence across your entire research portfolio."
+      },
+      "files": {
+        "title": "Files & Git",
+        "desc": "Built-in file manager with syntax highlighting, diff viewer, and Git integration. Version control your research assets alongside your code."
+      },
+      "tasks": {
+        "title": "Task Automation",
+        "desc": "TaskMaster-powered task decomposition with automatic PRD generation. Break complex studies into tracked, executable subtasks with AI assistance."
+      }
+    }
+  },
+  "pipeline": {
+    "badge": "Research Pipeline",
+    "title": "Five Stages. One Workspace.",
+    "subtitle": "A structured pipeline that mirrors the clinical research lifecycle from evidence gathering to publication.",
+    "stages": {
+      "intake": { "title": "Evidence Intake", "desc": "Systematic literature search, PubMed integration, and automated evidence grading. Capture variables, endpoints, and inclusion criteria from published studies." },
+      "design": { "title": "Protocol Design", "desc": "AI-assisted protocol drafting with structured templates. Define study arms, endpoints, sample size calculations, and statistical analysis plans." },
+      "execution": { "title": "Study Execution", "desc": "Track enrollment, data collection, and adverse events. Run analyses directly on your compute environment with integrated workflow tools." },
+      "reporting": { "title": "Reporting", "desc": "Generate tables, figures, and statistical summaries. Export publication-ready manuscripts with proper citations and CONSORT/STROBE compliance." },
+      "dissemination": { "title": "Dissemination", "desc": "Prepare submissions for journals and conferences. Archive datasets, share reproducible analysis notebooks, and track research impact." }
+    }
+  },
+  "compatibility": {
+    "badge": "Database Analysis",
+    "title": "Connect to",
+    "titleHighlight": "20+",
+    "titleEnd": "Database Types",
+    "subtitle": "From relational databases to document stores — connect, query, analyze, and visualize your clinical research data directly."
+  },
+  "prosCons": {
+    "title": "Real",
+    "titleHighlight": "MedHelp",
+    "titleEnd": "Tradeoffs",
+    "subtitle": "Built for medical research workflows, with setup and review still required.",
+    "cons": {
+      "title": "Watchpoints",
+      "subtitle": "Data, permissions, and workflow need setup",
+      "items": {
+        "evidence": "Evidence still needs review",
+        "knowledge": "Variable libraries need upkeep",
+        "pubmed": "Search depends on keywords",
+        "tasks": "Complex work needs decomposition",
+        "agents": "Agents need scenario setup",
+        "artifacts": "Outputs need team conventions",
+        "context": "Medical judgment is not automated",
+        "workflow": "There is onboarding time"
+      }
+    },
+    "pros": {
+      "title": "Practical Strengths",
+      "subtitle": "Common research work in one workspace",
+      "items": {
+        "chat": "Switch models by task",
+        "evidence": "Structured evidence flow",
+        "knowledge": "Reusable variable knowledge",
+        "pubmed": "Track PubMed updates",
+        "files": "Files and Git together",
+        "tasks": "Executable task breakdown",
+        "agents": "Dedicated agents cooperate",
+        "artifacts": "Trace protocol to manuscript"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Accelerate",
+    "titleHighlight": "Your Research?",
+    "subtitle": "Deploy MedHelp in minutes and streamline your clinical research workflow with AI-powered automation.",
+    "deploy": "Get Started",
+    "docs": "View Documentation"
+  },
+  "footer": {
+    "tagline": "AI-powered clinical research workspace.",
+    "product": "Product",
+    "resources": "Resources",
+    "support": "Support",
+    "links": {
+      "features": "Features",
+      "database": "Databases",
+      "skills": "Research Skills",
+      "pricing": "Pricing",
+      "pipeline": "Pipeline",
+      "formats": "Data Formats",
+      "docs": "Documentation",
+      "api": "API Reference",
+      "contact": "Contact Us"
+    },
+    "copyright": "© 2026 杭州医时生物科技有限公司 版权所有",
+    "icp": "浙ICP备2026003189号",
+    "builtWith": "Built with React, Vite, Tailwind CSS, and Node.js"
+  }
+}

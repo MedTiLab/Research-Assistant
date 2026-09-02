@@ -1,0 +1,1211 @@
+{
+  "codeBlock": {
+    "copy": "复制",
+    "copied": "已复制",
+    "copyCode": "复制代码"
+  },
+  "gitPanel": {
+    "selectProject": "请选择一个项目以查看版本控制",
+    "openFile": "点击打开文件",
+    "discardChanges": "放弃更改",
+    "discard": "放弃",
+    "discardConfirm": "确定放弃“{{file}}”的全部更改吗？此操作无法撤销。",
+    "modified": "已修改",
+    "added": "已新增",
+    "deleted": "已删除",
+    "untracked": "未跟踪",
+    "horizontalScroll": "切换为横向滚动",
+    "textWrap": "切换为自动换行",
+    "scroll": "滚动",
+    "wrap": "换行",
+    "ahead": "领先远端 {{count}} 个提交",
+    "ahead_other": "领先远端 {{count}} 个提交",
+    "behind": "落后远端 {{count}} 个提交",
+    "behind_other": "落后远端 {{count}} 个提交",
+    "upToDate": "已与远端同步",
+    "createBranch": "新建分支",
+    "publishConfirm": "确定将分支“{{branch}}”发布到 {{remote}} 吗？",
+    "publishTitle": "将分支“{{branch}}”发布到 {{remote}}",
+    "publishing": "发布中…",
+    "publish": "发布",
+    "pullConfirm": "确定从 {{remote}} 拉取 {{count}} 个提交吗？",
+    "pullConfirm_other": "确定从 {{remote}} 拉取 {{count}} 个提交吗？",
+    "pulling": "拉取中…",
+    "pull": "拉取 {{count}}",
+    "pushConfirm": "确定向 {{remote}} 推送 {{count}} 个提交吗？",
+    "pushConfirm_other": "确定向 {{remote}} 推送 {{count}} 个提交吗？",
+    "pushing": "推送中…",
+    "push": "推送 {{count}}",
+    "fetchTitle": "从 {{remote}} 获取更新",
+    "fetching": "获取中…",
+    "fetch": "获取",
+    "enableFailed": "无法为此项目启用 Git",
+    "unavailableTitle": "此项目尚未启用 Git",
+    "unavailableDescription": "Git 可以记录文件历史、查看更改，并在需要时安全恢复到早期版本。",
+    "unavailableHelp": "无需使用终端，点击下方按钮即可由应用完成设置。",
+    "enabling": "正在启用 Git…",
+    "enable": "为此项目启用 Git",
+    "afterSetupPrefix": "设置完成后，可在此创建第一个版本快照。高级用户仍可在项目文件夹中运行",
+    "afterSetupSuffix": "。",
+    "changes": "更改",
+    "history": "历史",
+    "commitFiles": "提交 {{count}} 个文件",
+    "commitFiles_other": "提交 {{count}} 个文件",
+    "commitChanges": "提交更改",
+    "messagePlaceholder": "提交说明（Ctrl+Enter 提交）",
+    "generateMessage": "生成提交说明",
+    "filesSelected": "已选择 {{count}} 个文件",
+    "filesSelected_other": "已选择 {{count}} 个文件",
+    "commitConfirm": "确定以“{{message}}”提交 {{count}} 个文件吗？",
+    "commitConfirm_other": "确定以“{{message}}”提交 {{count}} 个文件吗？",
+    "committing": "提交中…",
+    "commit": "提交",
+    "selectedOfTotal": "已选择 {{selected}} / {{total}} 个文件",
+    "all": "全部",
+    "selectAll": "全选",
+    "none": "无",
+    "deselectAll": "取消全选",
+    "statusGuide": "文件状态说明",
+    "noCommitsTitle": "尚无提交",
+    "noCommitsDescription": "此仓库还没有提交。创建首次提交后即可开始跟踪更改。",
+    "creatingInitialCommit": "正在创建首次提交…",
+    "createInitialCommit": "创建首次提交",
+    "initialCommitFailed": "创建首次提交失败",
+    "noChanges": "未检测到更改",
+    "noCommitsFound": "未找到提交记录",
+    "newBranchTitle": "新建分支",
+    "branchName": "分支名称",
+    "branchPlaceholder": "feature/new-feature",
+    "branchHelp": "将从当前分支 {{branch}} 创建新分支。",
+    "cancel": "取消",
+    "creating": "创建中…",
+    "confirmDiscard": "放弃更改",
+    "confirmDelete": "删除文件",
+    "confirmCommit": "确认提交",
+    "confirmPull": "确认拉取",
+    "confirmPublish": "发布分支",
+    "confirmPush": "确认推送",
+    "delete": "删除",
+    "pullAction": "拉取",
+    "pushAction": "推送"
+  },
+  "messageTypes": {
+    "user": "U",
+    "error": "错误",
+    "tool": "工具",
+    "claude": "Claude",
+    "codex": "Codex",
+    "pi": "Pi"
+  },
+  "queue": {
+    "count": "{{count}} 条消息排队中",
+    "position": "第 {{current}} / {{total}} 条",
+    "edit": "编辑消息",
+    "save": "保存修改",
+    "cancelEdit": "取消修改",
+    "remove": "移出队列",
+    "moveUp": "向前移动",
+    "moveDown": "向后移动",
+    "drag": "拖动调整顺序",
+    "doubleClickEdit": "双击编辑",
+    "more": "更多操作",
+    "clear": "清空队列",
+    "close": "关闭排队",
+    "send": "加入队列"
+  },
+  "steer": {
+    "send": "立即推送",
+    "hint": "立即推送到当前运行，不会停止 AI",
+    "accepted": "已推送，AI 正在调整",
+    "failed": "立即推送失败，请重试或加入队列"
+  },
+  "error": {
+    "retry": "重试",
+    "usageLimitHint": "使用限制重置后可以重试"
+  },
+  "tools": {
+    "settings": "工具设置",
+    "error": "工具错误",
+    "result": "工具结果",
+    "viewParams": "查看输入参数",
+    "viewRawParams": "查看原始参数",
+    "viewDiff": "查看编辑差异",
+    "creatingFile": "创建新文件：",
+    "updatingTodo": "更新待办事项",
+    "read": "读取",
+    "readFile": "读取文件",
+    "updateTodo": "更新待办列表",
+    "readTodo": "读取待办列表",
+    "searchResults": "结果"
+  },
+  "search": {
+    "found": "找到 {{count}} 个{{type}}",
+    "file": "文件",
+    "files": "文件",
+    "pattern": "模式：",
+    "in": "在："
+  },
+  "fileOperations": {
+    "updated": "文件更新成功",
+    "created": "文件创建成功",
+    "written": "文件写入成功",
+    "diff": "差异",
+    "newFile": "新文件",
+    "viewContent": "查看文件内容",
+    "viewFullOutput": "查看完整输出（{{count}} 个字符）",
+    "contentDisplayed": "文件内容显示在上面的差异视图中"
+  },
+  "interactive": {
+    "title": "交互式提示",
+    "waiting": "等待您在 CLI 中响应",
+    "instruction": "请在 Claude 运行的终端中选择一个选项。",
+    "selectedOption": "✓ Claude 选择了选项 {{number}}",
+    "instructionDetail": "在 CLI 中，您可以使用方向键或输入数字来交互式地选择此选项。"
+  },
+  "thinking": {
+    "title": "思考中...",
+    "emoji": "💭 思考中..."
+  },
+  "agentTurn": {
+    "thought": "思考",
+    "usedTools": "使用了 {{count}} 个工具",
+    "usedSkills": "加载了 {{count}} 个技能",
+    "steps": "执行步骤",
+    "streaming": "传输中..."
+  },
+  "skill": {
+    "contentLoaded": "技能内容已加载",
+    "contentBadge": "技能"
+  },
+  "json": {
+    "response": "JSON 响应"
+  },
+  "messageShare": {
+    "button": "分享",
+    "creating": "分享中...",
+    "failed": "创建分享链接失败。",
+    "title": "分享回答",
+    "description": "复制这个只读链接分享这条回答。",
+    "copy": "复制",
+    "copied": "已复制"
+  },
+  "messageActions": {
+    "copyAnswer": "复制回答",
+    "copied": "已复制",
+    "copyFailed": "复制失败",
+    "retryAnswer": "重新回答",
+    "rewindCurrentChanges": "撤回当前修改和文件",
+    "rewindDescription": "撤回最新一轮 AI 回答对应的修改和文件",
+    "rewindDialogTitle": "撤回当前修改和文件",
+    "rewindConfirm": "将撤回最新一轮 AI 回答对应的修改和文件。确定继续吗？",
+    "rewindCancel": "取消",
+    "rewindAction": "撤回修改",
+    "saveAsLesson": "存为经验"
+  },
+  "permissions": {
+    "grant": "授予 {{tool}} 权限",
+    "added": "权限已添加",
+    "addTo": "将 {{entry}} 添加到允许的工具。",
+    "retry": "权限已保存。重试请求以使用该工具。",
+    "error": "无法更新权限。请重试。",
+    "openSettings": "打开设置"
+  },
+  "todo": {
+    "updated": "待办列表已成功更新",
+    "current": "当前待办列表"
+  },
+  "plan": {
+    "viewPlan": "📋 查看实施计划",
+    "title": "实施计划"
+  },
+  "status": {
+    "thinking": "思考中",
+    "processing": "处理中",
+    "analyzing": "分析中",
+    "working": "执行中",
+    "computing": "计算中",
+    "reasoning": "推理中",
+    "runningCode": "正在运行代码",
+    "creatingProject": "正在创建项目",
+    "resuming": "恢复中",
+    "initializing": "初始化中",
+    "restarting": "重启中"
+  },
+  "usageLimit": {
+    "resetAt": "Claude 使用限制已达到。您的限制将在 **{{time}} {{timezone}}** - {{date}} 重置"
+  },
+  "tokenUsage": {
+    "pendingTitle": "等待上下文用量数据",
+    "unavailable": "上下文不可用",
+    "unavailableTitle": "当前无法获取这个会话的上下文使用量。",
+    "title": "上下文状态",
+    "openBreakdown": "查看上下文状态",
+    "close": "关闭上下文状态",
+    "unknownModel": "未知模型",
+    "remaining": "剩余",
+    "estimated": "用量为估算值",
+    "measured": "用量为实测值",
+    "runtimeWindow": "运行时返回的窗口",
+    "fallbackWindow": "256K 回退窗口",
+    "autoCompact": "自动压缩：由模型运行时管理",
+    "latestTurn": "最近一轮遥测",
+    "mechanism": "这里显示的是实际发送给模型的有效上下文。压缩后，完整聊天记录仍可回看，但模型只接收压缩摘要和后续新消息；自动压缩阈值由当前模型运行时决定。",
+    "breakdown": {
+      "input": "输入",
+      "cacheRead": "缓存输入",
+      "cacheCreation": "缓存写入",
+      "output": "输出",
+      "reasoning": "推理输出"
+    },
+    "compact": {
+      "button": "立即压缩",
+      "running": "正在压缩…",
+      "started": "已开始压缩",
+      "failed": "压缩失败",
+      "noSession": "请先打开一个已保存的 Codex 会话。",
+      "waitForTurn": "请等当前任务结束后再压缩"
+    }
+  },
+  "analysisLanguage": {
+    "selector": {
+      "title": "分析语言",
+      "label": "分析语言",
+      "description": "控制聊天中默认偏好的分析代码语言。这里只影响 agent 的分析实现偏好，不会直接创建或切换真实运行环境。"
+    },
+    "options": {
+      "auto": "自动",
+      "python": "Python",
+      "r": "R"
+    }
+  },
+  "codex": {
+    "permissionMode": "权限模式",
+    "modes": {
+      "auto": "自动模式",
+      "readOnly": "只读模式",
+      "default": "默认模式",
+      "acceptEdits": "编辑模式",
+      "bypassPermissions": "无限制模式",
+      "ask": "变更前询问",
+      "plan": "计划模式"
+    },
+    "descriptions": {
+      "auto": "Pi 自动使用项目文件、Shell 和已安装的 Pi 工具；危险系统命令仍会被拦截。",
+      "readOnly": "仅检查项目文件，不写入，也不运行 Shell 命令。",
+      "default": "只有受信任的命令（ls、cat、grep、git status 等）自动运行。其他命令将被跳过。可以写入项目。",
+      "acceptEdits": "项目内的所有命令自动运行。完全自动模式，具有沙盒执行功能。",
+      "bypassPermissions": "完全的系统访问，无限制。所有命令自动运行，具有完整的磁盘和网络访问权限。请谨慎使用。",
+      "ask": "可自由读取；每次写入、编辑或运行命令前都需要明确批准。",
+      "plan": "计划模式 - 不执行任何命令"
+    },
+    "technicalDetails": "技术细节"
+  },
+  "stagePlaceholder": {
+    "literature": "告诉我研究主题、疾病、人群或关键词，我会先整理文献基线、证据范围和可用参考...",
+    "ideation": "描述你的研究问题或临床假说，我会帮助凝练 PICO、创新点、可行性和最小研究方案...",
+    "experiment": "告诉我需要处理的人群、变量、模型或分析目标，我会路由到数据、统计和可视化任务...",
+    "publication": "请告诉我要写哪个章节、图表、稿件或返修内容，我会按发表产物协作起草...",
+    "promotion": "告诉我要做的汇报、幻灯、海报、主页或传播材料，我会按推广产物组织输出..."
+  },
+  "input": {
+    "placeholder": "输入 / 调用命令，@ 选择文件，或向 medhelpOS 提问...",
+    "placeholderDefault": "输入您的消息...",
+    "disabled": "输入已禁用",
+    "attachMenu": "添加内容",
+    "attachFiles": "附加文件",
+    "attachReferences": "附加文献",
+    "openFolder": "打开文件夹",
+    "connectedFolder": "当前项目文件夹：{{name}}",
+    "connectedProjectPlaceholder": "先熟悉这个项目：看仓库结构、已有文件和当前进展，再告诉我你想了解或推进的部分...",
+    "removeFolder": "从当前对话移除文件夹",
+    "attachImages": "附加图片",
+    "dropFilesHere": "拖放文件到此处",
+    "attachmentOnlyFallback": "请先查看我附上的文件，并基于这些文件帮助我。",
+    "send": "发送",
+    "stop": "停止",
+    "hintText": {
+      "ctrlEnter": "Ctrl+Enter 发送 • Shift+Enter 换行 • Tab 切换模式 • / 斜杠命令",
+      "enter": "Enter 发送 • Shift+Enter 换行 • Tab 切换模式 • / 斜杠命令"
+    },
+    "clickToChangeMode": "点击更改权限模式（或在输入框中按 Tab）",
+    "showAllCommands": "显示所有命令",
+    "clearInput": "清空输入",
+    "scrollToBottom": "滚动到底部",
+    "computeResource": {
+      "label": "计算资源：{{name}}",
+      "menuTitle": "选择计算资源",
+      "local": "本机",
+      "remote": "远程节点",
+      "slurm": "Slurm 集群",
+      "noRemoteNodes": "暂无远程节点，可在设置的“计算资源”中添加。",
+      "loadFailed": "无法加载计算资源节点",
+      "selectFailed": "无法切换计算资源节点"
+    }
+  },
+  "thinkingMode": {
+    "selector": {
+      "title": "思考强度",
+      "description": "使用 Claude SDK 的 thinking / effort 档位",
+      "active": "激活",
+      "tip": "更高的 effort 通常会提升复杂任务质量，但会增加延迟"
+    },
+    "modes": {
+      "none": {
+        "name": "Default",
+        "description": "不覆盖 Claude SDK 默认设置"
+      },
+      "low": {
+        "name": "Low",
+        "description": "最少思考，响应最快"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "中等思考强度"
+      },
+      "high": {
+        "name": "High",
+        "description": "深度推理"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "比 High 更深的推理"
+      },
+      "max": {
+        "name": "Max",
+        "description": "最大 effort"
+      }
+    },
+    "buttonTitle": "思考强度：{{mode}}"
+  },
+  "piThinkingMode": {
+    "selector": {
+      "title": "Pi 思考强度",
+      "description": "把所选 reasoning level 传给 Pi 当前模型",
+      "active": "激活",
+      "tip": "模型必须在 Pi 模型设置中启用“支持思考强度”；更高档位通常会增加延迟。"
+    },
+    "modes": {
+      "none": {
+        "name": "Off",
+        "description": "关闭显式思考强度"
+      },
+      "minimal": {
+        "name": "Minimal",
+        "description": "Pi 支持的最低显式思考强度"
+      },
+      "low": {
+        "name": "Low",
+        "description": "较低思考强度，响应更快"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "中等思考强度"
+      },
+      "high": {
+        "name": "High",
+        "description": "深度推理"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "比 High 更深的推理"
+      },
+      "max": {
+        "name": "Max",
+        "description": "最大思考强度"
+      }
+    },
+    "buttonTitle": "Pi 思考强度：{{mode}}"
+  },
+  "codexReasoningEffort": {
+    "selector": {
+      "title": "Reasoning Effort",
+      "description": "Pass the matching model_reasoning_effort value to Codex",
+      "active": "Active",
+      "tip": "Default sends no override; every other option is passed directly."
+    },
+    "levels": {
+      "default": {
+        "name": "Default",
+        "description": "Use the model default"
+      },
+      "minimal": {
+        "name": "Minimal",
+        "description": "Set model_reasoning_effort to minimal"
+      },
+      "low": {
+        "name": "Low",
+        "description": "Set model_reasoning_effort to low"
+      },
+      "medium": {
+        "name": "Medium",
+        "description": "Set model_reasoning_effort to medium"
+      },
+      "high": {
+        "name": "High",
+        "description": "Set model_reasoning_effort to high"
+      },
+      "xhigh": {
+        "name": "XHigh",
+        "description": "Set model_reasoning_effort to xhigh"
+      },
+      "max": {
+        "name": "Max",
+        "description": "Set model_reasoning_effort to max"
+      }
+    },
+    "buttonTitle": "Reasoning effort: {{level}}"
+  },
+  "providerSelection": {
+    "title": "选择您的 AI 助手",
+    "description": "选择一个供应商以开始新对话",
+    "selectModel": "选择模型",
+    "notInstalled": "未安装",
+    "piNotConfigured": "未配置",
+    "piConfigurationRequired": "请先在设置中添加 Pi API 提供商并启用模型。",
+    "installRequired": "{{provider}} CLI 未安装",
+    "notLoggedIn": "未登录",
+    "loginRequired": "{{provider}} CLI 未登录",
+    "authRequiredHint": "当前没有检测到已登录的模型 CLI。请先在「设置」中重新登录可用的供应商，再开始对话。",
+    "unavailableHint": "当前机器上有些 CLI 后端不可用。请先在「设置」中安装缺失工具，再使用这些选项。",
+    "proOnly": "Pro 专属",
+    "codexUpgradeHint": "Codex 为 Pro 账号专属功能，Free 账号暂不可使用。",
+    "agentUpgradeHint": "Claude 和 Codex 为 Pro 会员功能，Free 账号可使用 Pi Agent。",
+    "managedFreePrivacy": "提示词和只读工具结果可能会发送到服务端托管的第三方模型端点，请勿提交敏感信息或受监管数据。",
+    "managedFreePrivacyShort": "隐私提示",
+    "managedFreePrice": "当前目录标记为免费，但可用性和价格可能发生变化。",
+    "managedFreeRetryAt": "模型目录预计可在 {{time}} 后重试刷新。",
+    "managedFreeHealth": {
+      "healthy": "托管免费模型",
+      "degraded": "使用缓存目录",
+      "disabled": "免费目录已关闭",
+      "rate_limited": "免费目录受限",
+      "unavailable": "免费目录不可用"
+    },
+    "providerInfo": {
+      "anthropic": "Anthropic",
+      "openai": "OpenAI",
+      "google": "Google",
+      "local": "在本地 GPU 上运行"
+    },
+    "readyPrompt": {
+      "claude": "已准备好使用 Claude {{model}}。在下方输入您的消息。",
+      "codex": "已准备好使用 Codex {{model}}。在下方输入您的消息。",
+      "local": "已准备好使用本地 GPU {{model}}。在下方输入您的消息。",
+      "default": "请在上方选择一个供应商以开始"
+    }
+  },
+  "session": {
+    "mode": {
+      "title": "选择会话类型",
+      "subtitle": "决定这个会话是用于研究流程，还是仅用于项目文件问答。",
+      "badge": "{{count}} 个选项",
+      "research": "研究",
+      "workspaceQa": "文件问答",
+      "researchTitle": "研究会话",
+      "researchDescription": "使用研究工作流、入门引导与流水线提示。",
+      "workspaceQaTitle": "项目问答",
+      "workspaceQaDescription": "只询问文件、模块和实现细节，不触发研究流程。",
+      "workspaceQaPlaceholder": "询问任意文件、模块或实现细节...",
+      "workspaceQaGreeting": "我可以帮你查看这个项目：梳理代码路径、解释模块、排查行为问题，并做定向修复。\n\n直接告诉我你想了解或修改的文件、bug 或实现细节即可。",
+      "workspaceQaHint": "这个会话会聚焦仓库问题，除非你明确要求开始研究规划。"
+    },
+    "continue": {
+      "title": "继续您的对话",
+      "description": "询问研究设计、统计方案、代码实现，或请求具体修改与执行支持"
+    },
+    "loading": {
+      "olderMessages": "正在加载更早的消息...",
+      "loadOlderMessages": "加载更早消息",
+      "sessionMessages": "正在加载会话消息..."
+    },
+    "messages": {
+      "showingOf": "显示 {{shown}} / {{total}} 条消息",
+      "scrollToLoad": "向上滚动以加载更多",
+      "loadMoreHistory": "加载更多历史消息",
+      "showingLast": "显示最近 {{count}} 条消息（共 {{total}} 条）",
+      "loadEarlier": "加载更早的消息",
+      "loadAll": "加载全部消息",
+      "loadingAll": "正在加载全部消息...",
+      "allLoaded": "全部消息已加载",
+      "perfWarning": "已加载全部消息 - 滚动可能变慢。点击「滚动到底部」恢复性能。"
+    }
+  },
+  "sessionContext": {
+    "title": "会话上下文",
+    "description": "展示本会话追踪中实际观测到的文件、任务与输出。",
+    "memory": {
+      "title": "AI 一键总结 Memory",
+      "actions": {
+        "summarize": "一键总结"
+      },
+      "prompts": {
+        "review": "总结当前对话，并把确认后的长期信息更新到 `.medhelpsec/MEMORY.md`。"
+      },
+      "messages": {
+        "notEnough": "当前还没有可总结的对话内容，或当前页面无法向该对话发送消息。",
+        "proLocked": "AI 总结项目 Memory 属于 Pro 功能。",
+        "loading": "正在加载 MEMORY.md…"
+      }
+    },
+    "codexNotice": "Codex 会话可见性目前仅部分覆盖运行时暴露的工具事件范围。",
+    "traceError": "无法加载完整会话追踪，当前仅显示内存中的实时消息。",
+    "stats": {
+      "mode": "模式",
+      "provider": "提供商",
+      "contextFiles": "上下文文件",
+      "unreadOutputs": "未读输出",
+      "dataSources": "数据源",
+      "dataSourcesHint": "已注入的目录与变量库",
+      "workingData": "工作数据",
+      "workingDataHint": "已注入的上下文文件",
+      "outputs": "论文产出",
+      "outputsHintAllReviewed": "全部已审阅",
+      "outputsHintUnread": "{{count}} 项待审"
+    },
+    "sections": {
+      "injectedContext": "注入的上下文",
+      "taskContext": "会话任务活动",
+      "reviewQueue": "待审阅队列",
+      "fileReview": "文件审阅"
+    },
+    "actions": {
+      "collapse": "收起上下文侧栏",
+      "expand": "展开上下文侧栏",
+      "expandBrowser": "放大浏览器",
+      "restoreBrowser": "还原浏览器大小",
+      "resize": "拖动调整宽度",
+      "more": "更多"
+    },
+    "sidebarTabs": {
+      "context": "上下文",
+      "research": "研究",
+      "files": "文件",
+      "browser": "浏览器",
+      "download": "下载",
+      "shell": "终端",
+      "git": "Git 版本控制"
+    },
+    "browser": {
+      "title": "简易浏览器",
+      "addressLabel": "网址或搜索内容",
+      "placeholder": "输入网址或搜索内容",
+      "go": "前往",
+      "back": "后退",
+      "forward": "前进",
+      "reload": "刷新",
+      "home": "主页",
+      "openExternal": "在系统浏览器中打开",
+      "loadError": "页面加载失败，请检查网址或网络连接。",
+      "tryAgain": "重试",
+      "embedNotice": "部分网站禁止网页嵌入，可点击右上角在系统浏览器中打开。"
+    },
+    "filters": {
+      "all": "全部",
+      "unread": "未读",
+      "reviewed": "已审阅"
+    },
+    "kinds": {
+      "task": "任务",
+      "todo": "待办",
+      "skill": "技能",
+      "directory": "目录"
+    },
+    "empty": {
+      "injectedContext": "尚未观测到文件或目录上下文。",
+      "taskContext": "尚未从会话历史中收集到任务或待办活动。",
+      "reviewQueue": "本会话尚未生成可审阅的文件。"
+    },
+    "preview": {
+      "titleFallback": "预览",
+      "largeTitle": "大窗口文件预览",
+      "selectFile": "请选择要预览的文件",
+      "open": "打开",
+      "openEditor": "编辑",
+      "previewMode": "预览",
+      "dragTitle": "拖动移动预览窗口",
+      "resize": "拖动调整预览大小",
+      "resetSize": "重置预览大小",
+      "maximize": "最大化预览",
+      "restoreSize": "还原预览大小",
+      "loading": "正在加载预览…",
+      "loadError": "无法加载预览：{{error}}",
+      "missingTitle": "引用的文件不可用",
+      "missingHint": "这条对话仍然保留了文件路径，但工作区里已经找不到该文件。它可能已被删除、重命名、移动，或来自较早的项目状态。",
+      "missingPathLabel": "路径：",
+      "truncatedNotice": "文件较大，仅加载前 {{previewSize}} 用于预览（约 {{totalSize}}）。请使用「打开」在编辑器中查看完整内容。",
+      "downloadFormats": {
+        "choose": "选择下载格式",
+        "markdown": "原始 Markdown",
+        "markdownHint": "保留为 .md 文件",
+        "word": "Word 文档（DOCX）",
+        "wordHint": "保留标题、列表、表格和链接",
+        "pdf": "PDF 文档",
+        "pdfHint": "适合打印和发送",
+        "failed": "下载失败"
+      },
+      "table": {
+        "empty": "没有可预览的表格行。",
+        "column": "第 {{index}} 列",
+        "limitNotice": "当前显示前 {{rows}} 行、{{columns}} 列。"
+      },
+      "xlsx": {
+        "parsing": "正在读取工作簿…",
+        "worksheets": "工作表",
+        "emptyWorkbook": "这个工作簿中没有可预览的工作表。",
+        "emptySheet": "这个工作表为空。",
+        "limitNotice": "当前显示该工作表前 {{rows}} 行、{{columns}} 列。",
+        "errorTitle": "无法预览这个工作簿",
+        "errorHint": "XLSX 文件可能已损坏、已加密，或使用了暂不支持的工作簿功能。{{error}}"
+      },
+      "selectToReview": "请选择要审阅的文件",
+      "unreadHint": "输出文件在从待审队列打开前将保持未读状态。",
+      "move": {
+        "title": "移动到其他文件夹",
+        "projectRoot": "项目根目录",
+        "currentFolder": "当前文件夹：{{path}}",
+        "targetPlaceholder": "输入或选择目标文件夹，例如 Literature/notes",
+        "loadingFolders": "正在加载文件夹…",
+        "noFolders": "没有可移动到的其他文件夹。",
+        "targetRequired": "请先选择目标文件夹。",
+        "sameFolder": "目标文件夹和当前文件夹相同。",
+        "confirm": "移动文件",
+        "moveFailed": "移动文件失败。",
+        "loadFoldersError": "加载文件夹失败。"
+      }
+    }
+  },
+  "shell": {
+    "selectProject": {
+      "title": "选择项目",
+      "description": "选择一个项目以在该目录中打开交互式终端"
+    },
+    "disabled": {
+      "title": "终端已关闭",
+      "description": "裸终端访问已禁用，请继续使用 Chat 或 Agent 会话。"
+    },
+    "status": {
+      "newSession": "新会话",
+      "initializing": "初始化中...",
+      "restarting": "重启中..."
+    },
+    "actions": {
+      "disconnect": "断开连接",
+      "disconnectTitle": "断开终端连接",
+      "clear": "清空",
+      "clearTitle": "清空当前终端可见历史和重连回放缓存",
+      "restart": "重启",
+      "restartTitle": "重启终端并停止当前终端进程",
+      "autoRestart": "自动重启",
+      "autoRestartTitle": "已启动的 dev/watch 命令异常退出时自动重启",
+      "connect": "在终端中继续",
+      "connectTitle": "连接到终端"
+    },
+    "autoRestart": {
+      "scheduled": "{{seconds}} 秒后自动重启 {{attempt}}/{{count}}",
+      "stopped": "已连续失败 {{count}} 次，停止自动重启"
+    },
+    "loading": "正在加载终端...",
+    "connecting": "正在连接到终端...",
+    "startSession": "启动新的 Claude 会话",
+    "resumeSession": "恢复会话：{{displayName}}...",
+    "runCommand": "在 {{projectName}} 中运行 {{command}}",
+    "openTerminal": "在 {{projectName}} 中打开终端",
+    "startCli": "在 {{projectName}} 中启动 Claude CLI",
+    "historyEdit": {
+      "action": "修改历史输入",
+      "promptTitle": "请在终端中完成历史编辑",
+      "promptDescription": "网页聊天不直接改写历史消息。如需使用模型原生的编辑、撤回或重试能力，请前往终端操作。",
+      "cancel": "取消",
+      "confirm": "前往终端",
+      "bannerTitle": "当前会话已切换到终端",
+      "bannerDescription": "请在这里使用模型原生的历史编辑、撤回或重试能力。网页聊天仅展示对话，不直接改写历史。"
+    },
+    "workspace": {
+      "currentSession": "当前会话",
+      "newShell": "新建终端",
+      "tabTitle": "终端 {{index}}",
+      "closeShell": "关闭 {{title}}"
+    }
+  },
+  "projectSelection": {
+    "startChatWithProvider": "选择一个研究项目以开始与 {{provider}} 进行对话",
+    "createProjectUnavailable": "项目创建暂时不可用。请等待工作区加载完成后再试。",
+    "createProjectFailed": "创建项目失败：{{message}}"
+  },
+  "tasks": {
+    "nextTaskPrompt": "开始下一个任务",
+    "compact": {
+      "projectLabel": "项目任务进度",
+      "progress": "已完成 {{done}}/{{total}} · 待处理 {{pending}}",
+      "useInChat": "在对话中使用",
+      "allDone": "所有任务已完成",
+      "stageLabel": "阶段",
+      "stageOnly": "项目任务进度 · 阶段 {{stage}}",
+      "stageProgress": "项目任务进度 · 阶段 {{stage}} · {{done}}/{{total}} 已完成",
+      "done": "已完成",
+      "inProgress": "进行中",
+      "pending": "待处理",
+      "expand": "展开任务进度",
+      "collapse": "收起任务进度",
+      "noTasks": "暂无任务。请先开始对话。",
+      "emptyTitle": "任务进度不可用",
+      "emptyHint": "通过对话生成并配置研究流水线。"
+    },
+    "stages": {
+      "survey": "文献",
+      "literature": "文献",
+      "ideation": "构思",
+      "experiment": "实验",
+      "publication": "发表",
+      "promotion": "推广"
+    },
+    "loading": "正在加载任务..."
+  },
+  "skillShortcuts": {
+    "title": "技能",
+    "useAll": "全部使用",
+    "useAutoRoute": "自动选择",
+    "useCore": "使用核心技能",
+    "useSelected": "使用选中（{{count}}）",
+    "clearSelected": "清空选中",
+    "useSingle": "单独使用此技能",
+    "showAdvanced": "更多技能（{{count}}）",
+    "hideAdvanced": "收起更多技能",
+    "skillCount": "{{count}} 个技能",
+    "coreCount": "核心 {{count}} / 共 {{total}}",
+    "categories": {
+      "pipeline": "研究路径",
+      "deepResearch": "文献综述",
+      "deepLiteratureSearch": "深度检索",
+      "literatureDatabases": "文献数据库",
+      "citationTrace": "引用追踪",
+      "paperReading": "读论文工具",
+      "researchMonitoring": "前沿追踪",
+      "databaseAccess": "数据库提取",
+      "ideation": "研究选题",
+      "preAnalysis": "数据分析",
+      "statisticalModeling": "统计建模与检验",
+      "medicalViz": "医学可视化",
+      "resultsIntegration": "方法和结果撰写",
+      "paperWriting": "论文撰写",
+      "paperPolishing": "论文润色",
+      "graphicalAbstract": "图形摘要",
+      "paperReview": "论文审评",
+      "grantWriting": "基金申请",
+      "promotion": "汇报与转化",
+      "other": "其他"
+    },
+    "promptSingle": "请使用 {{skill}} 技能来帮助我完成这个任务。\n\n在此描述你的任务：",
+    "promptMulti": "请使用以下技能完成这个任务：{{skills}}。\n\n在此描述你的任务：",
+    "prompts": {
+      "pipeline": "请协助我完成“研究路径”。先判断当前内容属于文献问题、数据库队列、论文复现、已有数据分析还是论文产出；再把任务拆成证据、数据、预分析、统计建模、结果整合和投稿/汇报步骤。可用技能：{{skills}}。\n\n我的任务：",
+      "deepResearch": "请协助我完成“文献综述”。先明确 PICO、疾病/暴露/结局、人群边界、时间范围和证据类型；再组织检索、筛选、证据矩阵、研究空白和可转化为数据库研究的问题。可用技能：{{skills}}。\n\n我的任务：",
+      "deepLiteratureSearch": "请协助我完成“深度检索”。先把研究问题拆成关键词、同义词、PICO要素和证据类型；再选择最小必要检索工具，给出检索式、候选文献和下一步筛选策略。可用技能：{{skills}}。\n\n我的任务：",
+      "literatureDatabases": "请协助我完成“文献数据库检索”。先判断 PubMed、OpenAlex 或 bioRxiv 哪个最适合当前问题；再给出检索式、筛选口径、元数据字段和可复查的结果表。可用技能：{{skills}}。\n\n我的任务：",
+      "citationTrace": "请协助我完成“引用追踪”。先核对核心论文、DOI、参考文献和引用链；再识别关键证据、缺失引用、错误引用和适合目标期刊格式的引用输出。可用技能：{{skills}}。\n\n我的任务：",
+      "paperReading": "请协助我完成“读论文工具”。先定位需要精读或对比的论文；再抽取研究问题、设计、纳排、变量定义、统计模型、图表和可复现风险。可用技能：{{skills}}。\n\n我的任务：",
+      "researchMonitoring": "请协助我完成“前沿追踪”。先明确主题、时间窗口、数据库来源和排除规则；再输出近期代表性论文、趋势、可转化问题和下一轮监控建议。可用技能：{{skills}}。\n\n我的任务：",
+      "databaseAccess": "请协助我完成“数据库提取”。使用 1 个 API 底座 + 27 个数据库独立技能 + 可选跨库 router：API 优先使用线上 api.medtimehelp.com，线上不可用且本机服务健康时回退到 127.0.0.1:8787；先判断是否需要 router，再区分中国数据库、SHARE/HRS-family、UKB、NHANES、ICU/EHR、围术期和肿瘤登记数据库；说明结构风险（个体/住院/波次/周期/时间轴/编码年代等），定位真实表和字段，只提取当前任务所需变量并记录来源路径。可用技能：{{skills}}。\n\n我的任务：",
+      "ideation": "请协助我完成“研究选题”。先从证据缺口、可用数据库、临床意义和统计可行性评估；再形成 PICO、核心假设、创新点、候选数据源、主要模型和最低可行分析。可用技能：{{skills}}。\n\n我的任务：",
+      "preAnalysis": "请协助我完成“数据分析”。先检查数据结构、变量类型、缺失、异常值和分析目标；数据库专项分析、基线表、描述统计、统计检验和建模都在这一类中选择最小必要技能组合，完成诊断、可视化、效应量和可复现输出。可用技能：{{skills}}。\n\n我的数据或分析问题：",
+      "statisticalModeling": "请协助我完成“统计建模与检验”。请只使用我选中的技能，并围绕当前研究问题明确模型/检验目标、变量角色、假设、诊断、效应量和论文报告方式。可用技能：{{skills}}。\n\n我的任务：",
+      "medicalViz": "请协助我完成“医学可视化”。请只使用我选中的技能，先判断图表类型，再给出版式、配色、字号、图例、面板标签、图注要点和 PDF/PNG 导出规格。期刊级制图优先 nature-figure；临床/统计图配合 data-visualization-biomedical；通用期刊图布局使用 scientific-visualization；只有需要底层绘图代码时再使用 matplotlib、seaborn、plotly 或 data-viz-plots。可用技能：{{skills}}。\n\n我的任务：",
+      "resultsIntegration": "请协助我完成“方法和结果撰写”。先整合已有 Table 1、模型输出、图表和敏感性分析；再按 STROBE/CONSORT 逻辑组织主结果、亚组、稳健性、局限性边界和投稿级文字。可用技能：{{skills}}。\n\n我的任务：",
+      "graphicalAbstract": "请协助我完成“图形摘要”。先提炼研究问题、数据来源、核心方法、主要发现和临床意义；再给出单图结构、视觉层级、图标/流程元素和投稿可用文案。可用技能：{{skills}}。\n\n我的任务：",
+      "paperWriting": "请协助我完成“论文撰写”。先确认目标期刊/体裁、研究设计、主要结果和引用材料；若需撰写或核对数据可用性声明（Data Availability）、存库方案、数据集引用与 FAIR 元数据，请使用 nature-data；再按 Title、Abstract、Introduction、Methods、Results、Discussion 和参考文献核验推进。可用技能：{{skills}}。\n\n我的任务：",
+      "paperPolishing": "请协助我完成“论文润色”。先确认目标期刊/体裁、待润色片段（摘要/引言/方法/结果/讨论等）和语气（严谨投稿 / 略人性化）；Nature 倾向的学术英语润色与篇章逻辑优先使用 nature-polishing；需要自然、可读、少“AI腔”的表述时使用 medhelp-humanizer；整体 IMRAD 与段落级科学写作可配合 scientific-writing；核对参考文献与引用格式时使用 citation-management；对照特定期刊或会议的版式与结构要求时使用 venue-templates。可用技能：{{skills}}。\n\n我的任务：",
+      "paperReview": "请协助我完成“论文审评”。先按研究设计、统计有效性、证据链、因果表述、图表一致性和投稿规范检查；再列出必须修改、建议修改和可保留内容。可用技能：{{skills}}。\n\n我的任务：",
+      "grantWriting": "请协助我完成“基金申请”。先明确科学问题、临床/公共卫生意义、前期基础、创新点、研究目标和技术路线；再组织立项依据、研究内容、可行性和风险替代方案。可用技能：{{skills}}。\n\n我的任务：",
+      "promotion": "请协助我完成“汇报与转化”。先确定听众、时长、核心结论和展示资产；再把论文内容压缩为背景、方法、结果、临床意义、局限性和下一步计划。可用技能：{{skills}}。\n\n我的任务："
+    },
+    "routePrompts": {
+      "statisticalModeling": "请协助我完成“统计建模与检验”。请先把我的统计任务自动分流到最小必要 skill 组合，不要默认调用整个技能组。\n\n分流规则：\n1. 统计方案、检验选择、假设、效应量、功效、APA或论文报告：使用 statistical-analysis。\n2. 已明确要直接运行 t 检验、ANOVA、卡方、相关、非参数检验或多重校正：使用 data-stats-analysis。\n3. 线性、Logistic、Poisson/负二项、混合模型、ARIMA/时间序列、稳健标准误、诊断和系数表：使用 statsmodels。\n4. Cox、KM、生存结局、删失数据、竞争风险或时间依赖 AUC：使用 scikit-survival。\n5. 贝叶斯、层级模型、MCMC、先验/后验预测检查或不确定性量化：使用 pymc。\n6. UK Biobank 专项队列、字段、端点、协变量和敏感性分析：使用 ukb-cohort-analysis。\n7. 已有统计输出后整合表格、图和 Results 文本：使用 medhelp-experiment-analysis。\n\n默认原则：不确定的临床/流行病学分析先用 statistical-analysis；明确建模后再加 statsmodels、scikit-survival 或 pymc。\n\n请先用一句话说明你选择的 skill 组合和理由，然后再开始执行。\n\n我的任务：",
+      "medicalVisualization": "请协助我完成“医学可视化”。请先把我的医学可视化任务自动分流到最小必要 skill 组合，不要默认调用整个可视化技能组。\n\n分流规则：\n1. 期刊级版式、Nature/Lancet/JAMA 风格、多面板结构、配色和导出规范：使用 nature-figure。\n2. 临床/生物医学统计图、KM 曲线、森林图、火山图、热图、亚组或模型结果展示：使用 data-visualization-biomedical。\n3. 通用科学图、图形叙事、版面层级和投稿级视觉规范：使用 scientific-visualization。\n4. 明确需要 Python 绘图代码或底层图形控制：按需求使用 matplotlib、seaborn、plotly 或 data-viz-plots。\n\n请先判断图表类型，并用一句话说明选择的 skill 组合和理由，然后给出版式、配色、字号、图例、面板标签、图注要点和 PDF/PNG 导出规格。\n\n我的任务："
+    }
+  },
+  "guidedStarter": {
+    "greeting": "Hi {{username}}",
+    "title": "最近我们要做什么？",
+    "connectedProjectTitle": "先熟悉这个项目",
+    "refresh": "随机换一组",
+    "recommendedSkills": "相关 Skill（已安装优先）",
+    "selectSkillsHint": "模板已放入对话框，可在这里增减本次使用的 Skill。",
+    "closeSkillPicker": "稍后选择",
+    "applySelectedSkills": "应用选择（{{count}}）",
+    "groups": {
+      "evidence": "选题与证据",
+      "design": "设计与分析",
+      "visual": "图表与可视化",
+      "writing": "写作与发表",
+      "daily": "日常事务",
+      "news": "看新闻",
+      "create": "创建与自动化"
+    },
+    "loadingSkills": "正在检测可用技能...",
+    "noAvailableSkills": "当前环境中暂无匹配的已安装技能。",
+    "noAvailableSkillsFallback": "未找到已安装匹配项，已回退显示该方向默认推荐技能。",
+    "useAllSkills": "使用全部技能",
+    "useAutoRoute": "自动选择技能",
+    "stageFilter": {
+      "activeLabel": "{{stage}}阶段",
+      "allLabel": "全部阶段",
+      "showAll": "显示全部（+{{count}}）",
+      "backToStage": "回到「{{stage}}」",
+      "empty": "当前阶段暂未配置场景，可点击「显示全部」浏览。"
+    },
+    "template": {
+      "intro": "请协助我完成“{{scenario}}”。先判断当前任务属于哪一段研究流程，再使用必要技能推进：{{skills}}。",
+      "background": "研究背景：",
+      "goal": "目标与预期产出：",
+      "database": "目标数据库 / 队列：",
+      "question": "核心研究问题（人群 / 暴露 / 结局）：",
+      "variables": "关键变量、表型定义与协变量：",
+      "design": "研究设计 / 统计分析计划：",
+      "inputs": "已有数据、代码、数据字典或参考论文：",
+      "constraints": "约束条件（时间 / 算力 / 数据权限 / 投稿等）：",
+      "output": "请先给出分步执行计划，并从第一个可落地任务开始。"
+    },
+    "prompts": {
+      "researchIdeation": "请使用研究选题相关技能协助我形成一个有价值且可落地的课题。先从临床意义、证据缺口、数据可得性、创新性和统计可行性评估，再给出 PICO、核心假设、候选数据源和最低可行分析。可用技能：{{skills}}。\n\n我的研究方向：",
+      "readPaper": "请使用论文精读相关技能帮助我阅读这篇论文。提取研究问题、设计、纳排标准、变量定义、统计方法、核心结果、图表、局限性和可复现风险，并区分作者结论与证据实际支持的范围。可用技能：{{skills}}。\n\n论文或文件：",
+      "paperCard": "请使用论文卡片相关技能，对单篇论文做基于原文证据的深度拆解。按研究问题、背景路线、痛点、核心洞见、方法模块、关键公式、实验—结论证据链、结论边界、局限性、批判性分析、知识关联和可检验的新想法整理为结构化 Paper Card。可用技能：{{skills}}。\n\n论文、DOI 或文件：",
+      "verifyReferences": "请使用参考文献核验相关技能逐条检查我的引用。对作者、题名、年份、卷期、页码、DOI 和来源进行多源交叉验证，区分必须修正、建议核对和已确认条目，并保留可追溯来源；不要补造引用。可用技能：{{skills}}。\n\n需要核验的参考文献或稿件：",
+      "deepResearch": "请使用深度研究相关技能完成系统、可追溯的调研。先明确问题边界和证据标准，再开展多来源检索、证据核验、观点对照、研究空白分析，并给出带来源的结构化报告。可用技能：{{skills}}。\n\n我的调研主题：",
+      "writingAssistant": "请使用降 AI 率相关技能帮我改写文稿。先确认文稿类型、目标读者或期刊、待改片段和语气；Nature 倾向的学术英语与篇章逻辑用 nature-polishing；去掉模板句、让表述更自然时用 medhelp-humanizer；核对引用、书目和引用格式时用 citation-management，必要时配合 nature-citation。可再配合 scientific-writing、nature-writing 完成提纲、段落或全文。可用技能：{{skills}}。\n\n需要降 AI 率的内容：",
+      "makePresentation": "请使用适合的演示文稿技能协助我做 PPT。先确认听众、场合、时长、核心结论和已有材料，再形成页级大纲、视觉风格与讲述顺序，并在信息充分后直接生成可编辑的 PPTX。可用技能：{{skills}}。\n\n我的 PPT 主题：",
+      "searchLiterature": "请使用真实文献检索技能帮我查文献。先明确研究问题、PICO/关键词、数据库、时间范围和纳排标准，再提供可核验的文献、检索式、证据摘要与研究空白；不要编造题名、DOI 或引用。可用技能：{{skills}}。\n\n我要查的主题：",
+      "downloadLiterature": "请使用文献获取相关技能帮我下载文章全文。先根据我提供的题名、DOI、PMID、PMCID、arXiv ID、文献列表或 Zotero 记录确认目标文献，再按项目已有文件、Zotero 附件、PMC/Europe PMC、Unpaywall、arXiv 和其他合法开放来源的顺序查找并下载；不得绕过付费墙。请保存文件并返回来源、状态、本地路径和失败原因，必要时继续解析 PDF。可用技能：{{skills}}。\n\n我要下载的文献：",
+      "dataAnalysis": "请使用数据分析相关技能帮助我分析数据。先检查数据结构、变量类型、缺失、异常值和分析目标；根据任务纳入数据库专项分析、基线表、描述统计、检验或模型，再完成诊断、可视化、效应量与可复现输出；不要在未查看真实数据时编造结果。可用技能：{{skills}}。\n\n我的数据或分析问题：",
+      "experimentLog": "请使用实验日志技能整理本次实验记录。读取我提供的图片、语音或文字，统一实验 ID、样品批次、设备、条件、观察、结果、异常和下一步，生成带 YAML frontmatter 的可追溯 Markdown 日志。可用技能：{{skills}}。\n\n本次实验材料：",
+      "researchDesign": "请使用研究设计相关技能协助我制定方案。先明确研究问题、PICO、人群、暴露/干预、结局、时间零点和可用数据，再设计纳排标准、变量定义、偏倚控制、样本量与统计分析计划。可用技能：{{skills}}。\n\n我的研究问题：",
+      "databaseExtraction": "请使用数据库提取相关技能协助我获取真实数据。先确认研究问题、目标数据库、队列结构和所需变量，再定位真实表与字段、核对时间轴和编码语义，并只提取当前任务需要的数据，保留来源路径和可复现记录。可用技能：{{skills}}。\n\n我的数据库任务：",
+      "baselineTableQuick": "请使用基线表相关技能生成投稿级 Table 1。先确认分组变量、连续/分类变量、权重或匹配需求、缺失展示方式和统计口径，再输出三线表、SMD/组间检验和论文方法说明。可用技能：{{skills}}。\n\n我的数据与分组：",
+      "submitManuscript": "请使用投稿相关技能协助我完成投稿。先确认目标期刊、文章类型、当前稿件和附件状态，再核对期刊要求、投稿清单、格式、参考文献、Cover Letter、声明文件与最终提交风险。可用技能：{{skills}}。\n\n我的投稿任务：",
+      "proposalWriting": "请使用科研计划书相关技能协助我撰写或修改开题报告、研究计划或基金申请。先建立证据基础、核心论证和研究目标，再组织技术路线、创新性、可行性、风险替代方案和质量审查。可用技能：{{skills}}。\n\n我的计划书任务：",
+      "paperToPatent": "请使用论文转专利技能，从论文、技术报告、代码、图表或发明人笔记中提炼可保护的技术点，建立特征—证据映射，完成现有技术比较、技术交底书或中国发明专利草案，并检查权利要求支持与全文一致性。可用技能：{{skills}}。\n\n我的论文或技术材料：",
+      "reviewManuscript": "请使用模拟审稿技能，从独立审稿人视角对稿件进行投稿前评审。评估创新性、重要性、技术可靠性、统计、证据链和表达，分别列出 Major Concerns、Minor Comments 与阻断性问题；不要把它写成作者回复。可用技能：{{skills}}。\n\n需要预审的稿件：",
+      "statisticsAudit": "请使用统计审查相关技能检查稿件中的统计报告。核对样本量、重复类型、随机化、盲法、模型假设、效应量、置信区间、P 值、多重比较、图注和 Results 表述，并给出可直接修改的建议。可用技能：{{skills}}。\n\n需要统计审查的内容：",
+      "replyReviewers": "请使用 nature-response 为我处理编辑决定和审稿意见。先从决定信中确认 Major Revision 或 Minor Revision；按编辑与每位审稿人分别编号、分类和跟踪，保持不同审稿人彼此隔离，逐点起草回复并把每项修改映射到稿件位置。不得虚构实验、引用、行号或已完成的修改，缺失信息标记为 AUTHOR_INPUT_NEEDED。可用技能：{{skills}}。\n\n编辑决定信、审稿意见和当前稿件：",
+      "scientificFigure": "请使用科研绘图相关技能帮助我生成投稿级图表。先判断数据与结论适合的图型，再确定版式、配色、统计标注、图例、面板标签和导出规格，并基于真实数据生成可复现图形。可用技能：{{skills}}。\n\n我要绘制的图：",
+      "mechanismDiagram": "请使用科学示意图相关技能帮助我绘制机制图。先梳理实体、通路、因果或调控关系、证据强弱和视觉层级，再形成适合论文或基金申请的机制图结构与高质量图像提示。可用技能：{{skills}}。\n\n我要表达的机制：",
+      "graphicalAbstractQuick": "请使用图形摘要相关技能，把研究问题、数据来源、核心方法、主要发现和意义压缩成一张投稿可用的图形摘要，并给出清晰的单图布局与精简文案。可用技能：{{skills}}。\n\n我的研究内容：",
+      "mindMap": "请使用科学示意图技能把当前课题、论文或计划整理成结构清楚的脑图。先识别中心问题和层级关系，再组织分支、依赖、证据与下一步行动。可用技能：{{skills}}。\n\n我要梳理的内容：",
+      "todayTasks": "请根据当前项目、已有对话和明确的截止时间，帮我整理今日待办。按“必须完成、重要推进、可延后”排序，标出预计耗时、依赖项和下一步动作；缺少依据时请指出，不要虚构任务。\n\n今天需要纳入的事项：",
+      "replyAdvisor": "请帮我回复导师。先准确理解导师消息中的问题、意见、任务和截止时间，再起草一版礼貌、简洁、自然且可直接发送的回复；同时单独列出我需要落实的行动项。不要虚构进展或承诺。可用技能：{{skills}}。\n\n导师的消息或我要回复的内容：",
+      "createKnowledgeBase": "请帮我创建一个可检索、可维护的知识库。先确认知识库主题、资料来源、文件格式、更新方式和使用场景，再整理文档、设计分类与元数据、去重切分内容，并建立适合后续检索问答的结构。可用技能：{{skills}}。\n\n我要创建的知识库：",
+      "researchInsights": "请使用前沿追踪相关技能整理近期研究动态。先确认主题、时间窗口、来源和排除规则，再提供真实可核验的新文献、趋势变化、重要争议、潜在课题和下一轮持续追踪建议。可用技能：{{skills}}。\n\n我要追踪的方向：",
+      "watchNews": "请用隔离的 Agent 浏览器帮我看新闻和平台动态，不要凭记忆编造内容。先确认主题、平台和时间范围；若我没指定平台，按任务自行选择小红书、B 站或其他公开网页。然后用 browser_open 打开页面，用 browser_snapshot 和 browser_action 实际浏览、搜索和筛选。发现值得看的帖子、视频或文章时，保持 show_in_sidebar=true，或用 browser_show，把页面开到侧边栏浏览器里，方便我跟着看。最后按来源列出标题、链接、发布时间、要点和你实际看到的证据。需要登录、验证码或隔离浏览器打不开时，说明限制，并用 browser_show 把链接交给我在侧边栏打开。不要代我发帖、评论、点赞或登录。\n\n我要看的内容：",
+      "createSkill": "请使用 skill-creator 帮我创建一个可复用的 Skill。先明确触发条件、适用范围、输入输出、执行流程、需要的参考资料或脚本及验证方式，再按规范创建或更新 SKILL.md 与必要资源。可用技能：{{skills}}。\n\n我想创建的 Skill：",
+      "createProgram": "请帮我创建一个“我的应用”。先确认目标用户、核心功能、主要输入输出、数据与隐私要求，以及视觉偏好；需求明确后，生成并验证一个自包含的单文件 HTML 应用，最后使用 app_publish 发布到“我的应用”。如果我指定了品牌或网站风格，再使用 popular-web-designs。可用技能：{{skills}}。\n\n我想创建的应用：",
+      "createAutomation": "请帮我创建一个自动化任务。先确认要重复执行的内容、触发时间或频率、时区、输入来源、结果交付方式和失败处理；信息充分后创建真实自动化，并清楚说明下次运行时间。\n\n我想自动化的任务：",
+      "startFullProject": "请协助我完成“{{scenario}}”。先判断入口是文献问题、数据库队列、论文复现还是已有数据；再把流程拆成证据梳理、数据/变量确认、预分析、统计建模、结果整合、论文/图表/汇报六步。请先列出必须补齐的信息和第一步可执行动作。可用技能：{{skills}}。\n\n我的研究主题、数据或现有材料：",
+      "paperReproduction": "请协助我完成“{{scenario}}”。先拆解研究问题、PICO/队列、纳排标准、变量定义、统计模型、主要图表和结论；区分概念复现、数据复现、代码复现和结果复核，并指出当前缺少哪些材料。可用技能：{{skills}}。\n\n我要复现的论文、代码或数据：",
+      "literatureSurvey": "请协助我完成“{{scenario}}”。先明确疾病/暴露/干预/结局、人群边界、时间范围和证据类型；再给出检索式、纳排标准、证据矩阵、研究空白和可转化为数据库研究的问题。可用技能：{{skills}}。\n\n我的综述主题：",
+      "databaseAccess": "请协助我完成“{{scenario}}”。使用 1 个 API 底座 + 27 个数据库独立技能 + 可选跨库 router：API 优先使用线上 api.medtimehelp.com，线上不可用且本机服务健康时回退到 127.0.0.1:8787；先判断是否需要 router，再区分中国数据库、SHARE/HRS-family、UKB、NHANES、ICU/EHR、围术期和肿瘤登记数据库；说明该库的结构风险（个体/住院/波次/周期/时间轴/编码年代等），定位真实表和字段，最后只提取当前任务所需变量并记录来源路径。可用技能：{{skills}}。\n\n我的研究问题与目标数据库：",
+      "researchIdea": "请协助我完成“{{scenario}}”。先从证据缺口、可用数据库、临床意义和统计可行性四个角度评估；再形成清晰的 PICO、核心假设、创新点、候选数据源、主要模型和最低可行分析。可用技能：{{skills}}。\n\n我的研究方向或初步想法：",
+      "preAnalysis": "请协助我完成“{{scenario}}”。先确认暴露、结局、时间变量和最小协变量；再检查样本量、缺失、事件数、分布、重叠性、粗效应和最小调整效应，最后给出继续、暂停或修改设计的判断。可用技能：{{skills}}。\n\n我的数据、变量与预分析目标：",
+      "baselineTable": "请协助我完成“{{scenario}}”。先确认分组变量、连续/分类变量、权重或匹配需求、缺失展示方式和统计口径；再生成 Table 1、SMD/组间检验和可直接进入论文的方法说明。可用技能：{{skills}}。\n\n我的数据、分组与变量：",
+      "medicalVisualization": "请协助我完成“{{scenario}}”。请只使用我选中的技能，先判断图表类型（KM曲线、森林图、火山图、热图、流程图、多面板结果图、图形摘要等），再给出 Nature 风格的版式、配色、字号、图例、面板标签、图注要点和 PDF/PNG 导出规格。避免默认生成泛化图表，优先保证论文可投稿、图注可解释、统计含义清晰。可用技能：{{skills}}。\n\n我的数据与绘图目标：",
+      "resultsIntegration": "请协助我完成“{{scenario}}”。先读取已有 Table 1、模型输出、图表和敏感性分析；再按 STROBE/CONSORT 逻辑组织主结果、亚组、稳健性、局限性边界和投稿级文字。可用技能：{{skills}}。\n\n我的 Table、模型输出与图表：",
+      "graphicalAbstract": "请协助我完成“{{scenario}}”。先提炼研究问题、数据来源、核心方法、主要发现和临床意义；再给出单图结构、视觉层级、图标/流程元素和投稿可用的简洁文案。可用技能：{{skills}}。\n\n我的研究内容与核心结论：",
+      "paperWriting": "请协助我完成“{{scenario}}”。先确认目标期刊/体裁、研究设计、主要结果和引用材料；若需撰写或核对数据可用性声明（Data Availability）、存库方案、数据集引用与 FAIR 元数据，请使用 nature-data；再按 Title、Abstract、Introduction、Methods、Results、Discussion 和参考文献核验顺序推进。可用技能：{{skills}}。\n\n我的稿件、材料与写作目标：",
+      "paperPolishing": "请协助我完成“{{scenario}}”。先确认目标期刊/体裁、待润色片段与语气（严谨投稿 / 略人性化）；Nature 倾向的学术英语与篇章逻辑优先 nature-polishing；自然可读、减少“AI腔”时用 medhelp-humanizer；可配合 scientific-writing 做 IMRAD 与段落级科学写作；引用与书目核对用 citation-management；特定期刊/会议版式与结构对照用 venue-templates。可用技能：{{skills}}。\n\n需要润色的文本与目标期刊：",
+      "manuscriptReview": "请协助我完成“{{scenario}}”。先按研究设计、统计有效性、证据链、因果表述、图表一致性和投稿规范检查；再列出必须修改、建议修改和可保留内容。可用技能：{{skills}}。\n\n需要审评的稿件：",
+      "rebuttalResponse": "请协助我完成“{{scenario}}”。先把每条意见分为方法学、统计、数据定义、结果解释、写作和格式问题；再设计补充分析、敏感性分析、文字修改和逐条回复。可用技能：{{skills}}。\n\n编辑决定信、审稿意见和当前稿件：",
+      "presentationPromotion": "请协助我完成“{{scenario}}”。先确定听众、时长、核心结论和展示资产；再把论文内容压缩为背景、方法、结果、临床意义、局限性和下一步计划。可用技能：{{skills}}。\n\n我的汇报主题、听众与已有材料：",
+      "grantProposal": "请协助我完成“{{scenario}}”。先明确科学问题、临床/公共卫生意义、前期基础、创新点、研究目标和技术路线；再组织立项依据、研究内容、可行性和风险替代方案。可用技能：{{skills}}。\n\n我的申请主题与已有材料："
+    },
+    "routePrompts": {
+      "statisticalModeling": "请协助我完成“统计建模与检验”。先根据任务内容自动选择最小必要 skill 组合，不要默认调用全部统计建模技能。\n\n分流规则：\n1. 统计方案、检验选择、假设、效应量、功效、APA或论文报告：使用 statistical-analysis。\n2. 已明确要直接运行 t 检验、ANOVA、卡方、相关、非参数检验或多重校正：使用 data-stats-analysis。\n3. 线性、Logistic、Poisson/负二项、混合模型、ARIMA/时间序列、稳健标准误、诊断和系数表：使用 statsmodels。\n4. Cox、KM、生存结局、删失数据、竞争风险或时间依赖 AUC：使用 scikit-survival。\n5. 贝叶斯、层级模型、MCMC、先验/后验预测检查或不确定性量化：使用 pymc。\n6. UK Biobank 专项队列、字段、端点、协变量和敏感性分析：使用 ukb-cohort-analysis。\n7. 已有统计输出后整合表格、图和 Results 文本：使用 medhelp-experiment-analysis。\n\n默认原则：不确定的临床/流行病学分析先用 statistical-analysis；明确建模后再加 statsmodels、scikit-survival 或 pymc。\n\n请先用一句话说明你选择的 skill 组合和理由，然后再开始执行。\n\n我的数据、变量与统计目标：",
+      "medicalVisualization": "请协助我完成“医学可视化”。请先把我的医学可视化任务自动分流到最小必要 skill 组合，不要默认调用整个可视化技能组。\n\n分流规则：\n1. 期刊级版式、Nature/Lancet/JAMA 风格、多面板结构、配色和导出规范：使用 nature-figure。\n2. 临床/生物医学统计图、KM 曲线、森林图、火山图、热图、亚组或模型结果展示：使用 data-visualization-biomedical。\n3. 通用科学图、图形叙事、版面层级和投稿级视觉规范：使用 scientific-visualization。\n4. 明确需要 Python 绘图代码或底层图形控制：按需求使用 matplotlib、seaborn、plotly 或 data-viz-plots。\n\n请先判断图表类型，并用一句话说明选择的 skill 组合和理由，然后给出版式、配色、字号、图例、面板标签、图注要点和 PDF/PNG 导出规格。\n\n我的数据与绘图目标："
+    },
+    "scenarios": {
+      "researchIdeation": {
+        "title": "研究选题",
+        "description": "从临床意义、证据缺口、数据与统计可行性形成可落地课题。"
+      },
+      "readPaper": {
+        "title": "文献阅读",
+        "description": "精读论文的设计、变量、方法、结果、图表、局限性与复现风险。"
+      },
+      "paperCard": {
+        "title": "论文卡片",
+        "description": "把单篇论文整理成带证据链、结论边界与研究启发的 Paper Card。"
+      },
+      "verifyReferences": {
+        "title": "引用核验",
+        "description": "逐条交叉验证作者、题名、年份、卷期、页码和 DOI。"
+      },
+      "deepResearch": {
+        "title": "深度研究",
+        "description": "开展多来源、可追溯的深度调研并形成带证据的结构化报告。"
+      },
+      "writingAssistant": {
+        "title": "降 AI 率",
+        "description": "Nature 润色、人性化改写，并核对引用与参考文献。"
+      },
+      "makePresentation": {
+        "title": "做 PPT",
+        "description": "从主题或现有材料生成结构清晰、可编辑的演示文稿，并优先使用已安装的 PPT/幻灯片技能。"
+      },
+      "searchLiterature": {
+        "title": "查文献",
+        "description": "检索真实可核验的论文，整理检索式、证据摘要与研究空白。"
+      },
+      "downloadLiterature": {
+        "title": "下载文献",
+        "description": "通过 DOI、PMID、题名、arXiv 或 Zotero 获取合法可用的论文全文。"
+      },
+      "dataAnalysis": {
+        "title": "数据分析",
+        "description": "检查真实数据并完成描述统计、检验、建模、诊断和可视化。"
+      },
+      "experimentLog": {
+        "title": "实验日志",
+        "description": "把图片、语音和文字整理成结构统一、可追溯的实验记录。"
+      },
+      "researchDesign": {
+        "title": "研究设计",
+        "description": "明确 PICO、纳排、变量、偏倚控制、样本量和统计分析计划。"
+      },
+      "databaseExtraction": {
+        "title": "数据库提取",
+        "description": "定位真实数据库表与字段，按研究任务提取可追溯的数据。"
+      },
+      "baselineTableQuick": {
+        "title": "基线表",
+        "description": "生成投稿级 Table 1、SMD、组间检验和方法说明。"
+      },
+      "submitManuscript": {
+        "title": "投稿",
+        "description": "匹配目标期刊要求，准备投稿清单、格式、参考文献、Cover Letter 与声明文件。"
+      },
+      "proposalWriting": {
+        "title": "科研计划书",
+        "description": "撰写或审查开题报告、研究计划和基金申请。"
+      },
+      "paperToPatent": {
+        "title": "论文转专利",
+        "description": "从论文和技术材料提炼专利点并生成技术交底或专利草案。"
+      },
+      "reviewManuscript": {
+        "title": "模拟审稿",
+        "description": "从审稿人视角给出 Major Concerns、Minor Comments 和阻断问题。"
+      },
+      "statisticsAudit": {
+        "title": "统计审查",
+        "description": "核查样本量、模型、P 值、置信区间、重复和图注统计表述。"
+      },
+      "replyReviewers": {
+        "title": "回复审稿人",
+        "description": "按编辑和审稿人逐点回复，跟踪修改并生成完整修回材料。"
+      },
+      "scientificFigure": {
+        "title": "科研绘图",
+        "description": "根据真实数据生成统计清晰、格式规范的投稿级图表。"
+      },
+      "mechanismDiagram": {
+        "title": "机制图",
+        "description": "组织通路、调控与因果关系，生成论文或基金申请用机制示意图。"
+      },
+      "graphicalAbstractQuick": {
+        "title": "图形摘要",
+        "description": "把研究问题、方法、发现和意义压缩成一张投稿级图形摘要。"
+      },
+      "mindMap": {
+        "title": "脑图梳理",
+        "description": "把课题、论文或计划整理成有层级、可行动的脑图。"
+      },
+      "todayTasks": {
+        "title": "今日待办",
+        "description": "结合当前项目和截止时间，整理今天最值得推进的任务。"
+      },
+      "replyAdvisor": {
+        "title": "回复导师",
+        "description": "理解导师意见和任务，起草自然、礼貌、可直接发送的回复，并提取行动项。"
+      },
+      "createKnowledgeBase": {
+        "title": "创建知识库",
+        "description": "整理资料、分类和元数据，建立可检索、可更新的项目知识库。"
+      },
+      "researchInsights": {
+        "title": "前沿追踪",
+        "description": "追踪近期真实研究、趋势、争议和可转化的新课题。"
+      },
+      "watchNews": {
+        "title": "看新闻",
+        "description": "用 Agent 浏览器查看小红书、B 站等平台动态，并把值得看的页面开到侧边栏。"
+      },
+      "createSkill": {
+        "title": "创建技能",
+        "description": "使用 skill-creator 把重复工作封装为规范、可复用、可验证的 Skill。"
+      },
+      "createProgram": {
+        "title": "创建应用",
+        "description": "与 Agent 对话澄清需求、设计并验证应用，然后发布到“我的应用”。"
+      },
+      "createAutomation": {
+        "title": "创建自动化",
+        "description": "设置按时间或频率自动执行的任务，并明确交付与失败处理。"
+      },
+      "startFullProject": {
+        "title": "启动你的研究项目",
+        "description": "从想法或数据库队列出发，搭建流程，明确问题、变量/实验路径，并形成可执行计划。"
+      },
+      "paperReproduction": {
+        "title": "复现论文",
+        "description": "读懂方法与实现细节；若基于队列/数据库，对齐纳排、变量定义与统计模型。"
+      },
+      "dataPlatformSurvey": {
+        "title": "数据源调研",
+        "description": "比较、筛选与课题匹配的公开队列或数据库（如 UKB、NHANES、MIMIC 等），并梳理数据可用性与分析路径。"
+      },
+      "literatureSurvey": {
+        "title": "文献综述",
+        "description": "系统梳理文献脉络、研究空白与争议点；可与常见队列/数据库资源对照，但不作为选库主入口。"
+      },
+      "databaseAccess": {
+        "title": "数据库提取",
+        "description": "面向数据库项目做变量定位、表结构核对与真实字段提取；按 1 个 API 底座、27 个数据库独立技能和可选跨库 router 工作，突出中国数据库，并覆盖 SHARE、HRS-family、UKB、NHANES、MIMIC、NWICU、eICU、SICdb、PIC、INSPIRE 和 SEER。API 优先线上，必要时回退本机 127.0.0.1:8787。"
+      },
+      "researchIdea": {
+        "title": "研究选题",
+        "description": "收敛为清晰假设与创新点；队列研究明确暴露、结局与评估标准。"
+      },
+      "preAnalysis": {
+        "title": "预分析统计",
+        "description": "在正式基线表或全量建模前，先抽取关键自变量、核心结局、时间变量与最小必要协变量，结合临床判断和流行病学指标完成预筛查，包括患病率/发病率/人时、粗效应与最小调整效应、混杂与重叠性检查，并给出继续、暂停或修订建议。"
+      },
+      "baselineTable": {
+        "title": "基线表",
+        "description": "生成单库/多库三线表：按疾病、暴露、分位数分组；自动选择mean±SD或median(IQR)；加权统计与PSM前后SMD对比。"
+      },
+      "statisticalModeling": {
+        "title": "统计建模与检验",
+        "description": "假设检验、Logistic/线性/Cox回归、生存分析、亚组分析、敏感性分析、贝叶斯建模与模型解释。"
+      },
+      "medicalVisualization": {
+        "title": "医学可视化",
+        "description": "期刊级图表：KM生存曲线、森林图、火山图、热图、多面板组图，适配 Nature/Lancet/JAMA/中华系列风格；默认聚焦投稿级版式、统计清晰度和可复现导出。"
+      },
+      "resultsIntegration": {
+        "title": "方法和结果撰写",
+        "description": "整合Table、统计输出与图表，生成符合STROBE/CONSORT规范的可投稿Results章节，并撰写Results部分。"
+      },
+      "paperWriting": {
+        "title": "论文撰写",
+        "description": "完成章节结构、论点与论证；涉及数据可用性声明、存库方案、数据集引用与 FAIR 元数据核对时使用 nature-data；建议先用 citation-management 统一管理与核验引用/参考文献；成稿后的英文润色、Nature 风格与拟人化表达请使用「论文润色」快捷方式；面向目标期刊或会议体裁。"
+      },
+      "paperPolishing": {
+        "title": "论文润色",
+        "description": "在已定稿或接近定稿的文本上优化学术英语与逻辑：Nature 倾向的修改与衔接用 nature-polishing；更自然、少模板句的人称与可读性用 medhelp-humanizer；可配合 scientific-writing、citation-management 与 venue-templates 对齐目标刊物。"
+      },
+      "graphicalAbstract": {
+        "title": "图形摘要",
+        "description": "把论文核心问题、方法流程和主要发现压缩成一张适合投稿或汇报的图形摘要。"
+      },
+      "manuscriptReview": {
+        "title": "论文审评",
+        "description": "审稿视角检查方法与证据；并解读结果、临床意义、局限性与成文框架。"
+      },
+      "rebuttalResponse": {
+        "title": "审稿答复",
+        "description": "专业回应审稿意见；补强混杂、稳健性、替代定义与因果表述。"
+      },
+      "grantProposal": {
+        "title": "基金申请",
+        "description": "基金本子规划、立项依据与撰写、修改与打磨；对标资助方要求与格式。"
+      },
+      "presentationPromotion": {
+        "title": "汇报与转化",
+        "description": "演示文稿与组会材料；或旁白、音视频等多媒体产出。"
+      }
+    }
+  },
+  "attachedPrompt": {
+    "showPrompt": "显示提示词",
+    "hidePrompt": "隐藏提示词",
+    "remove": "移除"
+  },
+  "pipelineOnboarding": {
+    "noBrief": {
+      "title": "设置研究流水线",
+      "description": "在下方描述您的研究想法，智能体将通过对话帮您构建流水线，生成研究简报和任务列表。",
+      "stepsLabel": "建议包含以下信息",
+      "step1": "您的研究主题和总体目标",
+      "step2": "范围、边界和目标会议/期刊（如有）",
+      "step3": "偏好的方法和评估方案",
+      "buttonLabel": "使用分析模板"
+    },
+    "noTasks": {
+      "title": "从研究简报生成任务",
+      "description": "检测到研究简报，但尚未生成任务。你可以直接一键生成任务，或继续在对话中让智能体调整后再生成。",
+      "briefExists": "已检测到 research_brief.json",
+      "buttonLabel": "立即生成任务",
+      "buttonLoadingLabel": "正在生成任务...",
+      "secondaryButtonLabel": "在对话中继续"
+    }
+  },
+  "importedProject": {
+    "title": "分析已导入的项目？",
+    "description": "新建会话以扫描此项目、分析项目结构与实现，并总结后续步骤。",
+    "provider": "供应商",
+    "model": "模型",
+    "notInstalled": "未安装",
+    "notLoggedIn": "未登录",
+    "notAvailable": "所选供应商不可用。",
+    "notNow": "暂时不要",
+    "analyzeProject": "分析项目"
+  },
+  "selectionConsultation": {
+    "search": "搜索",
+    "contextMenu": "在右侧项目问话中解释",
+    "title": "项目问话 · 选中内容",
+    "readOnly": "独立只读问话，不会修改项目",
+    "selectedText": "选中的内容",
+    "initialQuestion": "请结合上下文解释所选内容，说明它的含义、作用以及需要注意的地方。",
+    "thinking": "正在结合上下文解释…",
+    "placeholder": "继续追问这段内容…",
+    "send": "发送",
+    "close": "关闭咨询窗口",
+    "cleanupError": "关闭失败，临时咨询尚未删除",
+    "error": "咨询失败，请稍后重试。"
+  },
+  "taskMaster": {
+    "initFailed": "初始化 TaskMaster 失败：{{message}}",
+    "initError": "初始化 TaskMaster 时出错，请重试。",
+    "createFailed": "创建任务失败：{{message}}",
+    "createError": "创建任务时出错，请重试。",
+    "templateError": "错误：{{message}}",
+    "setupTitle": "TaskMaster 配置",
+    "setupSubtitle": "{{project}} 的交互式命令行",
+    "setupFooter": "将自动开始 TaskMaster 初始化",
+    "close": "关闭",
+    "createTaskTitle": "新建任务",
+    "useAiGenerate": "使用 AI 生成任务详情",
+    "taskDescAi": "任务描述（AI 将生成详情）",
+    "taskDescAiPlaceholder": "描述你要完成的内容…",
+    "taskTitle": "任务标题",
+    "taskTitlePlaceholder": "输入任务标题…",
+    "description": "描述",
+    "taskDescPlaceholder": "描述任务…",
+    "priority": "优先级",
+    "priorityLow": "低",
+    "priorityMedium": "中",
+    "priorityHigh": "高",
+    "creating": "创建中…",
+    "createTask": "创建任务",
+    "loadingTemplates": "正在加载模板…",
+    "selectPrdTemplate": "选择 PRD 模板",
+    "customizeTemplateStep": "自定义模板",
+    "generatingTasksStep": "正在生成任务",
+    "fileName": "文件名",
+    "customizeTemplateLabel": "自定义模板",
+    "enterFieldPlaceholder": "填写 {{field}}",
+    "back": "返回",
+    "applying": "应用中…",
+    "applyGenerateTasks": "应用并生成任务",
+    "templateSuccessTitle": "模板应用成功！",
+    "templateSuccessBody": "已创建 PRD，正在生成任务…"
+  }
+}

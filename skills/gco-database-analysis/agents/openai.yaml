@@ -1,0 +1,4 @@
+interface:
+  display_name: "GCO Cancer Analysis"
+  short_description: "Query and analyze GCO cancer burden data"
+  default_prompt: "Use $gco-database-analysis to query the MedHelp GCO API and produce a reproducible cancer epidemiology analysis."

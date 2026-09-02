@@ -1,0 +1,4315 @@
+{
+  "generatedAt": "2026-09-01T09:50:50.250Z",
+  "schema": "skills-taxonomy-v2",
+  "totalSkills": 99,
+  "skills": [
+    {
+      "name": "Academic Figure Prompt",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "multimodal",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "vision"
+      ],
+      "keywords": [
+        "academic figure prompt",
+        "academic-figure-prompt",
+        "multimodal",
+        "visualization-reporting",
+        "vision",
+        "academic",
+        "figure",
+        "prompt",
+        "this",
+        "whenever",
+        "user",
+        "wants"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use this skill whenever the user wants to generate detailed English prompts for AI image tools (NanoBanana / Gemini / DALL-E / Midjourney) to produce top-conference-quality academic figures — including framework diagrams, network architect...",
+      "legacy": {
+        "dirPath": "academic-figure-prompt",
+        "skillFile": "skills/academic-figure-prompt/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Vision"
+      },
+      "relatedSkills": [
+        "paper-image-extractor",
+        "markitdown",
+        "nature-citation",
+        "nature-figure"
+      ]
+    },
+    {
+      "name": "academic-researcher",
+      "primaryIntent": "research",
+      "intents": [
+        "research",
+        "writing"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "academic-researcher",
+        "literature",
+        "search-retrieval",
+        "academic",
+        "researcher",
+        "research",
+        "assistant",
+        "reviews",
+        "paper",
+        "analysis",
+        "scholarly",
+        "writing"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Academic research assistant for literature reviews, paper analysis, and scholarly writing. Use when: reviewing academic papers, conducting literature reviews, writing research summaries, analyzing methodologies, formatting citations, or wh...",
+      "legacy": {
+        "dirPath": "academic-researcher",
+        "skillFile": "skills/academic-researcher/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature",
+        "domain": "General"
+      },
+      "owner": "awesome-llm-apps",
+      "relatedSkills": [
+        "medhelp-deep-research",
+        "nature-academic-search",
+        "nature-literature-pipeline",
+        "Real Literature Trace"
+      ]
+    },
+    {
+      "name": "baseline-table",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "clinical",
+        "epidemiology",
+        "statistics",
+        "table1",
+        "baseline",
+        "threelinetable",
+        "baseline-table",
+        "analysis: baseline table",
+        "research-planning",
+        "medical",
+        "table",
+        "generate"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Generate publication-ready baseline characteristic tables (三线表 / Table 1) for medical research. Supports single-database and multi-database layouts, disease-stratified and exposure-stratified grouping, automatic normality-based formatting,...",
+      "legacy": {
+        "dirPath": "baseline-table",
+        "skillFile": "skills/baseline-table/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Baseline Table",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "clinical-preanalysis",
+        "gco-database-analysis",
+        "medhelp-experiment-dev",
+        "mineru-pdf-parser"
+      ]
+    },
+    {
+      "name": "init-analysis",
+      "primaryIntent": "data",
+      "intents": [
+        "data"
+      ],
+      "capabilities": [
+        "data-processing",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "bioinformatics"
+      ],
+      "keywords": [
+        "init-analysis",
+        "bioinformatics init analysis",
+        "data-processing",
+        "visualization-reporting",
+        "bioinformatics",
+        "init",
+        "analysis",
+        "this",
+        "should",
+        "be",
+        "used",
+        "when"
+      ],
+      "source": "imported",
+      "status": "candidate",
+      "summary": "This skill should be used when the user asks to \"run initial analysis\", \"analyze single-cell data\", \"QC my data\", \"run bioinformatics pipeline\", \"generate analysis report\", \"explore my dataset\", \"do exploratory data analysis\", \"initial dat...",
+      "legacy": {
+        "dirPath": "bioinformatics-init-analysis/skills/init-analysis",
+        "skillFile": "skills/bioinformatics-init-analysis/skills/init-analysis/SKILL.md",
+        "topLevelGroup": "Bioinformatics Init Analysis",
+        "collection": "Bioinformatics Init Analysis",
+        "domain": "Bioinformatics"
+      },
+      "relatedSkills": [
+        "medhelp-prepare-resources",
+        "biorxiv-database",
+        "data-visualization-biomedical",
+        "geo-database"
+      ]
+    },
+    {
+      "name": "biorxiv-database",
+      "primaryIntent": "research",
+      "intents": [
+        "research",
+        "data"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "data-processing"
+      ],
+      "domains": [
+        "bioinformatics"
+      ],
+      "keywords": [
+        "biorxiv-database",
+        "resource prep",
+        "search-retrieval",
+        "data-processing",
+        "bioinformatics",
+        "biorxiv",
+        "database",
+        "efficient",
+        "search",
+        "tool",
+        "preprint",
+        "server"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Efficient database search tool for bioRxiv preprint server. Use this skill when searching for life sciences preprints by keywords, authors, date ranges, or categories, retrieving paper metadata, downloading PDFs, or conducting literature r...",
+      "legacy": {
+        "dirPath": "biorxiv-database",
+        "skillFile": "skills/biorxiv-database/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Resource Prep",
+        "domain": "q-bio"
+      },
+      "relatedSkills": [
+        "geo-database",
+        "data-visualization-biomedical",
+        "literature-review",
+        "nature-citation"
+      ]
+    },
+    {
+      "name": "citation-management",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "citation-management",
+        "search-retrieval",
+        "medical",
+        "citation",
+        "management",
+        "comprehensive",
+        "academic",
+        "research",
+        "search",
+        "google",
+        "scholar",
+        "pubmed"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Comprehensive citation management for academic research. Search Google Scholar and PubMed for papers, extract accurate metadata, validate citations, and generate properly formatted BibTeX plus reference-manager-ready RIS/ENW files for Zote...",
+      "legacy": {
+        "dirPath": "citation-management",
+        "skillFile": "skills/citation-management/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "legal-pdf-acquisition",
+        "literature-review",
+        "meta-zotero-fulltext-handoff",
+        "nhanes-skill"
+      ]
+    },
+    {
+      "name": "clinical-preanalysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "clinical",
+        "epidemiology",
+        "statistics",
+        "preanalysis",
+        "screening",
+        "cox",
+        "regression",
+        "clinical-preanalysis",
+        "analysis: pre-analysis",
+        "research-planning",
+        "medical",
+        "run"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Run a go/no-go pre-analysis for clinical and epidemiologic database studies before baseline tables or full modeling. Use when the user wants 预分析、pilot stats、 screening analysis, gatekeeping analysis, or an early feasibility check that extr...",
+      "legacy": {
+        "dirPath": "clinical-preanalysis",
+        "skillFile": "skills/clinical-preanalysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Pre-Analysis",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "baseline-table",
+        "gco-database-analysis",
+        "medhelp-experiment-dev",
+        "mineru-pdf-parser"
+      ]
+    },
+    {
+      "name": "conversation-memory",
+      "primaryIntent": "deployment",
+      "intents": [
+        "deployment"
+      ],
+      "capabilities": [
+        "agent-workflow",
+        "prompt-structured-output"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "conversation-memory",
+        "agent-workflow",
+        "prompt-structured-output",
+        "conversation",
+        "memory",
+        "review",
+        "current",
+        "present",
+        "durable",
+        "project",
+        "candidates",
+        "through"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Review the current conversation, present durable project-memory candidates through an AskUserQuestion multi-select checkpoint, and merge only approved items into the current project root MEMORY.md. Use when the user asks to remember, summa...",
+      "legacy": {
+        "dirPath": "conversation-memory",
+        "skillFile": "skills/conversation-memory/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "medhelp-database-api-access",
+        "medhelp-pipeline-planner",
+        "nature-shared",
+        "research-news"
+      ]
+    },
+    {
+      "name": "data-stats-analysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "data-stats-analysis",
+        "analysis: inferential stats",
+        "data-processing",
+        "medical",
+        "data",
+        "stats",
+        "analysis",
+        "perform",
+        "statistical",
+        "tests",
+        "hypothesis",
+        "testing"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Perform statistical tests, hypothesis testing, correlation analysis, and multiple testing corrections using scipy and statsmodels. Works with ANY LLM provider (GPT, Gemini, Claude, etc.).",
+      "legacy": {
+        "dirPath": "data-stats-analysis",
+        "skillFile": "skills/data-stats-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Inferential Stats",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "data-visualization-biomedical",
+        "datacommons-client",
+        "medhelp-experiment-dev",
+        "scikit-survival"
+      ]
+    },
+    {
+      "name": "data-transform",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "data-transform",
+        "analysis: preprocessing",
+        "data-processing",
+        "data",
+        "transform",
+        "clean",
+        "reshape",
+        "preprocess",
+        "pandas",
+        "numpy",
+        "works",
+        "any"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Transform, clean, reshape, and preprocess data using pandas and numpy. Works with ANY LLM provider (GPT, Gemini, Claude, etc.).",
+      "legacy": {
+        "dirPath": "data-transform",
+        "skillFile": "skills/data-transform/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Preprocessing",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "data-visualization-expert",
+        "data-viz-plots",
+        "exploratory-data-analysis",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "data-visualization-biomedical",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "medical",
+        "bioinformatics"
+      ],
+      "keywords": [
+        "data-visualization-biomedical",
+        "analysis: biomedical viz",
+        "data-processing",
+        "medical",
+        "bioinformatics",
+        "data",
+        "visualization",
+        "biomedical",
+        "publication",
+        "quality",
+        "visualizations",
+        "genomics"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Publication-quality visualizations for biomedical and genomics data. Use when creating volcano plots, heatmaps, UMAP plots, dot plots, survival curves, forest plots, or multi-panel figures. Includes scanpy, matplotlib, seaborn, plotly work...",
+      "legacy": {
+        "dirPath": "data-visualization-biomedical",
+        "skillFile": "skills/data-visualization-biomedical/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Biomedical Viz",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "data-stats-analysis",
+        "biorxiv-database",
+        "datacommons-client",
+        "geo-database"
+      ]
+    },
+    {
+      "name": "data-visualization-expert",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "data-visualization-expert",
+        "analysis: narrative charts",
+        "data-processing",
+        "data",
+        "visualization",
+        "expert",
+        "generate",
+        "insightful",
+        "publication",
+        "quality",
+        "visualizations",
+        "from"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Generate insightful, publication-quality visualizations from complex datasets.",
+      "legacy": {
+        "dirPath": "data-visualization-expert",
+        "skillFile": "skills/data-visualization-expert/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Narrative Charts",
+        "domain": "General"
+      },
+      "owner": "AI Agentic Skills Team",
+      "relatedSkills": [
+        "data-transform",
+        "data-viz-plots",
+        "exploratory-data-analysis",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "data-viz-plots",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "data-viz-plots",
+        "analysis: general plots",
+        "data-processing",
+        "data",
+        "viz",
+        "plots",
+        "create",
+        "publication",
+        "quality",
+        "visualizations",
+        "matplotlib",
+        "seaborn"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create publication-quality plots and visualizations using matplotlib and seaborn. Works with ANY LLM provider (GPT, Gemini, Claude, etc.).",
+      "legacy": {
+        "dirPath": "data-viz-plots",
+        "skillFile": "skills/data-viz-plots/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: General Plots",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "data-transform",
+        "data-visualization-expert",
+        "exploratory-data-analysis",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "datacommons-client",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "datacommons-client",
+        "data-processing",
+        "medical",
+        "datacommons",
+        "client",
+        "work",
+        "data",
+        "commons",
+        "platform",
+        "providing",
+        "programmatic",
+        "access"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Work with Data Commons, a platform providing programmatic access to public statistical data from global sources. Use this skill when working with demographic data, economic indicators, health statistics, environmental data, or any public d...",
+      "legacy": {
+        "dirPath": "datacommons-client",
+        "skillFile": "skills/datacommons-client/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "data-stats-analysis",
+        "data-visualization-biomedical",
+        "medhelp-experiment-dev",
+        "scikit-survival"
+      ]
+    },
+    {
+      "name": "docx",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "docx",
+        "document skills",
+        "research-planning",
+        "document",
+        "toolkit",
+        "create",
+        "edit",
+        "documents",
+        "tracked",
+        "changes",
+        "comments",
+        "formatting"
+      ],
+      "source": "imported",
+      "status": "candidate",
+      "summary": "Document toolkit (.docx). Create/edit documents, tracked changes, comments, formatting preservation, text extraction, for professional document processing.",
+      "legacy": {
+        "dirPath": "document-skills/docx",
+        "skillFile": "skills/document-skills/docx/SKILL.md",
+        "topLevelGroup": "Document Skills",
+        "collection": "Document Skills",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "pdf",
+        "docx-official",
+        "latex-posters",
+        "pptx-posters"
+      ]
+    },
+    {
+      "name": "pdf",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "pdf",
+        "document skills",
+        "research-planning",
+        "manipulation",
+        "toolkit",
+        "extract",
+        "text",
+        "tables",
+        "create",
+        "pdfs",
+        "merge",
+        "split"
+      ],
+      "source": "imported",
+      "status": "candidate",
+      "summary": "PDF manipulation toolkit. Extract text/tables, create PDFs, merge/split, fill forms, for programmatic document processing and analysis.",
+      "legacy": {
+        "dirPath": "document-skills/pdf",
+        "skillFile": "skills/document-skills/pdf/SKILL.md",
+        "topLevelGroup": "Document Skills",
+        "collection": "Document Skills",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "docx",
+        "docx",
+        "docx-official",
+        "latex-posters"
+      ]
+    },
+    {
+      "name": "pptx",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "pptx",
+        "document skills",
+        "visualization-reporting",
+        "presentation",
+        "toolkit",
+        "create",
+        "edit",
+        "slides",
+        "layouts",
+        "content",
+        "speaker",
+        "notes"
+      ],
+      "source": "imported",
+      "status": "candidate",
+      "summary": "Presentation toolkit (.pptx). Create/edit slides, layouts, content, speaker notes, comments, for programmatic presentation creation and modification.",
+      "legacy": {
+        "dirPath": "document-skills/pptx",
+        "skillFile": "skills/document-skills/pptx/SKILL.md",
+        "topLevelGroup": "Document Skills",
+        "collection": "Document Skills",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-citation",
+        "nature-paper2ppt",
+        "nature-reader"
+      ]
+    },
+    {
+      "name": "xlsx",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "xlsx",
+        "document skills",
+        "data-processing",
+        "spreadsheet",
+        "toolkit",
+        "csv",
+        "create",
+        "edit",
+        "formulas",
+        "formatting",
+        "analyze",
+        "data"
+      ],
+      "source": "imported",
+      "status": "candidate",
+      "summary": "Spreadsheet toolkit (.xlsx/.csv). Create/edit with formulas/formatting, analyze data, visualization, recalculate formulas, for spreadsheet processing and analysis.",
+      "legacy": {
+        "dirPath": "document-skills/xlsx",
+        "skillFile": "skills/document-skills/xlsx/SKILL.md",
+        "topLevelGroup": "Document Skills",
+        "collection": "Document Skills",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "data-transform",
+        "data-visualization-expert",
+        "data-viz-plots",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "docx-official",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "docx-official",
+        "research-planning",
+        "docx",
+        "official",
+        "user",
+        "may",
+        "ask",
+        "you",
+        "create",
+        "edit",
+        "or",
+        "analyze"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "A user may ask you to create, edit, or analyze the contents of a .docx file. A .docx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for...",
+      "legacy": {
+        "dirPath": "docx-official",
+        "skillFile": "skills/docx-official/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Agent"
+      },
+      "relatedSkills": [
+        "docx",
+        "docx",
+        "latex-posters",
+        "matplotlib"
+      ]
+    },
+    {
+      "name": "docx",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "docx",
+        "research-planning",
+        "this",
+        "whenever",
+        "user",
+        "wants",
+        "create",
+        "read",
+        "edit",
+        "or",
+        "manipulate",
+        "word"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting...",
+      "legacy": {
+        "dirPath": "docx",
+        "skillFile": "skills/docx/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "docx-official",
+        "latex-posters",
+        "matplotlib",
+        "medhelp-pipeline-planner"
+      ]
+    },
+    {
+      "name": "easyukb-analysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "easyukb-analysis",
+        "data-processing",
+        "easyukb",
+        "analysis",
+        "uk",
+        "biobank",
+        "ukb",
+        "data",
+        "extraction",
+        "epidemiological",
+        "association",
+        "package"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "UK Biobank (UKB) data extraction + epidemiological association analysis using the `easyUKB` R package. Use when the user wants to (a) extract phenotype/field data from UKB raw data (must first ask user for UKB_rawdata absolute path, then q...",
+      "legacy": {
+        "dirPath": "easyukb-analysis",
+        "skillFile": "skills/easyukb-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "exploratory-data-analysis",
+        "statistical-analysis",
+        "data-transform",
+        "data-visualization-expert"
+      ]
+    },
+    {
+      "name": "exploratory-data-analysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "exploratory-data-analysis",
+        "analysis: eda",
+        "data-processing",
+        "exploratory",
+        "data",
+        "analysis",
+        "perform",
+        "comprehensive",
+        "scientific",
+        "files",
+        "across",
+        "200+"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Perform comprehensive exploratory data analysis on scientific data files across 200+ file formats. This skill should be used when analyzing any scientific data file to understand its structure, content, quality, and characteristics. Automa...",
+      "legacy": {
+        "dirPath": "exploratory-data-analysis",
+        "skillFile": "skills/exploratory-data-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: EDA",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "data-transform",
+        "data-visualization-expert",
+        "data-viz-plots",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "gco-database-analysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "gco-database-analysis",
+        "research-planning",
+        "medical",
+        "gco",
+        "database",
+        "analysis",
+        "analyze",
+        "globocan",
+        "cancer",
+        "epidemiology",
+        "through",
+        "medhelp"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Analyze GCO/GLOBOCAN cancer epidemiology through the MedHelp query-only API with local and official-API fallbacks. Trigger for Global Cancer Observatory, Cancer Today/Tomorrow, fact sheets, CI5plus, UNDP HDI linkage, cancer burden tables,...",
+      "legacy": {
+        "dirPath": "gco-database-analysis",
+        "skillFile": "skills/gco-database-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-experiment-dev",
+        "mineru-pdf-parser",
+        "baseline-table",
+        "clinical-preanalysis"
+      ]
+    },
+    {
+      "name": "geo-database",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "data-processing"
+      ],
+      "domains": [
+        "bioinformatics"
+      ],
+      "keywords": [
+        "geo-database",
+        "database: geo",
+        "search-retrieval",
+        "data-processing",
+        "bioinformatics",
+        "geo",
+        "database",
+        "access",
+        "ncbi",
+        "gene",
+        "expression",
+        "genomics"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Access NCBI GEO for gene expression/genomics data. Search/download microarray and RNA-seq datasets (GSE, GSM, GPL), retrieve SOFT/Matrix files, for transcriptomics and expression analysis.",
+      "legacy": {
+        "dirPath": "geo-database",
+        "skillFile": "skills/geo-database/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Database: GEO",
+        "domain": "Bioinformatics"
+      },
+      "relatedSkills": [
+        "biorxiv-database",
+        "data-visualization-biomedical",
+        "literature-review",
+        "nature-citation"
+      ]
+    },
+    {
+      "name": "hypothesis-generation",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "hypothesis-generation",
+        "data-processing",
+        "hypothesis",
+        "generation",
+        "structured",
+        "formulation",
+        "from",
+        "observations",
+        "when",
+        "you",
+        "have",
+        "experimental"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Structured hypothesis formulation from observations. Use when you have experimental observations or data and need to formulate testable hypotheses with predictions, propose mechanisms, and design experiments to test them. Follows scientifi...",
+      "legacy": {
+        "dirPath": "hypothesis-generation",
+        "skillFile": "skills/hypothesis-generation/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "data-transform",
+        "data-visualization-expert",
+        "data-viz-plots",
+        "easyukb-analysis"
+      ]
+    },
+    {
+      "name": "latex-posters",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "latex-posters",
+        "research-planning",
+        "latex",
+        "posters",
+        "create",
+        "professional",
+        "research",
+        "beamerposter",
+        "tikzposter",
+        "or",
+        "baposter",
+        "support"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter. Support for conference presentations, academic posters, and scientific communication. Includes layout design, color schemes, multi-column formats, f...",
+      "legacy": {
+        "dirPath": "latex-posters",
+        "skillFile": "skills/latex-posters/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "pptx-posters",
+        "docx",
+        "docx",
+        "docx-official"
+      ]
+    },
+    {
+      "name": "legal-pdf-acquisition",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "legal-pdf-acquisition",
+        "literature acquisition",
+        "search-retrieval",
+        "medical",
+        "legal",
+        "pdf",
+        "acquisition",
+        "resolve",
+        "legally",
+        "available",
+        "full",
+        "text"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Resolve legally available full-text assets for MedHelp Meta projects using existing project files, Zotero attachments, user uploads, PMC/Europe PMC, Unpaywall, or official open-access links. Assets may be PDF, Markdown, HTML, or text.",
+      "legacy": {
+        "dirPath": "legal-pdf-acquisition",
+        "skillFile": "skills/legal-pdf-acquisition/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature Acquisition",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "meta-zotero-fulltext-handoff",
+        "citation-management",
+        "literature-review",
+        "nhanes-skill"
+      ]
+    },
+    {
+      "name": "literature-review",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "medical",
+        "bioinformatics"
+      ],
+      "keywords": [
+        "literature-review",
+        "search-retrieval",
+        "evaluation-benchmarking",
+        "medical",
+        "bioinformatics",
+        "literature",
+        "review",
+        "conduct",
+        "comprehensive",
+        "systematic",
+        "reviews",
+        "multiple"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Conduct comprehensive, systematic literature reviews using multiple academic databases (PubMed, arXiv, bioRxiv, Semantic Scholar, etc.). This skill should be used when conducting systematic literature reviews, meta-analyses, research synth...",
+      "legacy": {
+        "dirPath": "literature-review",
+        "skillFile": "skills/literature-review/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "nature-academic-search",
+        "public-literature-download",
+        "biorxiv-database",
+        "citation-management"
+      ]
+    },
+    {
+      "name": "making-academic-presentations",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "making-academic-presentations",
+        "promotion",
+        "visualization-reporting",
+        "making",
+        "academic",
+        "presentations",
+        "create",
+        "presentation",
+        "slide",
+        "decks",
+        "optionally",
+        "demo"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create academic presentation slide decks and optionally demo videos from research papers. Use when the user asks to \"make slides\", \"create a deck\", \"make a presentation\", \"demo video\", \"paper slides\", \"conference talk slides\", or wants to...",
+      "legacy": {
+        "dirPath": "making-academic-presentations",
+        "skillFile": "skills/making-academic-presentations/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Promotion",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "medhelp-figure-gen",
+        "medhelp-grant-proposal",
+        "medhelp-humanizer",
+        "medhelp-paper-writing"
+      ]
+    },
+    {
+      "name": "markitdown",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "multimodal"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "markitdown",
+        "multimodal",
+        "convert",
+        "files",
+        "office",
+        "documents",
+        "markdown",
+        "supports",
+        "pdf",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Convert files and office documents to Markdown. Supports PDF, DOCX, PPTX, XLSX, images (with OCR), audio (with transcription), HTML, CSV, JSON, XML, ZIP, YouTube URLs, EPubs and more.",
+      "legacy": {
+        "dirPath": "markitdown",
+        "skillFile": "skills/markitdown/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "Academic Figure Prompt",
+        "paper-image-extractor",
+        "nature-paper-to-patent",
+        "academic-researcher"
+      ]
+    },
+    {
+      "name": "matplotlib",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "matplotlib",
+        "research-planning",
+        "low",
+        "level",
+        "plotting",
+        "library",
+        "full",
+        "customization",
+        "when",
+        "you",
+        "need",
+        "fine"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Low-level plotting library for full customization. Use when you need fine-grained control over every plot element, creating novel plot types, or integrating with specific scientific workflows. Export to PNG/PDF/SVG for publication. For qui...",
+      "legacy": {
+        "dirPath": "matplotlib",
+        "skillFile": "skills/matplotlib/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Agent"
+      },
+      "relatedSkills": [
+        "plotly",
+        "docx",
+        "docx",
+        "docx-official"
+      ]
+    },
+    {
+      "name": "medhelp-database-api-access",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "agent-workflow"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-database-api-access",
+        "database: remote api",
+        "agent-workflow",
+        "medhelp",
+        "database",
+        "api",
+        "access",
+        "remote",
+        "from",
+        "app",
+        "agent",
+        "or"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use for MedHelp's remote database API from a MedHelp App agent or another computer: verify Connector/token permissions, route sources, inspect codebooks and Stata labels, preview bounded rows, run background full CSV/Parquet exports, resum...",
+      "legacy": {
+        "dirPath": "medhelp-database-api-access",
+        "skillFile": "skills/medhelp-database-api-access/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Database: Remote API",
+        "domain": "general"
+      },
+      "relatedSkills": [
+        "medhelp-pipeline-planner",
+        "nature-shared",
+        "research-news",
+        "medhelp-deep-research"
+      ]
+    },
+    {
+      "name": "medhelp-deep-research",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-deep-research",
+        "literature",
+        "search-retrieval",
+        "medhelp",
+        "deep",
+        "research",
+        "comprehensive",
+        "assistant",
+        "that",
+        "synthesizes",
+        "information",
+        "from"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Comprehensive research assistant that synthesizes information from multiple sources with citations. Use for biomedical and health topics: guidelines, trials, cohorts, mechanisms, and policies—as well as general research. Triggers: in-depth...",
+      "legacy": {
+        "dirPath": "medhelp-deep-research",
+        "skillFile": "skills/medhelp-deep-research/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature",
+        "domain": "Medical"
+      },
+      "owner": "awesome-llm-apps",
+      "relatedSkills": [
+        "academic-researcher",
+        "nature-literature-pipeline",
+        "Real Literature Trace",
+        "research-lookup"
+      ]
+    },
+    {
+      "name": "medhelp-experiment-analysis",
+      "primaryIntent": "evaluation",
+      "intents": [
+        "evaluation",
+        "experiment"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research",
+        "clinical",
+        "epidemiology",
+        "statistics",
+        "visualization",
+        "paper writing",
+        "medhelp-experiment-analysis",
+        "analysis",
+        "evaluation-benchmarking",
+        "medhelp",
+        "experiment",
+        "analyzing"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Use for analyzing study or pipeline outputs, drafting Results sections, statistical analysis of health data, comparing interventions or exposure groups, regulatory-style tables, and linking numeric outputs to manuscript text. Oriented to d...",
+      "legacy": {
+        "dirPath": "medhelp-experiment-analysis",
+        "skillFile": "skills/medhelp-experiment-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-reference-audit",
+        "medhelp-paper-reviewer",
+        "nature-data",
+        "nature-statistics"
+      ]
+    },
+    {
+      "name": "medhelp-experiment-dev",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning",
+        "data-processing",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "medhelp-experiment-dev",
+        "research-planning",
+        "data-processing",
+        "evaluation-benchmarking",
+        "medical",
+        "medhelp",
+        "experiment",
+        "dev",
+        "creates",
+        "analysis",
+        "implementation",
+        "plan"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Creates an analysis/implementation plan, builds reproducible code (stats, data pipelines, or ML when needed) with a judge review loop, and runs the final analysis job. Use after the method and implementation context is assembled in Idea an...",
+      "legacy": {
+        "dirPath": "medhelp-experiment-dev",
+        "skillFile": "skills/medhelp-experiment-dev/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "nature-data",
+        "research-grants",
+        "data-stats-analysis",
+        "data-visualization-biomedical"
+      ]
+    },
+    {
+      "name": "medhelp-figure-gen",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-figure-gen",
+        "paper writing",
+        "visualization-reporting",
+        "medhelp",
+        "figure",
+        "gen",
+        "generate",
+        "edit",
+        "images",
+        "gemini",
+        "image",
+        "models"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Generate/edit images with Gemini image models (default: gemini-3.1-flash-image-preview). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use --input-image. Use --model to select a differ...",
+      "legacy": {
+        "dirPath": "medhelp-figure-gen",
+        "skillFile": "skills/medhelp-figure-gen/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-humanizer",
+        "medhelp-paper-writing",
+        "medhelp-grant-proposal",
+        "medhelp-rclone-to-overleaf"
+      ]
+    },
+    {
+      "name": "medhelp-grant-proposal",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting",
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-grant-proposal",
+        "grant writing",
+        "visualization-reporting",
+        "research-planning",
+        "medhelp",
+        "grant",
+        "proposal",
+        "help",
+        "professors",
+        "researchers",
+        "write",
+        "revise"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Help professors and researchers write, revise, adapt, and polish grant proposals for US agencies (NSF, NIH, DOE, DARPA, NASA) and Chinese agencies (NSFC 国自然). Use this skill whenever the user mentions grants, proposals, funding application...",
+      "legacy": {
+        "dirPath": "medhelp-grant-proposal",
+        "skillFile": "skills/medhelp-grant-proposal/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Grant Writing",
+        "domain": "general"
+      },
+      "relatedSkills": [
+        "medhelp-paper-writing",
+        "nature-data",
+        "nature-polishing",
+        "scientific-writing"
+      ]
+    },
+    {
+      "name": "medhelp-humanizer",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-humanizer",
+        "paper writing",
+        "visualization-reporting",
+        "medhelp",
+        "humanizer",
+        "remove",
+        "signs",
+        "ai",
+        "generated",
+        "writing",
+        "from",
+        "text"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's comprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including: infla...",
+      "legacy": {
+        "dirPath": "medhelp-humanizer",
+        "skillFile": "skills/medhelp-humanizer/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-figure-gen",
+        "medhelp-paper-writing",
+        "medhelp-grant-proposal",
+        "medhelp-rclone-to-overleaf"
+      ]
+    },
+    {
+      "name": "medhelp-idea-eval",
+      "primaryIntent": "ideation",
+      "intents": [
+        "ideation",
+        "evaluation"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "medhelp-idea-eval",
+        "idea evaluation",
+        "research-planning",
+        "medical",
+        "medhelp",
+        "idea",
+        "eval",
+        "multi",
+        "persona",
+        "research",
+        "evaluation",
+        "quality"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Multi-persona medical research idea evaluation with a quality gate. Evaluates biomedical, clinical, public-health, and translational research ideas across 5 MedEval dimensions (Question Clarity, Evidence Gap, Scientific Validity, Study Des...",
+      "legacy": {
+        "dirPath": "medhelp-idea-eval",
+        "skillFile": "skills/medhelp-idea-eval/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Idea Evaluation",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-idea-generation",
+        "medhelp-experiment-dev",
+        "gco-database-analysis",
+        "mineru-pdf-parser"
+      ]
+    },
+    {
+      "name": "medhelp-idea-generation",
+      "primaryIntent": "ideation",
+      "intents": [
+        "ideation",
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-idea-generation",
+        "idea generation",
+        "research-planning",
+        "medhelp",
+        "idea",
+        "generation",
+        "facilitates",
+        "structured",
+        "brainstorming",
+        "sessions",
+        "conducts",
+        "comprehensive"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Facilitates structured brainstorming sessions, conducts comprehensive research, and generates creative solutions using proven frameworks. Trigger keywords - brainstorm, ideate, research, SCAMPER, SWOT, mind map, creative, explore ideas, ma...",
+      "legacy": {
+        "dirPath": "medhelp-idea-generation",
+        "skillFile": "skills/medhelp-idea-generation/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Idea Generation",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-idea-eval",
+        "medhelp-grant-proposal",
+        "medhelp-pipeline-planner",
+        "medhelp-prepare-resources"
+      ]
+    },
+    {
+      "name": "medhelp-paper-reviewer",
+      "primaryIntent": "evaluation",
+      "intents": [
+        "evaluation",
+        "writing"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-paper-reviewer",
+        "paper review",
+        "evaluation-benchmarking",
+        "medhelp",
+        "paper",
+        "reviewer",
+        "structured",
+        "manuscript",
+        "grant",
+        "review",
+        "checklist",
+        "based"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Structured manuscript/grant review with checklist-based evaluation. Use when writing formal peer reviews with specific criteria methodology assessment, statistical validity, reporting standards compliance (CONSORT/STROBE), and constructive...",
+      "legacy": {
+        "dirPath": "medhelp-paper-reviewer",
+        "skillFile": "skills/medhelp-paper-reviewer/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Review",
+        "domain": "Medical"
+      },
+      "owner": "Gao",
+      "relatedSkills": [
+        "medhelp-reference-audit",
+        "medhelp-experiment-analysis",
+        "nature-data",
+        "nature-reviewer"
+      ]
+    },
+    {
+      "name": "medhelp-paper-writing",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-paper-writing",
+        "paper writing",
+        "visualization-reporting",
+        "medhelp",
+        "paper",
+        "writing",
+        "creates",
+        "formal",
+        "academic",
+        "research",
+        "papers",
+        "following"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Creates formal academic research papers following IEEE/ACM formatting standards with proper structure, citations, and scholarly writing style. Use when the user asks to write a research paper, academic paper, or conference paper on any top...",
+      "legacy": {
+        "dirPath": "medhelp-paper-writing",
+        "skillFile": "skills/medhelp-paper-writing/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "scientific-writing",
+        "medhelp-grant-proposal",
+        "nature-polishing",
+        "medhelp-figure-gen"
+      ]
+    },
+    {
+      "name": "medhelp-pipeline-planner",
+      "primaryIntent": "research",
+      "intents": [
+        "research",
+        "experiment"
+      ],
+      "capabilities": [
+        "research-planning",
+        "agent-workflow"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-pipeline-planner",
+        "research-planning",
+        "agent-workflow",
+        "medhelp",
+        "pipeline",
+        "planner",
+        "guides",
+        "user",
+        "through",
+        "interactive",
+        "conversation",
+        "define"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Guides the user through an interactive conversation to define their research project, then generates research_brief.json and tasks.json. Use when starting a new project, when no research_brief.json exists, when the user wants to start from...",
+      "legacy": {
+        "dirPath": "medhelp-pipeline-planner",
+        "skillFile": "skills/medhelp-pipeline-planner/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-database-api-access",
+        "docx",
+        "docx",
+        "docx-official"
+      ]
+    },
+    {
+      "name": "medhelp-prepare-resources",
+      "primaryIntent": "data",
+      "intents": [
+        "data",
+        "research"
+      ],
+      "capabilities": [
+        "research-planning",
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-prepare-resources",
+        "resource prep",
+        "research-planning",
+        "data-processing",
+        "medhelp",
+        "prepare",
+        "resources",
+        "loads",
+        "evaluation",
+        "instance",
+        "searches",
+        "github"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Loads the evaluation instance, searches GitHub for related repositories, builds a dataset description, queries the Prepare Agent for reference codebases, and downloads arXiv paper sources. Covers both Idea mode and Plan mode (the only diff...",
+      "legacy": {
+        "dirPath": "medhelp-prepare-resources",
+        "skillFile": "skills/medhelp-prepare-resources/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Resource Prep",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "nature-data",
+        "medhelp-experiment-dev",
+        "init-analysis",
+        "biorxiv-database"
+      ]
+    },
+    {
+      "name": "medhelp-rclone-to-overleaf",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "deployment"
+      ],
+      "capabilities": [
+        "infrastructure-ops",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "medhelp-rclone-to-overleaf",
+        "publication sync",
+        "infrastructure-ops",
+        "visualization-reporting",
+        "medhelp",
+        "rclone",
+        "overleaf",
+        "access",
+        "projects",
+        "via",
+        "cli",
+        "reading"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Access Overleaf projects via CLI. Use for reading/writing LaTeX files, syncing local .tex files to Overleaf, downloading projects, and managing Overleaf project structure. Triggers on Overleaf, LaTeX sync, or tex file uploads to Overleaf.",
+      "legacy": {
+        "dirPath": "medhelp-rclone-to-overleaf",
+        "skillFile": "skills/medhelp-rclone-to-overleaf/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Publication Sync",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-figure-gen",
+        "medhelp-grant-proposal",
+        "medhelp-humanizer",
+        "medhelp-paper-writing"
+      ]
+    },
+    {
+      "name": "medhelp-reference-audit",
+      "primaryIntent": "evaluation",
+      "intents": [
+        "evaluation",
+        "writing"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research",
+        "academic",
+        "citation",
+        "reference",
+        "medhelp-reference-audit",
+        "paper review",
+        "evaluation-benchmarking",
+        "search-retrieval",
+        "medhelp",
+        "audit",
+        "this",
+        "provides"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "This skill provides reference guidance for citation verification in academic writing. Use when the user asks about \"citation verification best practices\", \"how to verify references\", \"preventing fake citations\", or needs guidance on citati...",
+      "legacy": {
+        "dirPath": "medhelp-reference-audit",
+        "skillFile": "skills/medhelp-reference-audit/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Review",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "medhelp-paper-reviewer",
+        "medhelp-experiment-analysis",
+        "academic-researcher",
+        "nature-academic-search"
+      ]
+    },
+    {
+      "name": "meta-zotero-fulltext-handoff",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "meta-zotero-fulltext-handoff",
+        "literature acquisition",
+        "search-retrieval",
+        "medical",
+        "meta",
+        "zotero",
+        "fulltext",
+        "handoff",
+        "this",
+        "medhelp",
+        "projects",
+        "when"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Use this for MedHelp Meta projects when the current full-text stage has records whose usable full text is missing or incomplete. It updates the current missing-full-text gap list, pushes only incomplete records to the MedHelp Zotero collec...",
+      "legacy": {
+        "dirPath": "meta-zotero-fulltext-handoff",
+        "skillFile": "skills/meta-zotero-fulltext-handoff/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature Acquisition",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "legal-pdf-acquisition",
+        "zotero-medautodata-library",
+        "citation-management",
+        "literature-review"
+      ]
+    },
+    {
+      "name": "mineru-pdf-parser",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "mineru-pdf-parser",
+        "research-planning",
+        "medical",
+        "mineru",
+        "pdf",
+        "parser",
+        "parse",
+        "research",
+        "pdfs",
+        "medhelp",
+        "meta",
+        "projects"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Parse medical research PDFs in MedHelp Meta projects with MinerU into Markdown, tables, figures, page maps, and quality reports for evidence extraction.",
+      "legacy": {
+        "dirPath": "mineru-pdf-parser",
+        "skillFile": "skills/mineru-pdf-parser/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "gco-database-analysis",
+        "medhelp-experiment-dev",
+        "baseline-table",
+        "clinical-preanalysis"
+      ]
+    },
+    {
+      "name": "nature-academic-search",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-academic-search",
+        "search-retrieval",
+        "evaluation-benchmarking",
+        "nature",
+        "academic",
+        "search",
+        "multi",
+        "source",
+        "literature",
+        "citation",
+        "verification",
+        "strict"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Multi-source literature search, citation verification, strict independent other-citation audits, article-level citation metric tables, influential citer profiling with citation-context extraction, MeSH search strategy, citation file manage...",
+      "legacy": {
+        "dirPath": "nature-academic-search",
+        "skillFile": "skills/nature-academic-search/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "literature-review",
+        "academic-researcher",
+        "nature-citation",
+        "nature-downloader"
+      ]
+    },
+    {
+      "name": "nature-citation",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general",
+        "bioinformatics"
+      ],
+      "keywords": [
+        "nature-citation",
+        "search-retrieval",
+        "visualization-reporting",
+        "bioinformatics",
+        "nature",
+        "citation",
+        "add",
+        "strict",
+        "cns",
+        "citations",
+        "manuscript",
+        "text"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Add strict Nature/CNS citations to manuscript text by splitting long passages into citable segments, searching only accepted flagship and subjournal titles from Nature Portfolio, the AAAS Science family, and Cell Press, filtering by public...",
+      "legacy": {
+        "dirPath": "nature-citation",
+        "skillFile": "skills/nature-citation/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "owner": "Yuan1z skill, refactored into static/dynamic layers",
+      "relatedSkills": [
+        "nature-shared",
+        "biorxiv-database",
+        "geo-database",
+        "literature-review"
+      ]
+    },
+    {
+      "name": "nature-data",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "research"
+      ],
+      "capabilities": [
+        "research-planning",
+        "data-processing",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-data",
+        "paper writing",
+        "research-planning",
+        "data-processing",
+        "evaluation-benchmarking",
+        "nature",
+        "data",
+        "prepare",
+        "audit",
+        "or",
+        "revise",
+        "ready"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Prepare, audit, or revise Nature-ready Data Availability statements, data repository plans, dataset citations, and FAIR metadata checklists for manuscripts. Use when the user asks about Nature data availability, research data sharing, repo...",
+      "legacy": {
+        "dirPath": "nature-data",
+        "skillFile": "skills/nature-data/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "General"
+      },
+      "owner": "Yuan1z skill, refactored into static/dynamic layers",
+      "relatedSkills": [
+        "medhelp-experiment-dev",
+        "medhelp-grant-proposal",
+        "medhelp-prepare-resources",
+        "nature-polishing"
+      ]
+    },
+    {
+      "name": "nature-downloader",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-downloader",
+        "search-retrieval",
+        "nature",
+        "downloader",
+        "when",
+        "user",
+        "needs",
+        "lawful",
+        "academic",
+        "full",
+        "text",
+        "cnki"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use when a user needs lawful academic full text, CNKI institutional access, English OA retrieval, publisher API access, institutional browser fallback, or supporting information downloads.",
+      "legacy": {
+        "dirPath": "nature-downloader",
+        "skillFile": "skills/nature-downloader/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-academic-search",
+        "nature-citation",
+        "nature-literature-pipeline",
+        "nature-paper-card"
+      ]
+    },
+    {
+      "name": "nature-experiment-log",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-experiment-log",
+        "research-planning",
+        "nature",
+        "experiment",
+        "log",
+        "yaml",
+        "frontmatter",
+        "markdown",
+        "cli",
+        "obsidian"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "标准化实验日志记录——直接上传或读取本地图片、语音和文字，产出带 YAML frontmatter 的 Markdown；可选集成飞书 CLI 与 Obsidian。",
+      "legacy": {
+        "dirPath": "nature-experiment-log",
+        "skillFile": "skills/nature-experiment-log/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "owner": "Jiahao8595",
+      "relatedSkills": [
+        "nature-paper-to-patent",
+        "nature-ref-verifier",
+        "docx",
+        "docx"
+      ]
+    },
+    {
+      "name": "nature-figure",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-figure",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "nature",
+        "figure",
+        "create",
+        "revise",
+        "audit",
+        "export",
+        "submission",
+        "grade",
+        "scientific"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create, revise, audit, and export submission-grade scientific figures for Nature-family and other high-impact venues in Python (matplotlib/seaborn) or R (ggplot2/patchwork/ComplexHeatmap), including multi-panel plots, figures4papers-style...",
+      "legacy": {
+        "dirPath": "nature-figure",
+        "skillFile": "skills/nature-figure/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-response",
+        "nature-reviewer",
+        "nature-statistics",
+        "peer-review"
+      ]
+    },
+    {
+      "name": "nature-literature-pipeline",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-literature-pipeline",
+        "search-retrieval",
+        "nature",
+        "literature",
+        "pipeline",
+        "complete",
+        "automated",
+        "discovery",
+        "multi",
+        "source",
+        "search",
+        "six"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Complete automated literature discovery pipeline: multi-source search → six-dimension scoring → fine reading → formatted delivery → archival. Combines a configurable engine with daily cron-driven application layer. Works with Feishu, Teleg...",
+      "legacy": {
+        "dirPath": "nature-literature-pipeline",
+        "skillFile": "skills/nature-literature-pipeline/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "owner": "Jiahao8595",
+      "relatedSkills": [
+        "academic-researcher",
+        "medhelp-deep-research",
+        "nature-academic-search",
+        "nature-citation"
+      ]
+    },
+    {
+      "name": "nature-paper-card",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-paper-card",
+        "search-retrieval",
+        "nature",
+        "paper",
+        "card",
+        "build",
+        "source",
+        "grounded",
+        "deep",
+        "reading",
+        "one",
+        "scientific"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Build a source-grounded deep-reading Paper Card for one scientific paper, preprint, PDF, DOI, arXiv page, publisher article, or pasted paper text. Use when the user asks for a Paper Card, deep-reading literature card, single-paper deep ana...",
+      "legacy": {
+        "dirPath": "nature-paper-card",
+        "skillFile": "skills/nature-paper-card/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-academic-search",
+        "nature-citation",
+        "nature-downloader",
+        "nature-literature-pipeline"
+      ]
+    },
+    {
+      "name": "nature-paper-to-patent",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-paper-to-patent",
+        "research-planning",
+        "nature",
+        "paper",
+        "patent",
+        "convert",
+        "scientific",
+        "papers",
+        "theses",
+        "technical",
+        "reports",
+        "source"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Convert scientific papers, theses, technical reports, source code, figures, inventor notes, or research manuscripts into evidence-grounded Chinese invention patent drafts and attorney-facing technical disclosure materials. Use when an AI a...",
+      "legacy": {
+        "dirPath": "nature-paper-to-patent",
+        "skillFile": "skills/nature-paper-to-patent/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-experiment-log",
+        "nature-ref-verifier",
+        "docx",
+        "docx"
+      ]
+    },
+    {
+      "name": "nature-paper2ppt",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-paper2ppt",
+        "visualization-reporting",
+        "nature",
+        "paper2ppt",
+        "build",
+        "complete",
+        "style",
+        "chinese",
+        "pptx",
+        "presentation",
+        "from",
+        "scientific"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Build a complete Nature-style Chinese PPTX presentation from a scientific paper, preprint, PDF, article text, figure legends, or reading notes. Use for journal club, group meeting, thesis seminar, paper sharing, conference or defense decks...",
+      "legacy": {
+        "dirPath": "nature-paper2ppt",
+        "skillFile": "skills/nature-paper2ppt/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-reader",
+        "nature-citation",
+        "nature-figure",
+        "nature-response"
+      ]
+    },
+    {
+      "name": "nature-polishing",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-polishing",
+        "paper writing",
+        "visualization-reporting",
+        "nature",
+        "polishing",
+        "polish",
+        "restructure",
+        "or",
+        "translate",
+        "academic",
+        "prose",
+        "into"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Polish, restructure, or translate academic prose into Nature-leaning English using writing-strategy principles, curated Nature/Nature Communications article patterns, and phrase-level support from Academic Phrasebank. Use whenever the user...",
+      "legacy": {
+        "dirPath": "nature-polishing",
+        "skillFile": "skills/nature-polishing/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "medhelp-paper-writing",
+        "scientific-writing",
+        "medhelp-grant-proposal",
+        "medhelp-figure-gen"
+      ]
+    },
+    {
+      "name": "researchwrite",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "researchwrite",
+        "nature-proposal-writer",
+        "visualization-reporting",
+        "proposal",
+        "first",
+        "scientific",
+        "writing",
+        "pipeline",
+        "installed",
+        "under",
+        "compatibility",
+        "trigger"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Proposal-first scientific writing pipeline, installed under the compatibility trigger researchwrite and the repository package name nature-proposal-writer. Use for composing, revising, or auditing research proposals, opening reports, resea...",
+      "legacy": {
+        "dirPath": "nature-proposal-writer",
+        "skillFile": "skills/nature-proposal-writer/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "scientific-slides",
+        "nature-citation",
+        "nature-figure",
+        "nature-paper2ppt"
+      ]
+    },
+    {
+      "name": "nature-reader",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-reader",
+        "visualization-reporting",
+        "nature",
+        "reader",
+        "build",
+        "full",
+        "paper",
+        "chinese",
+        "english",
+        "side",
+        "by",
+        "figure"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Build full-paper Chinese-English side-by-side, figure/table/equation-aware, source-grounded Markdown readers for journal or conference papers from PDF, DOI, arXiv, publisher HTML, or pasted text. Use whenever the user asks to translate or...",
+      "legacy": {
+        "dirPath": "nature-reader",
+        "skillFile": "skills/nature-reader/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "owner": "Community contribution, refactored into static/dynamic layers",
+      "relatedSkills": [
+        "nature-paper2ppt",
+        "nature-citation",
+        "nature-figure",
+        "nature-response"
+      ]
+    },
+    {
+      "name": "nature-ref-verifier",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-ref-verifier",
+        "research-planning",
+        "nature",
+        "ref",
+        "verifier",
+        "doi",
+        "zotero"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "对学术文献逐条执行多源交叉验证，逐字段对比作者、标题、年份、卷期、页码， 标记卷年/DOI年冲突、作者顺序异常、页码偏差等问题，输出结构化验证报告。 可批量处理整篇论文/开题报告的参考文献列表，也可单条校验，支持与 Zotero 同步修正。",
+      "legacy": {
+        "dirPath": "nature-ref-verifier",
+        "skillFile": "skills/nature-ref-verifier/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-experiment-log",
+        "nature-paper-to-patent",
+        "docx",
+        "docx"
+      ]
+    },
+    {
+      "name": "nature-response",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-response",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "nature",
+        "response",
+        "draft",
+        "audit",
+        "or",
+        "revise",
+        "style",
+        "revision",
+        "correspondence"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Draft, audit, or revise Nature-style revision correspondence packages: point-by-point reviewer-separated response letters, rebuttal letters, revision cover letters, LaTeX cover/response templates, and red-marked revised-manuscript excerpts...",
+      "legacy": {
+        "dirPath": "nature-response",
+        "skillFile": "skills/nature-response/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-reviewer",
+        "nature-statistics",
+        "peer-review"
+      ]
+    },
+    {
+      "name": "nature-reviewer",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-reviewer",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "nature",
+        "reviewer",
+        "simulate",
+        "style",
+        "or",
+        "general",
+        "pre",
+        "submission",
+        "peer"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Simulate Nature-style or general pre-submission peer review from the referee perspective, not an author rebuttal. Use for reviewer reports, mock peer review, manuscript critique, novelty/significance/technical-soundness assessment, 审稿人视角评估...",
+      "legacy": {
+        "dirPath": "nature-reviewer",
+        "skillFile": "skills/nature-reviewer/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-response",
+        "nature-statistics",
+        "peer-review"
+      ]
+    },
+    {
+      "name": "nature-shared",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "agent-workflow",
+        "search-retrieval",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-shared",
+        "agent-workflow",
+        "search-retrieval",
+        "visualization-reporting",
+        "nature",
+        "shared",
+        "internal",
+        "reference",
+        "support",
+        "package",
+        "installed",
+        "writing"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Internal shared-reference support package for installed nature-writing, nature-polishing, nature-reader, and nature-paper2ppt skills. Do not invoke it as a standalone user workflow. Load only the specific core or journal-format file reques...",
+      "legacy": {
+        "dirPath": "nature-shared",
+        "skillFile": "skills/nature-shared/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Agent"
+      },
+      "relatedSkills": [
+        "nature-citation",
+        "research-news",
+        "nature-academic-search",
+        "nature-downloader"
+      ]
+    },
+    {
+      "name": "nature-statistics",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-statistics",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "nature",
+        "statistics",
+        "audit",
+        "revise",
+        "or",
+        "draft",
+        "manuscript",
+        "statistical",
+        "reporting"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Audit, revise, or draft manuscript statistical reporting for Nature / high-impact journal submissions. Use when the user asks to check statistical analysis sections, p values, confidence intervals, sample size, biological versus technical...",
+      "legacy": {
+        "dirPath": "nature-statistics",
+        "skillFile": "skills/nature-statistics/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-response",
+        "nature-reviewer",
+        "peer-review"
+      ]
+    },
+    {
+      "name": "nature-writing",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "nature-writing",
+        "visualization-reporting",
+        "nature",
+        "writing",
+        "draft",
+        "restructure",
+        "or",
+        "plan",
+        "style",
+        "manuscript",
+        "sections",
+        "initial"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Draft, restructure, or plan Nature-style manuscript sections and initial-submission materials from author-provided claims, results, figures, notes, or Chinese drafts. Use when the user wants to write or rebuild an abstract, introduction, r...",
+      "legacy": {
+        "dirPath": "nature-writing",
+        "skillFile": "skills/nature-writing/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-response",
+        "nature-citation",
+        "nature-figure",
+        "nature-paper2ppt"
+      ]
+    },
+    {
+      "name": "nhanes-skill",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "nhanes-skill",
+        "database: nhanes",
+        "search-retrieval",
+        "medical",
+        "nhanes",
+        "when",
+        "working",
+        "national",
+        "health",
+        "nutrition",
+        "examination",
+        "survey"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use when working with NHANES, National Health and Nutrition Examination Survey, US survey source through source_id nhanes in the MedHelp/Web_database stack. Search API indexes, verify variables, inspect schema, resolve paths, extract real...",
+      "legacy": {
+        "dirPath": "nhanes-skill",
+        "skillFile": "skills/nhanes-skill/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Database: NHANES",
+        "domain": "Public Health Survey"
+      },
+      "relatedSkills": [
+        "citation-management",
+        "legal-pdf-acquisition",
+        "literature-review",
+        "meta-zotero-fulltext-handoff"
+      ]
+    },
+    {
+      "name": "openalex-database",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "openalex-database",
+        "search-retrieval",
+        "openalex",
+        "database",
+        "query",
+        "analyze",
+        "scholarly",
+        "literature",
+        "this",
+        "should",
+        "be",
+        "used"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Query and analyze scholarly literature using the OpenAlex database. This skill should be used when searching for academic papers, analyzing research trends, finding works by authors or institutions, tracking citations, discovering open acc...",
+      "legacy": {
+        "dirPath": "openalex-database",
+        "skillFile": "skills/openalex-database/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "academic-researcher",
+        "medhelp-deep-research",
+        "nature-academic-search",
+        "nature-citation"
+      ]
+    },
+    {
+      "name": "paper-analyzer",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "paper-analyzer",
+        "paper analysis",
+        "evaluation-benchmarking",
+        "paper",
+        "analyzer",
+        "deep",
+        "analysis",
+        "single",
+        "generate",
+        "structured",
+        "notes",
+        "figures"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Deep analysis of a single paper — generate structured notes with figures, evaluation, and knowledge graph updates",
+      "legacy": {
+        "dirPath": "paper-analyzer",
+        "skillFile": "skills/paper-analyzer/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Analysis",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-academic-search",
+        "nature-figure",
+        "nature-response",
+        "nature-reviewer"
+      ]
+    },
+    {
+      "name": "paper-download",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "paper-download",
+        "literature acquisition",
+        "search-retrieval",
+        "paper",
+        "download",
+        "pdfs",
+        "by",
+        "single",
+        "or",
+        "multiple",
+        "dois",
+        "auto"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Download paper PDFs by single or multiple DOIs using auto_paper_download with ready-to-run scripts and clear usage.",
+      "legacy": {
+        "dirPath": "paper-download",
+        "skillFile": "skills/paper-download/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature Acquisition",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "research-paper-downloader",
+        "nature-paper-card",
+        "paper-finder",
+        "academic-researcher"
+      ]
+    },
+    {
+      "name": "paper-finder",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "paper-finder",
+        "paper search",
+        "search-retrieval",
+        "paper",
+        "finder",
+        "search",
+        "existing",
+        "notes",
+        "by",
+        "title",
+        "author",
+        "keyword"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Search existing paper notes by title, author, keyword, or research domain",
+      "legacy": {
+        "dirPath": "paper-finder",
+        "skillFile": "skills/paper-finder/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Search",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-academic-search",
+        "nature-paper-card",
+        "paper-download",
+        "research-paper-downloader"
+      ]
+    },
+    {
+      "name": "paper-image-extractor",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "multimodal"
+      ],
+      "domains": [
+        "vision"
+      ],
+      "keywords": [
+        "paper-image-extractor",
+        "image extraction",
+        "multimodal",
+        "vision",
+        "paper",
+        "image",
+        "extractor",
+        "extract",
+        "figures",
+        "from",
+        "papers",
+        "prioritizes"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Extract figures from papers — prioritizes arXiv source package for high-quality images",
+      "legacy": {
+        "dirPath": "paper-image-extractor",
+        "skillFile": "skills/paper-image-extractor/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Image Extraction",
+        "domain": "Vision"
+      },
+      "relatedSkills": [
+        "Academic Figure Prompt",
+        "markitdown",
+        "nature-paper-card",
+        "nature-paper-to-patent"
+      ]
+    },
+    {
+      "name": "peer-review",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "peer-review",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "peer",
+        "review",
+        "structured",
+        "manuscript",
+        "grant",
+        "checklist",
+        "based",
+        "evaluation",
+        "when"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Structured manuscript/grant review with checklist-based evaluation. Use when writing formal peer reviews with specific criteria methodology assessment, statistical validity, reporting standards compliance (CONSORT/STROBE), and constructive...",
+      "legacy": {
+        "dirPath": "peer-review",
+        "skillFile": "skills/peer-review/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-response",
+        "nature-reviewer",
+        "nature-statistics"
+      ]
+    },
+    {
+      "name": "plotly",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "plotly",
+        "research-planning",
+        "interactive",
+        "visualization",
+        "library",
+        "when",
+        "you",
+        "need",
+        "hover",
+        "info",
+        "zoom",
+        "pan"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Interactive visualization library. Use when you need hover info, zoom, pan, or web-embeddable charts. Best for dashboards, exploratory analysis, and presentations. For static publication figures use matplotlib or scientific-visualization.",
+      "legacy": {
+        "dirPath": "plotly",
+        "skillFile": "skills/plotly/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "matplotlib",
+        "scientific-visualization",
+        "seaborn",
+        "docx"
+      ]
+    },
+    {
+      "name": "pptx-posters",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "pptx-posters",
+        "research-planning",
+        "pptx",
+        "posters",
+        "create",
+        "research",
+        "html",
+        "css",
+        "that",
+        "can",
+        "be",
+        "exported"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create research posters using HTML/CSS that can be exported to PDF or PPTX. Use this skill ONLY when the user explicitly requests PowerPoint/PPTX poster format. For standard research posters, use latex-posters instead. This skill provides...",
+      "legacy": {
+        "dirPath": "pptx-posters",
+        "skillFile": "skills/pptx-posters/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "latex-posters",
+        "docx",
+        "research-grants",
+        "scientific-brainstorming"
+      ]
+    },
+    {
+      "name": "public-literature-download",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "pubmed",
+        "pmc oa",
+        "open access",
+        "pdf download",
+        "systematic review",
+        "references",
+        "zotero",
+        "public-literature-download",
+        "literature acquisition",
+        "search-retrieval",
+        "evaluation-benchmarking",
+        "medical"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Legal public literature full-text download skill for medical systematic reviews and Meta-analysis. It resolves PMID/DOI/PMCID identifiers, checks PMC/OA availability, downloads allowed PDF/HTML/Markdown/text or archive resources, records f...",
+      "legacy": {
+        "dirPath": "public-literature-download",
+        "skillFile": "skills/public-literature-download/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature acquisition",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "literature-review",
+        "nature-academic-search",
+        "pubmed-database",
+        "citation-management"
+      ]
+    },
+    {
+      "name": "pubmed-database",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "pubmed-database",
+        "search-retrieval",
+        "medical",
+        "pubmed",
+        "database",
+        "direct",
+        "rest",
+        "api",
+        "access",
+        "advanced",
+        "boolean",
+        "mesh"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Direct REST API access to PubMed. Advanced Boolean/MeSH queries, E-utilities API, batch processing, citation management. For Python workflows, prefer biopython (Bio.Entrez). Use this for direct HTTP/REST work or custom API implementations.",
+      "legacy": {
+        "dirPath": "pubmed-database",
+        "skillFile": "skills/pubmed-database/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "citation-management",
+        "legal-pdf-acquisition",
+        "literature-review",
+        "meta-zotero-fulltext-handoff"
+      ]
+    },
+    {
+      "name": "pymc-bayesian-modeling",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "inference-serving"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "pymc-bayesian-modeling",
+        "pymc",
+        "inference-serving",
+        "bayesian",
+        "modeling",
+        "build",
+        "hierarchical",
+        "models",
+        "mcmc",
+        "nuts",
+        "variational",
+        "inference"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Bayesian modeling with PyMC. Build hierarchical models, MCMC (NUTS), variational inference, LOO/WAIC comparison, posterior checks, for probabilistic programming and inference.",
+      "legacy": {
+        "dirPath": "pymc",
+        "skillFile": "skills/pymc/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "statsmodels",
+        "nature-paper-card",
+        "nature-paper2ppt",
+        "nature-reader"
+      ]
+    },
+    {
+      "name": "r-graph-selector",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "medical",
+        "bioinformatics"
+      ],
+      "keywords": [
+        "r-graph-selector",
+        "analysis: r gallery picker",
+        "visualization-reporting",
+        "medical",
+        "bioinformatics",
+        "graph",
+        "selector",
+        "when",
+        "user",
+        "wants",
+        "medhelp",
+        "or"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use when the user wants MedHelp or Codex to shortlist R chart examples from the local r-graph-gallery based on figure-selection preferences, publication style, biomedical suitability, or prompts like “帮我选图”, “筛选图表”, “推荐 R 图”, “根据偏好选图”, “用...",
+      "legacy": {
+        "dirPath": "r-graph-selector",
+        "skillFile": "skills/r-graph-selector/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: R Gallery Picker",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "nature-citation",
+        "data-visualization-biomedical",
+        "literature-review",
+        "Academic Figure Prompt"
+      ]
+    },
+    {
+      "name": "Real Literature Trace",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "real literature trace",
+        "real-literature-trace",
+        "search-retrieval",
+        "real",
+        "literature",
+        "trace",
+        "this",
+        "whenever",
+        "user",
+        "wants",
+        "search",
+        "verify"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use this skill whenever the user wants to search, verify, screen, compare, or organize real academic papers and return traceable paper addresses or links, especially for literature reviews, core-paper lists, recent papers, high-quality pap...",
+      "legacy": {
+        "dirPath": "real-literature-trace",
+        "skillFile": "skills/real-literature-trace/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "academic-researcher",
+        "medhelp-deep-research",
+        "nature-literature-pipeline",
+        "nature-academic-search"
+      ]
+    },
+    {
+      "name": "research-grants",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning",
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research-grants",
+        "research-planning",
+        "evaluation-benchmarking",
+        "research",
+        "grants",
+        "write",
+        "competitive",
+        "proposals",
+        "nsf",
+        "nih",
+        "doe",
+        "darpa"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Write competitive research proposals for NSF, NIH, DOE, DARPA, and Taiwan NSTC. Agency-specific formatting, review criteria, budget preparation, broader impacts, significance statements, innovation narratives, and compliance with submissio...",
+      "legacy": {
+        "dirPath": "research-grants",
+        "skillFile": "skills/research-grants/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "medhelp-experiment-dev",
+        "pptx-posters",
+        "scientific-brainstorming",
+        "docx"
+      ]
+    },
+    {
+      "name": "research-lookup",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research-lookup",
+        "search-retrieval",
+        "research",
+        "lookup",
+        "look",
+        "up",
+        "current",
+        "information",
+        "perplexity",
+        "sonar",
+        "pro",
+        "search"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Look up current research information using Perplexity Sonar Pro Search or Sonar Reasoning Pro models through OpenRouter. Automatically selects the best model based on query complexity. Search academic papers, recent studies, technical docu...",
+      "legacy": {
+        "dirPath": "research-lookup",
+        "skillFile": "skills/research-lookup/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "academic-researcher",
+        "medhelp-deep-research",
+        "research-news",
+        "research-paper-downloader"
+      ]
+    },
+    {
+      "name": "research-news",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "agent-workflow",
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research-news",
+        "paper discovery",
+        "agent-workflow",
+        "search-retrieval",
+        "research",
+        "news",
+        "daily",
+        "paper",
+        "recommendation",
+        "workflow",
+        "search",
+        "arxiv"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Daily paper recommendation workflow — search arXiv and PubMed, score and recommend papers",
+      "legacy": {
+        "dirPath": "research-news",
+        "skillFile": "skills/research-news/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Discovery",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-shared",
+        "academic-researcher",
+        "medhelp-deep-research",
+        "research-lookup"
+      ]
+    },
+    {
+      "name": "research-paper-downloader",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "research-paper-downloader",
+        "literature acquisition",
+        "search-retrieval",
+        "research",
+        "paper",
+        "downloader",
+        "download",
+        "academic",
+        "papers",
+        "from",
+        "open",
+        "access"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Download academic papers from open-access sources when the user provides a DOI/arXiv ID or requests a keyword-based paper search, and return the saved PDF path.",
+      "legacy": {
+        "dirPath": "research-paper-downloader",
+        "skillFile": "skills/research-paper-downloader/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature Acquisition",
+        "domain": "General"
+      },
+      "owner": "AIPOCH",
+      "relatedSkills": [
+        "paper-download",
+        "academic-researcher",
+        "medhelp-deep-research",
+        "nature-downloader"
+      ]
+    },
+    {
+      "name": "scholar-evaluation",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking",
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scholar-evaluation",
+        "evaluation-benchmarking",
+        "visualization-reporting",
+        "scholar",
+        "evaluation",
+        "systematically",
+        "evaluate",
+        "scholarly",
+        "work",
+        "scholareval",
+        "framework",
+        "providing"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Systematically evaluate scholarly work using the ScholarEval framework, providing structured assessment across research quality dimensions including problem formulation, methodology, analysis, and writing with quantitative scoring and acti...",
+      "legacy": {
+        "dirPath": "scholar-evaluation",
+        "skillFile": "skills/scholar-evaluation/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "nature-response",
+        "nature-reviewer",
+        "nature-statistics"
+      ]
+    },
+    {
+      "name": "scientific-brainstorming",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scientific-brainstorming",
+        "research-planning",
+        "scientific",
+        "brainstorming",
+        "creative",
+        "research",
+        "ideation",
+        "exploration",
+        "open",
+        "ended",
+        "sessions",
+        "exploring"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Creative research ideation and exploration. Use for open-ended brainstorming sessions, exploring interdisciplinary connections, challenging assumptions, or identifying research gaps. Best for early-stage research planning when you do not h...",
+      "legacy": {
+        "dirPath": "scientific-brainstorming",
+        "skillFile": "skills/scientific-brainstorming/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "pptx-posters",
+        "research-grants",
+        "scientific-visualization",
+        "docx"
+      ]
+    },
+    {
+      "name": "scientific-critical-thinking",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scientific-critical-thinking",
+        "evaluation-benchmarking",
+        "scientific",
+        "critical",
+        "thinking",
+        "evaluate",
+        "claims",
+        "evidence",
+        "quality",
+        "assessing",
+        "experimental",
+        "design"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Evaluate scientific claims and evidence quality. Use for assessing experimental design validity, identifying biases and confounders, applying evidence grading frameworks (GRADE, Cochrane Risk of Bias), or teaching critical analysis. Best f...",
+      "legacy": {
+        "dirPath": "scientific-critical-thinking",
+        "skillFile": "skills/scientific-critical-thinking/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "scientific-schematics",
+        "nature-academic-search",
+        "nature-figure",
+        "nature-response"
+      ]
+    },
+    {
+      "name": "scientific-schematics",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "evaluation-benchmarking"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scientific-schematics",
+        "evaluation-benchmarking",
+        "scientific",
+        "schematics",
+        "create",
+        "publication",
+        "quality",
+        "diagrams",
+        "nano",
+        "banana",
+        "pro",
+        "ai"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Create publication-quality scientific diagrams using Nano Banana Pro AI with smart iterative refinement. Uses Gemini 3 Pro for quality review. Only regenerates if quality is below threshold for your document type. Specialized in neural net...",
+      "legacy": {
+        "dirPath": "scientific-schematics",
+        "skillFile": "skills/scientific-schematics/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-figure",
+        "scientific-critical-thinking",
+        "nature-academic-search",
+        "nature-response"
+      ]
+    },
+    {
+      "name": "scientific-slides",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scientific-slides",
+        "visualization-reporting",
+        "scientific",
+        "slides",
+        "build",
+        "slide",
+        "decks",
+        "presentations",
+        "research",
+        "talks",
+        "this",
+        "making"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Build slide decks and presentations for research talks. Use this for making PowerPoint slides, conference presentations, seminar talks, research presentations, thesis defense slides, or any scientific talk. Provides slide structure, design...",
+      "legacy": {
+        "dirPath": "scientific-slides",
+        "skillFile": "skills/scientific-slides/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "nature-paper2ppt",
+        "nature-reader",
+        "researchwrite",
+        "nature-citation"
+      ]
+    },
+    {
+      "name": "scientific-visualization",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general",
+        "bioinformatics"
+      ],
+      "keywords": [
+        "scientific-visualization",
+        "analysis: journal figures",
+        "research-planning",
+        "bioinformatics",
+        "scientific",
+        "visualization",
+        "meta",
+        "publication",
+        "ready",
+        "figures",
+        "when",
+        "creating"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Meta-skill for publication-ready figures. Use when creating journal submission figures requiring multi-panel layouts, significance annotations, error bars, colorblind-safe palettes, and specific journal formatting (Nature, Science, Cell)....",
+      "legacy": {
+        "dirPath": "scientific-visualization",
+        "skillFile": "skills/scientific-visualization/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Journal Figures",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "plotly",
+        "scientific-brainstorming",
+        "seaborn",
+        "docx"
+      ]
+    },
+    {
+      "name": "scientific-writing",
+      "primaryIntent": "writing",
+      "intents": [
+        "writing",
+        "research"
+      ],
+      "capabilities": [
+        "visualization-reporting"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "scientific-writing",
+        "paper writing",
+        "visualization-reporting",
+        "scientific",
+        "writing",
+        "core",
+        "deep",
+        "research",
+        "tool",
+        "write",
+        "manuscripts",
+        "full"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Core skill for the deep research and writing tool. Write scientific manuscripts in full paragraphs (never bullet points). Use two-stage process with (1) section outlines with key points using research-lookup then (2) convert to flowing pro...",
+      "legacy": {
+        "dirPath": "scientific-writing",
+        "skillFile": "skills/scientific-writing/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Paper Writing",
+        "domain": "cs"
+      },
+      "relatedSkills": [
+        "medhelp-paper-writing",
+        "nature-polishing",
+        "medhelp-grant-proposal",
+        "medhelp-figure-gen"
+      ]
+    },
+    {
+      "name": "scikit-survival",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "scikit-survival",
+        "analysis: survival",
+        "data-processing",
+        "medical",
+        "scikit",
+        "survival",
+        "comprehensive",
+        "toolkit",
+        "analysis",
+        "time",
+        "event",
+        "modeling"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Comprehensive toolkit for survival analysis and time-to-event modeling in Python using scikit-survival. Use this skill when working with censored survival data, performing time-to-event analysis, fitting Cox models, Random Survival Forests...",
+      "legacy": {
+        "dirPath": "scikit-survival",
+        "skillFile": "skills/scikit-survival/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Survival",
+        "domain": "medical"
+      },
+      "relatedSkills": [
+        "data-stats-analysis",
+        "data-visualization-biomedical",
+        "datacommons-client",
+        "medhelp-experiment-dev"
+      ]
+    },
+    {
+      "name": "seaborn",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "seaborn",
+        "research-planning",
+        "statistical",
+        "visualization",
+        "pandas",
+        "integration",
+        "quick",
+        "exploration",
+        "distributions",
+        "relationships",
+        "categorical",
+        "comparisons"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Statistical visualization with pandas integration. Use for quick exploration of distributions, relationships, and categorical comparisons with attractive defaults. Best for box plots, violin plots, pair plots, heatmaps. Built on matplotlib...",
+      "legacy": {
+        "dirPath": "seaborn",
+        "skillFile": "skills/seaborn/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "plotly",
+        "scientific-visualization",
+        "docx",
+        "docx"
+      ]
+    },
+    {
+      "name": "statistical-analysis",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "data-processing"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "statistical-analysis",
+        "analysis: test selection",
+        "data-processing",
+        "statistical",
+        "analysis",
+        "guided",
+        "test",
+        "selection",
+        "reporting",
+        "when",
+        "you",
+        "need"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Guided statistical analysis with test selection and reporting. Use when you need help choosing appropriate tests for your data, assumption checking, power analysis, and APA-formatted results. Best for academic research reporting, test sele...",
+      "legacy": {
+        "dirPath": "statistical-analysis",
+        "skillFile": "skills/statistical-analysis/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Test Selection",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "easyukb-analysis",
+        "exploratory-data-analysis",
+        "data-transform",
+        "data-visualization-expert"
+      ]
+    },
+    {
+      "name": "statsmodels",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "inference-serving"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "statsmodels",
+        "analysis: regression",
+        "inference-serving",
+        "statistical",
+        "models",
+        "library",
+        "python",
+        "when",
+        "you",
+        "need",
+        "specific",
+        "model"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Statistical models library for Python. Use when you need specific model classes (OLS, GLM, mixed models, ARIMA) with detailed diagnostics, residuals, and inference. Best for econometrics, time series, rigorous inference with coefficient ta...",
+      "legacy": {
+        "dirPath": "statsmodels",
+        "skillFile": "skills/statsmodels/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Analysis: Regression",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "pymc-bayesian-modeling",
+        "matplotlib",
+        "plotly",
+        "seaborn"
+      ]
+    },
+    {
+      "name": "ukb-skill",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "ukb-skill",
+        "database: uk biobank",
+        "search-retrieval",
+        "ukb",
+        "when",
+        "working",
+        "uk",
+        "biobank",
+        "database",
+        "source",
+        "through",
+        "id"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Use when working with UKB, UK Biobank, 英国生物银行 database source through source_id ukb in ../Web_database. Search indexes, verify variables, inspect schema, resolve paths, and extract only real database-backed rows for UK Biobank participant-...",
+      "legacy": {
+        "dirPath": "ukb-skill",
+        "skillFile": "skills/ukb-skill/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Database: UK Biobank",
+        "domain": "Biobank"
+      },
+      "relatedSkills": [
+        "nature-downloader",
+        "academic-researcher",
+        "medhelp-deep-research",
+        "nature-academic-search"
+      ]
+    },
+    {
+      "name": "venue-templates",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "research-planning"
+      ],
+      "domains": [
+        "general"
+      ],
+      "keywords": [
+        "venue-templates",
+        "research-planning",
+        "venue",
+        "templates",
+        "access",
+        "comprehensive",
+        "latex",
+        "formatting",
+        "requirements",
+        "submission",
+        "guidelines",
+        "major"
+      ],
+      "source": "imported",
+      "status": "verified",
+      "summary": "Access comprehensive LaTeX templates, formatting requirements, and submission guidelines for major scientific publication venues (Nature, Science, PLOS, IEEE, ACM), academic conferences (NeurIPS, ICML, CVPR, CHI), research posters, and gra...",
+      "legacy": {
+        "dirPath": "venue-templates",
+        "skillFile": "skills/venue-templates/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Standalone",
+        "domain": "General"
+      },
+      "relatedSkills": [
+        "docx",
+        "docx",
+        "docx-official",
+        "latex-posters"
+      ]
+    },
+    {
+      "name": "zotero-medautodata-library",
+      "primaryIntent": "research",
+      "intents": [
+        "research"
+      ],
+      "capabilities": [
+        "search-retrieval"
+      ],
+      "domains": [
+        "medical"
+      ],
+      "keywords": [
+        "zotero-medautodata-library",
+        "literature management",
+        "search-retrieval",
+        "medical",
+        "zotero",
+        "medautodata",
+        "library",
+        "medhelp",
+        "local",
+        "api",
+        "references",
+        "sync"
+      ],
+      "source": "medhelp",
+      "status": "verified",
+      "summary": "Use MedHelp/MedAutoData's Zotero local API and references_library to sync Meta project references, project links, and user-owned full-text PDF attachments for explicit Meta missing-full-text queues.",
+      "legacy": {
+        "dirPath": "zotero-medautodata-library",
+        "skillFile": "skills/zotero-medautodata-library/SKILL.md",
+        "topLevelGroup": "Standalone",
+        "collection": "Literature Management",
+        "domain": "Medical"
+      },
+      "relatedSkills": [
+        "meta-zotero-fulltext-handoff",
+        "citation-management",
+        "legal-pdf-acquisition",
+        "literature-review"
+      ]
+    }
+  ]
+}

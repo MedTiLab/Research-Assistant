@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conversation Memory"
+  short_description: "Review a chat and update project memory"
+  default_prompt: "Use $conversation-memory to review this conversation and update the project memory after my confirmation."

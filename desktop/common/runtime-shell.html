@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' data:;" />
+    <title>医时 - 正在准备桌面环境</title>
+    <style>
+      :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; overflow: hidden; background: #f4f7f8; color: #172126; }
+      .titlebar { position: fixed; inset: 0 0 auto; height: 38px; -webkit-app-region: drag; background: rgba(238, 242, 245, .96); }
+      main { min-height: 100vh; display: grid; place-items: center; padding: 70px 24px 32px; }
+      .card { width: min(560px, 100%); padding: 34px; border: 1px solid #d7e0e3; border-radius: 18px; background: rgba(255,255,255,.94); box-shadow: 0 24px 70px rgba(42,64,72,.12); }
+      .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+      .mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: #087f73; color: white; font-weight: 800; font-size: 20px; }
+      h1 { margin: 0; font-size: 21px; }
+      .eyebrow { margin: 3px 0 0; color: #607078; font-size: 12px; }
+      .status-row { display: flex; gap: 13px; align-items: flex-start; padding: 18px; border-radius: 12px; background: #f3f7f7; }
+      .indicator { width: 11px; height: 11px; margin-top: 5px; flex: 0 0 auto; border-radius: 50%; background: #2b9a8e; box-shadow: 0 0 0 5px rgba(43,154,142,.13); }
+      .indicator.busy { animation: pulse 1.4s ease-in-out infinite; }
+      .indicator.error { background: #c34848; box-shadow: 0 0 0 5px rgba(195,72,72,.13); }
+      #status-title { margin: 0 0 5px; font-size: 15px; font-weight: 700; }
+      #status-message { margin: 0; color: #607078; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+      #diagnostics { margin-top: 12px; color: #7b898f; font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+      .actions { display: none; gap: 9px; flex-wrap: wrap; margin-top: 20px; }
+      .actions.visible { display: flex; }
+      button { -webkit-app-region: no-drag; min-height: 36px; padding: 0 14px; border: 1px solid #c8d3d7; border-radius: 9px; background: white; color: #26363d; cursor: pointer; font-weight: 650; }
+      button.primary { border-color: #087f73; background: #087f73; color: white; }
+      button:disabled { cursor: wait; opacity: .55; }
+      @keyframes pulse { 50% { opacity: .45; transform: scale(.82); } }
+      @media (prefers-color-scheme: dark) {
+        body { background: #090d0f; color: #edf4f5; }
+        .titlebar { background: rgba(5,5,5,.96); }
+        .card { border-color: #263238; background: rgba(17,23,26,.96); box-shadow: 0 24px 70px rgba(0,0,0,.45); }
+        .eyebrow, #status-message { color: #9cacb2; }
+        .status-row { background: #111b1e; }
+        #diagnostics { color: #84939a; }
+        button { border-color: #39484e; background: #182126; color: #edf4f5; }
+        button.primary { border-color: #20a89a; background: #168f84; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="titlebar" aria-hidden="true"></div>
+    <main>
+      <section class="card" aria-live="polite">
+        <div class="brand">
+          <div class="mark">医</div>
+          <div><h1>医时桌面环境</h1><p class="eyebrow">稳定外壳正在准备本地 Runtime</p></div>
+        </div>
+        <div class="status-row">
+          <div id="indicator" class="indicator busy"></div>
+          <div>
+            <p id="status-title">正在启动 Runtime</p>
+            <p id="status-message">窗口已经就绪，正在检查本地服务和数据环境。</p>
+            <div id="diagnostics" hidden></div>
+          </div>
+        </div>
+        <div id="actions" class="actions">
+          <button id="restart-runtime" class="primary">重新启动 Runtime</button>
+          <button id="open-diagnostics">查看诊断日志</button>
+          <button id="restart-app">重新启动应用</button>
+        </div>
+      </section>
+    </main>
+    <script src="./runtime-shell.js"></script>
+  </body>
+</html>

@@ -1,0 +1,927 @@
+{
+  "hero": {
+    "badge": "研究资源、变量与技能列表",
+    "title": "资源库",
+    "compactSubtitle": "数据库、技能、变量与记忆总结",
+    "subtitle": "把数据库列表、技能列表、变量发现、项目记录和对话经验统一归档。变量流程从 PubMed 文献动态检索开始，经过候选抽取、人工审核与证据对齐后汇入变量总览；项目报告、数据集索引和纠错经验同步沉淀，便于后续研究直接复用。",
+    "workflowTitle": "流程",
+    "workflow": [
+      "用数据库列表和技能列表建立可复用资源底座",
+      "从 PubMed 动态中发现候选变量，审核后汇入变量总览",
+      "沉淀项目报告、阶段总结和数据集索引",
+      "将纠错经验与对话记忆转为长期可复用规则"
+    ]
+  },
+  "overview": {
+    "title": "研究中心概览",
+    "lead": "数据库列表、技能列表、变量发现与候选审核、对话经验、项目记录与参考资料在此汇合，构成面向整套研究流程的统一知识视图。",
+    "loadingShort": "加载中",
+    "notAvailable": "暂未记录",
+    "fetchFailed": "暂时无法读取全局资料概览，下面仍可继续浏览本地数据库列表与示例条目。",
+    "cards": {
+      "databases": {
+        "label": "数据库列表",
+        "subtitle": ""
+      },
+      "variables": {
+        "label": "变量标签",
+        "subtitle": ""
+      },
+      "memory": {
+        "label": "对话经验",
+        "subtitle": ""
+      },
+      "skills": {
+        "label": "技能列表",
+        "subtitle": ""
+      },
+      "reports": {
+        "label": "记忆总结",
+        "subtitle": ""
+      },
+      "references": {
+        "label": "参考资料",
+        "subtitle": "",
+        "hint": ""
+      }
+    },
+    "referenceSignals": {
+      "title": "当前文献沉淀信号",
+      "breakdown": "已入库文献中，Zotero {{zotero}} 篇，BibTeX {{bibtex}} 篇，文献动态导入 {{news}} 篇。",
+      "linked": "其中已有 {{linkedReferences}} 篇被正式关联到项目，覆盖 {{linkedProjects}} 个项目。",
+      "pdfs": "当前已缓存 PDF {{cachedPdfs}} 篇，可继续作为项目 artifact 与证据笔记的基础。"
+    },
+    "roadmap": {
+      "title": "下一步升级方向",
+      "concepts": "下一阶段会新增正式概念层，让论文中的指标、疾病、亚型和风险评分可结构化沉淀并挂接证据。",
+      "candidates": "再下一阶段会把文献动态升级成候选池，新增发现先进入审核队列，而不是直接写入正式变量库。",
+      "latestUpdate": "最近一次文献库更新时间：{{date}}。"
+    }
+  },
+  "reportPreview": {
+    "title": "项目报告",
+    "lead": "自动扫描每个项目的报告目录（Literature/reports、Research/reports、Survey/reports、Publication、reports、drafts，以及 .pipeline/docs/kb 下的 uploads/notes/news），列出其中的 md、pdf、docx、html、tex 文件。列表始终跟随磁盘，无需手动加入。",
+    "loading": "正在加载列表…",
+    "empty": "这个项目的报告目录里还没有文件。",
+    "emptyHint": "把 AI 写的报告放到项目的 reports、drafts 或 Publication 目录下，这里就会自动出现。",
+    "fetchFailed": "暂时无法读取报告预览列表。",
+    "stats": {
+      "projects": "归档项目",
+      "items": "归档材料"
+    },
+    "groups": {
+      "title": "按项目归档",
+      "lead": "先按项目定位，再进入该项目下的调研报告、阶段总结和归档材料。",
+      "expand": "展开查看",
+      "collapse": "收起"
+    },
+    "projectLabel": "项目",
+    "groupMeta": "{{count}} 份材料 · 最近归档 {{date}}",
+    "groupCount": "{{count}} 份",
+    "pathHint": "原文件路径",
+    "added": "最后修改 {{date}}",
+    "viewFile": "查看文件",
+    "closePreview": "关闭预览",
+    "previewLoading": "正在加载文件预览…",
+    "previewError": "无法加载文件预览：{{message}}",
+    "unsupportedType": "此文件类型不支持在线预览，请下载后查看。",
+    "download": "下载文件"
+  },
+  "memoryWorkspace": {
+    "title": "记忆总结",
+    "lead": "左边按项目排列，右边是这个项目的记忆文件：AI 总结、加入的 md 报告，以及沉淀下来的经验。",
+    "directoryEyebrow": "项目",
+    "directoryTitle": "项目列表",
+    "projectCount": "{{count}} 个项目",
+    "searchPlaceholder": "搜索项目",
+    "searchEmpty": "没有匹配的项目。",
+    "empty": "还没有任何项目记忆。把 AI 写的报告加入项目，或者写一条经验，这里就会出现。",
+    "fileCount": "{{count}} 份",
+    "assetsEntry": "通用模板与 SOP",
+    "assetsLead": "不属于单个项目的模板和 SOP 都放在这里，可以继续维护和重写。",
+    "briefTitle": "AI 总结",
+    "noBrief": "这个项目还没有 AI 总结。",
+    "reportsTitle": "报告文件",
+    "reportsEmpty": "这个项目的报告目录里还没有文件。把 md 报告放进 reports、drafts 或 Publication 目录即可。",
+    "lessonsTitle": "项目经验",
+    "lessonsEmpty": "这个项目还没有沉淀经验。",
+    "selectAria": "选择 {{title}}",
+    "updatedAt": "最近更新：{{date}}"
+  },
+  "lessonComposer": {
+    "callout": "自动捕获只能识别少数固定模式。真正值钱的经验，靠你在踩坑之后随手记一条。",
+    "title": "写一条经验",
+    "lead": "只需要写清楚「什么时候」和「该怎么做」两件事。确认后它会自动进入之后所有对话的上下文。",
+    "editTitle": "编辑经验",
+    "editLead": "修改后会立即影响后续对话中注入的规则。",
+    "fields": {
+      "project": "所属项目",
+      "noProjects": "暂无可选项目",
+      "trigger": "什么时候用得上",
+      "triggerPlaceholder": "例如：用 CHARLS 数据构造抑郁量表得分时",
+      "correctPattern": "下次该怎么做",
+      "correctPatternPlaceholder": "例如：先按官方 codebook 反转第 5、7 题再求和，不要直接 sum",
+      "title": "标题（可留空自动生成）",
+      "titlePlaceholder": "一句话概括这条经验",
+      "severity": "重要程度",
+      "stage": "适用阶段",
+      "evidence": "来源片段"
+    },
+    "severity": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    },
+    "stage": {
+      "literature": "文献",
+      "experiment": "实验",
+      "publication": "写作投稿"
+    },
+    "labels": {
+      "manual": "手写",
+      "injectedCount": "已注入对话 {{count}} 次"
+    },
+    "actions": {
+      "open": "写一条经验",
+      "save": "保存",
+      "saveSelected": "保存选中的 {{count}} 条",
+      "cancel": "取消",
+      "draft": "让 AI 从本次会话起草",
+      "backToManual": "返回手写",
+      "edit": "编辑",
+      "delete": "删除",
+      "saveFromMessage": "存为经验"
+    },
+    "draft": {
+      "reviewTitle": "确认 AI 起草的经验",
+      "reviewLead": "这些是从本次会话里提取的候选经验。删掉没用的，改掉不准的，剩下的保存。",
+      "noResults": "这次会话里没有提取到足够具体的经验。可以直接手写一条。"
+    },
+    "messages": {
+      "saved": "已保存 {{count}} 条经验，后续对话会自动带上。",
+      "deleted": "经验已删除。",
+      "confirmDelete": "确定删除这条经验吗？"
+    },
+    "errors": {
+      "saveFailed": "保存经验失败。",
+      "draftFailed": "AI 起草失败。",
+      "deleteFailed": "删除经验失败。"
+    },
+    "sendToChat": {
+      "action": "带入当前对话",
+      "prefix": "请在这次任务里遵守下面这条经验：",
+      "when": "（当{{value}}时）",
+      "sent": "已把「{{title}}」写入对话输入框。"
+    }
+  },
+  "projectMemory": {
+    "title": "对话经验",
+    "lead": "把每个项目里沉淀下来的方法经验、错误经验、纠错规则和执行记忆汇总起来，形成长期可复用的系统知识。",
+    "loading": "正在读取对话经验。",
+    "empty": "当前还没有沉淀出可展示的对话经验。后续当项目中出现明确纠错、规则确认和经验总结时，系统会逐步累积到这里。",
+    "fetchFailed": "暂时无法读取对话经验。",
+    "stats": {
+      "projects": "已沉淀项目",
+      "activeProjects": "活跃项目",
+      "historicalProjects": "历史项目",
+      "manualLessons": "手写经验",
+      "confirmed": "已确认经验",
+      "candidate": "候选经验"
+    },
+    "sections": {
+      "formalAssets": {
+        "title": "正式资产区",
+        "lead": "这里收纳你手工固化的模板与 SOP，都是可持续维护、可继续编辑的正式知识对象。"
+      },
+      "formalTemplates": {
+        "title": "正式模板",
+        "lead": "把高频复用模板固化下来，后续可以继续维护和重写。",
+        "empty": "当前还没有正式模板。"
+      },
+      "formalSops": {
+        "title": "正式 SOP",
+        "lead": "把稳定做法固化为正式流程，让它可以被反复执行。",
+        "empty": "当前还没有正式 SOP。"
+      },
+      "activeProjects": {
+        "title": "活跃项目",
+        "lead": "这里保留近期仍有活动的项目知识卡，适合日常回看与继续推进。",
+        "empty": "当前没有被识别为活跃状态的项目。"
+      },
+      "historicalProjects": {
+        "title": "历史项目",
+        "lead": "这里收纳已经转入回顾状态的项目知识卡，默认压缩展示，避免占满主要视野。",
+        "empty": "当前还没有历史对话记忆。"
+      },
+      "recent": {
+        "title": "最近经验更新",
+        "lead": "这里按时间汇总最近新增或最近再次被确认的方法规则与错误经验，适合追踪最近还在变化的知识。",
+        "empty": "当前还没有最近更新的经验。"
+      }
+    },
+    "labels": {
+      "confirmed": "已确认",
+      "candidate": "候选",
+      "severityHigh": "高风险",
+      "severityMedium": "中风险",
+      "severityLow": "一般",
+      "project": "项目：{{value}}",
+      "projectCount": "{{count}} 个项目",
+      "templateCount": "{{count}} 个模板",
+      "sopCount": "{{count}} 个 SOP",
+      "updated": "最近更新：{{date}}",
+      "recentActivity": "最近活动：{{date}}",
+      "seen": "累计出现 {{count}} 次",
+      "reuseCount": "复用 {{count}} 次",
+      "lastVerified": "最后验证：{{date}}",
+      "trigger": "触发场景",
+      "rule": "建议做法",
+      "noRule": "暂未补充具体做法。",
+      "stage": "阶段：{{value}}",
+      "brief": "研究 brief",
+      "coreQuestion": "核心问题",
+      "scope": "范围：{{value}}",
+      "noBrief": "当前还没有可用的 research brief。",
+      "reportArchive": "报告归档",
+      "reportCount": "{{count}} 份材料",
+      "latestReport": "最近归档：{{date}}",
+      "noReports": "当前还没有归档进资源库的项目材料。",
+      "lessonSummary": "经验与纠错规则",
+      "lessonCount": "{{count}} 条经验",
+      "itemCount": "{{count}} 个条目",
+      "stepCount": "{{count}} 个步骤",
+      "itemIndex": "条目 {{count}}",
+      "description": "资产说明",
+      "templateVerify": "需要先核对",
+      "templatePattern": "建议采用",
+      "step": "步骤 {{count}}",
+      "noLessons": "当前还没有沉淀出的项目记录。",
+      "expand": "展开详情",
+      "collapse": "收起"
+    },
+    "actions": {
+      "newTemplate": "新建模板",
+      "newSop": "新建 SOP",
+      "editAsset": "编辑",
+      "deleteAsset": "删除",
+      "saveAsset": "保存资产",
+      "cancel": "取消",
+      "addItem": "新增条目",
+      "addStep": "新增步骤",
+      "removeItem": "删除条目",
+      "removeStep": "删除步骤"
+    },
+    "fields": {
+      "title": "标题",
+      "titlePlaceholder": "例如：研究验证模板 / 交付前检查模板",
+      "stageKey": "阶段键",
+      "stageKeyPlaceholder": "例如：analysis / delivery / review",
+      "stageLabel": "阶段标签",
+      "stageLabelPlaceholder": "例如：分析阶段 / 交付前",
+      "description": "说明",
+      "descriptionPlaceholder": "补充这份正式资产适用于什么场景、何时使用、为什么要固化。",
+      "itemHeading": "条目标题",
+      "itemHeadingPlaceholder": "例如：结果口径核对",
+      "verify": "核对点",
+      "verifyPlaceholder": "写清楚每次使用前必须先核对什么。",
+      "pattern": "建议做法",
+      "patternPlaceholder": "写清楚推荐的标准处理方式。",
+      "stepTitle": "步骤标题",
+      "stepTitlePlaceholder": "例如：确认研究问题边界",
+      "instruction": "执行说明",
+      "instructionPlaceholder": "把这一步应该怎么做写成清晰可执行的话。"
+    },
+    "compact": {
+      "showMoreProjects": "查看更多项目（+{{count}}）",
+      "hiddenProjects": "还有 {{count}} 个对话记忆暂时隐藏。",
+      "showMoreActiveProjects": "查看更多活跃项目（+{{count}}）",
+      "hiddenActiveProjects": "还有 {{count}} 个活跃项目暂时隐藏。",
+      "showMoreHistoricalProjects": "查看更多历史项目（+{{count}}）",
+      "hiddenHistoricalProjects": "还有 {{count}} 个历史项目暂时隐藏。",
+      "showMoreRecent": "查看更多最近经验（+{{count}}）",
+      "hiddenRecent": "还有 {{count}} 条最近经验暂时隐藏。",
+      "showLess": "收起列表"
+    },
+    "messages": {
+      "assetCreated": "正式资产已创建。",
+      "assetUpdated": "正式资产已更新。",
+      "assetDeleted": "正式资产已删除。",
+      "assetSaveError": "保存正式资产失败。",
+      "assetDeleteError": "删除正式资产失败。",
+      "assetDeleteConfirm": "确认删除这份正式资产吗？删除后不会影响自动沉淀视图。",
+      "assetTitleRequired": "请先填写正式资产标题。",
+      "assetTemplateRequired": "模板至少要保留一条有内容的条目。",
+      "assetSopRequired": "SOP 至少要保留一步有内容的流程。"
+    },
+    "editor": {
+      "createTemplateTitle": "固化正式模板",
+      "editTemplateTitle": "编辑正式模板",
+      "createSopTitle": "固化正式 SOP",
+      "editSopTitle": "编辑正式 SOP",
+      "templateLead": "把自动沉淀出的模板转成正式资产，后续可以继续维护、删改和扩展。",
+      "sopLead": "把自动沉淀出的 SOP 固化为正式流程，后续可以继续维护和修订。",
+      "templateItemsTitle": "模板条目",
+      "templateItemsLead": "每个条目都对应一个需要核对的点和建议做法。",
+      "sopStepsTitle": "SOP 步骤",
+      "sopStepsLead": "把流程写成稳定、顺序明确、可交接的操作步骤。",
+      "footerHint": "保存后，这些内容会作为正式资产独立维护，不会被自动沉淀结果覆盖。"
+    }
+  },
+  "monitorCenter": {
+    "title": "自动监测中心",
+    "lead": "这里只保留文献动态来源的触发按钮，用于按来源发起抓取任务。",
+    "loading": "正在读取自动监测状态。",
+    "empty": "当前还没有可用的自动监测源。",
+    "summary": {
+      "title": "调度与最近信号",
+      "lead": "这里管理自动抓取节奏，并直接查看最近一次监测留下的高优先级论文信号。",
+      "stats": "当前已有 {{enabled}} / {{total}} 个来源启用自动监测。",
+      "configured": "监测配置已持久化，服务会按设定频率自动运行。",
+      "pendingSetup": "首次保存后会开始按设定频率自动运行。",
+      "currentExtractor": "当前对话模型：{{provider}} / {{model}}"
+    },
+    "fields": {
+      "globalEnabled": "全局自动监测",
+      "sourceEnabled": "来源开关",
+      "frequencyHours": "抓取间隔（小时）",
+      "ingestLimit": "每次最多入库",
+      "extractorProvider": "提取模型提供方",
+      "extractorModel": "提取模型"
+    },
+    "actions": {
+      "refresh": "刷新状态",
+      "save": "保存调度设置",
+      "runNow": "立即运行",
+      "followChat": "同步当前对话模型"
+    },
+    "statuses": {
+      "idle": "空闲",
+      "running": "运行中",
+      "ok": "最近成功",
+      "error": "最近失败"
+    },
+    "labels": {
+      "schedulerEnabled": "已启用自动监测",
+      "schedulerPaused": "已暂停自动监测",
+      "sourceEnabled": "该来源已启用",
+      "sourcePaused": "该来源已暂停",
+      "lastRun": "最近运行：{{value}}",
+      "nextRun": "预计下次：{{value}}",
+      "latestSearch": "最近检索：{{value}}",
+      "resultCount": "最近结果数：{{value}}",
+      "ingestedCount": "最近新入库：{{value}}"
+    },
+    "preview": {
+      "title": "最近监测命中",
+      "empty": "最近一次检索还没有留下可展示的命中。",
+      "noDomain": "未标注主题"
+    },
+    "messages": {
+      "unsaved": "调度设置已修改但尚未保存。",
+      "saveSuccess": "自动监测设置已保存。",
+      "saveError": "保存自动监测设置失败。",
+      "runSuccess": "{{source}} 已完成本次抓取，新入库 {{count}} 篇。",
+      "runError": "自动抓取执行失败。"
+    }
+  },
+  "curatedConcepts": {
+    "title": "正式概念沉淀",
+    "lead": "这里展示已经正式入库的概念层对象。当前先支持指标、疾病、亚型、风险评分和分层因子，后续会继续扩展审核流与候选池。",
+    "loading": "正在读取概念层内容。",
+    "empty": "当前还没有正式入库的概念。下一步可以通过 API 或后续表单入口，把文献中的新指标、新疾病和新分层沉淀进来。",
+    "fetchFailed": "概念层内容暂时无法读取，但后端 schema 和 API 已经准备好。",
+    "groups": {
+      "indicators": {
+        "title": "指标、评分与结局",
+        "lead": "围绕实验室指标、风险评分和结局定义等可复用概念。",
+        "empty": "当前还没有正式入库的指标类概念。"
+      },
+      "diseases": {
+        "title": "疾病、亚型与分层",
+        "lead": "围绕疾病实体、亚型和研究分层因子等可复用概念。",
+        "empty": "当前还没有正式入库的疾病/分层类概念。"
+      }
+    },
+    "types": {
+      "indicator": "指标",
+      "drug": "药物",
+      "disease": "疾病",
+      "subtype": "亚型",
+      "stratifier": "分层",
+      "risk_score": "评分",
+      "outcome": "结局"
+    },
+    "statuses": {
+      "candidate": "候选",
+      "reviewed": "已审核",
+      "stable": "稳定",
+      "rejected": "已拒绝"
+    },
+    "labels": {
+      "alias": "别名",
+      "evidenceCount": "{{count}} 条证据",
+      "updated": "最近更新：{{date}}",
+      "noDescription": "暂未补充说明。"
+    }
+  },
+  "quickCapture": {
+    "title": "文献导入与概念提取",
+    "lead": "先手动同步 Zotero 或上传 BibTeX 文件，再从选中文献中提取候选概念。",
+    "zotero": {
+      "title": "Zotero 手动同步",
+      "lead": "适合先把本地 Zotero 里的最新论文拉进资料库，再继续做候选概念提取。",
+      "statusChecking": "正在检查 Zotero 连接。",
+      "statusConnected": "Zotero 已连接，可以直接同步。",
+      "statusUnavailable": "当前无法连接 Zotero，请先确认客户端已启动并开启本地 API。"
+    },
+    "bibtex": {
+      "title": "BibTeX / .bib 文件上传",
+      "lead": "适合手动上传导出的参考文献文件。导入后可直接从这些文献中提取指标、药物和疾病候选。"
+    },
+    "extract": {
+      "title": "从文献提取候选概念",
+      "lead": "先选中刚导入或最近入库的文献，再把标题和摘要拆成候选指标、药物、疾病与分层因子。",
+      "selection": "当前选中 {{count}} 篇文献用于提取。",
+      "summary": "本次共处理 {{references}} 篇文献，生成 {{candidates}} 个候选概念，已送入审核池。",
+      "referenceResult": "{{count}} 个候选",
+      "referenceListTitle": "最近入库文献",
+      "loadingReferences": "正在读取最近入库文献。",
+      "emptyReferences": "当前还没有可提取的文献。",
+      "lastImported": "刚导入"
+    },
+    "extractor": {
+      "title": "提取模型",
+      "lead": "文献导入和自动监测都尽量走同一套大模型 JSON 提取，输出多条指标、药物、疾病和分层候选。",
+      "provider": "提取模型提供方",
+      "model": "提取模型",
+      "followChat": "当前对话模型：{{provider}} / {{model}}"
+    },
+    "messages": {
+      "zoteroSuccess": "Zotero 同步完成，新增或更新 {{count}} 篇文献。",
+      "bibtexSuccess": "BibTeX 导入完成，共写入 {{count}} 篇文献。",
+      "importError": "文献导入失败。",
+      "noReferencesSelected": "请先选择至少一篇文献。",
+      "extractSuccess": "已从 {{references}} 篇文献中提取 {{candidates}} 个候选概念。",
+      "extractError": "概念提取失败。",
+      "deleteConfirm": "确定删除这 {{count}} 篇纳入文献吗？",
+      "deleteSuccess": "已删除 {{count}} 篇纳入文献。",
+      "deleteError": "删除纳入文献失败。"
+    },
+    "actions": {
+      "refreshStatus": "刷新连接",
+      "syncZotero": "同步 Zotero",
+      "browseZotero": "选择 Zotero 文献",
+      "syncAllZotero": "整库同步 Zotero",
+      "uploadBibtex": "上传 BibTeX",
+      "extract": "提取概念",
+      "useLastImported": "选中刚导入",
+      "followChat": "同步当前对话模型",
+      "deleteSelected": "删除选中文献",
+      "reset": "重置",
+      "submit": "创建 concept"
+    }
+  },
+  "candidateReview": {
+    "title": "研究发现",
+    "lead": "从导入文献中提取的候选指标、药物、疾病和分层因子会汇集在这里。你可以快速审阅，将有价值的发现纳入正式概念库。",
+    "loading": "正在读取待审核候选。",
+    "empty": "当前没有待审核候选。你可以先通过自动监测或手动导入文献，再触发概念提取。",
+    "fetchFailed": "候选池暂时无法读取。",
+    "acceptSuccess": "候选已接受并写入概念层。",
+    "acceptError": "接受候选失败。",
+    "rejectSuccess": "候选已拒绝。",
+    "rejectError": "拒绝候选失败。",
+    "statuses": {
+      "pending": "待审核",
+      "accepted": "已接受",
+      "merged": "已合并",
+      "rejected": "已拒绝"
+    },
+    "actions": {
+      "accept": "接受",
+      "reject": "拒绝"
+    },
+    "labels": {
+      "confidence": "置信度 {{value}}",
+      "source": "来源 {{value}}",
+      "reference": "文献 {{value}}",
+      "updated": "最近更新：{{date}}"
+    }
+  },
+  "sections": {
+    "expand": "展开",
+    "collapse": "收起"
+  },
+  "tabs": {
+    "capture": "文献导入与监测",
+    "review": "研究发现",
+    "concepts": "概念雷达",
+    "databases": "数据库列表",
+    "skills": "技能列表",
+    "variableOverview": "变量标签",
+    "variableDiscovery": "变量发现",
+    "memory": "对话经验",
+    "reports": "记忆总结",
+    "reference": "指标与疾病"
+  },
+  "conceptRadar": {
+    "title": "概念雷达",
+    "lead": "聚合最新指标、药物、疾病和文献共现关系，帮助你快速捕捉研究灵感和前沿信号。",
+    "intro": {
+      "title": "研究中心主看板",
+      "lead": "正式概念和待审核候选会合并展示，优先帮助你快速看到最新指标、药物和概念-疾病关联。"
+    },
+    "groups": {
+      "entities": {
+        "title": "最新指标、药物与评分",
+        "lead": "优先展示最近更新的正式概念，其次补充刚抽取出的候选信号。",
+        "empty": "当前还没有最新的指标或药物信号。"
+      },
+      "diseases": {
+        "title": "最新疾病、亚型与分层",
+        "lead": "把疾病实体、亚型和研究分层合在一处，避免与正式概念区重复。",
+        "empty": "当前还没有最新的疾病或分层信号。"
+      },
+      "relations": {
+        "title": "概念-疾病关联线索",
+        "lead": "基于同篇文献中共同出现的概念与疾病信号，适合后续送入对话框继续判断其研究价值。",
+        "empty": "当前还没有可展示的概念-疾病关联线索。"
+      }
+    },
+    "labels": {
+      "noSummary": "暂未补充摘要。",
+      "relationSummary": "{{concepts}} 与 {{diseases}} 在同篇文献中共同出现"
+    },
+    "actions": {
+      "delete": "删除",
+      "deleting": "删除中",
+      "deleteConfirm": "确定删除这个概念吗？删除后将无法恢复。",
+      "deleteSuccess": "概念已删除。",
+      "deleteError": "删除概念失败。"
+    },
+    "sources": {
+      "curated": "正式概念",
+      "candidate": "候选信号"
+    }
+  },
+  "variableKnowledge": {
+    "title": "变量标签与 PubMed 自动发现",
+    "lead": "变量与 PubMed 发现已并入资源库：先保持空白，运行 PubMed 自动发现后进入人工审核，再把通过的变量汇入变量总览。",
+    "overviewTitle": "变量标签",
+    "overviewLead": "展示已通过审核的变量标签，便于统一命名与跨项目复用。从变量发现审核通过的条目会汇入这里。",
+    "discoveryTitle": "变量发现",
+    "discoveryLead": "从 PubMed 文献自动抽取候选变量，先进入人工审核队列，通过后再汇入变量标签。"
+  },
+  "footnote": {
+    "databases": "数据库列表用于快速定位官网入口与研究边界；正式发表请遵守各数据方的使用协议与引用规范。",
+    "skills": "技能列表用于检索与复用 Agent 能力说明；本地导入或编辑前请确认来源可信，引用外部技能时请遵守相应许可与署名要求。",
+    "variableOverview": "变量总览展示已通过审核的变量标签，便于统一命名与跨项目复用；实际提取与分析前仍需对照原始文献与数据库字段定义复核。",
+    "variableDiscovery": "变量发现基于 PubMed 文献自动抽取候选变量，需人工审核后再汇入变量总览；请勿将未审核候选直接用于正式分析或发表。",
+    "reports": "记忆总结汇集项目归档材料与对话经验，便于回看与复用；正式引用或发表前请核对原始文件与证据来源。"
+  },
+  "mirroredDatabases": {
+    "title": "数据库",
+    "lead": "按研究场景分组展示本地查询入口；当前收录 {{count}} 个数据库，涵盖重症 EHR、老龄纵向队列、肿瘤监测、综合人群调查和社会经济调查。",
+    "localPathLabel": "本机路径",
+    "officialSite": "官方网站",
+    "categoryDetailLabel": "分类说明",
+    "databaseDetailLabel": "数据库说明",
+    "categoryItemsLabel": "分类下数据库",
+    "categoryCount": "{{count}} 个数据库",
+    "directoryEyebrow": "目录",
+    "browserEyebrow": "选择",
+    "browserTitle": "数据库目录",
+    "allCategories": "全部数据库",
+    "results": "结果",
+    "resultsSummary": "当前显示 {{shown}} 个数据库",
+    "descriptionTitle": "说明",
+    "relatedTitle": "相关链接",
+    "routeLabel": "本地 skill 路由",
+    "routeHint": "作为本地提取入口的 source 名称使用；正式抽取前先核对授权、版本和表结构。",
+    "checklistTitle": "抽取前检查",
+    "checklistBody": "先确认数据授权、版本/波次、样本粒度、时间语义、关键 join key、缺失值规则和引用要求，再进入变量检索或小规模提取。",
+    "selectCategoryAria": "查看 {{title}} 分类说明",
+    "selectDatabaseAria": "查看 {{name}} 数据库说明",
+    "sections": [
+      {
+        "title": "急诊与重症 EHR 数据库",
+        "lead": "MIMIC 各版本、NWICU、eICU 与 PIC 等 ICU/EHR 临床库；抽取前先确认 patient、admission、ICU/PICU stay、事件表与时间语义，不同版本 schema 不可混用。",
+        "items": [
+          {
+            "name": "MIMIC-III",
+            "summary": "经典 ICU EHR 数据库，适合复现早期重症研究、诊断/处置/化验轨迹和 ICU 预后模型；本地提取应走 mimiciii 独立 source 与版本对应的表结构。",
+            "url": "https://physionet.org/content/mimiciii/",
+            "localPath": "mimiciii",
+            "usagePolicy": "需用户本人完成 PhysioNet credentialing、CITI/同等培训和 DUA；仅可在获批研究范围内使用本人合法取得的数据副本，不得共享账号、凭证或原始数据。"
+          },
+          {
+            "name": "MIMIC-IV 1.0",
+            "summary": "PhysioNet 上的 MIMIC-IV 1.0，本地工作流围绕 core、hosp、icu 模块和 patient/admission/stay/event 表展开，适合 ICU 轨迹、化验与处置分析。",
+            "url": "https://physionet.org/content/mimiciv/",
+            "localPath": "mimiciv",
+            "usagePolicy": "需用户本人完成 PhysioNet credentialing、CITI/同等培训和 DUA；版本、模块和引用应以官方页面为准，不得由平台或他人代取/转发原始数据。"
+          },
+          {
+            "name": "MIMIC-IV 3.1",
+            "summary": "MIMIC-IV 新版本本地入口，适合按 3.1 的 schema、concept、join 和 guardrail 索引重新确认变量，不与 MIMIC-IV 1.0 混用表结构假设。",
+            "url": "https://physionet.org/content/mimiciv/",
+            "localPath": "mimiciv31",
+            "usagePolicy": "需按 MIMIC-IV 3.1 官方版本独立获权并核对 schema；禁止把 1.0 或其他版本授权、字段假设和数据副本混用。"
+          },
+          {
+            "name": "NWICU（Northwestern ICU 数据库）",
+            "summary": "Northwestern Memorial HealthCare 2020-2022 年去标识化 ICU/EHR 数据，本地入口包含 hosp 与 icu 模块，覆盖 admissions、patients、labevents、diagnoses、prescriptions、emar、icustays、chartevents、procedureevents 等表；抽取前要按 nwicu 独立 source 检查表粒度、join key 与时间字段。",
+            "url": "https://physionet.org/content/nwicu-northwestern-icu/",
+            "localPath": "nwicu",
+            "usagePolicy": "属 PhysioNet 受限健康数据；用户需独立通过授权与 DUA 后自行上传合法副本，分析输出不得泄露可重识别信息或原始表。"
+          },
+          {
+            "name": "eICU-CRD（多中心协作 ICU 数据库）",
+            "summary": "多中心 ICU 数据库，常见分析依赖 `patientunitstayid` 与 ICU 相对 offset 语义，适合跨医院重症事件与治疗路径研究。",
+            "url": "https://www.physionet.org/content/eicu-crd/",
+            "localPath": "eicu",
+            "usagePolicy": "需 PhysioNet credentialed access 与相应 DUA；不得再分发 patientunitstayid 级原始数据或凭证，发表时按官方要求引用。"
+          },
+          {
+            "name": "PIC（儿科重症监护数据库）",
+            "summary": "浙江大学医学院附属儿童医院的去标识化儿科 ICU 数据库，覆盖人口学、住院、PICU stay、化验、用药、症状、手术与事件表；抽取前要先确认 patient/admission/PICU stay 粒度和儿科时间线。",
+            "url": "https://physionet.org/content/picdb/",
+            "localPath": "pic",
+            "usagePolicy": "需遵守 PhysioNet/PICDB 的受限数据条款；儿科数据分析须保持去标识化边界，不得尝试重识别或对外共享原始数据。"
+          }
+        ]
+      },
+      {
+        "title": "癌症登记与全球癌症统计",
+        "lead": "GCO / GLOBOCAN 提供国家和地区层面的癌症发病、死亡、患病与预测统计；SEER 提供美国肿瘤登记个案级研究数据。使用前应区分汇总统计与肿瘤记录粒度，并核对版本、年份、分期口径和访问协议。",
+        "items": [
+          {
+            "name": "GCO / GLOBOCAN（全球癌症观察站）",
+            "summary": "IARC 全球癌症统计查询入口；当前查询包对应 GLOBOCAN 2022 v1.1、CI5plus 2024 年 10 月版及 UNDP HDR 2021–22，可检索发病、死亡、患病、癌种排序和 2022–2050 预测等汇总指标。",
+            "url": "https://gco.iarc.who.int/",
+            "localPath": "gco",
+            "usagePolicy": "应遵守 IARC/GCO 的使用、引用与再发布要求，并在输出中注明具体数据产品和版本。本地 gco source 仅开放带筛选条件的查询，不开放整库提取或批量下载。"
+          },
+          {
+            "name": "SEER Research Data（17 个登记处）",
+            "summary": "美国 NCI SEER 肿瘤登记研究数据；当前本地查询包对应 2025 年 11 月提交版、17 个登记处、2000–2023 年诊断的肿瘤记录，覆盖人口学、癌种、分期、治疗与生存结局等字段。",
+            "url": "https://seer.cancer.gov/data/",
+            "localPath": "seer",
+            "usagePolicy": "每名数据访问者须单独申请并接受当前 SEER 数据使用协议；Research Plus、NCCR 与专门数据库另有账户和所在地限制。禁止共享账户或原始数据、尝试重识别，或进行协议禁止的个人级数据链接。"
+          }
+        ]
+      },
+      {
+        "title": "国际老龄纵向队列",
+        "lead": "SHARE、HRS、ELSA、KLoSA、LASI、MHAS 等国际老龄化 panel；按国家、wave、样本粒度与权重口径独立抽取，跨库比较前先核对可比性。",
+        "items": [
+          {
+            "name": "ELSA（英国老龄化纵向研究）",
+            "summary": "英国老龄化纵向队列，覆盖健康、经济与社会参与；常用于退休转变、功能衰退与跨波次健康轨迹分析。",
+            "url": "https://www.elsa-project.ac.uk/",
+            "localPath": "ELSA_data",
+            "usagePolicy": "通常经 UK Data Service 等官方渠道按许可获取；应遵守最终用户许可、不得再分发，并按 ELSA/UKDS 要求引用。"
+          },
+          {
+            "name": "HRS（美国健康与退休研究）",
+            "summary": "美国老龄化核心纵向队列，长期追踪健康、认知、家庭与财富变化，适合做生存、失能与政策影响评估。",
+            "url": "https://hrs.isr.umich.edu/",
+            "localPath": "HRS_data",
+            "usagePolicy": "需通过 HRS 官方数据门户注册并接受数据使用条款；仅作获准研究/教学用途，禁止再分发和重识别。"
+          },
+          {
+            "name": "KLoSA（韩国老龄化纵向研究）",
+            "summary": "韩国老龄化纵向队列，常用于东亚老年健康、劳动退出与社会支持相关问题；抽取前需确认 wave 与 ID 粒度。",
+            "url": "https://survey.keis.or.kr/eng/klosa/klosa01.jsp",
+            "localPath": "KLOSA_data",
+            "usagePolicy": "需从 KEIS/KLoSA 官方渠道获取并遵守其下载与使用规则；跨波次分析须注明 wave、样本与权重口径。"
+          },
+          {
+            "name": "LASI（印度老龄化纵向研究）",
+            "summary": "印度全国老龄化调查，覆盖慢病、功能状态与家庭支持，适合比较中低收入国家老龄化异质性。",
+            "url": "https://www.iipsindia.ac.in/lasi",
+            "localPath": "LASI_data",
+            "usagePolicy": "需按 IIPS/LASI 或授权数据平台的访问规则获取；不得转售、转发或尝试识别受访者，发表时按官方要求致谢与引用。"
+          },
+          {
+            "name": "MHAS（墨西哥健康与老龄化研究）",
+            "summary": "墨西哥老龄化纵向队列，强调慢病负担、功能结局与家庭照护结构，适合拉美老龄化研究与国际对照。",
+            "url": "https://www.mhasweb.org/",
+            "localPath": "MHAS_data",
+            "usagePolicy": "需通过 MHAS 官方数据渠道注册/下载并遵守使用条件；不得再分发，发表时应引用相应 wave、数据文件和官方项目。"
+          },
+          {
+            "name": "SHARE（欧洲健康、老龄化与退休调查）",
+            "summary": "欧洲多国可比老龄化调查，支持国家间政策与健康不平等比较；分析时需明确国家、波次与样本可比性。",
+            "url": "https://share-eric.eu/",
+            "localPath": "SHARE_data",
+            "usagePolicy": "需完成 SHARE Research Data Center 注册并接受 Conditions of Use；仅限科学研究，禁止再分发、商用转售和重识别。"
+          }
+        ]
+      },
+      {
+        "title": "中国老龄纵向队列",
+        "lead": "CHARLS、CLHLS 与 CLASS 等中国老龄健康 longitudinal 入口；更适合中国老年健康、退休、家庭支持、死亡、失能、ADL、认知与社会参与轨迹问题。",
+        "items": [
+          {
+            "name": "CHARLS（中国健康与养老追踪调查）",
+            "summary": "中国健康与养老追踪调查：45 岁及以上受访者及其配偶，涵盖健康、经济、家庭、退休与社会参与等老龄化研究维度。",
+            "url": "https://charls.pku.edu.cn/",
+            "localPath": "charls",
+            "usagePolicy": "需由用户本人或机构在 CHARLS 官网完成注册、申请和使用条款确认；不得共享数据访问凭证或把数据副本提供给未授权人员。"
+          },
+          {
+            "name": "CLHLS（中国老年健康影响因素跟踪调查）",
+            "summary": "中国老年健康影响因素跟踪调查，面向高龄与长寿研究，适合死亡、失能、ADL、认知和健康老龄化机制问题。",
+            "url": "https://www.duke-nus.edu.sg/cra/clhls",
+            "localPath": "clhls",
+            "usagePolicy": "需按 CLHLS 官方数据平台/项目方规则申请和引用；高龄人群数据应保持匿名化边界，不得外传原始个体数据。"
+          },
+          {
+            "name": "CLASS（中国老年社会追踪调查）",
+            "summary": "中国人民大学组织实施的全国性连续社会调查；当前查询包覆盖 2014、2016、2018、2020 和 2023 五个波次，适合研究老年人的健康、养老、经济状况、家庭与社会参与。",
+            "url": "https://class.ruc.edu.cn/",
+            "localPath": "class",
+            "usagePolicy": "需按 CLASS 官方数据申请说明取得并使用数据，核对获批波次和版本；不得向未授权人员转交原始个体数据、共享访问凭证或尝试识别受访者。"
+          }
+        ]
+      },
+      {
+        "title": "UKB / NHANES",
+        "lead": "UK Biobank 多模态前瞻性队列与美国 NHANES 全国代表性健康调查；抽取前确认 field/instance/array、cycle、权重与 endpoint source 是否在本地包中。",
+        "items": [
+          {
+            "name": "UK Biobank（英国生物样本库）",
+            "summary": "英国大型前瞻性队列，含遗传、影像与关联健康记录；本地包还可挂接已匹配的 proteomics / Olink 数据。",
+            "url": "https://www.ukbiobank.ac.uk/",
+            "localPath": "UKB_data",
+            "usagePolicy": "需通过 UK Biobank Access Management System 获批项目并签署相应访问/材料协议；仅限获批研究目的、获批研究者和授权数据字段使用。"
+          },
+          {
+            "name": "NHANES（美国国家健康与营养调查）",
+            "summary": "美国国家健康与营养调查：具有全国代表性的横断面波次，含体检、实验室与问卷，常用于美国人群健康研究。",
+            "url": "https://www.cdc.gov/nchs/nhanes/",
+            "localPath": "NHANES_data",
+            "usagePolicy": "公开使用数据仍须遵守 CDC/NCHS 的引用、保密和调查设计说明；不得尝试重识别受访者，分析需说明 cycle、权重和抽样设计。"
+          }
+        ]
+      },
+      {
+        "title": "中国社区健康与营养调查",
+        "lead": "CHNS 等社区—家庭层健康、膳食、体检与政策变迁数据；常在健康、收入、体检等子表之间显式 join，抽取前先核对 wave 与表结构。",
+        "items": [
+          {
+            "name": "CHNS（中国健康与营养调查）",
+            "summary": "北卡罗来纳大学人口中心：社区与家庭层面的健康、膳食与政策变迁纵向数据，常需在健康、体检、收入等子表之间显式 join。",
+            "url": "https://www.cpc.unc.edu/projects/china-health-and-nutrition-survey",
+            "localPath": "chns",
+            "usagePolicy": "需从 UNC/CPC CHNS 官方渠道获取并遵守数据使用与引用要求；不得再分发家庭/个人级数据，需说明调查年份和子表来源。"
+          }
+        ]
+      },
+      {
+        "title": "中国家庭追踪与综合社会调查",
+        "lead": "CFPS 与 CGSS 覆盖家庭、个人、社会态度、分层与生活品质等议题；先区分 panel 与重复横截面，再进入对应 source 检索变量。",
+        "items": [
+          {
+            "name": "CFPS（中国家庭追踪调查）",
+            "summary": "北京大学中国家庭追踪调查：家庭与个人层面纵向微观数据，覆盖经济、教育、健康与社会变迁等。",
+            "url": "https://www.isss.pku.edu.cn/cfps/",
+            "localPath": "CFPS_data",
+            "usagePolicy": "需通过 CFPS 官方数据平台注册、申请并遵守用户协议；不得转让、共享或商业化使用原始微观数据。"
+          },
+          {
+            "name": "CGSS（中国综合社会调查）",
+            "summary": "中国人民大学主持的多轮横截面调查：社会态度、分层与生活品质等议题。",
+            "url": "http://cgss.ruc.edu.cn/",
+            "localPath": "CGSS_data",
+            "usagePolicy": "需从 CGSS 官方数据平台按要求获取并遵守使用协议；发表时注明调查年份/版本和官方引用，不得外传原始数据。"
+          }
+        ]
+      },
+      {
+        "title": "中国金融、收入与劳动力调查",
+        "lead": "CHFS、CHIP、CLDS 与 CSS 面向家庭金融、收入分配、劳动力流动和全国社会状况；先确认个人/家庭/社区粒度、年份口径与权重，再做变量抽取。",
+        "items": [
+          {
+            "name": "CHFS（中国家庭金融调查）",
+            "summary": "西南财经大学：家庭资产、负债、收入、消费与金融行为等微观数据。",
+            "url": "https://chfs.swufe.edu.cn/",
+            "localPath": "CHFS_data",
+            "usagePolicy": "需按 CHFS 官方数据申请和用户协议使用；家庭金融微观数据不得出售、出租、转让或提供给未授权第三方。"
+          },
+          {
+            "name": "CHIP（中国家庭收入调查）",
+            "summary": "中国家庭收入项目：收入分配、不平等与住户调查，由相关机构协作开展。",
+            "url": "https://www.ciidbnu.org/chip/",
+            "localPath": "CHIP_data",
+            "usagePolicy": "需通过 CHIP/中国收入分配研究相关官方渠道获取并遵守数据使用约束；不得再分发，收入微观数据分析应保护受访者匿名性。"
+          },
+          {
+            "name": "CLDS（中国劳动力动态调查）",
+            "summary": "中山大学：就业、流动与劳动力市场结果等。",
+            "url": "https://css.sysu.edu.cn/clds/",
+            "localPath": "CLDS_data",
+            "usagePolicy": "需按中山大学社会科学调查中心等官方渠道申请并遵守用户协议；不得共享原始个人、家庭或社区层级数据。"
+          },
+          {
+            "name": "CSS（中国社会状况综合调查）",
+            "summary": "中国人民大学中国调查与数据中心：全国社会状况与民意等。",
+            "url": "http://css.ruc.edu.cn/",
+            "localPath": "CSS_data",
+            "usagePolicy": "需从官方调查/数据平台获取并遵守数据使用规则；仅可在授权研究范围内分析，发表时按项目方要求引用。"
+          }
+        ]
+      }
+    ],
+    "usagePolicyLabel": "使用规范"
+  },
+  "indicators": {
+    "title": "常用临床与公卫指标",
+    "lead": "队列与行政数据中常见的操作化方式；请与方案中的时间零点、单位和缺失值规则保持一致。",
+    "items": [
+      {
+        "name": "eGFR（CKD-EPI / MDRD）",
+        "summary": "由肌酐等估算肾小球滤过率（不同公式版本协变量不同）；用于 CKD 分期与用药安全分析。",
+        "tags": [
+          "肾脏",
+          "实验室"
+        ]
+      },
+      {
+        "name": "BMI",
+        "summary": "体重(kg)/身高(m)²；调查与队列分层常用；并非体脂的直接测量。",
+        "tags": [
+          "人体测量"
+        ]
+      },
+      {
+        "name": "血压 / 高血压控制",
+        "summary": "不同指南阈值不一；NHANES 等调查多采用标准化坐位血压测量流程。",
+        "tags": [
+          "心血管",
+          "调查"
+        ]
+      },
+      {
+        "name": "Charlson / Elixhauser",
+        "summary": "基于诊断编码的合并症评分，用于行政与电子病历关联研究中的风险调整。",
+        "tags": [
+          "合并症",
+          "ICD"
+        ]
+      },
+      {
+        "name": "ASCVD / Framingham 类风险",
+        "summary": "基于传统危险因素的十年心血管风险工具；需匹配人群与指南语境选择公式。",
+        "tags": [
+          "心血管",
+          "风险评分"
+        ]
+      },
+      {
+        "name": "ADL / IADL",
+        "summary": "日常生活活动能力量表；在 CHARLS、CLHLS 及国际可比老龄化调查中常用于失能与照护需求分析。",
+        "tags": [
+          "老龄化",
+          "功能"
+        ]
+      }
+    ]
+  },
+  "diseases": {
+    "title": "公卫数据中的高频研究主题",
+    "lead": "全国性调查与老龄队列中常见的研究方向，有助于确定检索词与对照设置。",
+    "items": [
+      {
+        "name": "心脑血管代谢慢性病",
+        "summary": "高血压、糖尿病、血脂异常、肥胖等与 NHANES 实验室及自报信息高度相关。",
+        "tags": [
+          "慢性病"
+        ]
+      },
+      {
+        "name": "老龄化与失能",
+        "summary": "认知下降、跌倒、照护需求等；是 CHARLS、CLHLS 等纵向研究的核心议题。",
+        "tags": [
+          "老龄化"
+        ]
+      },
+      {
+        "name": "医疗保障与卫生服务利用",
+        "summary": "参合/参保、自付费用与就诊行为；常见于家庭金融与退休类调查。",
+        "tags": [
+          "政策",
+          "卫生经济"
+        ]
+      },
+      {
+        "name": "心理健康与主观福祉",
+        "summary": "抑郁、焦虑等量表出现在 CGSS、CFPS 健康模块及多类老龄队列中。",
+        "tags": [
+          "精神心理"
+        ]
+      }
+    ]
+  }
+}

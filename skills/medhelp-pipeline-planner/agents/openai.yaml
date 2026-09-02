@@ -1,0 +1,4 @@
+interface:
+  display_name: "MedHelp Pipeline Planner"
+  short_description: "Plan research brief and staged task pipeline"
+  default_prompt: "Use $medhelp-pipeline-planner to interview me and generate research_brief.json plus staged tasks.json."

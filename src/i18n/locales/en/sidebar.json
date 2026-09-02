@@ -1,0 +1,178 @@
+{
+  "researchSecretary": {
+    "projects": "Research projects"
+  },
+  "projects": {
+    "title": "Research Workspaces",
+    "sectionTitle": "Projects",
+    "conversations": "Chats and tasks",
+    "newProject": "New Project",
+    "newConversation": "New chat",
+    "deleteProject": "Delete Workspace",
+    "renameProject": "Rename Workspace",
+    "noProjects": "No research workspaces found",
+    "loadingProjects": "Loading research workspaces...",
+    "searchPlaceholder": "Search projects or chats...",
+    "projectNamePlaceholder": "Workspace name",
+    "starred": "Starred",
+    "all": "All",
+    "untitledSession": "Untitled Session",
+    "newSession": "New Session",
+    "codexSession": "Codex Session",
+    "piSession": "Pi Session",
+    "fetchingProjects": "Syncing research workspaces and analysis sessions",
+    "projects": "workspaces",
+    "noMatchingProjects": "No matching projects or chats",
+    "tryDifferentSearch": "Try adjusting your search term",
+    "runClaudeCli": "Start an analysis session inside a workspace directory, or create a new workspace first"
+  },
+  "searchPalette": {
+    "open": "Search projects or chats",
+    "placeholder": "Search projects or chats",
+    "chats": "Chats",
+    "projects": "Projects",
+    "actions": "Quick actions",
+    "newProject": "New project",
+    "newConversation": "New chat",
+    "newSession": "New analysis session",
+    "conversationHistory": "Conversation history"
+  },
+  "app": {
+    "title": "MedHelp",
+    "subtitle": "Your Graduate AI Assistant",
+    "tagline": ""
+  },
+  "sessions": {
+    "title": "Analysis Sessions",
+    "newSession": "New Analysis Session",
+    "deleteSession": "Delete Session",
+    "renameSession": "Rename Session",
+    "noSessions": "No analysis sessions yet",
+    "loadingSessions": "Loading analysis sessions...",
+    "unnamed": "Unnamed",
+    "loading": "Loading...",
+    "showMore": "Show more analysis sessions",
+    "branches": {
+      "fromHere": "Fork from here",
+      "creating": "Creating…",
+      "actionFailed": "Could not create the forked conversation"
+    },
+    "mode": {
+      "research": "Research Analysis",
+      "workspaceQa": "Workspace Q&A"
+    }
+  },
+  "shareSession": {
+    "title": "Share session",
+    "action": "Share",
+    "createLink": "Create share link",
+    "copyLink": "Copy link",
+    "linkCardTitle": "Share link",
+    "emptyLinkHint": "Choose an access level and create a link. The link will appear here.",
+    "public": {
+      "label": "Public access",
+      "description": "Anyone with the link can view this read-only conversation snapshot."
+    },
+    "private": {
+      "label": "Private access",
+      "description": "Requires sign in. Currently only the link creator can view it."
+    }
+  },
+  "tooltips": {
+    "viewEnvironments": "View Environments",
+    "hideSidebar": "Hide sidebar",
+    "search": "Search projects or chats",
+    "createProject": "New project",
+    "newConversation": "New chat",
+    "refresh": "Refresh workspaces and sessions (Ctrl+R)",
+    "renameProject": "Rename workspace (F2)",
+    "deleteProject": "Move workspace to trash",
+    "projectActions": "More actions",
+    "sessionActions": "Conversation actions",
+    "dragProject": "Drag to reorder workspace",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites",
+    "editSessionName": "Manually edit session name",
+    "shareSession": "Create and copy session share link",
+    "deleteSession": "Delete this session permanently",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "navigation": {
+    "chat": "Chat",
+    "files": "Files",
+    "git": "Git",
+    "terminal": "Terminal",
+    "tasks": "Tasks"
+  },
+  "rail": {
+    "more": "More",
+    "moreHint": "History · Memory",
+    "moreMenu": "More destinations",
+    "nav": "Workspace navigation"
+  },
+  "actions": {
+    "refresh": "Refresh",
+    "help": "Help",
+    "openSource": "Open source: MedTiLab/Research-Assistant",
+    "settings": "Settings",
+    "logout": "Sign Out",
+    "collapseAll": "Collapse All",
+    "expandAll": "Expand All",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "rename": "Rename"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "thinking": "Thinking...",
+    "error": "Error",
+    "aborted": "Aborted",
+    "unknown": "Unknown"
+  },
+  "time": {
+    "justNow": "Just now",
+    "oneMinuteAgo": "1 min ago",
+    "minutesAgo": "{{count}} mins ago",
+    "oneHourAgo": "1 hour ago",
+    "hoursAgo": "{{count}} hours ago",
+    "oneDayAgo": "1 day ago",
+    "daysAgo": "{{count}} days ago"
+  },
+  "messages": {
+    "deleteConfirm": "Are you sure you want to delete this?",
+    "renameSuccess": "Renamed successfully",
+    "deleteSuccess": "Deleted successfully",
+    "errorOccurred": "An error occurred",
+    "deleteSessionConfirm": "Are you sure you want to delete this session? This action cannot be undone.",
+    "deleteProjectConfirm": "Are you sure you want to delete this empty workspace? This action cannot be undone.",
+    "enterProjectPath": "Please enter a workspace path",
+    "deleteSessionFailed": "Failed to delete session. Please try again.",
+    "deleteSessionError": "Error deleting session. Please try again.",
+    "deleteProjectFailed": "Failed to delete workspace. Please try again.",
+    "deleteProjectError": "Error deleting workspace. Please try again.",
+    "createProjectFailed": "Failed to create workspace. Please try again.",
+    "createProjectError": "Error creating workspace. Please try again.",
+    "renameProjectFailed": "Failed to rename workspace. Please try again.",
+    "renameProjectError": "Error renaming workspace. Please try again.",
+    "shareSessionCreating": "Creating share link...",
+    "shareSessionCopied": "Session share link copied to clipboard.",
+    "shareSessionCopyPrompt": "Copy this session share link:",
+    "shareSessionFailed": "Failed to create session share link. Please try again."
+  },
+  "version": {
+    "updateAvailable": "Update available",
+    "localKernelUpdateAvailable": "Local Engine update available"
+  },
+  "deleteConfirmation": {
+    "deleteProject": "Delete Workspace",
+    "deleteSession": "Delete Session",
+    "confirmDelete": "Are you sure you want to delete",
+    "sessionCount_one": "This workspace contains {{count}} analysis session.",
+    "sessionCount_other": "This workspace contains {{count}} analysis sessions.",
+    "allConversationsDeleted": "The workspace folder will be moved to Trash together with its sessions.",
+    "cannotUndo": "You can restore it later from Trash unless you permanently remove it there."
+  }
+}

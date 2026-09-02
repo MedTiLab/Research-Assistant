@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "distribution": "offline-desktop",
+  "description": "MedHelp 离线桌面版的资源来源与联网边界。",
+  "bundled": [
+    {
+      "id": "desktop-shell",
+      "source": "local-build",
+      "contents": ["Electron 桌面壳", "窗口与系统托盘集成"]
+    },
+    {
+      "id": "application-ui",
+      "source": "local-build",
+      "contents": ["登录后的应用工作界面", "前端运行时代码与样式"]
+    },
+    {
+      "id": "local-kernel",
+      "source": "local-build",
+      "skillCountSource": "kernel-security-manifest",
+      "contents": ["本地 Kernel", "构建时动态收录的内置 skill", "当前操作系统用户共享的本地项目与会话索引", "本地执行依赖"]
+    },
+    {
+      "id": "local-accounts",
+      "source": "local-kernel",
+      "contents": ["本地注册与登录", "本地用户资料", "本地会话与对话归档"],
+      "paths": ["/api/auth/**", "/api/user/**", "/api/conversations/**"]
+    },
+    {
+      "id": "help",
+      "source": "local-build",
+      "contents": ["本地使用指南占位页"]
+    }
+  ],
+  "onlineRequired": [
+    {
+      "id": "api-documentation",
+      "source": "https://app.medtimehelp.com/api-docs.html",
+      "delivery": "system-browser",
+      "bundled": false
+    },
+    {
+      "id": "updates-and-downloads",
+      "source": "https://app.medtimehelp.com",
+      "paths": ["/download", "/downloads/**", "/api/public-downloads/**"],
+      "delivery": "HTTPS",
+      "bundled": false
+    }
+  ],
+  "excludedFromBundle": [
+    "dist/images/help",
+    "dist/api-docs.html",
+    "dist/clear-cache.html",
+    "dist/downloads",
+    "dist/videos",
+    "dist/generate-icons.js",
+    "dist/convert-icons.md"
+  ]
+}
