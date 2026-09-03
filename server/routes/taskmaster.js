@@ -954,7 +954,7 @@ function buildTaskNextActionPrompt(task = {}, stageConfig = {}, stage = '', brie
         lines.push(`Execution log: before your final reply, write or update a concrete Markdown task report at ${suggestedReportPath}. Include the objective, touched files or sections, what changed, key findings or decisions, remaining issues, and the next step.`);
         lines.push('Persistence rule: do not leave report-style work only in chat text. The Markdown artifact is the handoff record for other AI sessions.');
         lines.push('Chat response rule: after the report is written, reply with only the report path, the touched files, and a one-sentence verdict or progress update. Do not dump the full report into chat.');
-        lines.push('Task bookkeeping is server-owned during Auto Research. Do not edit .pipeline/tasks/tasks.json or run pipeline-task.mjs status updates.');
+        lines.push('Task bookkeeping is server-owned during Auto Research. Do not edit .pipeline/tasks/tasks.json directly.');
     }
 
     if (providedInputs.length > 0) {

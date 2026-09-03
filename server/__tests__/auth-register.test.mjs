@@ -70,11 +70,11 @@ describe('local-only auth registration', () => {
     tempRoot = null;
   });
 
-  it('advertises immediate local registration without approval or email verification', async () => {
+  it('advertises the unified sign-in flow without a separate registration UI', async () => {
     await startAuthServer();
     const status = await requestJson('/api/auth/status');
     expect(status.body).toMatchObject({
-      registrationEnabled: true,
+      registrationEnabled: false,
       requireApproval: false,
       registrationEmailVerificationRequired: false,
     });
@@ -138,6 +138,44 @@ describe('local-only auth registration', () => {
     expect(login.response.status).toBe(200);
     expect(login.body.user.username).toBe('local-user');
     expect(login.body.token).toEqual(expect.any(String));
+  });
+
+  it('automatically creates an account on first email sign-in', async () => {
+    await startAuthServer();
+    const firstLogin = await requestJson('/api/auth/login', {
+      method: 'POST',
+      payload: {
+        username: 'First.User+Lab@Example.com',
+        deviceFingerprint: 'local-device',
+      },
+    });
+
+    expect(firstLogin.response.status).toBe(200);
+    expect(firstLogin.body.autoRegistered).toBe(true);
+    expect(firstLogin.body.user.notificationEmail).toBe('first.user+lab@example.com');
+    expect(firstLogin.body.user.effectivePlan).toBe('pro');
+    expect(firstLogin.body.user.username).toMatch(/^first\.user-lab/);
+
+    const secondLogin = await requestJson('/api/auth/login', {
+      method: 'POST',
+      payload: {
+        username: 'FIRST.USER+LAB@EXAMPLE.COM',
+        deviceFingerprint: 'local-device',
+      },
+    });
+    expect(secondLogin.response.status).toBe(200);
+    expect(secondLogin.body.autoRegistered).toBe(false);
+    expect(secondLogin.body.user.id).toBe(firstLogin.body.user.id);
+  });
+
+  it('asks first-time users to enter an email instead of registering separately', async () => {
+    await startAuthServer();
+    const result = await requestJson('/api/auth/login', {
+      method: 'POST',
+      payload: { username: 'new-local-user' },
+    });
+    expect(result.response.status).toBe(404);
+    expect(result.body.code).toBe('ACCOUNT_NOT_FOUND_USE_EMAIL');
   });
 
   it('does not expose administrator endpoints', async () => {

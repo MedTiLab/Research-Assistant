@@ -15,10 +15,6 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import {
-  getCodexAppServerClient,
-  shutdownCodexAppServers,
-} from './codex-app-server.js';
 import { encodeProjectPath, ensureProjectSkillLinks, reconcileCodexSessionIndex } from './projects.js';
 import { sessionDb } from './database/db.js';
 import { getProjectAgentsPath, resolveProjectAgentsPath, writeProjectTemplates } from './templates/index.js';
@@ -62,6 +58,34 @@ import {
 // Track active sessions
 const activeCodexSessions = new Map();
 const MIN_CODEX_AUTO_COMPACT_TOKEN_LIMIT = 60_000;
+
+async function loadCodexAppServer() {
+  try {
+    return await import('./codex-app-server.js');
+  } catch (error) {
+    if (error?.code === 'ERR_MODULE_NOT_FOUND') {
+      const unavailableError = new Error('Codex support has been removed from this deployment.');
+      unavailableError.code = 'CODEX_RUNTIME_UNAVAILABLE';
+      unavailableError.statusCode = 503;
+      throw unavailableError;
+    }
+    throw error;
+  }
+}
+
+async function getCodexAppServerClient(options) {
+  const codexAppServer = await loadCodexAppServer();
+  return codexAppServer.getCodexAppServerClient(options);
+}
+
+async function shutdownCodexAppServers() {
+  try {
+    const codexAppServer = await loadCodexAppServer();
+    await codexAppServer.shutdownCodexAppServers();
+  } catch (error) {
+    if (error?.code !== 'CODEX_RUNTIME_UNAVAILABLE') throw error;
+  }
+}
 
 function resolveCodexAutoCompactTokenLimit(env = process.env, contextWindow = 256_000) {
   const configured = Number.parseInt(String(env?.CODEX_AUTO_COMPACT_TOKEN_LIMIT || ''), 10);

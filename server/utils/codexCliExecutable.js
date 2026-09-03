@@ -1,5 +1,14 @@
-import { resolveBundledCodexExecutable } from '../codex-app-server.js';
 import { resolveAvailableCliCommand } from './cliResolution.js';
+
+async function loadBundledCodexResolver() {
+  try {
+    const codexAppServer = await import('../codex-app-server.js');
+    return codexAppServer.resolveBundledCodexExecutable;
+  } catch (error) {
+    if (error?.code === 'ERR_MODULE_NOT_FOUND') return null;
+    throw error;
+  }
+}
 
 /**
  * Resolve Codex for user-facing CLI operations.
@@ -10,13 +19,13 @@ import { resolveAvailableCliCommand } from './cliResolution.js';
  * then the ordinary PATH command for development installations.
  */
 export async function resolveCodexCliExecutable(options = {}) {
-  const resolveBundled = options.resolveBundled || resolveBundledCodexExecutable;
+  const resolveBundled = options.resolveBundled || await loadBundledCodexResolver();
   const resolveAvailable = options.resolveAvailable || resolveAvailableCliCommand;
   const envVarName = options.envVarName || 'CODEX_CLI_PATH';
   let bundledCommand = null;
 
   try {
-    bundledCommand = resolveBundled({ ignoreEnvironment: true });
+    bundledCommand = resolveBundled?.({ ignoreEnvironment: true }) || null;
   } catch {
     // Unsupported or intentionally unbundled platforms can still use PATH.
   }

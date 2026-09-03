@@ -214,7 +214,7 @@ function decorateDeviceSessions(sessions, wss, currentSessionId = null) {
 
 function getRegistrationSettings() {
   return {
-    registrationEnabled: true,
+    registrationEnabled: false,
     requireApproval: false,
     defaultTrialDays: 0,
     defaultTrialHours: 0,
@@ -371,6 +371,36 @@ function ensureLocalDevUser() {
   return ensureLocalDevProUser(created);
 }
 
+function deriveUsernameFromEmail(email) {
+  const localPart = String(email || '').split('@')[0].normalize('NFKC').toLowerCase();
+  const normalizedBase = localPart
+    .replace(/[^a-z0-9._-]+/g, '-')
+    .replace(/^[._-]+|[._-]+$/g, '')
+    .slice(0, 40);
+  const base = normalizedBase.length >= 3 ? normalizedBase : `user-${normalizedBase || 'account'}`;
+  if (!db.prepare('SELECT 1 FROM users WHERE username = ? LIMIT 1').get(base)) {
+    return base;
+  }
+
+  const suffix = crypto.createHash('sha256').update(String(email)).digest('hex').slice(0, 8);
+  const candidate = `${base.slice(0, Math.max(3, 39 - suffix.length))}-${suffix}`;
+  if (!db.prepare('SELECT 1 FROM users WHERE username = ? LIMIT 1').get(candidate)) {
+    return candidate;
+  }
+
+  return `user-${crypto.randomUUID().replace(/-/g, '').slice(0, 16)}`;
+}
+
+async function autoCreateUserFromEmail(email) {
+  const passwordHash = await bcrypt.hash(crypto.randomBytes(32).toString('hex'), 12);
+  const created = userDb.createUser(
+    deriveUsernameFromEmail(email),
+    passwordHash,
+    email,
+  );
+  return ensureLocalDevProUser(created);
+}
+
 function issueLocalNoAuthPayload(req, user) {
   const fingerprintHash = authSessionDb.hashDeviceFingerprint(LOCAL_NO_AUTH_DEVICE);
   const existing = authSessionDb.listActiveForUser(user.id)
@@ -435,12 +465,23 @@ router.post('/login', async (req, res) => {
     }
 
     let user = userDb.getUserByLoginIdentifier(normalizedUsername);
+    let autoRegistered = false;
     if (!user) {
-      writeAuditLog(req, {
-        category: 'login', level: 'warning', event: 'user_login_failed',
-        actorName: normalizedUsername, message: '用户登录失败：账号不存在或已禁用',
-      });
-      return res.status(401).json({ error: 'Invalid username, email, or password' });
+      const normalizedEmail = normalizedUsername.toLowerCase();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(normalizedEmail)) {
+        writeAuditLog(req, {
+          category: 'login', level: 'warning', event: 'user_login_failed',
+          actorName: normalizedUsername, message: '用户登录失败：用户名不存在，首次使用需要输入邮箱',
+        });
+        return res.status(404).json({
+          error: 'Account not found. Use your email for first-time sign-in.',
+          code: 'ACCOUNT_NOT_FOUND_USE_EMAIL',
+        });
+      }
+
+      user = await autoCreateUserFromEmail(normalizedEmail);
+      autoRegistered = true;
     }
 
     const suppliedPassword = password == null ? '' : String(password);
@@ -461,12 +502,15 @@ router.post('/login', async (req, res) => {
     const { session } = openDeviceSession(req, user);
     userDb.updateLastLogin(user.id);
 
-    writeAuditLog(req, {
+    writeAuditLog(req, autoRegistered ? {
+      category: 'login', event: 'user_auto_registered', actorName: user.username,
+      targetType: 'user', targetId: user.id, message: `邮箱 ${user.notification_email} 自动创建账号并登录`,
+    } : {
       category: 'login', event: 'user_login_success', actorName: user.username,
       targetType: 'user', targetId: user.id, message: `用户 ${user.username} 登录成功`,
     });
 
-    return res.json(buildAuthPayload(user, session.id));
+    return res.json({ ...buildAuthPayload(user, session.id), autoRegistered });
   } catch (error) {
     console.error('Login error:', error);
     writeAuditLog(req, {

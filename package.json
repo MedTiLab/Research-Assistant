@@ -48,11 +48,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "smoke:deepmed": "node scripts/deepmed-smoke.mjs",
     "start": "npm run build && npm run server",
     "release": "./release.sh",
     "prepublishOnly": "npm run build",
-    "postinstall": "node scripts/fix-node-pty.js && node scripts/install-python-tools.js && node scripts/ensure-native-modules.js --record-only",
+    "postinstall": "node scripts/fix-node-pty.js && node scripts/ensure-native-modules.js --record-only",
     "pi-runtime:prepare": "node --import dotenv/config scripts/prepare-pi-runtime.mjs",
     "test": "node scripts/ensure-native-modules.js && vitest run",
     "test:watch": "node scripts/ensure-native-modules.js && vitest"
