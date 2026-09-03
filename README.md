@@ -8,6 +8,7 @@ Research Assistant 是一个面向研究生和科研人员的开源 AI 科研工
 - 界面名称：`MedHelp`
 - npm 包名：`medhelpsec`
 - 开源仓库：<https://github.com/MedTiLab/Research-Assistant>
+qq 群<img width="1284" height="2289" alt="qrcode_1788450250741" src="https://github.com/user-attachments/assets/ace861d0-6d9f-4b00-83ee-986f538a2b39" />
 
 ## 界面预览
 
