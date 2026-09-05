@@ -6428,6 +6428,49 @@ const monitorDb = {
   },
 };
 
+function normalizeReferenceDoi(value) {
+  const normalized = String(value || '')
+    .trim()
+    .replace(/^doi:\s*/i, '')
+    .replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, '')
+    .trim()
+    .replace(/[\s.,;]+$/g, '')
+    .toLowerCase();
+  return normalized || null;
+}
+
+function normalizeReferenceAuthors(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((author) => {
+      if (typeof author === 'string') {
+        return { family: author.trim(), given: '' };
+      }
+      if (!author || typeof author !== 'object') return null;
+      return {
+        family: String(author.family || author.lastName || author.name || '').trim(),
+        given: String(author.given || author.firstName || '').trim(),
+      };
+    })
+    .filter((author) => author && (author.family || author.given));
+}
+
+function normalizeReferenceKeywords(value) {
+  if (!Array.isArray(value)) return [];
+  return [...new Set(value.map((keyword) => String(keyword || '').trim()).filter(Boolean))];
+}
+
+function findReferenceByDoi(userId, doi) {
+  if (!doi) return null;
+  return db.prepare(`
+    SELECT id
+    FROM references_library
+    WHERE user_id = ? AND LOWER(TRIM(doi)) = ?
+    ORDER BY created_at ASC
+    LIMIT 1
+  `).get(userId, doi) || null;
+}
+
 // References (literature library) database operations
 const referencesDb = {
   /**
@@ -6447,6 +6490,8 @@ const referencesDb = {
         url = excluded.url,
         journal = excluded.journal,
         item_type = excluded.item_type,
+        source = 'zotero',
+        source_id = excluded.source_id,
         keywords = excluded.keywords,
         citation_key = excluded.citation_key,
         raw_data = excluded.raw_data,
@@ -6457,37 +6502,39 @@ const referencesDb = {
       INSERT OR IGNORE INTO reference_tags (reference_id, tag) VALUES (?, ?)
     `);
 
-    const deleteTags = db.prepare(`DELETE FROM reference_tags WHERE reference_id = ?`);
-
     const tx = db.transaction((rows) => {
-      const ids = [];
+      const ids = new Set();
       for (const item of rows) {
-        // Deterministic id: user + source_id
-        const id = `zotero_${userId}_${item.sourceId}`;
+        // Prefer an existing DOI-backed row so that Zotero/BibTeX/PubMed
+        // imports converge on one stable library entity.
+        const doi = normalizeReferenceDoi(item.doi);
+        const deterministicId = `zotero_${userId}_${item.sourceId}`;
+        const id = findReferenceByDoi(userId, doi)?.id || deterministicId;
+        const authors = normalizeReferenceAuthors(item.authors);
+        const keywords = normalizeReferenceKeywords(item.keywords);
         upsert.run(
           id,
           userId,
           item.title,
-          JSON.stringify(item.authors || []),
+          JSON.stringify(authors),
           item.year,
           item.abstract,
-          item.doi,
+          doi,
           item.url,
           item.journal,
           item.itemType || 'article',
           item.sourceId,
-          JSON.stringify(item.keywords || []),
+          JSON.stringify(keywords),
           item.citationKey,
           item.rawData ? JSON.stringify(item.rawData) : null,
         );
-        // Clean stale tags, then re-insert
-        deleteTags.run(id);
-        for (const tag of item.keywords || []) {
+        // Keep tags already curated in MedHelp when Zotero metadata refreshes.
+        for (const tag of keywords) {
           insertTag.run(id, tag);
         }
-        ids.push(id);
+        ids.add(id);
       }
-      return ids;
+      return [...ids];
     });
 
     try {
@@ -6505,16 +6552,16 @@ const referencesDb = {
       INSERT INTO references_library (id, user_id, title, authors, year, abstract, doi, url, journal, item_type, source, source_id, keywords, citation_key, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
       ON CONFLICT(id) DO UPDATE SET
-        title = excluded.title,
-        authors = excluded.authors,
-        year = excluded.year,
-        abstract = excluded.abstract,
-        doi = excluded.doi,
-        url = excluded.url,
-        journal = excluded.journal,
-        item_type = excluded.item_type,
-        keywords = excluded.keywords,
-        citation_key = excluded.citation_key,
+        title = CASE WHEN excluded.title IS NOT NULL AND excluded.title != '' AND excluded.title != 'Untitled' THEN excluded.title ELSE references_library.title END,
+        authors = CASE WHEN excluded.authors IS NOT NULL AND excluded.authors != '[]' THEN excluded.authors ELSE references_library.authors END,
+        year = COALESCE(excluded.year, references_library.year),
+        abstract = COALESCE(NULLIF(excluded.abstract, ''), references_library.abstract),
+        doi = COALESCE(NULLIF(excluded.doi, ''), references_library.doi),
+        url = COALESCE(NULLIF(excluded.url, ''), references_library.url),
+        journal = COALESCE(NULLIF(excluded.journal, ''), references_library.journal),
+        item_type = COALESCE(NULLIF(excluded.item_type, ''), references_library.item_type),
+        keywords = CASE WHEN excluded.keywords IS NOT NULL AND excluded.keywords != '[]' THEN excluded.keywords ELSE references_library.keywords END,
+        citation_key = COALESCE(NULLIF(excluded.citation_key, ''), references_library.citation_key),
         updated_at = CURRENT_TIMESTAMP
     `);
 
@@ -6522,10 +6569,8 @@ const referencesDb = {
       INSERT OR IGNORE INTO reference_tags (reference_id, tag) VALUES (?, ?)
     `);
 
-    const deleteTags = db.prepare(`DELETE FROM reference_tags WHERE reference_id = ?`);
-
     const tx = db.transaction((rows) => {
-      const ids = [];
+      const ids = new Set();
       for (const item of rows) {
         // When no citationKey, generate deterministic ID from content
         let key = item.citationKey;
@@ -6536,31 +6581,35 @@ const referencesDb = {
             .slice(0, 16);
           key = hash;
         }
-        const id = `${source}_${userId}_${key}`;
+        const doi = normalizeReferenceDoi(item.doi);
+        const deterministicId = `${source}_${userId}_${key}`;
+        const id = findReferenceByDoi(userId, doi)?.id || deterministicId;
+        const authors = normalizeReferenceAuthors(item.authors);
+        const keywords = normalizeReferenceKeywords(item.keywords);
         upsert.run(
           id,
           userId,
           item.title,
-          JSON.stringify(item.authors || []),
+          JSON.stringify(authors),
           item.year,
           item.abstract,
-          item.doi,
+          doi,
           item.url,
           item.journal,
           item.itemType || 'article',
           source,
           item.citationKey || null,
-          JSON.stringify(item.keywords || []),
+          JSON.stringify(keywords),
           item.citationKey || null,
         );
-        // Clean stale tags, then re-insert
-        deleteTags.run(id);
-        for (const tag of item.keywords || []) {
+        // Imported keywords are additive. Do not erase user-curated tags when
+        // the same DOI is refreshed from another source.
+        for (const tag of keywords) {
           insertTag.run(id, tag);
         }
-        ids.push(id);
+        ids.add(id);
       }
-      return ids;
+      return [...ids];
     });
 
     try {
@@ -6577,9 +6626,9 @@ const referencesDb = {
       const params = [userId];
 
       if (search) {
-        query += ' AND (title LIKE ? OR authors LIKE ? OR journal LIKE ? OR abstract LIKE ?)';
+        query += ' AND (title LIKE ? OR authors LIKE ? OR journal LIKE ? OR abstract LIKE ? OR doi LIKE ? OR citation_key LIKE ? OR keywords LIKE ?)';
         const term = `%${search}%`;
-        params.push(term, term, term, term);
+        params.push(term, term, term, term, term, term, term);
       }
 
       if (tags && tags.length > 0) {
@@ -6621,9 +6670,9 @@ const referencesDb = {
       const params = [userId];
 
       if (search) {
-        query += ' AND (title LIKE ? OR authors LIKE ? OR journal LIKE ? OR abstract LIKE ?)';
+        query += ' AND (title LIKE ? OR authors LIKE ? OR journal LIKE ? OR abstract LIKE ? OR doi LIKE ? OR citation_key LIKE ? OR keywords LIKE ?)';
         const term = `%${search}%`;
-        params.push(term, term, term, term);
+        params.push(term, term, term, term, term, term, term);
       }
 
       if (tags && tags.length > 0) {
@@ -6663,6 +6712,79 @@ const referencesDb = {
     } catch (err) {
       throw err;
     }
+  },
+
+  /** Compact Zotero source index used to preview local-library sync changes. */
+  getZoteroSourceIndex: (userId) => {
+    const rows = db.prepare(`
+      SELECT id, source_id, raw_data, updated_at
+      FROM references_library
+      WHERE user_id = ? AND source = 'zotero' AND source_id IS NOT NULL
+    `).all(userId);
+    return rows.map((row) => ({
+      id: row.id,
+      source_id: row.source_id,
+      raw_data: row.raw_data ? (() => {
+        try { return JSON.parse(row.raw_data); } catch { return null; }
+      })() : null,
+      updated_at: row.updated_at,
+    }));
+  },
+
+  /** Update user-editable bibliographic metadata without changing identity. */
+  updateReference: (userId, id, patch) => {
+    const current = referencesDb.getReference(id, userId);
+    if (!current) return { status: 'not_found', reference: null };
+
+    const doi = Object.prototype.hasOwnProperty.call(patch, 'doi')
+      ? normalizeReferenceDoi(patch.doi)
+      : current.doi;
+    const doiOwner = findReferenceByDoi(userId, doi);
+    if (doiOwner && doiOwner.id !== id) {
+      return { status: 'duplicate_doi', reference: null, duplicateId: doiOwner.id };
+    }
+
+    const next = {
+      title: Object.prototype.hasOwnProperty.call(patch, 'title') ? String(patch.title || '').trim() : current.title,
+      authors: Object.prototype.hasOwnProperty.call(patch, 'authors') ? normalizeReferenceAuthors(patch.authors) : current.authors,
+      year: Object.prototype.hasOwnProperty.call(patch, 'year') ? patch.year : current.year,
+      abstract: Object.prototype.hasOwnProperty.call(patch, 'abstract') ? String(patch.abstract || '').trim() || null : current.abstract,
+      doi,
+      url: Object.prototype.hasOwnProperty.call(patch, 'url') ? String(patch.url || '').trim() || null : current.url,
+      journal: Object.prototype.hasOwnProperty.call(patch, 'journal') ? String(patch.journal || '').trim() || null : current.journal,
+      itemType: Object.prototype.hasOwnProperty.call(patch, 'item_type') ? String(patch.item_type || '').trim() || 'article' : current.item_type,
+      keywords: Object.prototype.hasOwnProperty.call(patch, 'keywords') ? normalizeReferenceKeywords(patch.keywords) : current.keywords,
+      citationKey: Object.prototype.hasOwnProperty.call(patch, 'citation_key') ? String(patch.citation_key || '').trim() || null : current.citation_key,
+    };
+    if (!next.title) return { status: 'invalid_title', reference: null };
+
+    const tx = db.transaction(() => {
+      db.prepare(`
+        UPDATE references_library
+        SET title = ?, authors = ?, year = ?, abstract = ?, doi = ?, url = ?,
+            journal = ?, item_type = ?, keywords = ?, citation_key = ?,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = ? AND user_id = ?
+      `).run(
+        next.title,
+        JSON.stringify(next.authors),
+        next.year,
+        next.abstract,
+        next.doi,
+        next.url,
+        next.journal,
+        next.itemType,
+        JSON.stringify(next.keywords),
+        next.citationKey,
+        id,
+        userId,
+      );
+      db.prepare('DELETE FROM reference_tags WHERE reference_id = ?').run(id);
+      const insertTag = db.prepare('INSERT OR IGNORE INTO reference_tags (reference_id, tag) VALUES (?, ?)');
+      for (const keyword of next.keywords) insertTag.run(id, keyword);
+    });
+    tx();
+    return { status: 'updated', reference: referencesDb.getReference(id, userId) };
   },
 
   /** Batch reference detail lookup preserving the requested id order. */
@@ -6867,6 +6989,37 @@ const referencesDb = {
       SELECT id, name, parent_id, created_at, updated_at, 0 AS reference_count
       FROM reference_folders WHERE id = ? AND user_id = ?
     `).get(id, userId);
+  },
+
+  /** Reuse or create a nested literature-folder path. */
+  getOrCreateFolderPath: (userId, segments) => {
+    const normalized = (Array.isArray(segments) ? segments : [])
+      .map((segment) => String(segment || '').replace(/\s+/g, ' ').trim())
+      .filter(Boolean);
+    if (normalized.length === 0) return null;
+
+    const find = db.prepare(`
+      SELECT id, name, parent_id FROM reference_folders
+      WHERE user_id = ? AND name = ? AND COALESCE(parent_id, '') = COALESCE(?, '')
+      LIMIT 1
+    `);
+    const insert = db.prepare(`
+      INSERT OR IGNORE INTO reference_folders (id, user_id, name, parent_id)
+      VALUES (?, ?, ?, ?)
+    `);
+    const tx = db.transaction((parts) => {
+      let parentId = null;
+      for (const name of parts) {
+        let folder = find.get(userId, name, parentId);
+        if (!folder) {
+          insert.run(crypto.randomUUID(), userId, name, parentId);
+          folder = find.get(userId, name, parentId);
+        }
+        parentId = folder.id;
+      }
+      return parentId ? referencesDb.getFolder(userId, parentId) : null;
+    });
+    return tx(normalized);
   },
 
   renameFolder: (userId, folderId, name) => {

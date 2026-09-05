@@ -1478,6 +1478,8 @@ export const api = {
   references: {
     list: (params) => authenticatedFetch(`/api/references?${new URLSearchParams(params || {})}`, { cache: 'no-store' }),
     get: (id) => authenticatedFetch(`/api/references/${encodeURIComponent(id)}`),
+    update: (id, patch) => authenticatedFetch(`/api/references/${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify(patch) }),
+    resolveDoi: (doi) => authenticatedFetch('/api/references/metadata/resolve-doi', { method: 'POST', body: JSON.stringify({ doi }) }),
     delete: (id) => authenticatedFetch(`/api/references/${encodeURIComponent(id)}`, { method: 'DELETE' }),
     getPdf: (id) => authenticatedFetch(`/api/references/${encodeURIComponent(id)}/pdf`),
     syncZotero: ({ projectName, collectionKey, sourceIds } = {}) => authenticatedFetch('/api/references/sync/zotero', { method: 'POST', body: JSON.stringify({ projectName, collectionKey, sourceIds }) }),

@@ -144,4 +144,115 @@ describe('referencesDb batch lookups', () => {
     expect(referencesDb.getReference(ids[0], userId)?.title).toBe('Filed paper');
     expect(referencesDb.getFolders(userId).unfiled_count).toBe(2);
   });
+
+  it('deduplicates DOI imports across sources and keeps one stable reference id', async () => {
+    const { initializeDatabase, referencesDb, userDb } = await loadDatabaseModule();
+    await initializeDatabase();
+
+    const userId = userDb.createUser('ref-dedupe-user', 'hashed-password').id;
+    const [originalId] = referencesDb.importReferences(userId, [{
+      title: 'Original title',
+      authors: [{ family: 'Alpha', given: 'Ann' }],
+      year: 2024,
+      doi: 'https://doi.org/10.1000/Example.DOI',
+      keywords: ['baseline'],
+      citationKey: 'Alpha2024',
+    }], 'bibtex');
+
+    const importedIds = referencesDb.importReferences(userId, [{
+      title: 'Authoritative title',
+      authors: [{ family: 'Alpha', given: 'Ann' }],
+      year: 2024,
+      doi: '10.1000/example.doi',
+      journal: 'Updated Journal',
+      keywords: ['follow-up'],
+      citationKey: 'PMID12345678',
+    }], 'pubmed');
+
+    expect(importedIds).toEqual([originalId]);
+    expect(referencesDb.countUserReferences(userId)).toBe(1);
+    expect(referencesDb.getReference(originalId, userId)).toMatchObject({
+      title: 'Authoritative title',
+      doi: '10.1000/example.doi',
+      journal: 'Updated Journal',
+    });
+    expect(referencesDb.getTags(userId).map((item) => item.tag)).toEqual(expect.arrayContaining(['baseline', 'follow-up']));
+  });
+
+  it('lets a Zotero sync attach source identity to an existing DOI row', async () => {
+    const { initializeDatabase, referencesDb, userDb } = await loadDatabaseModule();
+    await initializeDatabase();
+
+    const userId = userDb.createUser('ref-zotero-dedupe-user', 'hashed-password').id;
+    const [originalId] = referencesDb.importReferences(userId, [{
+      title: 'BibTeX copy',
+      doi: '10.2000/shared',
+      citationKey: 'Shared2026',
+      keywords: ['manual-tag'],
+    }], 'bibtex');
+
+    expect(referencesDb.syncFromZotero(userId, [{
+      sourceId: 'ZOTERO123',
+      title: 'Zotero copy',
+      doi: 'https://doi.org/10.2000/SHARED',
+      authors: [{ family: 'Zed', given: 'Zoe' }],
+      keywords: ['zotero-tag'],
+      itemType: 'journalArticle',
+    }])).toEqual([originalId]);
+    expect(referencesDb.getReference(originalId, userId)).toMatchObject({
+      source: 'zotero',
+      source_id: 'ZOTERO123',
+      doi: '10.2000/shared',
+      title: 'Zotero copy',
+    });
+    expect(referencesDb.getTags(userId).map((item) => item.tag)).toEqual(expect.arrayContaining(['manual-tag', 'zotero-tag']));
+  });
+
+  it('searches DOI, citation key, and keywords as advertised', async () => {
+    const { initializeDatabase, referencesDb, userDb } = await loadDatabaseModule();
+    await initializeDatabase();
+
+    const userId = userDb.createUser('ref-search-user', 'hashed-password').id;
+    const [referenceId] = referencesDb.importReferences(userId, [{
+      title: 'Hard to discover title',
+      doi: '10.5555/search-me',
+      citationKey: 'UniqueCitationKey2026',
+      keywords: ['latent biomarker'],
+    }], 'bibtex');
+
+    expect(referencesDb.getUserReferences(userId, { search: '10.5555' }).map((item) => item.id)).toEqual([referenceId]);
+    expect(referencesDb.getUserReferences(userId, { search: 'UniqueCitationKey' }).map((item) => item.id)).toEqual([referenceId]);
+    expect(referencesDb.getUserReferences(userId, { search: 'latent biomarker' }).map((item) => item.id)).toEqual([referenceId]);
+    expect(referencesDb.countUserReferences(userId, { search: 'search-me' })).toBe(1);
+  });
+
+  it('updates editable metadata and rejects a DOI already owned by another reference', async () => {
+    const { initializeDatabase, referencesDb, userDb } = await loadDatabaseModule();
+    await initializeDatabase();
+
+    const userId = userDb.createUser('ref-edit-user', 'hashed-password').id;
+    const ids = referencesDb.importReferences(userId, [
+      { title: 'First paper', doi: '10.1000/first', citationKey: 'First', keywords: [] },
+      { title: 'Second paper', doi: '10.1000/second', citationKey: 'Second', keywords: [] },
+    ], 'bibtex');
+
+    const updated = referencesDb.updateReference(userId, ids[0], {
+      title: 'First paper, corrected',
+      doi: 'https://doi.org/10.1000/FIRST',
+      authors: [{ family: 'Corrected', given: 'Casey' }],
+      keywords: ['reviewed'],
+    });
+    expect(updated.status).toBe('updated');
+    expect(updated.reference).toMatchObject({
+      title: 'First paper, corrected',
+      doi: '10.1000/first',
+      authors: [{ family: 'Corrected', given: 'Casey' }],
+      keywords: ['reviewed'],
+    });
+
+    expect(referencesDb.updateReference(userId, ids[0], { doi: '10.1000/second' })).toMatchObject({
+      status: 'duplicate_doi',
+      duplicateId: ids[1],
+    });
+  });
 });

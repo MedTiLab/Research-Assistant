@@ -111,6 +111,43 @@ describe('reference project artifacts', () => {
     expect(manifest.entries.some((entry) => entry.relativePath === relativeExtractPath)).toBe(false);
   });
 
+  it('refreshes derived metadata without overwriting user-authored reference notes', async () => {
+    const projectPath = await createTempProject();
+    const reference = {
+      id: 'bibtex_1_preserve-note',
+      title: 'Original Metadata',
+      authors: [],
+      keywords: [],
+      doi: '10.1000/original',
+    };
+
+    await syncReferencesToProjectArtifacts({
+      projectPath,
+      projectName: 'DemoProject',
+      references: [reference],
+    });
+    const artifactPaths = getReferenceArtifactPaths(projectPath, reference.id);
+    const userNote = '# My critical reading\n\nThis conclusion needs replication.\n';
+    await fs.writeFile(artifactPaths.notePath, userNote, 'utf8');
+
+    const refresh = await syncReferencesToProjectArtifacts({
+      projectPath,
+      projectName: 'DemoProject',
+      references: [{
+        ...reference,
+        title: 'Corrected Metadata',
+        doi: '10.1000/corrected',
+      }],
+    });
+
+    expect(await fs.readFile(artifactPaths.notePath, 'utf8')).toBe(userNote);
+    expect(JSON.parse(await fs.readFile(artifactPaths.metadataPath, 'utf8'))).toMatchObject({
+      title: 'Corrected Metadata',
+      doi: '10.1000/corrected',
+    });
+    expect(refresh.artifacts[0].noteCreated).toBe(false);
+  });
+
   it('removes artifact directories and refreshes the knowledge base manifest', async () => {
     const projectPath = await createTempProject();
     const reference = {

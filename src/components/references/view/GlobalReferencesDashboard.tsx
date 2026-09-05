@@ -28,6 +28,7 @@ import type { Reference } from '../types';
 import { formatAuthors } from '../types';
 import ImportDialog from './ImportDialog';
 import ReferenceCard from './ReferenceCard';
+import EditReferenceDialog from './EditReferenceDialog';
 
 type GlobalReferencesDashboardProps = {
   chatTargetProject?: Project | null;
@@ -70,6 +71,7 @@ export default function GlobalReferencesDashboard({
   } = useReferencesData();
   const [query, setQuery] = useState('');
   const [selectedReference, setSelectedReference] = useState<Reference | null>(null);
+  const [editingReference, setEditingReference] = useState<Reference | null>(null);
   const [showImportDialog, setShowImportDialog] = useState(false);
   const [pendingDelete, setPendingDelete] = useState<PendingDelete | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -615,6 +617,13 @@ export default function GlobalReferencesDashboard({
                     .join(' · ')}
                 </p>
 
+                {(selectedReference.doi || selectedReference.citation_key) && (
+                  <div className="mt-4 grid gap-2 text-xs">
+                    {selectedReference.doi && <div><span className="text-muted-foreground">DOI：</span><span className="break-all text-foreground">{selectedReference.doi}</span></div>}
+                    {selectedReference.citation_key && <div><span className="text-muted-foreground">引用键：</span><span className="break-all text-foreground">{selectedReference.citation_key}</span></div>}
+                  </div>
+                )}
+
                 {selectedReference.keywords?.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {selectedReference.keywords.slice(0, 10).map((keyword) => (
@@ -667,6 +676,9 @@ export default function GlobalReferencesDashboard({
                 </div>
 
                 <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border pt-4">
+                  <Button size="sm" variant="outline" onClick={() => setEditingReference(selectedReference)}>
+                    <Pencil className="h-3.5 w-3.5" /> 编辑元数据
+                  </Button>
                   <Button
                     size="sm"
                     disabled={!chatTargetProject || !onChatFromReference}
@@ -709,6 +721,19 @@ export default function GlobalReferencesDashboard({
           onComplete={() => {
             void handleRefresh();
             setShowImportDialog(false);
+          }}
+        />,
+        document.body,
+      )}
+
+      {editingReference && ReactDOM.createPortal(
+        <EditReferenceDialog
+          reference={editingReference}
+          onClose={() => setEditingReference(null)}
+          onSaved={(updatedReference) => {
+            setSelectedReference(updatedReference);
+            setEditingReference(null);
+            void handleRefresh();
           }}
         />,
         document.body,

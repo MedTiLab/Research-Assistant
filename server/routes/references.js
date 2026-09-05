@@ -8,6 +8,7 @@ import { extractProjectDirectory } from '../projects.js';
 import { syncReferencesToProjectArtifacts, removeReferenceArtifactsFromProject } from '../utils/reference-project-artifacts.js';
 import { buildAggregatedProjectReferences } from '../utils/project-reference-aggregate.js';
 import { getZoteroClient } from '../utils/zotero-client.js';
+import { mapLocalZoteroItem, readZoteroLocalLibrary, scanZoteroLocalLibrary } from '../utils/zotero-local-library.js';
 import { parseBibtex } from '../utils/parsers/bibtex-parser.js';
 import { resolveReferencesPdfCacheDir } from '../utils/storagePaths.js';
 import { createDownloadRateLimiter } from '../middleware/rate-limit.js';
@@ -37,6 +38,40 @@ function getSafeReferenceCacheId(referenceId) {
 
 function getCachedPdfPath(referenceId) {
   return path.join(getPdfCacheDir(), `${getSafeReferenceCacheId(referenceId)}.pdf`);
+}
+
+function normalizeDoi(value) {
+  return String(value || '')
+    .trim()
+    .replace(/^doi:\s*/i, '')
+    .replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, '')
+    .trim()
+    .replace(/[\s.,;]+$/g, '')
+    .toLowerCase();
+}
+
+function mapCrossrefWork(work) {
+  const title = Array.isArray(work?.title) ? work.title[0] : work?.title;
+  const containerTitle = Array.isArray(work?.['container-title']) ? work['container-title'][0] : work?.['container-title'];
+  const dateParts = work?.published?.['date-parts']?.[0]
+    || work?.['published-print']?.['date-parts']?.[0]
+    || work?.['published-online']?.['date-parts']?.[0]
+    || [];
+  return {
+    title: String(title || '').trim(),
+    authors: Array.isArray(work?.author)
+      ? work.author.map((author) => ({
+        family: String(author?.family || '').trim(),
+        given: String(author?.given || '').trim(),
+      })).filter((author) => author.family || author.given)
+      : [],
+    year: Number.isInteger(Number(dateParts[0])) ? Number(dateParts[0]) : null,
+    abstract: String(work?.abstract || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() || null,
+    doi: normalizeDoi(work?.DOI),
+    url: String(work?.URL || '').trim() || null,
+    journal: String(containerTitle || '').trim() || null,
+    item_type: String(work?.type || 'article').trim(),
+  };
 }
 
 async function resolveProjectAbsolutePath(projectName) {
@@ -323,6 +358,33 @@ router.get('/tags', async (req, res) => {
   }
 });
 
+/** POST /api/references/metadata/resolve-doi — preview authoritative Crossref metadata. */
+router.post('/metadata/resolve-doi', async (req, res) => {
+  const doi = normalizeDoi(req.body?.doi);
+  if (!doi || !/^10\.\d{4,9}\/\S+$/i.test(doi)) {
+    return res.status(400).json({ error: 'A valid DOI is required' });
+  }
+
+  try {
+    const response = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`, {
+      headers: {
+        Accept: 'application/json',
+        'User-Agent': 'MedHelp/1.0 (reference metadata resolver)',
+      },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (response.status === 404) return res.status(404).json({ error: 'DOI was not found in Crossref' });
+    if (!response.ok) return res.status(502).json({ error: `Crossref request failed (${response.status})` });
+    const payload = await response.json();
+    const metadata = mapCrossrefWork(payload?.message);
+    if (!metadata.title) return res.status(502).json({ error: 'Crossref returned incomplete metadata' });
+    res.json({ metadata, source: 'crossref' });
+  } catch (error) {
+    const timedOut = error?.name === 'TimeoutError' || error?.name === 'AbortError';
+    res.status(timedOut ? 504 : 502).json({ error: timedOut ? 'Crossref request timed out' : 'Crossref metadata lookup failed' });
+  }
+});
+
 /** GET /api/references/zotero/status — check Zotero connectivity */
 router.get('/zotero/status', async (req, res) => {
   try {
@@ -347,6 +409,153 @@ router.get('/zotero/status', async (req, res) => {
       endpoint: null,
       detail: error instanceof Error ? error.message : null,
     });
+  }
+});
+
+function buildLocalZoteroDiff(userId, scan) {
+  const sourceIndex = referencesDb.getZoteroSourceIndex(userId);
+  const existing = new Map(sourceIndex.map((row) => [row.source_id, row]));
+  const localKeys = new Set(scan.items.map((item) => item.sourceId));
+  const added = [];
+  const updated = [];
+  const unchanged = [];
+  for (const item of scan.items) {
+    const current = existing.get(item.sourceId);
+    if (!current) {
+      added.push(item.sourceId);
+      continue;
+    }
+    const previousModified = current.raw_data?.zoteroLocal?.dateModified || null;
+    (previousModified && previousModified === item.dateModified ? unchanged : updated).push(item.sourceId);
+  }
+  const removed = sourceIndex.filter((row) => !localKeys.has(row.source_id)).map((row) => ({
+    sourceId: row.source_id,
+    referenceId: row.id,
+  }));
+  return { added, updated, unchanged, removed };
+}
+
+/** POST /api/references/zotero/local/scan — read Zotero's local SQLite database without its API. */
+router.post('/zotero/local/scan', async (req, res) => {
+  try {
+    const scan = await scanZoteroLocalLibrary(req.body?.zoteroDir);
+    const diff = buildLocalZoteroDiff(req.user.id, scan);
+    res.json({ scan, diff });
+  } catch (error) {
+    console.error('Error scanning local Zotero library:', error);
+    res.status(400).json({ error: error.message || 'Failed to read the Zotero data directory' });
+  }
+});
+
+/** POST /api/references/zotero/local/migrate — initial import or incremental local sync. */
+router.post('/zotero/local/migrate', async (req, res) => {
+  try {
+    const {
+      zoteroDir,
+      itemIds,
+      projectName,
+      targetFolder = 'papers',
+      copyPdfs = true,
+      preserveCollections = true,
+      migrateNotes = true,
+      migrateAnnotations = true,
+      removeMissing = false,
+    } = req.body || {};
+    if (itemIds != null && (!Array.isArray(itemIds) || itemIds.length > 10000)) {
+      return res.status(400).json({ error: 'itemIds must be an array with at most 10000 entries' });
+    }
+
+    let projectPath = null;
+    if (projectName) {
+      try {
+        projectPath = await resolveProjectAbsolutePath(projectName);
+      } catch (error) {
+        const formatted = formatProjectPathError(projectName, error);
+        return res.status(formatted.status).json(formatted.payload);
+      }
+    }
+
+    const library = await readZoteroLocalLibrary(zoteroDir);
+    const allowed = Array.isArray(itemIds) && itemIds.length > 0
+      ? new Set(itemIds.map((value) => Number(value)))
+      : null;
+    const selected = allowed ? library.items.filter((item) => allowed.has(item.itemId)) : library.items;
+    const before = new Map(referencesDb.getZoteroSourceIndex(req.user.id).map((row) => [row.source_id, row]));
+    const ids = [];
+    const pdfByReferenceId = new Map();
+    let imported = 0;
+    let updated = 0;
+    let pdfsCopied = 0;
+    let folderLinks = 0;
+    const rootSegment = String(targetFolder || 'papers').replace(/[\\/:*?"<>|]/g, '_').trim() || 'papers';
+
+    ensurePdfCacheDir();
+    for (const item of selected) {
+      const previous = before.get(item.sourceId);
+      const mapped = mapLocalZoteroItem(item, { migrateNotes, migrateAnnotations });
+      const [referenceId] = referencesDb.syncFromZotero(req.user.id, [mapped]);
+      if (!referenceId) continue;
+      ids.push(referenceId);
+      if (previous) updated += 1;
+      else imported += 1;
+
+      if (copyPdfs && item.pdfPaths[0]) {
+        const cachedPath = getCachedPdfPath(referenceId);
+        await fsPromises.copyFile(item.pdfPaths[0], cachedPath);
+        referencesDb.setPdfCached(referenceId, true);
+        pdfByReferenceId.set(referenceId, cachedPath);
+        pdfsCopied += 1;
+      }
+
+      if (preserveCollections) {
+        const paths = item.collectionPaths.length > 0 ? item.collectionPaths : [[]];
+        for (const collectionPath of paths) {
+          const folder = referencesDb.getOrCreateFolderPath(req.user.id, [rootSegment, ...collectionPath]);
+          if (folder) folderLinks += referencesDb.addReferencesToFolder(req.user.id, folder.id, [referenceId]) || 0;
+        }
+      }
+    }
+
+    let linked = 0;
+    if (projectName && ids.length > 0) {
+      linked = referencesDb.bulkLinkIds(projectName, ids);
+      const syncedReferences = referencesDb.getReferencesByIds(req.user.id, ids);
+      await syncReferencesToProjectArtifacts({
+        projectPath,
+        projectName,
+        references: syncedReferences,
+        resolvePdfSource: async (reference) => {
+          const cachedPath = pdfByReferenceId.get(reference.id) || getCachedPdfPath(reference.id);
+          return fs.existsSync(cachedPath) ? { pdfSourcePath: cachedPath } : {};
+        },
+      });
+    }
+
+    let removed = 0;
+    if (removeMissing && !allowed) {
+      const currentKeys = new Set(library.items.map((item) => item.sourceId));
+      const missingRows = [...before.values()].filter((row) => !currentKeys.has(row.source_id));
+      const links = referencesDb.getReferenceProjectLinks(req.user.id, missingRows.map((row) => row.id));
+      for (const row of missingRows) removed += referencesDb.deleteReference(req.user.id, row.id) ? 1 : 0;
+      void cleanupProjectArtifactsFromLinks(links);
+    }
+
+    res.json({
+      success: true,
+      mode: 'local-database',
+      total: selected.length,
+      synced: ids.length,
+      imported,
+      updated,
+      removed,
+      linked,
+      pdfsCopied,
+      folderLinks,
+      ids,
+    });
+  } catch (error) {
+    console.error('Error migrating local Zotero library:', error);
+    res.status(500).json({ error: `Local Zotero migration failed: ${error.message || 'Unknown error'}` });
   }
 });
 
@@ -721,7 +930,8 @@ router.get('/:id/pdf', limitReferencePdfDownload, async (req, res) => {
     // Sanitize ID for filesystem path and verify no traversal
     const pdfPath = getCachedPdfPath(ref.id);
     const resolvedPath = path.resolve(pdfPath);
-    if (!resolvedPath.startsWith(path.resolve(PDF_CACHE_DIR))) {
+    const resolvedCacheDir = path.resolve(getPdfCacheDir());
+    if (resolvedPath !== resolvedCacheDir && !resolvedPath.startsWith(`${resolvedCacheDir}${path.sep}`)) {
       return res.status(400).json({ error: 'Invalid reference ID' });
     }
 
@@ -767,6 +977,52 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     console.error('Error fetching reference:', error);
     res.status(500).json({ error: 'Failed to fetch reference' });
+  }
+});
+
+/** PATCH /api/references/:id — edit bibliographic metadata and refresh project artifacts. */
+router.patch('/:id', async (req, res) => {
+  try {
+    const patch = req.body && typeof req.body === 'object' ? req.body : {};
+    if (Object.prototype.hasOwnProperty.call(patch, 'year')) {
+      const year = patch.year === null || patch.year === '' ? null : Number(patch.year);
+      if (year !== null && (!Number.isInteger(year) || year < 1000 || year > new Date().getFullYear() + 1)) {
+        return res.status(400).json({ error: 'Year must be a valid four-digit year' });
+      }
+      patch.year = year;
+    }
+    if (Object.prototype.hasOwnProperty.call(patch, 'authors') && !Array.isArray(patch.authors)) {
+      return res.status(400).json({ error: 'authors must be an array' });
+    }
+    if (Object.prototype.hasOwnProperty.call(patch, 'keywords') && !Array.isArray(patch.keywords)) {
+      return res.status(400).json({ error: 'keywords must be an array' });
+    }
+
+    const result = referencesDb.updateReference(req.user.id, req.params.id, patch);
+    if (result.status === 'not_found') return res.status(404).json({ error: 'Reference not found' });
+    if (result.status === 'invalid_title') return res.status(400).json({ error: 'Title is required' });
+    if (result.status === 'duplicate_doi') {
+      return res.status(409).json({ error: 'Another reference already uses this DOI', duplicateId: result.duplicateId });
+    }
+
+    const links = referencesDb.getReferenceProjectLinks(req.user.id, [req.params.id]);
+    for (const link of links) {
+      try {
+        const projectPath = await resolveProjectAbsolutePath(link.project_id);
+        await syncReferencesToProjectArtifacts({
+          projectPath,
+          projectName: link.project_id,
+          references: [result.reference],
+        });
+      } catch (error) {
+        console.warn(`[References] Failed to refresh project metadata for ${link.project_id}:`, error.message);
+      }
+    }
+
+    res.json({ reference: result.reference });
+  } catch (error) {
+    console.error('Error updating reference:', error);
+    res.status(500).json({ error: 'Failed to update reference' });
   }
 });
 

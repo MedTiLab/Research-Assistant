@@ -37,7 +37,7 @@ type SurveyPageProps = {
   compact?: boolean;
 };
 
-const RIGHT_SIDEBAR_WIDTH = 480;
+const LIBRARY_SIDEBAR_WIDTH = 340;
 
 type SelectedItem =
   | { type: 'file'; value: SurveyFile }
@@ -517,7 +517,7 @@ export default function SurveyPage({
     { key: 'graphs', title: t('surveyPage.sections.graphs'), files: graphs },
     { key: 'notes', title: t('surveyPage.sections.notes'), files: notes },
   ] as const;
-  const resolvedRightSidebarWidth = rightSidebarWidth ?? RIGHT_SIDEBAR_WIDTH;
+  const resolvedRightSidebarWidth = rightSidebarWidth ?? LIBRARY_SIDEBAR_WIDTH;
 
   if (compact) {
     return (
@@ -644,7 +644,7 @@ export default function SurveyPage({
   return (
     <div className="flex h-full flex-col bg-background">
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        <div className="flex-1 min-w-0 overflow-auto p-4">
+        <div className="order-3 min-w-0 flex-1 overflow-auto bg-background p-4">
           {loading ? (
             <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -693,11 +693,11 @@ export default function SurveyPage({
         </div>
 
         <div
-          className="w-px shrink-0 bg-border/70"
+          className="order-2 w-px shrink-0 bg-border/70"
           aria-hidden="true"
         />
 
-        <div style={{ width: resolvedRightSidebarWidth }} className="shrink-0 flex flex-col overflow-hidden bg-card">
+        <div style={{ width: resolvedRightSidebarWidth }} className="order-1 flex shrink-0 flex-col overflow-hidden bg-card">
           <div className="flex-1 space-y-3 overflow-y-auto p-3">
             <div className="relative">
               <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground/70" />

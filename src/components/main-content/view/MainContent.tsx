@@ -366,10 +366,14 @@ function MainContent({
     ? chatSidebarLayout.width + (chatSidebarLayout.collapsed ? 0 : 4)
     : 0;
   const surveySidebarWidth = !isMobile && !editorExpanded
+    ? Math.min(360, Math.max(300, Math.round(storedChatSidebarWidth * 0.72)))
+    : undefined;
+  const literatureChatWidth = !isMobile && !editorExpanded
     ? (chatSidebarLayout.width >= MIN_CHAT_SIDEBAR_WIDTH
         ? clampChatSidebarWidth(chatSidebarLayout.width)
         : storedChatSidebarWidth)
     : undefined;
+  const showLiteratureReaderChat = activeTab === 'survey' && !isMobile && !editorExpanded && !editingFile;
   const detachChatContextSidebar = activeTab === 'chat' && !isMobile && !editorExpanded && Boolean(selectedProject);
   const showDetachedChatSidebar = detachChatContextSidebar && !editingFile;
   const showTopDockedEditor = Boolean(editingFile) && !isMobile && !editorExpanded;
@@ -434,16 +438,6 @@ function MainContent({
     }
     setContextSidebarTab((current) => current === 'consultation' ? 'context' : current);
   }, []);
-
-  React.useEffect(() => {
-    if (activeTab !== 'survey' || !selectedProjectName || isMobile) {
-      return;
-    }
-
-    setContextSidebarTab('survey');
-    setSidebarExpandSignal((current) => current + 1);
-    setActiveTab('chat');
-  }, [activeTab, isMobile, selectedProjectName, setActiveTab]);
 
   React.useEffect(() => {
     setContextSidebarProvider(selectedSession?.__provider || 'claude');
@@ -675,8 +669,27 @@ function MainContent({
         }
       >
         <div className="flex flex-1 min-h-0 overflow-hidden">
-          <div className={`flex flex-col min-h-0 overflow-hidden ${editorExpanded ? 'hidden' : ''} flex-1`}>
-            <div className={`h-full ${activeTab === 'chat' ? 'block' : 'hidden'}`}>
+          <div className={`flex min-h-0 overflow-hidden ${showLiteratureReaderChat ? 'flex-row' : 'flex-col'} ${editorExpanded ? 'hidden' : ''} flex-1`}>
+            <div
+              className={activeTab === 'chat'
+                ? 'h-full min-h-0 min-w-0 flex-1'
+                : showLiteratureReaderChat
+                  ? 'order-3 flex h-full min-h-0 shrink-0 flex-col border-l border-border/70 bg-background'
+                  : 'hidden'}
+              style={showLiteratureReaderChat && literatureChatWidth ? { width: literatureChatWidth } : undefined}
+            >
+              {showLiteratureReaderChat && (
+                <div className="flex h-11 shrink-0 items-center justify-between border-b border-border/70 bg-card/85 px-4 backdrop-blur-sm">
+                  <div className="min-w-0">
+                    <div className="text-xs font-semibold text-foreground">AI 文献助手</div>
+                    <div className="truncate text-[10px] text-muted-foreground">沿用当前项目与会话，可直接结合左侧文献提问</div>
+                  </div>
+                  <span className="ml-3 inline-flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> 同步会话
+                  </span>
+                </div>
+              )}
+              <div className="min-h-0 flex-1">
               <ErrorBoundary showDetails>
                 <React.Suspense fallback={<LazyTabFallback />}>
                   <ChatInterface
@@ -720,7 +733,7 @@ function MainContent({
                     onNavigateAppTab={setActiveTab}
                     onContextSidebarLayoutChange={setChatSidebarLayout}
                     contextSidebarExpandSignal={sidebarExpandSignal}
-                    detachContextSidebar={detachChatContextSidebar}
+                    detachContextSidebar={showLiteratureReaderChat || detachChatContextSidebar}
                     contextSidebarTab={contextSidebarTab}
                     onContextSidebarTabChange={setContextSidebarTab}
                     onContextSidebarMessagesChange={setContextSidebarMessages}
@@ -739,6 +752,7 @@ function MainContent({
                   />
                 </React.Suspense>
               </ErrorBoundary>
+              </div>
             </div>
 
           {activeTab === 'context' && (
@@ -783,7 +797,7 @@ function MainContent({
           )}
 
           {activeTab === 'survey' && (
-            <div className="h-full overflow-hidden">
+            <div className={`h-full min-h-0 min-w-0 overflow-hidden ${showLiteratureReaderChat ? 'order-1 flex-1' : ''}`}>
               <React.Suspense fallback={<LazyTabFallback />}>
                 <SurveyPage
                   selectedProject={selectedProject}

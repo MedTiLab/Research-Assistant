@@ -11,6 +11,7 @@ const REFERENCE_ARTIFACT_METADATA_FILENAME = 'metadata.json';
 const REFERENCE_ARTIFACT_NOTE_FILENAME = 'note.md';
 const REFERENCE_ARTIFACT_EXTRACT_FILENAME = 'extract.txt';
 const REFERENCE_ARTIFACT_PDF_FILENAME = 'paper.pdf';
+const REFERENCE_ARTIFACT_ZOTERO_FILENAME = 'zotero.md';
 
 function collapseWhitespace(value = '') {
   return String(value || '').replace(/\s+/g, ' ').trim();
@@ -120,6 +121,9 @@ function buildReferenceNoteMarkdown(reference, artifactPaths, options = {}) {
     REFERENCE_ARTIFACT_NOTE_FILENAME,
     REFERENCE_ARTIFACT_EXTRACT_FILENAME,
   ];
+  if (reference?.raw_data?.zoteroLocal) {
+    availableFiles.push(REFERENCE_ARTIFACT_ZOTERO_FILENAME);
+  }
   if (options.hasPdf) {
     availableFiles.push(REFERENCE_ARTIFACT_PDF_FILENAME);
   }
@@ -131,6 +135,18 @@ function buildReferenceNoteMarkdown(reference, artifactPaths, options = {}) {
 
   lines.push('', '## Notes', '', 'Canonical project artifact for this reference. Reuse this folder for project notes, comparisons, and downstream writing support.');
 
+  return `${lines.join('\n').trim()}\n`;
+}
+
+function buildZoteroMarkdown(reference) {
+  const zoteroLocal = reference?.raw_data?.zoteroLocal;
+  if (!zoteroLocal) return null;
+  const notes = Array.isArray(zoteroLocal.notes) ? zoteroLocal.notes.filter(Boolean) : [];
+  const annotations = Array.isArray(zoteroLocal.annotations) ? zoteroLocal.annotations.filter(Boolean) : [];
+  const lines = ['# Zotero Import', '', '> 此文件由 Zotero 同步刷新；请把自己的阅读笔记写在 note.md。'];
+  if (notes.length > 0) lines.push('', '## Notes', '', notes.join('\n\n'));
+  if (annotations.length > 0) lines.push('', '## Highlights', '', annotations.join('\n\n'));
+  if (notes.length === 0 && annotations.length === 0) lines.push('', '当前条目没有 Zotero 笔记或高亮。');
   return `${lines.join('\n').trim()}\n`;
 }
 
@@ -155,6 +171,7 @@ export function getReferenceArtifactPaths(projectPath, referenceId) {
     notePath: path.join(artifactDir, REFERENCE_ARTIFACT_NOTE_FILENAME),
     extractPath: path.join(artifactDir, REFERENCE_ARTIFACT_EXTRACT_FILENAME),
     pdfPath: path.join(artifactDir, REFERENCE_ARTIFACT_PDF_FILENAME),
+    zoteroPath: path.join(artifactDir, REFERENCE_ARTIFACT_ZOTERO_FILENAME),
   };
 }
 
@@ -238,22 +255,35 @@ export async function syncReferenceArtifactToProject({
       note: REFERENCE_ARTIFACT_NOTE_FILENAME,
       extract: REFERENCE_ARTIFACT_EXTRACT_FILENAME,
       pdf: hasPdf ? REFERENCE_ARTIFACT_PDF_FILENAME : null,
+      zotero: reference?.raw_data?.zoteroLocal ? REFERENCE_ARTIFACT_ZOTERO_FILENAME : null,
     },
     extractSource,
     syncedAt: new Date().toISOString(),
   };
 
   const noteMarkdown = buildReferenceNoteMarkdown(reference, artifactPaths, { hasPdf });
+  const noteExists = await pathExists(artifactPaths.notePath);
 
-  await Promise.all([
+  const writes = [
     fsPromises.writeFile(artifactPaths.metadataPath, `${JSON.stringify(metadata, null, 2)}\n`, 'utf8'),
-    fsPromises.writeFile(artifactPaths.notePath, noteMarkdown, 'utf8'),
-  ]);
+  ];
+  const zoteroMarkdown = buildZoteroMarkdown(reference);
+  if (zoteroMarkdown) {
+    writes.push(fsPromises.writeFile(artifactPaths.zoteroPath, zoteroMarkdown, 'utf8'));
+  }
+  // note.md is user-owned after its first creation. Metadata and extract.txt
+  // are derived artifacts and may be refreshed, but re-syncing must never
+  // erase reading notes, comparisons, or project-specific annotations.
+  if (!noteExists) {
+    writes.push(fsPromises.writeFile(artifactPaths.notePath, noteMarkdown, 'utf8'));
+  }
+  await Promise.all(writes);
 
   return {
     ...artifactPaths,
     hasPdf,
     extractSource,
+    noteCreated: !noteExists,
   };
 }
 
