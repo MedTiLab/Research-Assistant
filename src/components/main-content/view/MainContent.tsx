@@ -672,7 +672,7 @@ function MainContent({
           <div className={`flex min-h-0 overflow-hidden ${showLiteratureReaderChat ? 'flex-row' : 'flex-col'} ${editorExpanded ? 'hidden' : ''} flex-1`}>
             <div
               className={activeTab === 'chat'
-                ? 'h-full min-h-0 min-w-0 flex-1'
+                ? 'flex h-full min-h-0 min-w-0 flex-1 flex-col'
                 : showLiteratureReaderChat
                   ? 'order-3 flex h-full min-h-0 shrink-0 flex-col border-l border-border/70 bg-background'
                   : 'hidden'}

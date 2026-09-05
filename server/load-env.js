@@ -3,16 +3,14 @@ import { spawnSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { loadEnvFile } from './load-env-file.js';
+import { shouldImportLoginShellEnvironment } from './utils/loginShellEnvironment.js';
 import {
   resolveAppDataRoot,
   resolveAppDatabasePath,
   resolveLegacyDatabasePaths,
 } from './utils/storagePaths.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 const LOGIN_SHELL_ENV_IMPORT_TIMEOUT_MS = 4000;
 
 function shouldImportLoginShellEnvKey(key = '') {
@@ -76,11 +74,7 @@ function resolveLoginShellPath() {
 }
 
 function importLoginShellEnvironment() {
-  if (process.platform === 'win32') {
-    return;
-  }
-
-  if (process.env.MEDHELP_DISABLE_LOGIN_SHELL_ENV_IMPORT === '1') {
+  if (!shouldImportLoginShellEnvironment()) {
     return;
   }
 
@@ -102,6 +96,8 @@ function importLoginShellEnvironment() {
   const result = spawnSync(shellPath, args, {
     encoding: 'utf8',
     timeout: LOGIN_SHELL_ENV_IMPORT_TIMEOUT_MS,
+    killSignal: 'SIGKILL',
+    stdio: ['ignore', 'pipe', 'pipe'],
     maxBuffer: 5 * 1024 * 1024,
     env: {
       ...process.env,
@@ -185,25 +181,9 @@ function resolveDefaultDatabasePath() {
   }
 }
 
-try {
-  importLoginShellEnvironment();
-
-  const envPath = path.join(__dirname, '../.env');
-  const envFile = fs.readFileSync(envPath, 'utf8');
-  envFile.split('\n').forEach(line => {
-    const trimmedLine = line.trim();
-    if (trimmedLine && !trimmedLine.startsWith('#')) {
-      const [key, ...valueParts] = trimmedLine.split('=');
-      if (key && valueParts.length > 0 && !process.env[key]) {
-        process.env[key] = valueParts.join('=').trim();
-      }
-    }
-  });
-} catch (e) {
-  if (e?.code !== 'ENOENT') {
-    console.warn('[load-env] Failed to read .env:', e.message);
-  }
-}
+// Read flags before deciding whether to start a login shell.
+loadEnvFile();
+importLoginShellEnvironment();
 
 if (!process.env.DATABASE_PATH) {
   process.env.DATABASE_PATH = resolveDefaultDatabasePath();

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import '../server/load-env.js';
+import { loadEnvFile } from '../server/load-env-file.js';
 import {
   DEFAULT_BACKEND_PORT,
   getBackendPortSync,
@@ -10,6 +10,8 @@ import {
 const REQUEST_TIMEOUT_MS = 1000;
 const POLL_INTERVAL_MS = 250;
 const DEFAULT_TIMEOUT_MS = 30000;
+
+loadEnvFile();
 
 const timeoutMs = parsePortNumber(
   process.env.MEDHELP_BACKEND_WAIT_TIMEOUT_MS,

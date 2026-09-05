@@ -41,7 +41,7 @@
     "url": "https://github.com/MedTiLab/Research-Assistant/issues"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"npm run server:watch\" \"npm run client\"",
+    "dev": "node scripts/ensure-native-modules.js && concurrently --kill-others \"node scripts/watch-server.js\" \"npm run client\"",
     "server": "node scripts/ensure-native-modules.js && node server/index.js",
     "server:watch": "node scripts/ensure-native-modules.js && node scripts/watch-server.js",
     "client": "node scripts/wait-for-backend.js && vite --host",
