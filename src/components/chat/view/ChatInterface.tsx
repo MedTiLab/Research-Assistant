@@ -1,7 +1,9 @@
+import { createPortal } from 'react-dom';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTaskMaster } from '../../../contexts/TaskMasterContext';
 import { useTranslation } from 'react-i18next';
 import ChatMessagesPane from './subcomponents/ChatMessagesPane';
+import ConversationCanvas from './subcomponents/ConversationCanvas';
 import ChatComposer from './subcomponents/ChatComposer';
 import ProjectCreationWizard from '../../ProjectCreationWizard';
 import ChatContextSidebar from './subcomponents/ChatContextSidebar';
@@ -75,6 +77,7 @@ type PendingViewSession = {
 };
 
 function ChatInterface({
+  headerControlsTarget,
   selectedProject,
   selectedSession,
   initialProjectFiles = [],
@@ -126,6 +129,10 @@ function ChatInterface({
   const { t, i18n } = useTranslation('chat');
   const { isMobile } = useDeviceSettings({ trackPWA: false });
   const [messageShareUrl, setMessageShareUrl] = useState('');
+  const [conversationView, setConversationView] = useState(() => safeLocalStorage.getItem('conversation-view') === 'canvas' ? 'canvas' : 'chat');
+  const [branchBusy, setBranchBusy] = useState(false);
+  useEffect(() => { setBranchBusy(false); }, [selectedProject?.name, selectedSession?.id]);
+
   const [isRewindConfirmOpen, setIsRewindConfirmOpen] = useState(false);
   const [showFolderConnector, setShowFolderConnector] = useState(false);
   const [selectionConsultationSeed, setSelectionConsultationSeed] = useState<SelectionConsultationSeed | null>(null);
@@ -251,6 +258,7 @@ function ChatInterface({
     scrollToBottomAndReset,
     handleScroll,
     requestTranscriptReconcile,
+    refreshBranchTranscript,
     resolveSessionStatusCheck,
   } = useChatSessionState({
     selectedProject,
@@ -1540,8 +1548,19 @@ function ChatInterface({
               </div>
             )}
 
-            {chatMessagesPane}
-            {chatComposer}
+            {provider === 'pi' && headerControlsTarget && createPortal(<div className="inline-flex items-center gap-1 rounded-lg bg-muted/50 p-1" role="group" aria-label={t('canvas.viewMode')}>
+              {(['chat', 'canvas'] as const).map((view) => <button key={view} type="button" disabled={branchBusy} aria-pressed={conversationView === view} onClick={() => { setConversationView(view); safeLocalStorage.setItem('conversation-view', view); }} className={`rounded-md px-3 py-1 text-xs ${conversationView === view ? 'bg-primary/10 font-medium text-primary' : 'text-muted-foreground hover:bg-muted'}`}>{t(`canvas.${view}Mode`)}</button>)}
+            </div>, headerControlsTarget)}
+            {provider === 'pi' && conversationView === 'canvas' ? <ConversationCanvas
+              key={`${selectedProject.name}:${compactSessionId}`}
+              projectName={selectedProject.name}
+              sessionId={compactSessionId && !isTemporaryAgentSessionId(compactSessionId) ? compactSessionId : null}
+              isLoading={isLoading || isLoadingSessionMessages || queuedTurns.length > 0}
+              revision={sessionMessages.length}
+              onBusyChange={setBranchBusy}
+              onBranchChanged={() => refreshBranchTranscript(selectedProject.name, compactSessionId!)}
+            /> : chatMessagesPane}
+            <fieldset disabled={branchBusy} className="contents">{chatComposer}</fieldset>
             {selectedProject && isEmpty && newSessionMode === 'research' && !shouldShowImportedProjectAnalysisPrompt && (
               <GuidedPromptStarter
                 projectName={selectedProject.name}

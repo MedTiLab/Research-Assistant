@@ -36,7 +36,17 @@ export function piSessionBranches(records, sessionId) {
     const text = typeof content === 'string' ? content : (content || []).filter((part) => part.type === 'text').map((part) => part.text).join('\n');
     return text ? [{ id: entry.id, parentId: entry.parentId, role: entry.message.role, preview: text.slice(0, 180) }] : [];
   });
-  return { sessionId, activeBranchId, branches: [...branches.values()], messages, filesReverted: false };
+  // Include every path for the canvas, while keeping messages scoped to the active
+  // path for SDK fork validation and existing callers.
+  const activeIds = new Set(messages.map((message) => message.id));
+  const canvasMessages = records.filter(isEntry).flatMap((entry) => {
+    if (entry.type !== 'message' || !['user', 'assistant'].includes(entry.message?.role)) return [];
+    const content = entry.message.content;
+    if (Array.isArray(content) && content.some((part) => ['toolCall', 'tool_use'].includes(part.type))) return [];
+    const text = typeof content === 'string' ? content : (content || []).filter((part) => part.type === 'text').map((part) => part.text).join('\n');
+    return text ? [{ id: entry.id, branchId: branchByEntry.get(entry.id) || 'main', role: entry.message.role, preview: text.slice(0, 600), active: activeIds.has(entry.id) }] : [];
+  });
+  return { sessionId, activeBranchId, branches: [...branches.values()], messages, canvasMessages, filesReverted: false };
 }
 
 // Files/artifacts stay shared. Conversation todos/plans and task cards follow the selected path.

@@ -119,6 +119,7 @@ export interface MainContentProps {
 }
 
 export interface MainContentHeaderProps {
+  chatControlsRef?: (element: HTMLDivElement | null) => void;
   activeTab: AppTab;
   setActiveTab?: Dispatch<SetStateAction<AppTab>>;
   selectedProject: Project | null;
@@ -127,8 +128,6 @@ export interface MainContentHeaderProps {
   onMenuClick: () => void;
   onNavigateBack?: () => void;
   contentInsetRight?: number;
-  showExpandContextSidebar?: boolean;
-  onExpandContextSidebar?: () => void;
 }
 
 export interface MainContentTitleProps {

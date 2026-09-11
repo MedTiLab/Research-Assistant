@@ -25,18 +25,14 @@ import GitPanel from '../../../GitPanel';
 import SurveyPage from '../../../survey/view/SurveyPage';
 import ConversationMemoryPanel from './ConversationMemoryPanel';
 import ComputeNodeSelector from './ComputeNodeSelector';
+import ChatToolsDock from './ChatToolsDock';
 import SimpleBrowser from './SimpleBrowser';
 import { cn } from '../../../../lib/utils';
 import { useDeviceSettings } from '../../../../hooks/useDeviceSettings';
-import { useTheme } from '../../../../contexts/ThemeContext';
 import { api } from '../../../../utils/api';
 import { PROJECT_FILE_MOVED_EVENT, type ProjectFileMovedDetail } from '../../../../utils/projectFileEvents';
 import type { ProjectFileChatContextItem } from '../../../../utils/projectFileChatContext';
 import type { AppTab, Project, ProjectSession, SessionMode, SessionProvider } from '../../../../types/app';
-import {
-  getSidebarIconRailWidth,
-  SIDEBAR_ICON_RAIL_WIDTH,
-} from '../../../sidebar/view/subcomponents/sidebarNavTiles';
 import type { Reference } from '../../../references/types';
 import {
   VISIBLE_CHAT_SIDEBAR_TABS,
@@ -602,7 +598,6 @@ export default function ChatContextSidebar({
   consultationContent,
 }: ChatContextSidebarProps) {
   const { t, i18n } = useTranslation(['chat', 'common']);
-  const { uiFontScale } = useTheme();
   const { isMobile } = useDeviceSettings({ trackPWA: false });
   const [fetchedMessages, setFetchedMessages] = useState<ChatMessage[]>([]);
   const [isLoadingTrace, setIsLoadingTrace] = useState(false);
@@ -626,10 +621,7 @@ export default function ChatContextSidebar({
     const parsed = rawValue ? Number.parseInt(rawValue, 10) : NaN;
     return Number.isFinite(parsed) ? Math.min(MAX_SIDEBAR_WIDTH, Math.max(MIN_SIDEBAR_WIDTH, parsed)) : DEFAULT_BROWSER_WIDTH;
   });
-  const [isCollapsed, setIsCollapsed] = useState(() => (
-    typeof window !== 'undefined'
-      && window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === '1'
-  ));
+  const [isCollapsed, setIsCollapsed] = useState(activeSidebarTab !== 'context');
   const [collapsedSections, setCollapsedSections] = useState<SidebarSectionState>(() => {
     if (typeof window === 'undefined') {
       return { memory: false, context: false, tasks: false, review: false };
@@ -652,7 +644,6 @@ export default function ChatContextSidebar({
   const [browserExpandedWidth, setBrowserExpandedWidth] = useState(0);
   const asideRef = useRef<HTMLElement | null>(null);
   const isSidebarCollapsed = !isMobile && isCollapsed;
-  const fixedRailWidth = getSidebarIconRailWidth(uiFontScale);
   const displayedSidebarWidth = isBrowserExpanded
     ? Math.max(MIN_SIDEBAR_WIDTH, browserExpandedWidth)
     : activeSidebarTab === 'browser'
@@ -666,10 +657,10 @@ export default function ChatContextSidebar({
     }
 
     onLayoutChange?.({
-      width: isSidebarCollapsed ? fixedRailWidth : displayedSidebarWidth + fixedRailWidth,
+      width: isSidebarCollapsed ? 0 : displayedSidebarWidth,
       collapsed: isSidebarCollapsed,
     });
-  }, [displayedSidebarWidth, fixedRailWidth, isMobile, isSidebarCollapsed, onLayoutChange]);
+  }, [displayedSidebarWidth, isMobile, isSidebarCollapsed, onLayoutChange]);
 
   useEffect(() => {
     if (expandSignal <= 0 || isMobile) return;
@@ -707,7 +698,7 @@ export default function ChatContextSidebar({
     const updateExpandedWidth = () => {
       setBrowserExpandedWidth(Math.max(
         MIN_SIDEBAR_WIDTH,
-        resolveResizeContainerWidth(asideRef.current) - fixedRailWidth,
+        resolveResizeContainerWidth(asideRef.current),
       ));
     };
     const layoutRoot = asideRef.current?.closest(CHAT_LAYOUT_ROOT_SELECTOR);
@@ -721,7 +712,7 @@ export default function ChatContextSidebar({
       resizeObserver?.disconnect();
       window.removeEventListener('resize', updateExpandedWidth);
     };
-  }, [fixedRailWidth, isBrowserExpanded]);
+  }, [isBrowserExpanded]);
 
   const effectiveSessionId = selectedSession?.id || currentSessionId || null;
   const effectiveProvider = (selectedSession?.__provider as SessionProvider | undefined) || provider;
@@ -1075,7 +1066,7 @@ export default function ChatContextSidebar({
     || (isLoadingTrace && effectiveSidebarTab === 'context');
 
   return (
-    <div className="flex h-full min-h-0 flex-shrink-0 flex-row">
+    <div className="relative flex h-full min-h-0 flex-shrink-0 flex-row">
       {!isMobile && !isSidebarCollapsed && !isBrowserExpanded && (
         <div
           onMouseDown={handleResizeStart}
@@ -1407,15 +1398,11 @@ export default function ChatContextSidebar({
       </aside>
 
       {!isMobile && (
-        <aside
-          data-chat-files-rail="true"
-          className="medical-icon-rail relative z-30 flex h-full flex-shrink-0 flex-col items-center overflow-visible border-l border-border/50 py-2.5"
-          style={{ width: SIDEBAR_ICON_RAIL_WIDTH }}
-          aria-label={t('sessionContext.sidebarTabs.files')}
-        >
+        <ChatToolsDock panelOpen={!isSidebarCollapsed} onCollapse={() => setSidebarCollapsed(true)}>
+          {(dismiss) => <>
           <button
             type="button"
-            onClick={handleFixedFilesRailClick}
+            onClick={() => { handleFixedFilesRailClick(); dismiss(); }}
             title={t('sessionContext.sidebarTabs.files')}
             aria-label={t('sessionContext.sidebarTabs.files')}
             aria-expanded={!isSidebarCollapsed && effectiveSidebarTab === 'files'}
@@ -1425,14 +1412,11 @@ export default function ChatContextSidebar({
               !isSidebarCollapsed && effectiveSidebarTab === 'files' && 'bg-primary/12 text-primary shadow-sm',
             )}
           >
-            {!isSidebarCollapsed && effectiveSidebarTab === 'files' && (
-              <span className="absolute -right-2 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-primary" />
-            )}
             <Folders className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.9} />
           </button>
           <button
             type="button"
-            onClick={handleFixedBrowserRailClick}
+            onClick={() => { handleFixedBrowserRailClick(); dismiss(); }}
             title={t('sessionContext.sidebarTabs.browser')}
             aria-label={t('sessionContext.sidebarTabs.browser')}
             aria-expanded={!isSidebarCollapsed && effectiveSidebarTab === 'browser'}
@@ -1442,14 +1426,11 @@ export default function ChatContextSidebar({
               !isSidebarCollapsed && effectiveSidebarTab === 'browser' && 'bg-primary/12 text-primary shadow-sm',
             )}
           >
-            {!isSidebarCollapsed && effectiveSidebarTab === 'browser' && (
-              <span className="absolute -right-2 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-primary" />
-            )}
             <Globe2 className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.9} />
           </button>
           <button
             type="button"
-            onClick={handleFixedGitRailClick}
+            onClick={() => { handleFixedGitRailClick(); dismiss(); }}
             title={t('sessionContext.sidebarTabs.git')}
             aria-label={t('sessionContext.sidebarTabs.git')}
             aria-expanded={!isSidebarCollapsed && effectiveSidebarTab === 'git'}
@@ -1459,13 +1440,11 @@ export default function ChatContextSidebar({
               !isSidebarCollapsed && effectiveSidebarTab === 'git' && 'bg-primary/12 text-primary shadow-sm',
             )}
           >
-            {!isSidebarCollapsed && effectiveSidebarTab === 'git' && (
-              <span className="absolute -right-2 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-primary" />
-            )}
             <GitBranch className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.9} />
           </button>
-          <ComputeNodeSelector variant="rail" />
-        </aside>
+          <ComputeNodeSelector variant="rail" onSelected={dismiss} />
+          </>}
+        </ChatToolsDock>
       )}
     </div>
   );

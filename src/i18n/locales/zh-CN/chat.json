@@ -575,7 +575,9 @@
       "restoreBrowser": "还原浏览器大小",
       "resize": "拖动调整宽度",
       "more": "更多",
-      "workspaceTools": "工作区工具"
+      "workspaceTools": "工作区工具",
+      "showTools": "展开侧边工具",
+      "hideTools": "收纳侧边工具"
     },
     "sidebarTabs": {
       "context": "上下文",
@@ -1208,5 +1210,34 @@
     "applyGenerateTasks": "应用并生成任务",
     "templateSuccessTitle": "模板应用成功！",
     "templateSuccessBody": "已创建 PRD，正在生成任务…"
+  },
+  "canvas": {
+    "title": "分支画布",
+    "viewMode": "对话显示模式",
+    "chatMode": "对话模式",
+    "canvasMode": "画布模式",
+    "hint": "拖动卡片标题调整位置 · 拖动空白处平移",
+    "zoomOut": "缩小",
+    "zoomIn": "放大",
+    "resetZoom": "重置缩放",
+    "refresh": "刷新画布",
+    "empty": "发送第一条消息后，在这里构建对话分支。",
+    "branchName": "新分支名称（可选）",
+    "running": "回复进行中，完成后可创建或切换分支",
+    "sharedFiles": "分支继承所选消息之前的上下文；项目文件共享。",
+    "main": "主分支",
+    "active": "当前分支",
+    "continue": "继续对话",
+    "branchEmpty": "在下方输入框继续这个分支。",
+    "you": "你",
+    "branchHere": "从这里分支",
+    "defaultName": "分支 {{count}}",
+    "loadFailed": "加载画布失败",
+    "changeFailed": "切换分支失败",
+    "retryHistory": "重新加载分支消息",
+    "autoLayout": "自动排版",
+    "fitView": "显示全部分支",
+    "moveBranch": "移动分支：{{name}}",
+    "dragHint": "拖动标题移动卡片，也可用方向键微调"
   }
 }

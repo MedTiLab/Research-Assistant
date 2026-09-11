@@ -1,4 +1,4 @@
-import { ArrowLeft, ChevronsLeft, ChevronsRight, PanelRightOpen } from 'lucide-react';
+import { ArrowLeft, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import MobileMenuButton from './MobileMenuButton';
@@ -63,12 +63,10 @@ export default function MainContentHeader({
   onMenuClick,
   onNavigateBack,
   contentInsetRight = 0,
-  showExpandContextSidebar = false,
-  onExpandContextSidebar,
+  chatControlsRef,
 }: MainContentHeaderProps) {
   const { t } = useTranslation();
   const backLabel = t('common:navigation.back');
-  const expandSidebarLabel = t('chat:sessionContext.actions.expand');
   const showLeftBack = Boolean(onNavigateBack) && GLOBAL_BACK_TABS.includes(activeTab);
   const showRightBack = Boolean(onNavigateBack)
     && Boolean(selectedProject)
@@ -81,7 +79,7 @@ export default function MainContentHeader({
       )}
     >
       <div
-        className={cn(MAIN_HEADER_ROW_CLASS, 'flex')}
+        className={cn(MAIN_HEADER_ROW_CLASS, chatControlsRef ? 'grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]' : 'flex')}
         style={contentInsetRight > 0 ? { paddingRight: contentInsetRight } : undefined}
       >
         <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
@@ -102,25 +100,13 @@ export default function MainContentHeader({
           />
         </div>
 
+        {chatControlsRef && <div ref={chatControlsRef} data-chat-header-controls="true" className="flex items-center justify-center" />}
         <div className="flex items-center justify-end gap-2">
           {showRightBack && onNavigateBack && (
             <HeaderBackButton onClick={onNavigateBack} label={backLabel} sidebarStyle />
           )}
 
-          {showExpandContextSidebar && onExpandContextSidebar && (
-            <button
-              type="button"
-              onClick={onExpandContextSidebar}
-              className={cn(
-                'inline-flex flex-none items-center justify-center rounded-lg border border-border/70 bg-background/85 p-0 leading-none text-muted-foreground shadow-sm transition-colors hover:text-foreground [&_svg]:block',
-                SIDEBAR_CONTROL_BUTTON_CLASS,
-              )}
-              aria-label={expandSidebarLabel}
-              title={expandSidebarLabel}
-            >
-              <PanelRightOpen className={SIDEBAR_CONTROL_ICON_CLASS} strokeWidth={2} />
-            </button>
-          )}
+
         </div>
       </div>
     </div>

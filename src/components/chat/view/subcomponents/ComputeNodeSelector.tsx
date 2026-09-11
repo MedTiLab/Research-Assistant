@@ -18,7 +18,7 @@ type ComputeNode = {
 
 const LOCAL_RESOURCE_ID = '__local__';
 
-function ComputeNodeSelectorContent({ variant }: { variant: ComputeNodeSelectorVariant }) {
+function ComputeNodeSelectorContent({ variant, onSelected }: { variant: ComputeNodeSelectorVariant; onSelected?: () => void }) {
   const isRail = variant === 'rail';
   const { t } = useTranslation('chat');
   const localKernel = useOptionalLocalKernel();
@@ -98,6 +98,7 @@ function ComputeNodeSelectorContent({ variant }: { variant: ComputeNodeSelectorV
     const nextNodeId = resourceId === LOCAL_RESOURCE_ID ? null : resourceId;
     if (nextNodeId === activeNodeId) {
       setOpen(false);
+      onSelected?.();
       return;
     }
 
@@ -111,6 +112,7 @@ function ComputeNodeSelectorContent({ variant }: { variant: ComputeNodeSelectorV
       }
       setActiveNodeId(nextNodeId);
       setOpen(false);
+      onSelected?.();
     } catch (selectError) {
       setError(selectError instanceof Error ? selectError.message : t('input.computeResource.selectFailed'));
     } finally {
@@ -240,8 +242,10 @@ function ComputeNodeSelectorContent({ variant }: { variant: ComputeNodeSelectorV
 
 export default function ComputeNodeSelector({
   variant = 'composer',
+  onSelected,
 }: {
   variant?: ComputeNodeSelectorVariant;
+  onSelected?: () => void;
 } = {}) {
   const { can } = useEntitlements();
 
@@ -249,5 +253,5 @@ export default function ComputeNodeSelector({
     return null;
   }
 
-  return <ComputeNodeSelectorContent variant={variant} />;
+  return <ComputeNodeSelectorContent variant={variant} onSelected={onSelected} />;
 }

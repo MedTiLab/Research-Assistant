@@ -539,6 +539,30 @@ export function useChatSessionState({
     });
   }, []);
 
+  const refreshBranchTranscript = useCallback(async (projectName: string, sessionId: string) => {
+    // A branch replaces history; completion reconciliation merges history and
+    // must be stopped before applying a different path.
+    setCompletionReconcileRequest(null);
+    setIsCompletionReconcileActive(false);
+    lastCompletionReconcileRequestRef.current = null;
+    const isCurrent = () => {
+      const view = transcriptViewIdentityRef.current;
+      return view.projectName === projectName
+        && [view.currentSessionId, view.selectedSessionId].includes(sessionId);
+    };
+    const response = await (api.sessionMessages as any)(projectName, sessionId, MESSAGES_PER_PAGE, 0, 'pi');
+    if (!response.ok) throw new Error('Failed to refresh branch history');
+    const data = await response.json();
+    if (!isCurrent()) return;
+    const messages = data.messages || [];
+    piHistoryWindowRef.current = null;
+    messagesOffsetRef.current = messages.length;
+    setHasMoreMessages(Boolean(data.hasMore));
+    setSessionMessages(messages);
+    setChatMessages(convertSessionMessages(messages));
+    setTokenBudget(data.tokenUsage ? piTokenBudget(data.tokenUsage) : null);
+  }, [setChatMessages]);
+
   const convertedMessages = useMemo(() => {
     return convertSessionMessages(sessionMessages);
   }, [sessionMessages]);
@@ -1465,6 +1489,7 @@ export function useChatSessionState({
     handleScroll,
     loadSessionMessages,
     requestTranscriptReconcile,
+    refreshBranchTranscript,
     resolveSessionStatusCheck,
   };
 }

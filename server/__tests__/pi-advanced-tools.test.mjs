@@ -77,6 +77,10 @@ suite('Pi advanced tool end-to-end', () => {
     const restored = await runtime.native.branches(identity, options);
     expect(restored.activeBranchId).toBe(created.activeBranchId);
     expect(restored.branches).toHaveLength(2);
+    expect(restored.canvasMessages.some((message) => message.preview === 'ORIGINAL_SECOND' && !message.active)).toBe(true);
+    const sibling = await runtime.native.changeBranch(identity, 'create', { entryId: forkPoint, label: 'Sibling' }, options);
+    expect(sibling.branches.find((branch) => branch.id === sibling.activeBranchId)).toMatchObject({ parentId: 'main', fromEntryId: forkPoint });
+
     await expect(runtime.native.changeBranch(identity, 'create', { entryId: 'unknown' }, options)).rejects.toThrow('complete user or assistant');
     expect(await fs.readFile(evidence, 'utf8')).toBe('disk state must stay');
   }, 25000);

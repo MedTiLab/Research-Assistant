@@ -575,7 +575,9 @@
       "restoreBrowser": "Restore browser size",
       "resize": "Drag to resize width",
       "more": "More",
-      "workspaceTools": "Workspace tools"
+      "workspaceTools": "Workspace tools",
+      "showTools": "Show side tools",
+      "hideTools": "Hide side tools"
     },
     "sidebarTabs": {
       "context": "Context",
@@ -1209,5 +1211,34 @@
     "applyGenerateTasks": "Apply & generate tasks",
     "templateSuccessTitle": "Template applied successfully!",
     "templateSuccessBody": "Your PRD has been created and tasks are being generated..."
+  },
+  "canvas": {
+    "title": "Conversation canvas",
+    "viewMode": "Conversation view",
+    "chatMode": "Chat",
+    "canvasMode": "Canvas",
+    "hint": "Drag card titles to move · Drag the background to pan",
+    "zoomOut": "Zoom out",
+    "zoomIn": "Zoom in",
+    "resetZoom": "Reset zoom",
+    "refresh": "Refresh canvas",
+    "empty": "Send your first message to start building conversation branches.",
+    "branchName": "New branch name (optional)",
+    "running": "Wait for the response before changing branches",
+    "sharedFiles": "Branches inherit context through the selected message. Project files are shared.",
+    "main": "Main",
+    "active": "Active",
+    "continue": "Continue",
+    "branchEmpty": "Continue this branch using the composer below.",
+    "you": "You",
+    "branchHere": "Branch here",
+    "defaultName": "Branch {{count}}",
+    "loadFailed": "Could not load canvas",
+    "changeFailed": "Could not change branch",
+    "retryHistory": "Reload branch history",
+    "autoLayout": "Auto layout",
+    "fitView": "Fit all branches",
+    "moveBranch": "Move branch: {{name}}",
+    "dragHint": "Drag the title to move, or use arrow keys"
   }
 }

@@ -2093,7 +2093,7 @@ async function handleRequest(request) {
       if (!current.messages.some((entry) => entry.id === params.entryId)) throw new Error('Choose a complete user or assistant message in the active branch');
       const branchId = crypto.randomUUID();
       manager.branch(params.entryId);
-      manager.appendCustomEntry('medhelp.branch', { action: 'create', branchId, parentBranchId: current.activeBranchId, fromEntryId: params.entryId, label: String(params.label || `分支 ${current.branches.length}`).slice(0, 100) });
+      manager.appendCustomEntry('medhelp.branch', { action: 'create', branchId, parentBranchId: current.canvasMessages.find((entry) => entry.id === params.entryId)?.branchId || current.activeBranchId, fromEntryId: params.entryId, label: String(params.label || `分支 ${current.branches.length}`).slice(0, 100) });
     } else if (request.method === 'branch_switch') {
       const branch = current.branches.find((entry) => entry.id === params.branchId);
       if (!branch?.leafId) throw new Error('Unknown Pi branch');

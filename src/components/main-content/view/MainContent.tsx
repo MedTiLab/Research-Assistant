@@ -350,12 +350,13 @@ function MainContent({
   );
   const currentResearchStage = latestArtifactStage ?? derivedResearchStage;
 
+  const [sidebarExpandSignal, setSidebarExpandSignal] = React.useState(0);
+  const [chatHeaderControlsTarget, setChatHeaderControlsTarget] = React.useState<HTMLDivElement | null>(null);
   const [chatSidebarLayout, setChatSidebarLayout] = React.useState(() => ({
-    width: readStoredChatSidebarWidth(),
-    collapsed: false,
+    width: 0,
+    collapsed: true,
   }));
   const [storedChatSidebarWidth, setStoredChatSidebarWidth] = React.useState(readStoredChatSidebarWidth);
-  const [sidebarExpandSignal, setSidebarExpandSignal] = React.useState(0);
   React.useEffect(() => {
     if (chatSidebarLayout.width >= MIN_CHAT_SIDEBAR_WIDTH) {
       setStoredChatSidebarWidth(clampChatSidebarWidth(chatSidebarLayout.width));
@@ -378,15 +379,6 @@ function MainContent({
   const showDetachedChatSidebar = detachChatContextSidebar && !editingFile;
   const showTopDockedEditor = Boolean(editingFile) && !isMobile && !editorExpanded;
   const showRightSidePanel = showDetachedChatSidebar || showTopDockedEditor;
-  const showExpandContextSidebar = activeTab === 'chat'
-    && !isMobile
-    && !editingFile
-    && Boolean(selectedProject)
-    && chatSidebarLayout.collapsed
-    && chatSidebarLayout.width === 0;
-  const handleExpandContextSidebar = React.useCallback(() => {
-    setSidebarExpandSignal((current) => current + 1);
-  }, []);
   const [contextSidebarTab, setContextSidebarTab] = React.useState<ChatSidebarTab>(() => {
     if (typeof window === 'undefined') {
       return 'files';
@@ -650,14 +642,13 @@ function MainContent({
         <MainContentHeader
           activeTab={activeTab}
           setActiveTab={setActiveTab}
+          chatControlsRef={activeTab === 'chat' ? setChatHeaderControlsTarget : undefined}
           selectedProject={selectedProject}
           selectedSession={selectedSession}
           isMobile={isMobile}
           onMenuClick={onMenuClick}
           onNavigateBack={handleNavigateBack}
           contentInsetRight={showRightSidePanel ? 0 : chatSidebarInset}
-          showExpandContextSidebar={showExpandContextSidebar}
-          onExpandContextSidebar={handleExpandContextSidebar}
         />
       </div>
 
@@ -693,6 +684,8 @@ function MainContent({
               <ErrorBoundary showDetails>
                 <React.Suspense fallback={<LazyTabFallback />}>
                   <ChatInterface
+                    contextSidebarExpandSignal={sidebarExpandSignal}
+                    headerControlsTarget={chatHeaderControlsTarget}
                     key={chatViewIdentityKey}
                     selectedProject={selectedProject}
                     selectedSession={selectedSession}
@@ -732,7 +725,6 @@ function MainContent({
                     currentResearchStage={currentResearchStage}
                     onNavigateAppTab={setActiveTab}
                     onContextSidebarLayoutChange={setChatSidebarLayout}
-                    contextSidebarExpandSignal={sidebarExpandSignal}
                     detachContextSidebar={showLiteratureReaderChat || detachChatContextSidebar}
                     contextSidebarTab={contextSidebarTab}
                     onContextSidebarTabChange={setContextSidebarTab}
@@ -883,13 +875,13 @@ function MainContent({
               }}
               onStartWorkspaceQa={onStartWorkspaceQa}
               onChatFromReference={onChatFromReference ? (ref: Reference) => onChatFromReference(selectedProject, ref) : undefined}
+              expandSignal={sidebarExpandSignal}
               activeSidebarTab={contextSidebarTab}
               onSidebarTabChange={setContextSidebarTab}
               onStartTask={contextSidebarHandlers?.onStartTask}
               onSummarizeMemory={contextSidebarHandlers?.onSummarizeMemory}
               onNavigateAppTab={setActiveTab}
               onLayoutChange={setChatSidebarLayout}
-              expandSignal={sidebarExpandSignal}
               consultationContent={selectionConsultationSeed ? (
                 <SelectionConsultationPanel
                   seed={selectionConsultationSeed}

@@ -62,39 +62,16 @@ const renderSidebar = () => renderToStaticMarkup(
   </I18nextProvider>,
 );
 
-describe('fixed chat sidebar rail', () => {
-  it('keeps the files panel beside the rail and exposes a Git control', () => {
+describe('collapsed floating chat tools', () => {
+  it('starts with only a storage trigger and reserves no sidebar column', () => {
     const html = renderSidebar();
-
-    expect(html).toContain('data-file-tree="true"');
-    expect(html).toContain('medical-context-sidebar');
-    expect(html).toContain('data-chat-files-rail="true"');
-    expect(html).toContain('medical-icon-rail');
-    expect(html).toContain('aria-expanded="true"');
-    expect(html).toContain('aria-label="Git 版本控制"');
-    expect(html).toContain('aria-label="浏览器"');
-    expect(html).toContain('data-compute-rail="true"');
-    expect(html).toContain('aria-label="计算资源：本机"');
-    expect(html).not.toContain('transition-[width]');
-    expect(html).not.toContain('收起上下文侧栏');
-    expect(html).not.toContain('展开上下文侧栏');
-  });
-
-  it('shows the Browser control and panel on the right rail', () => {
-    const html = renderToStaticMarkup(
-      <I18nextProvider i18n={i18n}>
-        <ChatContextSidebar
-          selectedProject={project}
-          selectedSession={null}
-          currentSessionId={null}
-          provider="pi"
-          chatMessages={[]}
-          activeSidebarTab="browser"
-        />
-      </I18nextProvider>,
-    );
-
-    expect(html).toContain('aria-label="浏览器"');
-    expect(html).toContain('data-simple-browser="true"');
+    expect(html).toContain('data-chat-tools-dock="true"');
+    expect(html).toContain('aria-label="展开侧边工具"');
+    expect(html).toContain('aria-expanded="false"');
+    expect(html).toContain('width:0');
+    expect(html).not.toContain('data-chat-files-rail');
+    expect(html).not.toContain('medical-icon-rail');
+    expect(html).not.toContain('data-compute-rail');
+    expect(html).not.toContain('aria-label="Git 版本控制"');
   });
 });

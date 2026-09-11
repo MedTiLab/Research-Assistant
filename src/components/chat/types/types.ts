@@ -212,6 +212,7 @@ export interface Question {
 }
 
 export interface ChatInterfaceProps {
+  headerControlsTarget?: HTMLElement | null;
   selectedProject: Project | null;
   selectedSession: ProjectSession | null;
   initialProjectFiles?: ProjectFileChatContextItem[];
