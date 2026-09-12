@@ -78,6 +78,8 @@ type PendingViewSession = {
 
 function ChatInterface({
   headerControlsTarget,
+  computeNodeId = null,
+  onComputeNodeChange,
   selectedProject,
   selectedSession,
   initialProjectFiles = [],
@@ -540,6 +542,7 @@ function ChatInterface({
     setPendingTaskContext,
     submitProgrammaticInput,
   } = useChatComposerState({
+    computeNodeId,
     selectedProject,
     selectedSession,
     initialProjectFiles,
@@ -1461,7 +1464,7 @@ function ChatInterface({
         className={`medical-chat-layout h-full flex min-h-0 ${isMobile ? 'flex-col' : 'flex-row'}`}
       >
         <div className="medical-chat-primary flex min-h-0 min-w-0 flex-1 flex-col">
-          <div className={`medical-chat-feed flex min-h-0 flex-1 flex-col ${isEmpty ? 'panel-scroll-area justify-start overflow-y-auto pt-[18vh]' : ''}`}>
+          <div className={`medical-chat-feed relative flex min-h-0 flex-1 flex-col ${isEmpty ? 'panel-scroll-area justify-start overflow-y-auto pt-[18vh]' : ''}`}>
             {shouldShowImportedProjectAnalysisPrompt && (
               <div className="mx-auto mt-4 w-full max-w-3xl px-3 sm:px-4">
                 <div className="rounded-xl border border-border bg-card/95 shadow-sm px-4 py-4 sm:px-5">
@@ -1553,6 +1556,7 @@ function ChatInterface({
             </div>, headerControlsTarget)}
             {provider === 'pi' && conversationView === 'canvas' ? <ConversationCanvas
               key={`${selectedProject.name}:${compactSessionId}`}
+              emptyState={isEmpty ? chatMessagesPane : undefined}
               projectName={selectedProject.name}
               sessionId={compactSessionId && !isTemporaryAgentSessionId(compactSessionId) ? compactSessionId : null}
               isLoading={isLoading || isLoadingSessionMessages || queuedTurns.length > 0}
@@ -1575,6 +1579,8 @@ function ChatInterface({
 
         {!isMobile && !detachContextSidebar && (
           <ChatContextSidebar
+            computeNodeId={computeNodeId}
+            onComputeNodeChange={onComputeNodeChange}
             selectedProject={selectedProject}
             selectedSession={selectedSession}
             currentSessionId={currentSessionId}

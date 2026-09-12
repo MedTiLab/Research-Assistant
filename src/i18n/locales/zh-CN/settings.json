@@ -333,7 +333,15 @@
     "syncingUpload": "正在上传…",
     "syncingDownload": "正在下载…",
     "syncUploadSuccess": "项目已同步上传到计算节点。",
-    "syncDownloadSuccess": "计算节点结果已同步下载到本机。"
+    "syncDownloadSuccess": "计算节点结果已同步下载到本机。",
+    "refresh": "刷新",
+    "addNode": "添加资源",
+    "local": "本机计算资源",
+    "editNode": "编辑资源",
+    "saving": "保存中…",
+    "saveNode": "保存资源",
+    "empty": "暂无远程计算资源",
+    "addHint": "点击“添加资源”配置远程节点"
   },
   "tokenUsage": {
     "title": "Token 统计",
@@ -521,7 +529,6 @@
     "unknown": "未知账号",
     "defaultAgent": {
       "title": "绑定智能体",
-      "description": "所有即时通信通道固定绑定到自定义 medhelpOS 智能体，不启用 Claude 或 Codex。",
       "pi": "medhelpOS 智能体"
     },
     "domestic": {

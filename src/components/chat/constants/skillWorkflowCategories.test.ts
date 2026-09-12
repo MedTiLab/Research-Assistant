@@ -73,7 +73,7 @@ describe('resolveSkillWorkflowCategoryKey', () => {
       .toContain('paper-finder');
   });
 
-  it('puts the MedHelp database API skill first in database extraction shortcuts', () => {
+  it('moves database extraction skills into data analysis', () => {
     expect(LOCAL_DATABASE_EXTRACTION_SKILLS).toHaveLength(30);
     expect(LOCAL_DATABASE_EXTRACTION_SKILLS[0]).toBe('medhelp-database-api-access');
     expect(LOCAL_DATABASE_EXTRACTION_SKILLS).toContain('cfps-skill');
@@ -88,10 +88,19 @@ describe('resolveSkillWorkflowCategoryKey', () => {
     expect(LOCAL_DATABASE_EXTRACTION_SKILLS).toContain('sicdb-skill');
 
     const categories = buildSkillWorkflowCategories();
-    const databaseAccess = categories.find((category) => category.key === 'databaseAccess');
+    const dataAnalysis = categories.find((category) => category.key === 'preAnalysis');
 
-    expect(databaseAccess?.skills[0]).toBe('medhelp-database-api-access');
-    expect(getPrimaryShortcutSkills(databaseAccess!)).toEqual(['medhelp-database-api-access']);
+    expect(categories.some((category) => String(category.key) === 'databaseAccess')).toBe(false);
+    expect(dataAnalysis?.skills).toEqual(expect.arrayContaining([...LOCAL_DATABASE_EXTRACTION_SKILLS]));
+    for (const name of LOCAL_DATABASE_EXTRACTION_SKILLS) {
+      expect(resolveSkillWorkflowCategoryKey({ name })).toBe('preAnalysis');
+    }
+    const legacyConfig = parseSkillWorkflowCategoryConfig({
+      skillCategories: { 'personal-database-skill': 'databaseAccess' },
+    });
+    expect(resolveSkillWorkflowCategoryKey({
+      name: 'personal-database-skill', assignments: legacyConfig.assignments,
+    })).toBe('preAnalysis');
   });
 
   it('merges baseline tables and database-specific analysis into data analysis', () => {

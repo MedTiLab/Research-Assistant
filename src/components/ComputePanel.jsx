@@ -54,6 +54,7 @@ const NodeCard = ({ node, isActive, onSelect, onEdit, onDelete }) => (
   >
     <div className="flex items-center gap-2 mb-1">
       <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-500' : 'bg-gray-400'}`} />
+      {onSelect && <input type="checkbox" checked={isActive} aria-label={node.name} onClick={(event) => event.stopPropagation()} onChange={() => onSelect(node.id)} className="h-4 w-4 shrink-0 accent-primary" />}
       <span className="text-sm font-medium text-gray-900 dark:text-white truncate">{node.name}</span>
     </div>
     <div className="text-xs text-gray-500 dark:text-gray-400 mb-0.5">
@@ -75,7 +76,8 @@ const NodeCard = ({ node, isActive, onSelect, onEdit, onDelete }) => (
 
 // ─── Add/Edit Node Dialog ───
 
-const NodeFormDialog = ({ node, computeApi, onSave, onClose }) => {
+const NodeFormDialog = ({ node, computeApi, onSave, onClose, inline = false }) => {
+  const { t } = useTranslation('settings');
   const isEdit = !!node;
   const [form, setForm] = useState({
     name: node?.name || '',
@@ -141,14 +143,14 @@ const NodeFormDialog = ({ node, computeApi, onSave, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+    <div className={inline ? "w-full" : "fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"}>
+      <div className={inline ? "w-full rounded-lg border bg-background" : "bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto"}>
         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{isEdit ? 'Edit Node' : 'Add Compute Node'}</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t(isEdit ? 'computePanel.editNode' : 'computePanel.addNode')}</h3>
           <button onClick={onClose} className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700"><X className="w-5 h-5" /></button>
         </div>
         <form onSubmit={handleSubmit} className="p-4 space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className={inline ? "grid grid-cols-1 gap-3" : "grid grid-cols-2 gap-3"}>
             <div>
               <Label>Name</Label>
               <Input placeholder="My GPU Server" value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
@@ -163,7 +165,7 @@ const NodeFormDialog = ({ node, computeApi, onSave, onClose }) => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-[1fr_80px_1fr] gap-3">
+          <div className={inline ? "grid grid-cols-1 gap-3" : "grid grid-cols-[1fr_80px_1fr] gap-3"}>
             <div><Label>Host</Label><Input placeholder="bridges2.psc.edu" value={form.host} onChange={e => setForm({...form, host: e.target.value})} required /></div>
             <div>
               <Label>Port</Label>
@@ -195,11 +197,11 @@ const NodeFormDialog = ({ node, computeApi, onSave, onClose }) => {
           {form.type === 'slurm' && (
             <div className="border-t border-gray-200 dark:border-gray-700 pt-3 space-y-3">
               <div className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-1.5"><Layers className="w-4 h-4" /> Slurm Defaults</div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className={inline ? "grid grid-cols-1 gap-3" : "grid grid-cols-2 gap-3"}>
                 <div><Label>Partition</Label><Input placeholder="GPU-small" value={form.slurmPartition} onChange={e => setForm({...form, slurmPartition: e.target.value})} /></div>
                 <div><Label>Account</Label><Input placeholder="cis240110p" value={form.slurmAccount} onChange={e => setForm({...form, slurmAccount: e.target.value})} /></div>
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className={inline ? "grid grid-cols-1 gap-3" : "grid grid-cols-2 gap-3"}>
                 <div><Label>Time Limit</Label><Input placeholder="00:30:00" value={form.slurmTime} onChange={e => setForm({...form, slurmTime: e.target.value})} /></div>
                 <div><Label>GPUs</Label><Input type="number" min="0" max="8" value={form.slurmGpus} onChange={e => setForm({...form, slurmGpus: e.target.value})} /></div>
               </div>
@@ -208,7 +210,7 @@ const NodeFormDialog = ({ node, computeApi, onSave, onClose }) => {
           {error && <div className="text-sm text-red-600 dark:text-red-400">{error}</div>}
           <Button type="submit" className="w-full" disabled={saving || !form.host || !form.user || parseInt(form.port) < 1 || parseInt(form.port) > 65535 || isNaN(parseInt(form.port))}>
             {saving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
-            {saving ? 'Saving...' : (isEdit ? 'Update Node' : 'Add Node')}
+            {t(saving ? 'computePanel.saving' : 'computePanel.saveNode')}
           </Button>
         </form>
       </div>
@@ -338,7 +340,7 @@ const SlurmPanel = ({ node, selectedProject, computeApi }) => {
 
 // ─── Main Component ───
 
-const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) => {
+const ComputePanel = ({ selectedProject, selectionManagedExternally = false, compact = false, selectedNodeId, onSelectedNodeChange }) => {
   const { t } = useTranslation('settings');
   const localKernel = useOptionalLocalKernel();
   const [nodes, setNodes] = useState([]);
@@ -348,6 +350,7 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
   const [editNode, setEditNode] = useState(null);
   const [testResult, setTestResult] = useState(null);
   const [syncResult, setSyncResult] = useState(null);
+  const [selectionError, setSelectionError] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isTesting, setIsTesting] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -394,25 +397,37 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
     refreshNodes();
   }, [refreshNodes]);
 
+  const conversationSelection = typeof onSelectedNodeChange === 'function';
+  const effectiveActiveNodeId = conversationSelection ? (selectedNodeId || null) : activeNodeId;
   const activeNode = nodes.find(n => n.id === (
-    selectionManagedExternally ? detailNodeId : activeNodeId
+    selectionManagedExternally ? detailNodeId : effectiveActiveNodeId
   ));
   const hasProjectPath = Boolean(selectedProject?.fullPath || selectedProject?.path);
   const projectLabel = selectedProject?.displayName || selectedProject?.name || null;
 
   const handleSelectNode = async (nodeId) => {
+    if (conversationSelection) {
+      onSelectedNodeChange(nodeId === effectiveActiveNodeId ? null : nodeId);
+      setTestResult(null); setSyncResult(null);
+      return;
+    }
     try {
-      await computeApi.setActive(nodeId);
+      const response = await computeApi.setActive(nodeId);
+      if (!response.ok) throw new Error('切换计算资源失败');
+      setSelectionError(null);
       setActiveNodeId(nodeId);
+      window.dispatchEvent(new Event('medhelp-compute-resources-changed'));
       setTestResult(null);
       setSyncResult(null);
-    } catch (err) { console.error('Error setting active node:', err); }
+    } catch (err) { setSelectionError(err.message); }
   };
 
   const handleDeleteNode = async (nodeId) => {
     if (!window.confirm('Delete this compute node?')) return;
     try {
-      await computeApi.deleteNode(nodeId);
+      const response = await computeApi.deleteNode(nodeId);
+      if (!response.ok) throw new Error('Failed to delete compute resource');
+      if (conversationSelection && nodeId === effectiveActiveNodeId) onSelectedNodeChange(null);
       loadNodes();
     } catch (err) { console.error('Error deleting node:', err); }
   };
@@ -461,16 +476,16 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
   };
 
   return (
-    <div className="h-full flex flex-col p-4 overflow-y-auto bg-gray-50 dark:bg-gray-900">
+    <div className={compact ? "panel-scroll-area min-h-0 flex-1 overflow-y-auto bg-background p-3" : "h-full flex flex-col p-4 overflow-y-auto bg-gray-50 dark:bg-gray-900"}>
       <div className="max-w-5xl mx-auto w-full space-y-4">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className={compact ? "flex flex-col gap-3" : "flex items-center justify-between"}>
           <div className="flex items-center space-x-3">
             <div className="p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
               <Server className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <h1 className="text-base font-semibold text-gray-900 dark:text-white">Compute Nodes</h1>
+              <h1 className="text-base font-semibold text-gray-900 dark:text-white">{t('mainTabs.compute')}</h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 {nodes.length} node{nodes.length !== 1 ? 's' : ''} configured
               </p>
@@ -478,22 +493,26 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={refreshNodes} disabled={isRefreshing}>
-              <RefreshCw className={`w-4 h-4 mr-1.5 ${isRefreshing ? 'animate-spin' : ''}`} /> Refresh
+              <RefreshCw className={`w-4 h-4 mr-1.5 ${isRefreshing ? 'animate-spin' : ''}`} /> {t('computePanel.refresh')}
             </Button>
             <Button size="sm" onClick={() => { setEditNode(null); setShowForm(true); }}>
-              <Plus className="w-4 h-4 mr-1.5" /> Add Node
+              <Plus className="w-4 h-4 mr-1.5" /> {t('computePanel.addNode')}
             </Button>
           </div>
         </div>
 
+        {selectionError && <p role="alert" className="text-sm text-destructive">{selectionError}</p>}
+        {compact && <button type="button" onClick={() => handleSelectNode(null)} aria-pressed={!effectiveActiveNodeId}
+          className={`w-full rounded-lg border p-3 text-left text-sm ${!effectiveActiveNodeId ? 'border-primary bg-primary/5' : ''}`}>{t('computePanel.local')}</button>}
+        {compact && showForm && <NodeFormDialog key={editNode?.id || 'new'} inline node={editNode} computeApi={computeApi} onSave={handleFormSave} onClose={() => { setShowForm(false); setEditNode(null); }} />}
         {/* Node Cards */}
         {nodes.length > 0 ? (
-          <div className="flex gap-3 overflow-x-auto pb-1">
+          <div className={compact ? "flex flex-col gap-3" : "flex gap-3 overflow-x-auto pb-1"}>
             {nodes.map(node => (
               <NodeCard
                 key={node.id}
                 node={node}
-                isActive={node.id === (selectionManagedExternally ? detailNodeId : activeNodeId)}
+                isActive={node.id === (selectionManagedExternally ? detailNodeId : effectiveActiveNodeId)}
                 onSelect={selectionManagedExternally ? setDetailNodeId : handleSelectNode}
                 onEdit={(n) => { setEditNode(n); setShowForm(true); }}
                 onDelete={handleDeleteNode}
@@ -503,14 +522,14 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
         ) : (
           <div className="text-center py-8 text-gray-400">
             <Server className="w-10 h-10 mx-auto mb-2 opacity-50" />
-            <p className="text-sm">No compute nodes configured</p>
-            <p className="text-xs mt-1">Click "Add Node" to get started</p>
+            <p className="text-sm">{t('computePanel.empty')}</p>
+            <p className="text-xs mt-1">{t('computePanel.addHint')}</p>
           </div>
         )}
 
         {/* Active Node Details */}
         {activeNode && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className={compact ? "grid grid-cols-1 gap-3" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
             {/* Connection / Actions */}
             <div className="rounded-lg border bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="p-4 border-b border-gray-200 dark:border-gray-700">
@@ -576,7 +595,7 @@ const ComputePanel = ({ selectedProject, selectionManagedExternally = false }) =
       </div>
 
       {/* Add/Edit Dialog */}
-      {showForm && (
+      {showForm && !compact && (
         <NodeFormDialog
           node={editNode}
           computeApi={computeApi}

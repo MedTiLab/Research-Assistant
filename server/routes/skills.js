@@ -32,7 +32,6 @@ const WORKFLOW_CATEGORY_KEYS = new Set([
   'citationTrace',
   'paperReading',
   'researchMonitoring',
-  'databaseAccess',
   'ideation',
   'preAnalysis',
   'statisticalModeling',
@@ -155,7 +154,7 @@ async function resolveReadableSkillFile(req, filePath) {
 
 function normalizeWorkflowCategoryKey(value) {
   const normalized = String(value || '').trim();
-  if (normalized === 'baselineTable') return 'preAnalysis';
+  if (normalized === 'baselineTable' || normalized === 'databaseAccess') return 'preAnalysis';
   return WORKFLOW_CATEGORY_KEYS.has(normalized) ? normalized : DEFAULT_WORKFLOW_CATEGORY;
 }
 
@@ -242,7 +241,7 @@ function inferWorkflowCategoryFromName(name) {
   if (/(pubmed|biorxiv|medrxiv|openalex|semantic-scholar|crossref|literature-database)/.test(signal)) return 'literatureDatabases';
   if (/(deep-research|research-lookup|academic-researcher|literature-search|evidence-search)/.test(signal)) return 'deepLiteratureSearch';
   if (/(literature|evidence|systematic-review|meta-analysis|scoping-review)/.test(signal)) return 'deepResearch';
-  if (/(database|cohort|biobank|mimic|eicu|nwicu|nhanes|ukb|cfps|cgss|charls|chfs|chip|chns|clds|clhls|css|share|hrs|elsa|klosa|lasi|mhas|pic|geo-database|gco-database|globocan)/.test(signal)) return 'databaseAccess';
+  if (/(database|cohort|biobank|mimic|eicu|nwicu|nhanes|ukb|cfps|cgss|charls|chfs|chip|chns|clds|clhls|css|share|hrs|elsa|klosa|lasi|mhas|pic|geo-database|gco-database|globocan)/.test(signal)) return 'preAnalysis';
   if (/(idea|brainstorm|hypothesis)/.test(signal)) return 'ideation';
   if (/(preanalysis|pre-analysis|data-transform|exploratory-data-analysis|eda)/.test(signal)) return 'preAnalysis';
   if (/(baseline|table)/.test(signal)) return 'preAnalysis';

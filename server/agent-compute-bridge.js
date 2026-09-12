@@ -130,16 +130,17 @@ export function buildAgentComputeMcpEnv({
 
 export async function resolveAgentComputeBridge({
   projectPath = '',
-  nodeId = null,
+  nodeId = undefined,
   env = process.env,
   loadActiveNode = getActiveNode,
   loadNodes = loadAllNodes,
   loadNode = loadNodeConfig,
   resolveLauncher = resolveAgentComputeMcpLauncher,
 } = {}) {
+  if (nodeId != null && (typeof nodeId !== 'string' || !/^[a-zA-Z0-9._-]{1,200}$/.test(nodeId))) throw new Error('Invalid compute node selection');
   const config = await loadNodes();
   const configuredNodes = Array.isArray(config?.nodes) ? config.nodes : [];
-  const node = nodeId ? await loadNode(nodeId) : await loadActiveNode();
+  const node = nodeId === null ? null : nodeId ? await loadNode(nodeId) : await loadActiveNode();
   const safeNode = sanitizeComputeNode(node);
   const safeNodes = configuredNodes.map(sanitizeComputeNode).filter(Boolean);
   if (!safeNode && safeNodes.length === 0) return null;

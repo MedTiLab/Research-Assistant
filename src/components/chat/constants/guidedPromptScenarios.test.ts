@@ -18,7 +18,6 @@ describe('CHAT_QUICK_ACTION_SCENARIOS', () => {
       'make-presentation',
       'data-analysis',
       'research-design',
-      'database-extraction',
       'experiment-log',
       'submit-manuscript',
       'proposal-writing',
@@ -72,7 +71,7 @@ describe('CHAT_QUICK_ACTION_SCENARIOS', () => {
     expect(CHAT_QUICK_ACTION_SCENARIOS.find((scenario) => scenario.id === 'today-tasks')?.skills)
       .toEqual(['medhelp-workbench-review']);
     expect(CHAT_QUICK_ACTION_SCENARIOS.find((scenario) => scenario.id === 'data-analysis')?.skills)
-      .toEqual(expect.arrayContaining(['baseline-table', 'easyukb-analysis', 'gco-database-analysis']));
+      .toEqual(expect.arrayContaining(['baseline-table', 'easyukb-analysis', 'gco-database-analysis', 'medhelp-database-api-access', 'data-transform', 'cfps-skill', 'mimiciv-skill']));
     expect(CHAT_QUICK_ACTION_SCENARIOS.find((scenario) => scenario.id === 'create-program')?.skills)
       .toEqual(['publish', 'taste-skill', 'popular-web-designs']);
     expect(CHAT_QUICK_ACTION_SCENARIOS.find((scenario) => scenario.id === 'writing-assistant')?.skills)

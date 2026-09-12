@@ -60,7 +60,7 @@ export function createPiSessionsRouter({ runtime = piRuntime, resolveProject, st
   }));
   router.post(`${base}/branches/:action`, handle(async (req, res, context) => {
     const { action } = req.params;
-    if (!['create', 'switch'].includes(action)) return res.status(404).json({ error: 'Unknown branch action' });
+    if (!['create', 'switch', 'delete'].includes(action)) return res.status(404).json({ error: 'Unknown branch action' });
     const input = req.body || {};
     const id = action === 'create' ? input.entryId : input.branchId;
     if (typeof id !== 'string' || !/^[a-zA-Z0-9._-]{1,200}$/.test(id) || (input.label != null && (typeof input.label !== 'string' || input.label.length > 100))) return res.status(400).json({ error: 'Invalid branch selection' });

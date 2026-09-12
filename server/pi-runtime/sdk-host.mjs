@@ -6,12 +6,12 @@ import { promises as fs, createReadStream } from 'node:fs';
 import { createInterface } from 'node:readline';
 import { createToolOutputBudget, positiveLimit } from './output-budget.js';
 import { piSubagentProfile } from './subagent-policy.js';
-import { piSessionBranches } from './session-branches.js';
+import { piSessionBranches, deletePiSessionBranch } from './session-branches.js';
 import os from 'node:os';
 import path from 'node:path';
 
 const PROTOCOL_VERSION = Number(process.env.PI_HOST_PROTOCOL_VERSION || 1);
-const HOST_BUILD_ID = 19;
+const HOST_BUILD_ID = 20;
 const READ_ONLY_TOOLS = Object.freeze(['read', 'grep', 'find', 'ls', 'system_info']);
 const WRITE_TOOLS = Object.freeze(['write', 'edit', 'bash']);
 const COORDINATION_TOOLS = Object.freeze([
@@ -2083,7 +2083,7 @@ async function handleRequest(request) {
     if (!sessionPath) throw new Error('Pi could not persist the forked conversation');
     return respond(request.id, { sessionId: manager.getSessionId(), sessionPath });
   }
-  if (['branch_list', 'branch_create', 'branch_switch'].includes(request.method)) {
+  if (['branch_list', 'branch_create', 'branch_switch', 'branch_delete'].includes(request.method)) {
     if (activeSession) return reject(request.id, 'AGENT_TURN_ALREADY_ACTIVE', 'Wait for the current turn before changing branches.');
     const params = request.params || {};
     const manager = sdk.SessionManager.open(params.sessionPath, path.dirname(params.sessionPath), params.projectRoot);
@@ -2094,6 +2094,8 @@ async function handleRequest(request) {
       const branchId = crypto.randomUUID();
       manager.branch(params.entryId);
       manager.appendCustomEntry('medhelp.branch', { action: 'create', branchId, parentBranchId: current.canvasMessages.find((entry) => entry.id === params.entryId)?.branchId || current.activeBranchId, fromEntryId: params.entryId, label: String(params.label || `分支 ${current.branches.length}`).slice(0, 100) });
+    } else if (request.method === 'branch_delete') {
+      return respond(request.id, deletePiSessionBranch(manager, params.sessionId, params.branchId));
     } else if (request.method === 'branch_switch') {
       const branch = current.branches.find((entry) => entry.id === params.branchId);
       if (!branch?.leafId) throw new Error('Unknown Pi branch');

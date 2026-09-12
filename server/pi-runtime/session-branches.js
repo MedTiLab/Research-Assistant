@@ -19,10 +19,14 @@ export function activePiBranchRecords(records) {
 export function piSessionBranches(records, sessionId) {
   const branches = new Map([['main', { id: 'main', parentId: null, label: '主分支', fromEntryId: null, leafId: null }]]);
   const branchByEntry = new Map();
+  const deletedBranchIds = new Set();
   let activeBranchId = 'main';
   for (const entry of records.filter(isEntry)) {
     let branchId = branchByEntry.get(entry.parentId) || 'main';
     if (entry.type === 'custom' && entry.customType === 'medhelp.branch') {
+      if (entry.data.action === 'delete') {
+        for (const id of entry.data.deletedBranchIds || []) deletedBranchIds.add(id);
+      }
       branchId = entry.data.branchId;
       if (!branches.has(branchId)) branches.set(branchId, { id: branchId, parentId: entry.data.parentBranchId || 'main', label: entry.data.label || '会话分支', fromEntryId: entry.data.fromEntryId, leafId: entry.id });
     }
@@ -40,13 +44,33 @@ export function piSessionBranches(records, sessionId) {
   // path for SDK fork validation and existing callers.
   const activeIds = new Set(messages.map((message) => message.id));
   const canvasMessages = records.filter(isEntry).flatMap((entry) => {
+    if (deletedBranchIds.has(branchByEntry.get(entry.id))) return [];
     if (entry.type !== 'message' || !['user', 'assistant'].includes(entry.message?.role)) return [];
     const content = entry.message.content;
     if (Array.isArray(content) && content.some((part) => ['toolCall', 'tool_use'].includes(part.type))) return [];
     const text = typeof content === 'string' ? content : (content || []).filter((part) => part.type === 'text').map((part) => part.text).join('\n');
     return text ? [{ id: entry.id, branchId: branchByEntry.get(entry.id) || 'main', role: entry.message.role, preview: text.slice(0, 600), active: activeIds.has(entry.id) }] : [];
   });
-  return { sessionId, activeBranchId, branches: [...branches.values()], messages, canvasMessages, filesReverted: false };
+  return { sessionId, activeBranchId, branches: [...branches.values()].filter((branch) => !deletedBranchIds.has(branch.id)), messages, canvasMessages, filesReverted: false };
+}
+
+// Persist a deletion marker on a surviving path, preserving the native transcript.
+export function deletePiSessionBranch(manager, sessionId, branchId) {
+  const current = piSessionBranches(manager.getEntries(), sessionId);
+  const target = current.branches.find((branch) => branch.id === branchId);
+  if (!target) throw new Error('Unknown Pi branch');
+  if (branchId === 'main') throw new Error('The main branch cannot be deleted');
+  const deleted = new Set([branchId]);
+  let previousSize;
+  do {
+    previousSize = deleted.size;
+    for (const branch of current.branches) if (deleted.has(branch.parentId)) deleted.add(branch.id);
+  } while (deleted.size !== previousSize);
+  const survivor = current.branches.find((branch) => branch.id === (deleted.has(current.activeBranchId) ? target.parentId : current.activeBranchId));
+  if (!survivor?.leafId || deleted.has(survivor.id)) throw new Error('No surviving parent branch');
+  manager.branch(survivor.leafId);
+  manager.appendCustomEntry('medhelp.branch', { action: 'delete', branchId: survivor.id, deletedBranchIds: [...deleted] });
+  return piSessionBranches(manager.getEntries(), sessionId);
 }
 
 // Files/artifacts stay shared. Conversation todos/plans and task cards follow the selected path.

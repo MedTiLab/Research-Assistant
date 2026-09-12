@@ -276,7 +276,7 @@ export function createPiRuntime({
     };
     const [computeBridge, workbenchBridge] = await Promise.all([
       canUseMcp && isPiMcpAllowed(mcpAccess, AGENT_COMPUTE_MCP_SERVER_NAME)
-        ? computeBridgeResolver({ projectPath: options.projectRoot }).catch((error) => ({
+        ? computeBridgeResolver({ projectPath: options.projectRoot, nodeId: options.computeNodeId ?? null }).catch((error) => ({
           prompt: '',
           mcpServer: null,
           diagnostic: { code: 'compute_bridge_unavailable', message: error?.message || String(error) },
@@ -447,6 +447,7 @@ export function createPiRuntime({
       authSessionId: options.authSessionId || null,
       storageOptions: options.storageOptions,
       projectRoot: canonicalProjectRoot,
+      computeNodeId: options.computeNodeId ?? null,
       permissionMode,
     });
     const projectContext = await loadPiProjectContext(canonicalProjectRoot);
@@ -923,7 +924,7 @@ export function createPiRuntime({
         }
       },
       changeBranch: async (identity, action, input, options = {}) => {
-        if (!['create', 'switch'].includes(action)) throw new Error('Unknown branch action');
+        if (!['create', 'switch', 'delete'].includes(action)) throw new Error('Unknown branch action');
         const normalized = createAgentSessionIdentity(identity);
         const key = createAgentSessionKey(normalized);
         if (activeIdentities.has(key)) throw createPiRuntimeError('AGENT_TURN_ALREADY_ACTIVE', 'Wait for the current turn before changing branches.');

@@ -41,6 +41,7 @@ function requireCommand(command) {
 
 export function createAgentComputeToolHandlers({
   projectPath = process.env.MEDHELP_COMPUTE_PROJECT_PATH,
+  selectedNodeId = process.env.MEDHELP_COMPUTE_NODE_ID,
   computeNode = ComputeNode,
   loadActiveNode = getActiveNode,
   loadNodes = loadAllNodes,
@@ -54,7 +55,9 @@ export function createAgentComputeToolHandlers({
       return { nodeId: explicitNodeId, node: await loadNode(explicitNodeId) };
     }
 
-    const activeNode = await loadActiveNode();
+    const activeNode = selectedNodeId !== undefined
+      ? (selectedNodeId ? await loadNode(selectedNodeId) : null)
+      : await loadActiveNode();
     if (!activeNode?.id) {
       throw new Error('No active compute resource. Select one in MedHelp or pass nodeId explicitly.');
     }
@@ -66,7 +69,7 @@ export function createAgentComputeToolHandlers({
       const config = await loadNodes();
       const nodes = Array.isArray(config?.nodes) ? config.nodes.map(safeNodeMetadata) : [];
       return toolResult({
-        activeNodeId: config?.activeNodeId || null,
+        activeNodeId: selectedNodeId !== undefined ? selectedNodeId || null : config?.activeNodeId || null,
         nodes,
       });
     },

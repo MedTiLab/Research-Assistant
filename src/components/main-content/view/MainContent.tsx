@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { safeLocalStorage } from '../../chat/utils/chatStorage';
 import CompanionCenter from '../../../features/companions/CompanionCenter';
 import MiniAppCenter from '../../../features/mini-apps/MiniAppCenter';
 
@@ -385,6 +386,26 @@ function MainContent({
     }
     return normalizeChatSidebarTab(window.localStorage.getItem('chat-sidebar-active-tab'));
   });
+  const [computeSelections, setComputeSelections] = React.useState<Record<string, string | null>>({});
+  const computeScope = JSON.stringify([selectedProject?.name, selectedSession?.id || `draft:${newSessionResetKey}`]);
+  const selectedComputeNodeId = Object.prototype.hasOwnProperty.call(computeSelections, computeScope)
+    ? computeSelections[computeScope]
+    : selectedSession?.id ? safeLocalStorage.getItem(`conversation-compute:${computeScope}`) : null;
+  const selectConversationComputeNode = (nodeId: string | null) => {
+    setComputeSelections((previous) => ({ ...previous, [computeScope]: nodeId }));
+    if (selectedSession?.id) {
+      if (nodeId) safeLocalStorage.setItem(`conversation-compute:${computeScope}`, nodeId);
+      else safeLocalStorage.removeItem(`conversation-compute:${computeScope}`);
+    }
+  };
+  const handleComputeSessionPromotion: MainContentProps['onReplaceTemporarySession'] = (sessionId, ...args) => {
+    if (sessionId) {
+      const scope = JSON.stringify([args[0]?.projectKey || selectedProject?.name, sessionId]);
+      setComputeSelections((previous) => ({ ...previous, [scope]: selectedComputeNodeId }));
+      if (selectedComputeNodeId) safeLocalStorage.setItem(`conversation-compute:${scope}`, selectedComputeNodeId);
+    }
+    onReplaceTemporarySession(sessionId, ...args);
+  };
   const [contextSidebarMessages, setContextSidebarMessages] = React.useState<ChatMessage[]>([]);
   const [selectionConsultationSeed, setSelectionConsultationSeed] = React.useState<SelectionConsultationSeed | null>(null);
   const [contextSidebarProvider, setContextSidebarProvider] = React.useState<SessionProvider>(
@@ -685,6 +706,8 @@ function MainContent({
                 <React.Suspense fallback={<LazyTabFallback />}>
                   <ChatInterface
                     contextSidebarExpandSignal={sidebarExpandSignal}
+                    computeNodeId={selectedComputeNodeId}
+                    onComputeNodeChange={selectConversationComputeNode}
                     headerControlsTarget={chatHeaderControlsTarget}
                     key={chatViewIdentityKey}
                     selectedProject={selectedProject}
@@ -704,7 +727,7 @@ function MainContent({
                     onSessionProcessing={onSessionProcessing}
                     onSessionNotProcessing={onSessionNotProcessing}
                     processingSessions={processingSessions}
-                    onReplaceTemporarySession={onReplaceTemporarySession}
+                    onReplaceTemporarySession={handleComputeSessionPromotion}
                     onNavigateToSession={onNavigateToSession}
                     onShowSettings={onShowSettings}
                     autoExpandTools={autoExpandTools}
@@ -875,6 +898,8 @@ function MainContent({
               }}
               onStartWorkspaceQa={onStartWorkspaceQa}
               onChatFromReference={onChatFromReference ? (ref: Reference) => onChatFromReference(selectedProject, ref) : undefined}
+              computeNodeId={selectedComputeNodeId}
+              onComputeNodeChange={selectConversationComputeNode}
               expandSignal={sidebarExpandSignal}
               activeSidebarTab={contextSidebarTab}
               onSidebarTabChange={setContextSidebarTab}

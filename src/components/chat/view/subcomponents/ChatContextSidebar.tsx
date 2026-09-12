@@ -12,6 +12,7 @@ import {
   FolderSearch,
   Folders,
   GitBranch,
+  Laptop,
   Loader2,
   MessageCircleQuestion,
   Maximize2,
@@ -24,7 +25,9 @@ import FileTree from '../../../FileTree';
 import GitPanel from '../../../GitPanel';
 import SurveyPage from '../../../survey/view/SurveyPage';
 import ConversationMemoryPanel from './ConversationMemoryPanel';
-import ComputeNodeSelector from './ComputeNodeSelector';
+import ComputePanel from '../../../ComputePanel';
+import ProFeatureGate from '../../../entitlements/ProFeatureGate';
+import { CAPABILITIES } from '../../../../hooks/useEntitlements';
 import ChatToolsDock from './ChatToolsDock';
 import SimpleBrowser from './SimpleBrowser';
 import { cn } from '../../../../lib/utils';
@@ -51,6 +54,20 @@ import {
 import { agentStatusLabel, usePiSessionState } from '../../../agent-work/usePiSessionState';
 import AgentWorkDetails from '../../../agent-work/AgentWorkDetails';
 import type { AgentWorkItem } from '../../../agent-work/useAgentWork';
+import {
+  BROWSER_WIDTH_STORAGE_KEY,
+  DEFAULT_BROWSER_WIDTH,
+  DEFAULT_SIDEBAR_WIDTH,
+  MAX_SIDEBAR_WIDTH,
+  MIN_CHAT_AREA_WIDTH,
+  MIN_SIDEBAR_WIDTH,
+  SIDEBAR_COLLAPSED_STORAGE_KEY,
+  SIDEBAR_WIDTH_STORAGE_KEY,
+  clampResizableBrowserWidth,
+  readStoredSidebarCollapsed,
+  resolveDefaultBrowserWidth,
+  resolveExpandedBrowserWidth,
+} from '../../utils/chatSidebarLayout';
 
 type ReviewFilter = 'all' | 'unread' | 'reviewed';
 type SidebarSectionKey = 'memory' | 'context' | 'tasks' | 'review';
@@ -72,15 +89,7 @@ function resolveResizeContainerWidth(aside: HTMLElement | null) {
   return aside.parentElement?.clientWidth ?? window.innerWidth;
 }
 
-const SIDEBAR_WIDTH_STORAGE_KEY = 'chat-session-context-width';
-const BROWSER_WIDTH_STORAGE_KEY = 'chat-simple-browser-width';
-const SIDEBAR_COLLAPSED_STORAGE_KEY = 'chat-session-context-collapsed';
 const SIDEBAR_SECTIONS_STORAGE_KEY = 'chat-session-context-sections';
-const DEFAULT_SIDEBAR_WIDTH = 480;
-const DEFAULT_BROWSER_WIDTH = 620;
-const MIN_SIDEBAR_WIDTH = 360;
-const MAX_SIDEBAR_WIDTH = 840;
-const MIN_CHAT_AREA_WIDTH = 400;
 const SECTION_STYLES: Record<SectionTone, {
   panel: string;
   glow: string;
@@ -108,6 +117,8 @@ const SECTION_STYLES: Record<SectionTone, {
 };
 
 interface ChatContextSidebarProps {
+  computeNodeId?: string | null;
+  onComputeNodeChange?: (nodeId: string | null) => void;
   selectedProject: Project | null;
   selectedSession: ProjectSession | null;
   currentSessionId: string | null;
@@ -139,6 +150,7 @@ const SIDEBAR_TAB_META: Record<ChatSidebarTab, { labelKey: string; icon: LucideI
   browser: { labelKey: 'sessionContext.sidebarTabs.browser', icon: Globe2 },
   survey: { labelKey: 'common:tabs.survey', icon: BookOpen },
   git: { labelKey: 'sessionContext.sidebarTabs.git', icon: GitBranch },
+  compute: { labelKey: 'sessionContext.sidebarTabs.compute', icon: Laptop },
 };
 
 type SidebarNavEntry = { kind: 'tab'; id: ChatSidebarTab };
@@ -436,7 +448,7 @@ const SectionCountBadge = ({ count, tone }: { count: number; tone: SectionTone }
 const SIDEBAR_TOOLBAR_ICON_CLASS = 'h-3.5 w-3.5';
 const SIDEBAR_TOGGLE_ICON_CLASS = 'h-3.5 w-3.5';
 const SIDEBAR_TOOLBAR_HEADER_CLASS =
-  'relative z-30 flex-shrink-0 border-b border-border/60 px-2 py-1.5';
+  'relative z-30 flex-shrink-0 border-b border-border/60 py-1.5 pl-2 pr-11';
 const SIDEBAR_TOOLBAR_ROW_CLASS = 'flex h-7 w-full items-center gap-0.5';
 const SIDEBAR_TOOLBAR_BUTTON_CLASS = cn(
   'relative flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors',
@@ -594,6 +606,8 @@ export default function ChatContextSidebar({
   activeSidebarTab = 'files',
   onSidebarTabChange,
   onLayoutChange,
+  computeNodeId = null,
+  onComputeNodeChange,
   expandSignal = 0,
   consultationContent,
 }: ChatContextSidebarProps) {
@@ -619,9 +633,9 @@ export default function ChatContextSidebar({
     }
     const rawValue = window.localStorage.getItem(BROWSER_WIDTH_STORAGE_KEY);
     const parsed = rawValue ? Number.parseInt(rawValue, 10) : NaN;
-    return Number.isFinite(parsed) ? Math.min(MAX_SIDEBAR_WIDTH, Math.max(MIN_SIDEBAR_WIDTH, parsed)) : DEFAULT_BROWSER_WIDTH;
+    return Number.isFinite(parsed) ? Math.max(MIN_SIDEBAR_WIDTH, parsed) : DEFAULT_BROWSER_WIDTH;
   });
-  const [isCollapsed, setIsCollapsed] = useState(activeSidebarTab !== 'context');
+  const [isCollapsed, setIsCollapsed] = useState(() => readStoredSidebarCollapsed(activeSidebarTab));
   const [collapsedSections, setCollapsedSections] = useState<SidebarSectionState>(() => {
     if (typeof window === 'undefined') {
       return { memory: false, context: false, tasks: false, review: false };
@@ -649,6 +663,10 @@ export default function ChatContextSidebar({
     : activeSidebarTab === 'browser'
       ? browserWidth
       : sidebarWidth;
+  const applyOpenBrowserWidth = useCallback(() => {
+    const halfWidth = resolveDefaultBrowserWidth(resolveResizeContainerWidth(asideRef.current));
+    setBrowserWidth((current) => Math.max(current, halfWidth));
+  }, []);
 
   useEffect(() => {
     if (isMobile) {
@@ -666,7 +684,17 @@ export default function ChatContextSidebar({
     if (expandSignal <= 0 || isMobile) return;
     setIsCollapsed(false);
     window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, '0');
-  }, [expandSignal, isMobile]);
+    if (activeSidebarTab === 'browser') {
+      applyOpenBrowserWidth();
+    }
+  }, [activeSidebarTab, applyOpenBrowserWidth, expandSignal, isMobile]);
+
+  useEffect(() => {
+    if (isMobile || isSidebarCollapsed || normalizeChatSidebarTab(activeSidebarTab) !== 'browser') {
+      return;
+    }
+    applyOpenBrowserWidth();
+  }, [activeSidebarTab, applyOpenBrowserWidth, isMobile, isSidebarCollapsed]);
 
   const availableSidebarTabs = useMemo(
     () => VISIBLE_CHAT_SIDEBAR_TABS.map((id) => ({ id, ...SIDEBAR_TAB_META[id] })),
@@ -696,8 +724,7 @@ export default function ChatContextSidebar({
     }
 
     const updateExpandedWidth = () => {
-      setBrowserExpandedWidth(Math.max(
-        MIN_SIDEBAR_WIDTH,
+      setBrowserExpandedWidth(resolveExpandedBrowserWidth(
         resolveResizeContainerWidth(asideRef.current),
       ));
     };
@@ -859,7 +886,9 @@ export default function ChatContextSidebar({
       setIsBrowserExpanded(false);
       return;
     }
-    setBrowserExpandedWidth(resolveResizeContainerWidth(asideRef.current));
+    setBrowserExpandedWidth(resolveExpandedBrowserWidth(
+      resolveResizeContainerWidth(asideRef.current),
+    ));
     setIsBrowserExpanded(true);
   }, [isBrowserExpanded, isMobile]);
   const handleResizeStart = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
@@ -963,7 +992,8 @@ export default function ChatContextSidebar({
     }
     handleSidebarTabSelect('browser');
     setSidebarCollapsed(false);
-  }, [effectiveSidebarTab, handleSidebarTabSelect, isSidebarCollapsed, setSidebarCollapsed]);
+    applyOpenBrowserWidth();
+  }, [applyOpenBrowserWidth, effectiveSidebarTab, handleSidebarTabSelect, isSidebarCollapsed, setSidebarCollapsed]);
 
   const handleFixedGitRailClick = useCallback(() => {
     if (!isSidebarCollapsed && effectiveSidebarTab === 'git') {
@@ -1014,12 +1044,12 @@ export default function ChatContextSidebar({
       const rightEdge = asideRef.current?.getBoundingClientRect().right ?? window.innerWidth;
       const containerWidth = resolveResizeContainerWidth(asideRef.current);
       const maxAvailableWidth = Math.max(MIN_SIDEBAR_WIDTH, containerWidth - MIN_CHAT_AREA_WIDTH);
-      const effectiveMaxWidth = Math.min(MAX_SIDEBAR_WIDTH, maxAvailableWidth);
-      const nextWidth = Math.min(effectiveMaxWidth, Math.max(MIN_SIDEBAR_WIDTH, rightEdge - event.clientX));
+      const nextWidth = rightEdge - event.clientX;
       if (effectiveSidebarTab === 'browser') {
-        setBrowserWidth(nextWidth);
+        setBrowserWidth(clampResizableBrowserWidth(nextWidth, containerWidth));
       } else {
-        setSidebarWidth(nextWidth);
+        const effectiveMaxWidth = Math.min(MAX_SIDEBAR_WIDTH, maxAvailableWidth);
+        setSidebarWidth(Math.min(effectiveMaxWidth, Math.max(MIN_SIDEBAR_WIDTH, nextWidth)));
       }
     };
 
@@ -1060,7 +1090,7 @@ export default function ChatContextSidebar({
 
   const toolbarNavEntries = isMobile
     ? visibleNavEntries
-    : visibleNavEntries.filter((entry) => !['browser', 'files', 'git'].includes(entry.id));
+    : visibleNavEntries.filter((entry) => !['browser', 'files', 'git', 'compute'].includes(entry.id));
   const showSidebarToolbar = toolbarNavEntries.length > 0
     || effectiveSidebarTab === 'browser'
     || (isLoadingTrace && effectiveSidebarTab === 'context');
@@ -1083,7 +1113,7 @@ export default function ChatContextSidebar({
           'flex h-full min-h-0 flex-col',
           isMobile && 'medical-context-sidebar w-full border-t border-border/60 bg-gradient-to-b from-card via-card to-muted/20 backdrop-blur',
           !isMobile && 'medical-context-sidebar min-w-0 flex-shrink-0 self-stretch overflow-hidden border-l border-border/50 bg-gradient-to-b from-card via-card to-muted/20 backdrop-blur shadow-[-8px_0_18px_-16px_rgba(15,23,42,0.42)] dark:shadow-[-8px_0_20px_-16px_rgba(0,0,0,0.68)]',
-          !isMobile && isSidebarCollapsed && 'pointer-events-none !border-l-0',
+          !isMobile && isSidebarCollapsed && '!hidden',
         )}
         style={!isMobile ? { width: isSidebarCollapsed ? 0 : displayedSidebarWidth } : undefined}
         aria-hidden={!isMobile && isSidebarCollapsed ? true : undefined}
@@ -1385,6 +1415,12 @@ export default function ChatContextSidebar({
               onChatFromReference={onChatFromReference}
             />
           </div>
+        ) : effectiveSidebarTab === 'compute' ? (
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden pt-10">
+            <ProFeatureGate capability={CAPABILITIES.computeResources} feature="computeResources" compact>
+              <ComputePanel selectedProject={selectedProject} compact selectedNodeId={computeNodeId} onSelectedNodeChange={onComputeNodeChange} />
+            </ProFeatureGate>
+          </div>
         ) : effectiveSidebarTab === 'git' ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
             <GitPanel
@@ -1442,7 +1478,11 @@ export default function ChatContextSidebar({
           >
             <GitBranch className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.9} />
           </button>
-          <ComputeNodeSelector variant="rail" onSelected={dismiss} />
+          <button type="button" title={t('sessionContext.sidebarTabs.compute')} aria-label={t('sessionContext.sidebarTabs.compute')}
+            onClick={() => { handleSidebarTabSelect('compute'); setSidebarCollapsed(false); dismiss(); }}
+            className="relative mt-1 flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-accent/80 hover:text-foreground">
+            <Laptop className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.9} />
+          </button>
           </>}
         </ChatToolsDock>
       )}

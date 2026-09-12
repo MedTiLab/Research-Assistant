@@ -825,8 +825,17 @@
     scrollbar-gutter: stable;
   }
 
-  /* Match the reserved browser gutter and desktop window canvas to the fixed
-     project rail so the far-right edge does not read as a separate white bar. */
+  /* The workbench scrolls inside its panels. A reserved root scrollbar gutter
+     otherwise leaves a full-height gray strip at the browser's right edge. */
+  html:has(.medical-workbench-shell) {
+    overflow: hidden;
+    scrollbar-gutter: auto;
+  }
+
+  body:has(.medical-workbench-shell) {
+    overflow: hidden;
+  }
+
   html:has(.medical-workbench-shell),
   body:has(.medical-workbench-shell) {
     background: var(--medhelp-desktop-chrome-surface, hsl(var(--clinical-sidebar)));

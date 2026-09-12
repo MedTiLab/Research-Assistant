@@ -81,12 +81,12 @@ export default function SidebarModals({
                         <p className="text-sm text-red-700 dark:text-red-300 font-medium">
                           {t('deleteConfirmation.sessionCount', { count: deleteConfirmation.sessionCount })}
                         </p>
-                        <p className="text-xs text-red-600 dark:text-red-400 mt-1">
-                          {t('deleteConfirmation.allConversationsDeleted')}
-                        </p>
                       </div>
                     )}
                     <p className="text-xs text-muted-foreground mt-3">
+                      {t('deleteConfirmation.allConversationsDeleted')}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
                       {t('deleteConfirmation.cannotUndo')}
                     </p>
                   </div>

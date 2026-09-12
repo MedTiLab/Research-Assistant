@@ -379,15 +379,14 @@ export function useSidebarController({
       return;
     }
 
-    const { project, sessionCount } = deleteConfirmation;
-    const isEmpty = sessionCount === 0;
+    const { project } = deleteConfirmation;
 
-    // Optimistically remove from UI immediately to avoid flash
     setDeleteConfirmation(null);
-    onProjectDelete?.(project.name);
 
     try {
-      const response = await api.deleteProject(project.name, !isEmpty);
+      // The confirmation covers the whole project, including unloaded sessions.
+      // This moves it to recoverable trash; the loaded list cannot prove emptiness.
+      const response = await api.deleteProject(project.name, true);
 
       if (!response.ok) {
         const error = (await response.json()) as { error?: string };
@@ -400,6 +399,7 @@ export function useSidebarController({
         return;
       }
 
+      onProjectDelete?.(project.name);
       if (window.refreshTrashProjects) {
         await window.refreshTrashProjects();
       } else {

@@ -4,11 +4,12 @@ import { VISIBLE_CHAT_SIDEBAR_TABS, normalizeChatSidebarTab } from './types';
 
 describe('chat sidebar tabs', () => {
   it('keeps Browser, files, and Git as sidebar tools', () => {
-    expect(VISIBLE_CHAT_SIDEBAR_TABS).toEqual(['browser', 'files', 'git']);
+    expect(VISIBLE_CHAT_SIDEBAR_TABS).toEqual(['browser', 'files', 'git', 'compute']);
   });
 
   it('keeps Git as a real sidebar tool', () => {
     expect(normalizeChatSidebarTab('git')).toBe('git');
+    expect(normalizeChatSidebarTab('compute')).toBe('compute');
     expect(normalizeChatSidebarTab('browser')).toBe('browser');
   });
 

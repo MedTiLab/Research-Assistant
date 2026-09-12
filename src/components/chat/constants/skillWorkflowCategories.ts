@@ -14,7 +14,6 @@ export const SKILL_WORKFLOW_CATEGORY_KEYS = [
   'citationTrace',
   'paperReading',
   'researchMonitoring',
-  'databaseAccess',
   'ideation',
   'preAnalysis',
   'statisticalModeling',
@@ -106,14 +105,6 @@ export const SKILL_WORKFLOW_CATEGORY_DEFINITIONS: SkillWorkflowCategoryDefinitio
     ],
   },
   {
-    key: 'databaseAccess',
-    icon: '🗂️',
-    skills: [...LOCAL_DATABASE_EXTRACTION_SKILLS],
-    primarySkills: [
-      'medhelp-database-api-access',
-    ],
-  },
-  {
     key: 'ideation',
     icon: '💡',
     skills: [
@@ -132,6 +123,7 @@ export const SKILL_WORKFLOW_CATEGORY_DEFINITIONS: SkillWorkflowCategoryDefinitio
       'baseline-table',
       'data-transform',
       'exploratory-data-analysis',
+      ...LOCAL_DATABASE_EXTRACTION_SKILLS,
       ...LOCAL_DATABASE_ANALYSIS_SKILLS,
       'statistical-analysis',
       'statsmodels',
@@ -312,7 +304,7 @@ export function normalizeSkillIdentifier(value: string): string {
 
 export function normalizeSkillWorkflowCategoryKey(value: unknown): SkillWorkflowCategoryKey {
   const normalized = String(value || '').trim();
-  if (normalized === 'baselineTable') {
+  if (normalized === 'baselineTable' || normalized === 'databaseAccess') {
     return 'preAnalysis';
   }
   if (WORKFLOW_CATEGORY_KEY_SET.has(normalized)) {
@@ -445,7 +437,9 @@ export function workflowCategoryKeyForScenarioId(scenarioId: string): SkillWorkf
     'start-full-project': 'pipeline',
     'paper-reproduction': 'deepResearch',
     'literature-survey': 'deepResearch',
-    'database-access': 'databaseAccess',
+    'database-access': 'preAnalysis',
+    'database-extraction': 'preAnalysis',
+    'data-analysis': 'preAnalysis',
     'research-idea': 'ideation',
     'pre-analysis': 'preAnalysis',
     'baseline-table': 'preAnalysis',
@@ -585,7 +579,7 @@ export function resolveSkillWorkflowCategoryKey({
   }
 
   if (/(database|cohort|biobank|mimic|eicu|nwicu|nhanes|ukb|cfps|cgss|charls|chfs|chip|chns|clds|clhls|css|share|hrs|elsa|klosa|lasi|mhas|pic|geo-database|globocan|gco-database|data-access|datacommons)/.test(signal)) {
-    return 'databaseAccess';
+    return 'preAnalysis';
   }
 
   if (/(idea|ideation|brainstorm|hypothesis|novelty|creative-thinking)/.test(signal)) {

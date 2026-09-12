@@ -34,7 +34,6 @@ const QUICK_ACTION_ACCENTS: Record<string, string> = {
   'download-literature': 'bg-orange-50 text-orange-600 dark:bg-orange-950/55 dark:text-orange-300',
   'data-analysis': 'bg-blue-50 text-blue-600 dark:bg-blue-950/55 dark:text-blue-300',
   'research-design': 'bg-lime-50 text-lime-700 dark:bg-lime-950/55 dark:text-lime-300',
-  'database-extraction': 'bg-slate-100 text-slate-600 dark:bg-slate-900 dark:text-slate-300',
   'experiment-log': 'bg-stone-100 text-stone-600 dark:bg-stone-900 dark:text-stone-300',
   'submit-manuscript': 'bg-rose-50 text-rose-600 dark:bg-rose-950/55 dark:text-rose-300',
   'proposal-writing': 'bg-amber-50 text-amber-700 dark:bg-amber-950/55 dark:text-amber-300',

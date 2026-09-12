@@ -333,7 +333,15 @@
     "syncingUpload": "Uploading…",
     "syncingDownload": "Downloading…",
     "syncUploadSuccess": "Project uploaded to the compute node.",
-    "syncDownloadSuccess": "Compute node results downloaded to this machine."
+    "syncDownloadSuccess": "Compute node results downloaded to this machine.",
+    "refresh": "Refresh",
+    "addNode": "Add resource",
+    "local": "Local computer",
+    "editNode": "Edit resource",
+    "saving": "Saving…",
+    "saveNode": "Save resource",
+    "empty": "No remote compute resources",
+    "addHint": "Click Add resource to configure a remote node"
   },
   "tokenUsage": {
     "title": "Token Statistics",
@@ -521,7 +529,6 @@
     "unknown": "Unknown account",
     "defaultAgent": {
       "title": "Bound Agent",
-      "description": "All IM channels are fixed to the custom medhelpOS agent. Claude and Codex are not enabled here.",
       "pi": "medhelpOS Agent"
     },
     "domestic": {

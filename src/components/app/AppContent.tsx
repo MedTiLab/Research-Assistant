@@ -419,7 +419,6 @@ export default function AppContent() {
   const PRIMARY_NAV_DEFAULT = SIDEBAR_DESKTOP_NAV_WIDTH;
   const STORAGE_KEY = 'med-help-sidebar-width';
   const PRIMARY_NAV_STORAGE_KEY = 'med-help-primary-nav-width';
-  const PRIMARY_NAV_COLLAPSED_STORAGE_KEY = 'med-help-primary-nav-collapsed';
   const PROJECT_PANE_VISIBLE_STORAGE_KEY = 'med-help-project-pane-visible';
   const LEGACY_STORAGE_KEYS = ['dr-claw-sidebar-width', 'vibelab-sidebar-width'];
 
@@ -438,9 +437,7 @@ export default function AppContent() {
       ? saved
       : PRIMARY_NAV_DEFAULT;
   });
-  const [primaryNavCollapsed, setPrimaryNavCollapsed] = useState(
-    () => localStorage.getItem(PRIMARY_NAV_COLLAPSED_STORAGE_KEY) === 'true',
-  );
+  const [primaryNavCollapsed, setPrimaryNavCollapsed] = useState(true);
   const [projectPaneVisible, setProjectPaneVisible] = useState(
     () => localStorage.getItem(PROJECT_PANE_VISIBLE_STORAGE_KEY) !== 'false',
   );
@@ -521,11 +518,6 @@ export default function AppContent() {
     window.addEventListener('blur', onMouseUp);
   }, []);
 
-  const setPrimaryNavCollapsePreference = useCallback((collapsed: boolean) => {
-    setPrimaryNavCollapsed(collapsed);
-    localStorage.setItem(PRIMARY_NAV_COLLAPSED_STORAGE_KEY, String(collapsed));
-  }, []);
-
   const setProjectPaneVisibility = useCallback((visible: boolean) => {
     setProjectPaneVisible(visible);
     localStorage.setItem(PROJECT_PANE_VISIBLE_STORAGE_KEY, String(visible));
@@ -544,8 +536,8 @@ export default function AppContent() {
               primaryNavCollapsed={primaryNavCollapsed}
               primaryNavWidth={primaryNavWidth}
               projectPaneVisible={projectPaneVisible}
-              onCollapsePrimaryNav={() => setPrimaryNavCollapsePreference(true)}
-              onExpandPrimaryNav={() => setPrimaryNavCollapsePreference(false)}
+              onCollapsePrimaryNav={() => setPrimaryNavCollapsed(true)}
+              onExpandPrimaryNav={() => setPrimaryNavCollapsed(false)}
               onCollapseProjectPane={() => setProjectPaneVisibility(false)}
               onExpandProjectPane={() => setProjectPaneVisibility(true)}
             />

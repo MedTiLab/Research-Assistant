@@ -586,7 +586,8 @@
       "browser": "Browser",
       "download": "Download",
       "shell": "Shell",
-      "git": "Git"
+      "git": "Git",
+      "compute": "Compute resources"
     },
     "browser": {
       "title": "Simple browser",
@@ -810,7 +811,7 @@
       "researchMonitoring": "Please help me with \"Research monitoring\". First define topic, time window, sources, and exclusion rules; then summarize recent representative papers, trends, translatable questions, and the next monitoring recommendation. Available skills: {{skills}}.\n\nMy task:",
       "databaseAccess": "Please help me with \"Database extraction\". Use the 1 API base + 27 independent database skills + optional cross-database router pattern. Prefer api.medtimehelp.com and fall back to a healthy 127.0.0.1:8787 service only when the public endpoint is unavailable. Decide whether routing is needed; distinguish Chinese databases, SHARE/HRS-family, UKB, NHANES, ICU/EHR, perioperative, and cancer-registry sources; state structural risks such as patient/stay/wave/cycle/timeline/coding-era semantics, locate real tables and fields, and extract only task-needed variables with source paths. Available skills: {{skills}}.\n\nMy task:",
       "ideation": "Please help me with \"Clinical study ideation\". First evaluate evidence gap, available database, clinical relevance, and statistical feasibility; then form PICO, core hypothesis, novelty claim, candidate data source, main model, and minimum viable analysis. Available skills: {{skills}}.\n\nMy task:",
-      "preAnalysis": "Please help me with \"Data analysis\". Inspect the data structure, variable types, missingness, outliers, and analysis objective first. Keep database-specific analyses, baseline tables, descriptive statistics, tests, and modeling in this category, select the smallest necessary skill set, and produce diagnostics, visualization, effect sizes, and reproducible outputs. Available skills: {{skills}}.\n\nMy data or analysis question:",
+      "preAnalysis": "For database extraction, locate real tables and fields, verify the cohort and timeline, and record data sources before cleaning and analysis. Please help me with \"Data analysis\". Inspect the data structure, variable types, missingness, outliers, and analysis objective first. Keep database-specific analyses, baseline tables, descriptive statistics, tests, and modeling in this category, select the smallest necessary skill set, and produce diagnostics, visualization, effect sizes, and reproducible outputs. Available skills: {{skills}}.\n\nMy data or analysis question:",
       "statisticalModeling": "Please help me with \"Statistical modeling and testing\". Use only the selected skills and clarify the model/test target, variable roles, assumptions, diagnostics, effect sizes, and manuscript reporting for the current research question. Available skills: {{skills}}.\n\nMy task:",
       "medicalViz": "Please help me with \"Medical visualization\". Use only the skills I selected. First identify the figure type, then provide layout, palette, typography, legend, panel labels, figure-caption points, and PDF/PNG export requirements. Default journal-level figure design to nature-figure; pair clinical/biomedical statistical plots with data-visualization-biomedical; use scientific-visualization for general journal figure layout; use matplotlib, seaborn, plotly, or data-viz-plots only when lower-level plotting code is needed. Available skills: {{skills}}.\n\nMy task:",
       "resultsIntegration": "Please help me with \"Results integration and drafting\". First integrate existing Table 1, model outputs, figures, and sensitivity analyses; then organize main results, subgroups, robustness checks, interpretation boundaries, and submission-ready wording under STROBE/CONSORT logic. Available skills: {{skills}}.\n\nMy task:",
@@ -879,7 +880,7 @@
       "makePresentation": "Use the most relevant presentation skills to help me make a slide deck. First confirm the audience, setting, duration, core message, and available source material; then create a slide-by-slide outline, visual direction, and narrative flow, and generate an editable PPTX once the requirements are sufficient. Available skills: {{skills}}.\n\nMy presentation topic:",
       "searchLiterature": "Use real literature-search skills to find evidence for me. First clarify the research question, PICO/keywords, databases, date range, and eligibility criteria; then provide verifiable papers, search strings, evidence summaries, and research gaps. Never invent titles, DOIs, or citations. Available skills: {{skills}}.\n\nMy topic:",
       "downloadLiterature": "Use literature-acquisition skills to download the requested full text. First identify the target papers from the supplied titles, DOIs, PMIDs, PMCIDs, arXiv IDs, literature list, or Zotero records. Then check existing project files, Zotero attachments, PMC/Europe PMC, Unpaywall, arXiv, and other lawful open sources in that order; never bypass a paywall. Save the files and report the source, status, local path, and failure reason, and parse PDFs when needed. Available skills: {{skills}}.\n\nLiterature to download:",
-      "dataAnalysis": "Use data-analysis skills to help me analyze data. Inspect the data structure, variable types, missingness, outliers, and analysis objective first; include database-specific analysis, baseline tables, descriptive statistics, tests, or models as needed, then complete diagnostics, visualization, effect-size reporting, and reproducible outputs. Never invent results without inspecting real data. Available skills: {{skills}}.\n\nMy data or analysis question:",
+      "dataAnalysis": "For database extraction, locate real tables and fields, verify the cohort and timeline, and record data sources before cleaning and analysis. Use data-analysis skills to help me analyze data. Inspect the data structure, variable types, missingness, outliers, and analysis objective first; include database-specific analysis, baseline tables, descriptive statistics, tests, or models as needed, then complete diagnostics, visualization, effect-size reporting, and reproducible outputs. Never invent results without inspecting real data. Available skills: {{skills}}.\n\nMy data or analysis question:",
       "experimentLog": "Use the experiment-log skill to organize this experiment. Read the supplied images, audio, or text; standardize experiment IDs, sample batches, equipment, conditions, observations, results, anomalies, and next actions; and produce a traceable Markdown log with YAML frontmatter. Available skills: {{skills}}.\n\nExperiment materials:",
       "researchDesign": "Use research-design skills to help me develop a study plan. Clarify the question, PICO, population, exposure/intervention, outcome, time zero, and available data; then define eligibility criteria, variables, bias control, sample size, and the statistical analysis plan. Available skills: {{skills}}.\n\nMy research question:",
       "databaseExtraction": "Use database-extraction skills to help me obtain real data. Confirm the research question, target database, cohort structure, and required variables; locate real tables and fields, verify timeline and coding semantics, and extract only task-relevant data while preserving source paths and reproducibility records. Available skills: {{skills}}.\n\nMy database task:",
@@ -962,7 +963,7 @@
       },
       "dataAnalysis": {
         "title": "Data analysis",
-        "description": "Inspect real data and perform statistics, testing, modeling, diagnostics, and visualization."
+        "description": "Extract real database data, clean it, and perform descriptive statistics, tests, modeling, and visualization."
       },
       "experimentLog": {
         "title": "Experiment log",
@@ -1213,6 +1214,11 @@
     "templateSuccessBody": "Your PRD has been created and tasks are being generated..."
   },
   "canvas": {
+    "deleteTitle": "Delete branch",
+    "deleteCancel": "Cancel",
+    "deleteAction": "Delete",
+    "deleteBranch": "Delete branch: {{name}}",
+    "deleteConfirm": "Delete “{{name}}” and all its descendant branches? If the current branch is included, you will return to the parent branch. Project files are unaffected.",
     "title": "Conversation canvas",
     "viewMode": "Conversation view",
     "chatMode": "Chat",

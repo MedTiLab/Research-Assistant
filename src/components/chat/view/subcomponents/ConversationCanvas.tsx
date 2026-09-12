@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { GitBranch, GripVertical, LayoutGrid, Maximize, Minus, Plus, RefreshCw } from 'lucide-react';
+import { GitBranch, GripVertical, LayoutGrid, Maximize, Minus, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { authenticatedFetch } from '../../../../utils/api';
 import { safeLocalStorage } from '../../utils/chatStorage';
+import DeleteBranchDialog from './DeleteBranchDialog';
 
 export type CanvasBranch = { id: string; parentId: string | null; label: string; leafId: string | null; fromEntryId: string | null };
 type CanvasMessage = { id: string; branchId: string; role: string; preview: string; active: boolean };
@@ -51,7 +52,8 @@ export function layoutBranches(branches: CanvasBranch[]) {
   return branches.map((branch) => ({ ...branch, ...positions.get(branch.id)! }));
 }
 
-export default function ConversationCanvas({ projectName, sessionId, isLoading, revision, onBranchChanged, onBusyChange }: {
+export default function ConversationCanvas({ projectName, sessionId, isLoading, revision, onBranchChanged, onBusyChange, emptyState }: {
+  emptyState?: React.ReactNode;
   projectName: string;
   sessionId: string | null;
   isLoading: boolean;
@@ -67,6 +69,8 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
   const [refresh, setRefresh] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [label, setLabel] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState<CanvasBranch | null>(null);
+  useEffect(() => { setDeleteTarget(null); }, [projectName, sessionId]);
   const positionKey = `conversation-canvas-positions:${JSON.stringify([projectName, sessionId])}`;
   const [positions, setPositions] = useState<Positions>(() => readCanvasPositions(positionKey));
   const positionsRef = useRef(positions);
@@ -136,7 +140,7 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
     safeLocalStorage.setItem(positionKey, JSON.stringify(positionsRef.current));
   };
   const busy = pending || isLoading || fetching;
-  const changeBranch = async (action: 'create' | 'switch', input: Record<string, string>) => {
+  const changeBranch = async (action: 'create' | 'switch' | 'delete', input: Record<string, string>) => {
     if (!base || busy || mutationLock.current || needsHistoryRefresh) return;
     mutationLock.current = true;
     setPending(true); onBusyChange(true); setError('');
@@ -146,6 +150,10 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || t('canvas.changeFailed'));
       setTree(result);
+      if (action === 'delete') {
+        const remaining = new Set(result.branches.map((branch: CanvasBranch) => branch.id));
+        savePositions(Object.fromEntries(Object.entries(positionsRef.current).filter(([id]) => remaining.has(id))));
+      }
       await onBranchChanged();
       setLabel('');
     } catch (reason) {
@@ -165,11 +173,16 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
     finally { setPending(false); if (recovered && mounted.current) onBusyChange(false); }
   };
   return (
-    <section className="flex min-h-0 flex-1 flex-col bg-muted/20" aria-label={t('canvas.title')}>
-      <div className="flex flex-wrap items-center gap-2 border-b px-3 py-2 text-xs">
+    <section className={`flex min-h-0 flex-col bg-muted/20 ${base ? 'flex-1' : 'flex-shrink-0'}`} aria-label={t('canvas.title')}>
+      {deleteTarget && <DeleteBranchDialog name={deleteTarget.label} disabled={busy || needsHistoryRefresh}
+        onCancel={() => setDeleteTarget(null)} onConfirm={() => {
+          void changeBranch('delete', { branchId: deleteTarget.id });
+          setDeleteTarget(null);
+        }} />}
+      <div className={`flex flex-wrap items-center gap-2 border-b px-3 py-2 text-xs ${!base && emptyState ? 'absolute inset-x-0 top-0' : ''}`}>
         <GitBranch className="h-4 w-4 text-primary" />
         <span className="font-medium">{t('canvas.title')}</span>
-        <span className="text-muted-foreground">{t('canvas.hint')}</span>
+        <span className="text-muted-foreground">{t(!base ? 'canvas.empty' : 'canvas.hint')}</span>
         <div className="ml-auto flex items-center gap-2">
           <button type="button" disabled={!nodes.length} onClick={autoLayout} className="flex items-center gap-1 rounded px-2 py-1 hover:bg-muted disabled:opacity-40"><LayoutGrid size={14} />{t('canvas.autoLayout')}</button>
           <button type="button" disabled={!nodes.length} aria-label={t('canvas.fitView')} title={t('canvas.fitView')} onClick={() => fitNodes()} className="rounded p-1 hover:bg-muted"><Maximize size={15} /></button>
@@ -180,7 +193,7 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
         </div>
       </div>
       {error && <div role="alert" className="px-3 py-2 text-xs text-destructive">{error} {needsHistoryRefresh && <button type="button" disabled={pending} onClick={retryHistory} className="underline">{t('canvas.retryHistory')}</button>}</div>}
-      {!base ? <div className="m-auto p-8 text-center text-sm text-muted-foreground">{t('canvas.empty')}</div> : <>
+      {!base ? emptyState || <div className="px-3 py-4 text-center text-sm text-muted-foreground">{t('canvas.empty')}</div> : <>
         <div className="flex items-center gap-2 border-b px-3 py-2 text-xs">
           <input aria-label={t('canvas.branchName')} maxLength={100} placeholder={t('canvas.branchName')} value={label} onChange={(event) => setLabel(event.target.value)} className="w-44 rounded border bg-background px-2 py-1" />
           <span className="text-muted-foreground">{isLoading ? t('canvas.running') : t('canvas.sharedFiles')}</span>
@@ -236,6 +249,9 @@ export default function ConversationCanvas({ projectName, sessionId, isLoading, 
                     <span className="truncate font-medium" title={node.label}>{node.id === 'main' ? t('canvas.main') : node.label}</span>
                     </button>
                     <button type="button" disabled={busy || active || !node.leafId || needsHistoryRefresh} onClick={() => changeBranch('switch', { branchId: node.id })} className="ml-auto shrink-0 rounded bg-primary/10 px-2 py-1 text-xs text-primary disabled:opacity-50">{active ? t('canvas.active') : t('canvas.continue')}</button>
+                    {node.id !== 'main' && <button type="button" disabled={busy || needsHistoryRefresh} aria-label={t('canvas.deleteBranch', { name: node.label })} title={t('canvas.deleteBranch', { name: node.label })}
+                      onClick={() => setDeleteTarget(node)}
+                      className="shrink-0 rounded p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive disabled:opacity-40"><Trash2 size={15} /></button>}
                   </header>
                   <div className="min-h-0 flex-1 cursor-auto space-y-2 overflow-auto p-3" style={{ touchAction: 'pan-y' }}>
                     {messages.length === 0 && <p className="text-xs text-muted-foreground">{t('canvas.branchEmpty')}</p>}

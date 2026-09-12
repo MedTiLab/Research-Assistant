@@ -84,6 +84,12 @@ function ComputeNodeSelectorContent({ variant, onSelected }: { variant: ComputeN
     return () => document.removeEventListener('mousedown', handlePointerDown);
   }, [open]);
 
+  useEffect(() => {
+    const refresh = () => { void loadNodes({ silent: true }); };
+    window.addEventListener('medhelp-compute-resources-changed', refresh);
+    return () => window.removeEventListener('medhelp-compute-resources-changed', refresh);
+  }, [loadNodes]);
+
   const handleToggle = () => {
     setOpen((previous) => {
       const next = !previous;

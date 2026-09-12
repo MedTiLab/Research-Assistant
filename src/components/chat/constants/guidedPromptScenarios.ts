@@ -47,7 +47,7 @@ export const CHAT_QUICK_ACTION_GROUPS: ChatQuickActionGroup[] = [
   {
     id: 'design',
     titleKey: 'guidedStarter.groups.design',
-    scenarioIds: ['research-design', 'database-extraction', 'data-analysis', 'experiment-log'],
+    scenarioIds: ['research-design', 'data-analysis', 'experiment-log'],
   },
   {
     id: 'visual',
@@ -182,9 +182,11 @@ export const CHAT_QUICK_ACTION_SCENARIOS: GuidedPromptScenario[] = [
     descriptionKey: 'guidedStarter.scenarios.dataAnalysis.description',
     skills: [
       'nature-statistics',
+      'data-transform',
       'exploratory-data-analysis',
       'baseline-table',
       'clinical-preanalysis',
+      ...LOCAL_DATABASE_EXTRACTION_SKILLS,
       ...LOCAL_DATABASE_ANALYSIS_SKILLS,
       'data-stats-analysis',
       'statistical-analysis',
@@ -197,13 +199,6 @@ export const CHAT_QUICK_ACTION_SCENARIOS: GuidedPromptScenario[] = [
     titleKey: 'guidedStarter.scenarios.researchDesign.title',
     descriptionKey: 'guidedStarter.scenarios.researchDesign.description',
     skills: ['clinical-preanalysis', 'statistical-analysis', 'medhelp-pipeline-planner'],
-  },
-  {
-    id: 'database-extraction',
-    icon: '🗂️',
-    titleKey: 'guidedStarter.scenarios.databaseExtraction.title',
-    descriptionKey: 'guidedStarter.scenarios.databaseExtraction.description',
-    skills: ['medhelp-database-api-access', 'data-transform'],
   },
   {
     id: 'experiment-log',
@@ -349,13 +344,6 @@ export const GUIDED_PROMPT_SCENARIOS: GuidedPromptScenario[] = [
     skills: [...MEDICAL_LITERATURE_REVIEW_DEFAULT_SKILLS],
   },
   {
-    id: 'database-access',
-    icon: '🗂️',
-    titleKey: 'guidedStarter.scenarios.databaseAccess.title',
-    descriptionKey: 'guidedStarter.scenarios.databaseAccess.description',
-    skills: [...LOCAL_DATABASE_EXTRACTION_SKILLS],
-  },
-  {
     id: 'research-idea',
     icon: '💡',
     titleKey: 'guidedStarter.scenarios.researchIdea.title',
@@ -372,6 +360,7 @@ export const GUIDED_PROMPT_SCENARIOS: GuidedPromptScenario[] = [
       'baseline-table',
       'data-transform',
       'exploratory-data-analysis',
+      ...LOCAL_DATABASE_EXTRACTION_SKILLS,
       ...LOCAL_DATABASE_ANALYSIS_SKILLS,
       'statistical-analysis',
       'statsmodels',

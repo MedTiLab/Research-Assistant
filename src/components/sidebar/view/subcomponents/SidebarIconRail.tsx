@@ -4,6 +4,7 @@ import type { TFunction } from 'i18next';
 import type { AppTab } from '../../../../types/app';
 import { cn } from '../../../../lib/utils';
 import Tooltip from '../../../Tooltip';
+import BrandLogo from '../../../BrandLogo';
 import MeetingNotificationCenter from '../../../../features/research-secretary/meetings/MeetingNotificationCenter';
 import {
   buildSidebarNavTiles,
@@ -109,12 +110,9 @@ export default function SidebarIconRail({
       className="medical-icon-rail relative z-30 flex h-full flex-shrink-0 flex-col items-center gap-1 overflow-visible border-r border-border/50 bg-card/90 py-2.5 backdrop-blur-sm dark:bg-card/80"
       style={{ width: SIDEBAR_ICON_RAIL_WIDTH }}
     >
-      <RailIconButton
-        label={t('common:versionUpdate.ariaLabels.showSidebar')}
-        onClick={onExpand}
-      >
-        <PanelLeftOpen className="h-4 w-4" strokeWidth={1.9} />
-      </RailIconButton>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center" title={t('app.title')}>
+        <BrandLogo className="h-8 w-8 opacity-100 drop-shadow-sm dark:opacity-[0.62]" />
+      </div>
       <Tooltip content={t('actions.openSource')} position="right" delay={120}>
         <a
           href={OPEN_SOURCE_URL}
@@ -127,6 +125,12 @@ export default function SidebarIconRail({
           <Github className="h-4 w-4" strokeWidth={1.9} />
         </a>
       </Tooltip>
+      <RailIconButton
+        label={t('common:versionUpdate.ariaLabels.showSidebar')}
+        onClick={onExpand}
+      >
+        <PanelLeftOpen className="h-4 w-4" strokeWidth={1.9} />
+      </RailIconButton>
       {!projectPaneVisible && onExpandProjectPane && (
         <RailIconButton
           label={t('common:versionUpdate.ariaLabels.showSidebar')}

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Badge } from './ui/badge';
-import { X, Plus, Settings as SettingsIcon, Shield, AlertTriangle, Moon, Sun, Server, Edit3, Trash2, Globe, Terminal, Zap, FolderOpen, LogIn, Key, Check, RefreshCcw, Cpu, Brain, Bot, MessageSquare, Loader2, Eye, EyeOff, HardDrive, PackageOpen, Upload, Volume2, Type, Menu } from 'lucide-react';
+import { X, Plus, Settings as SettingsIcon, Shield, AlertTriangle, Moon, Sun, Server, Edit3, Trash2, Globe, Terminal, Zap, FolderOpen, LogIn, Key, Check, RefreshCcw, Brain, Bot, MessageSquare, Loader2, Eye, EyeOff, HardDrive, PackageOpen, Upload, Volume2, Type, Menu } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import LoginModal from './LoginModal';
@@ -24,7 +24,6 @@ import ConnectorsContent from './settings/ConnectorsContent';
 import UnifiedMemorySettingsContent from './settings/UnifiedMemorySettingsContent';
 import PermissionsContent from './settings/PermissionsContent';
 import AgentServicesSettings from './settings/AgentServicesSettings';
-import ComputeSettingsContent from './settings/ComputeSettingsContent';
 import TrashSettingsContent from './settings/TrashSettingsContent';
 import UserAccountContent from './settings/UserAccountContent';
 import ImChannelsContent from './settings/ImChannelsContent';
@@ -33,7 +32,7 @@ import PiProviderSettingsContent from './settings/PiProviderSettingsContent';
 import PiMcpSettings from './settings/PiMcpSettings';
 import LanguageSelector from './LanguageSelector';
 
-const VALID_SETTINGS_TABS = new Set(['user', 'im', 'trash', 'compute', 'dataPaths', 'agents', 'mcp', 'memory', 'email', 'appearance', 'git', 'tokens', 'api']);
+const VALID_SETTINGS_TABS = new Set(['user', 'im', 'trash', 'dataPaths', 'agents', 'mcp', 'memory', 'email', 'appearance', 'git', 'tokens', 'api']);
 const SETTINGS_NAV_WIDTH_KEY = 'med-help-settings-nav-width';
 const SETTINGS_NAV_MIN = 220;
 const SETTINGS_NAV_MAX = 440;
@@ -1629,7 +1628,6 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
   const settingsTabs = [
     { id: 'user', icon: LogIn, label: t('mainTabs.userAccount') },
     { id: 'im', icon: MessageSquare, label: t('mainTabs.imChannels') },
-    { id: 'compute', icon: Cpu, label: t('mainTabs.compute') },
     { id: 'dataPaths', icon: HardDrive, label: t('mainTabs.dataPaths') },
     { id: 'agents', icon: Bot, label: t('mainTabs.agents') },
     { id: 'mcp', icon: Server, label: t('mainTabs.mcp') },
@@ -1728,7 +1726,6 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
             {activeTab === 'trash' && <TrashSettingsContent />}
 
             {/* Compute Tab */}
-            {activeTab === 'compute' && <ComputeSettingsContent />}
 
             {/* One settings entry, with distinct stores for facts and behavioral preferences. */}
             {activeTab === 'memory' && <UnifiedMemorySettingsContent projects={projects} initialSection={initialTab === 'preferences' ? 'preferences' : 'longTerm'} />}

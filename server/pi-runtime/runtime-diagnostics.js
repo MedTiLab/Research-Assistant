@@ -7,7 +7,7 @@ import { PI_SDK_PACKAGE, PI_SDK_VERSION } from './provider-config.js';
 
 export const PI_RUNTIME_MANIFEST_SCHEMA = 'medhelp.pi-runtime.v2';
 // Bump whenever an older prepared sdk-host.mjs must be rejected after an app upgrade.
-export const PI_HOST_BUILD_ID = 19;
+export const PI_HOST_BUILD_ID = 20;
 export const PI_MCP_SDK_PACKAGE = '@modelcontextprotocol/sdk';
 export const PI_MCP_SDK_VERSION = '1.29.0';
 export const PI_SCHEMA_PACKAGE = 'typebox';

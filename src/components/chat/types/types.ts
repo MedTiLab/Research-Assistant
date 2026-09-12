@@ -19,12 +19,12 @@ export type SessionLifecycleHandler = (
 ) => void;
 
 export type PermissionMode = 'default' | 'acceptEdits' | 'bypassPermissions' | 'plan' | 'readOnly' | 'ask' | 'auto';
-export type ChatSidebarTab = 'context' | 'consultation' | 'files' | 'browser' | 'survey' | 'git';
+export type ChatSidebarTab = 'context' | 'consultation' | 'files' | 'browser' | 'survey' | 'git' | 'compute';
 
-export const VISIBLE_CHAT_SIDEBAR_TABS = ['browser', 'files', 'git'] as const satisfies readonly ChatSidebarTab[];
+export const VISIBLE_CHAT_SIDEBAR_TABS = ['browser', 'files', 'git', 'compute'] as const satisfies readonly ChatSidebarTab[];
 
 export function normalizeChatSidebarTab(value: unknown): ChatSidebarTab {
-  return value === 'browser' || value === 'git' ? value : 'files';
+  return value === 'browser' || value === 'git' || value === 'compute' ? value : 'files';
 }
 
 export const RESUMING_STATUS_TEXT = 'Resuming...';
@@ -212,6 +212,8 @@ export interface Question {
 }
 
 export interface ChatInterfaceProps {
+  computeNodeId?: string | null;
+  onComputeNodeChange?: (nodeId: string | null) => void;
   headerControlsTarget?: HTMLElement | null;
   selectedProject: Project | null;
   selectedSession: ProjectSession | null;

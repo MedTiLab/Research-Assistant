@@ -116,6 +116,7 @@ interface UseChatComposerStateArgs {
   piModel: string;
   piModelProviderId: string;
   piModelApi: string;
+  computeNodeId?: string | null;
   piCatalogRevision: number | null;
   isLoading: boolean;
   canAbortSession: boolean;
@@ -309,6 +310,7 @@ export function useChatComposerState({
   piModel,
   piModelProviderId,
   piModelApi,
+  computeNodeId = null,
   piCatalogRevision,
   isLoading,
   canAbortSession,
@@ -1478,6 +1480,7 @@ export function useChatComposerState({
             model: piModel || undefined,
             modelProviderId: piModelProviderId || undefined,
             modelApi: piModelApi || undefined,
+            computeNodeId,
             catalogRevision: piCatalogRevision,
             permissionMode,
             reasoningLevel: thinkingMode === 'none' ? 'off' : thinkingMode,
@@ -1519,6 +1522,8 @@ export function useChatComposerState({
           },
         };
       }
+
+      agentCommandPayload.options = { ...(agentCommandPayload.options as Record<string, unknown>), computeNodeId };
 
       if (isFollowUpSubmission) {
         const visibleContentRange = findVisibleUserContentRange(messageContent);
@@ -1599,6 +1604,7 @@ export function useChatComposerState({
       piModel,
       piModelProviderId,
       piModelApi,
+      computeNodeId,
       piCatalogRevision,
       currentSessionId,
       executeCommand,

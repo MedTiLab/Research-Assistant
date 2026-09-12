@@ -165,7 +165,6 @@ function PiAgentBinding() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <h4 className="text-base font-semibold text-foreground">{t('imChannels.defaultAgent.title')}</h4>
-          <p className="mt-1 text-sm text-muted-foreground">{t('imChannels.defaultAgent.description')}</p>
         </div>
         <div className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 text-sm font-semibold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300 md:w-auto">
           <Radio className="h-4 w-4" />

@@ -42,6 +42,41 @@ afterEach(async () => {
 });
 
 describePrepared('Pi SDK Host integration', () => {
+  it('deletes a branch subtree through RPC and persists the surviving branch across host restarts', async () => {
+    const sessionId = 'branch-delete-regression';
+    const sessionPath = path.join(testRoot, `${sessionId}.jsonl`);
+    const timestamp = new Date().toISOString();
+    const records = [
+      { type: 'session', version: 3, id: sessionId, timestamp, cwd: testRoot },
+      { type: 'message', id: 'u1', parentId: null, timestamp, message: { role: 'user', content: 'Shared question', timestamp: Date.now() } },
+      { type: 'message', id: 'a1', parentId: 'u1', timestamp, message: { role: 'assistant', content: [{ type: 'text', text: 'Shared answer' }], api: 'openai-completions', provider: 'test', model: 'test', usage: { input: 1, output: 1, cacheRead: 0, cacheWrite: 0, totalTokens: 2, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, total: 0 } }, stopReason: 'stop', timestamp: Date.now() } },
+    ];
+    await fs.writeFile(sessionPath, records.map((entry) => JSON.stringify(entry)).join('\n') + '\n');
+    manager = createPiHostManager({
+      hostPath: path.join(preparedRuntimeRoot, 'sdk-host.mjs'),
+      configRoot: path.join(testRoot, 'config'),
+      requestTimeoutMs: 10_000,
+    });
+    const call = (method, params = {}) => manager.runTurn({
+      method, params, sessionKey: sessionId, identity: { sessionId }, sessionPath, projectRoot: testRoot,
+    });
+    const created = await call('branch_create', { entryId: 'a1', label: 'Parent' });
+    const parentId = created.activeBranchId;
+    const parentLeaf = created.branches.find((branch) => branch.id === parentId).leafId;
+    await fs.appendFile(sessionPath, JSON.stringify({ type: 'message', id: 'u2', parentId: parentLeaf, timestamp, message: { role: 'user', content: 'Parent question', timestamp: Date.now() } }) + '\n');
+    await call('branch_create', { entryId: 'u2', label: 'Child' });
+    await call('branch_create', { entryId: 'a1', label: 'Sibling' });
+    const deleted = await call('branch_delete', { branchId: parentId });
+    expect(deleted.branches.map((branch) => branch.label)).toEqual(['主分支', 'Sibling']);
+    expect(await call('branch_list')).toEqual(deleted);
+    const remaining = await call('branch_delete', { branchId: deleted.activeBranchId });
+    expect(remaining.activeBranchId).toBe('main');
+    expect(remaining.branches.map((branch) => branch.id)).toEqual(['main']);
+    expect(remaining.messages.map((entry) => entry.id)).toEqual(['u1', 'a1']);
+    expect(await call('branch_list')).toEqual(remaining);
+    await expect(call('branch_delete', { branchId: 'main' })).rejects.toThrow('main branch cannot be deleted');
+  });
+
   it('streams through the isolated SDK with only read-only tools and resumes its native JSONL', async () => {
     const requests = [];
     upstream = http.createServer((request, response) => {
