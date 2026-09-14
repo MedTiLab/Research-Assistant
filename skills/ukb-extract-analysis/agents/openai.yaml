@@ -1,0 +1,4 @@
+interface:
+  display_name: "UKB 提取与分析"
+  short_description: "本地检索 UKB 变量、核对官网、提取数据并给出统计建议，官网不可达时回退本地"
+  default_prompt: "使用 $ukb-extract-analysis 先查本地 UKB 字段及编码，再核对官网；官网不可达时使用本地，提取所需变量并按研究问题给出统计建议。"

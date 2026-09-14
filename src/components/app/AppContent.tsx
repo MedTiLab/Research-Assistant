@@ -6,6 +6,9 @@ import Sidebar from '../sidebar/view/Sidebar';
 import { useDesktopCompanionSync } from '../../features/companions/useDesktopCompanionSync';
 import MainContent from '../main-content/view/MainContent';
 import MobileNav from '../MobileNav';
+import AutomationResultNotice from '../../features/research-secretary/automation/AutomationResultNotice';
+import type { AutomationResultTarget } from '../../features/research-secretary/services/automationsApi';
+import { automationRequestJson, automationRunsPath, markAutomationRunRead, type AutomationResult } from '../../features/research-secretary/services/automationsApi';
 
 import { useWebSocket } from '../../contexts/WebSocketContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -77,6 +80,7 @@ function createColumnResizeShield() {
 }
 
 export default function AppContent() {
+  const [automationResultTarget, setAutomationResultTarget] = useState<AutomationResultTarget | null>(null);
   useDesktopCompanionSync();
   const navigate = useNavigate();
   const location = useLocation();
@@ -525,6 +529,20 @@ export default function AppContent() {
 
   return (
     <div className={`medical-workbench-shell fixed inset-0 flex bg-background ${isDesktopShell ? 'medhelp-desktop-window' : ''}`}>
+      <AutomationResultNotice onRunsChanged={() => { void fetchProjects(); }} onOpenResult={async (target) => {
+        try {
+          const result = await automationRequestJson<AutomationResult>(automationRunsPath({ id: target.automationId, projectKey: target.projectKey }, `/${encodeURIComponent(target.sessionId)}`));
+          if (result.sessionExists && projects.some((project) => project.name === target.projectKey)) {
+            setActiveTab('chat');
+            handleNavigateToSession(target.sessionId, 'pi', target.projectKey);
+            void markAutomationRunRead(target).catch(() => undefined);
+            return;
+          }
+        } catch { /* Open the task details to show the failure and allow retry. */ }
+        setAutomationResultTarget({ ...target });
+        setActiveTab('automation');
+        navigate('/');
+      }} />
       {!isMobile ? (
         <div
           className={`medical-workbench-sidebar-frame relative z-20 h-full flex-shrink-0 border-r border-transparent ${isSidebarResizing ? '' : 'transition-[width] duration-150 ease-out'}`}
@@ -593,6 +611,7 @@ export default function AppContent() {
 
       <div className={`medical-workbench-main flex-1 flex flex-col min-w-0 ${isMobile ? 'pb-mobile-nav' : ''}`}>
         <MainContent
+          automationResultTarget={automationResultTarget}
           projects={projects}
           trashProjects={trashProjects}
           trashSessions={trashSessions}

@@ -123,8 +123,24 @@
     "year": "Year",
     "prevPeriod": "Previous period",
     "nextPeriod": "Next period",
-    "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    "weekdaysMondayNarrow": ["M", "T", "W", "T", "F", "S", "S"],
+    "weekdaysShort": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "weekdaysMondayNarrow": [
+      "M",
+      "T",
+      "W",
+      "T",
+      "F",
+      "S",
+      "S"
+    ],
     "monthLabel": "{{month}}",
     "yearLabel": "{{year}}",
     "yearMonth": "{{year}} {{month}}",
@@ -511,7 +527,7 @@
     "create": "New automation",
     "edit": "Edit settings",
     "tabs": {
-      "active": "Running",
+      "active": "Enabled",
       "paused": "Paused",
       "archived": "Archived"
     },
@@ -519,7 +535,7 @@
     "noMatch": "No matching automations",
     "noneForTab": "No {{tab}} automations",
     "status": {
-      "active": "Running",
+      "active": "Enabled",
       "paused": "Paused",
       "cancelled": "Archived",
       "completed": "Completed"
@@ -529,7 +545,8 @@
       "completed": "Succeeded",
       "failed": "Failed",
       "cancelled": "Stopped",
-      "interrupted": "Interrupted"
+      "interrupted": "Interrupted",
+      "completed_with_warnings": "Finished with limitations"
     },
     "repeat": {
       "none": "Does not repeat",
@@ -569,7 +586,7 @@
     "notScheduled": "Not set yet",
     "preview": "Schedule preview: {{time}}",
     "previewHint": "Shown in {{tz}}. Repeating tasks start from this time and continue at the selected interval.",
-    "previewAgent": "Each run creates a separate Pi agent session with read-only access in the project. The backend must stay running.",
+    "previewAgent": "Each run creates an independent conversation in the selected mode. Background runs do not use interactive plan approval.",
     "legacyModel": "Uses the current default model at run time (older task)",
     "modelCard": "Run model",
     "frequencyCard": "Frequency",
@@ -590,14 +607,34 @@
     "waitingResult": "Waiting for a result",
     "session": "Separate agent session:",
     "noRuns": "This automation has not run yet.",
-    "runHint": "Each run starts a separate Pi agent session and does not append to the current chat. It uses the model above with read-only access.",
+    "runHint": "Results are saved in independent conversations. Open them from the conversation list or the button above. A notice appears when a run finishes.",
     "emptyTitle": "No automations yet",
     "needProject": "Create a project first",
-    "emptyHint": "After you create one, it will run on schedule in its project and keep the latest run status.",
+    "emptyHint": "Scheduled runs retain their history, reports, and errors.",
     "loadFailed": "Could not load automations",
     "partialLoad": "{{count}} projects could not load automations",
     "noPiModels": "No Pi chat models are available. Enable one in Settings → medhelpOS → Models.",
-    "modelsFailed": "Could not load the model list"
+    "modelsFailed": "Could not load the model list",
+    "resultsTitle": "Run results",
+    "openConversation": "Open conversation",
+    "downloadResult": "Download report",
+    "resultWarnings": "{{count}} tool errors · details in conversation",
+    "loadingResult": "Loading result…",
+    "resultRunning": "Running. The report will appear here automatically.",
+    "noReport": "No report is available for this run. Check the status and error details.",
+    "unreadResults": "{{count}} automation results to review",
+    "dismissResult": "Mark as read",
+    "viewResult": "View result",
+    "executionMode": "Execution mode",
+    "modes": {
+      "auto": "Automatic research",
+      "readOnly": "Read-only research"
+    },
+    "modeHints": {
+      "auto": "Search, run project commands and save files without per-step confirmation. Dangerous system commands remain blocked.",
+      "readOnly": "Read sources and produce a report without running shell commands or changing project files."
+    },
+    "chooseRun": "Select a run"
   },
   "alerts": {
     "title": "Risk alerts",

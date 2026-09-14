@@ -142,6 +142,35 @@ async function createLocalSession(cloudAccessToken = 'x', cloudUserId = 'u1') {
 }
 
 describe('local API gate', () => {
+  it.each(['restore', 'logical'])('allows a paired device to %s legacy project trash without a database row', async (operation) => {
+    await startServer();
+    const token = await createLocalSession('x', '7001');
+    const projectName = '-Users-old-user-project';
+    const projectPath = path.join(tempRoot, 'legacy-project');
+    await fs.mkdir(projectPath, { recursive: true });
+    await fs.writeFile(path.join(projectPath, 'research.txt'), 'keep research');
+    const configPath = path.join(tempRoot, '.claude', 'project-config.json');
+    await fs.mkdir(path.dirname(configPath), { recursive: true });
+    await fs.writeFile(configPath, JSON.stringify({
+      [projectName]: {
+        ownerUserId: 1,
+        trash: {
+          trashedAt: '2026-04-17T00:00:00Z', ownerUserId: 1,
+          originalPath: projectPath, filesExist: true,
+        },
+      },
+    }));
+    expect(database.projectDb.getProjectById(projectName)).toBeFalsy();
+    expect((await req('/api/projects/trash', { token })).payload).toMatchObject([{ name: projectName }]);
+    const endpoint = `/api/projects/trash/${projectName}`;
+    const result = operation === 'restore'
+      ? await req(`${endpoint}/restore`, { token, method: 'POST' })
+      : await req(`${endpoint}?mode=logical`, { token, method: 'DELETE' });
+    expect(result).toEqual({ status: 200, payload: { success: true } });
+    expect((await req('/api/projects/trash', { token })).payload).toEqual([]);
+    expect(await fs.readFile(path.join(projectPath, 'research.txt'), 'utf8')).toBe('keep research');
+  });
+
   it.each(['pi'])('deletes, restores and removes indexed %s sessions with a legacy local project owner', async (provider) => {
     await startServer();
     const token = await createLocalSession('x', '7001');

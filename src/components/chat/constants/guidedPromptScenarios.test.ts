@@ -17,6 +17,7 @@ describe('CHAT_QUICK_ACTION_SCENARIOS', () => {
       'writing-assistant',
       'make-presentation',
       'data-analysis',
+      'ukb',
       'research-design',
       'experiment-log',
       'submit-manuscript',

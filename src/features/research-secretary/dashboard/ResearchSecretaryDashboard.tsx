@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import {
   AlarmClock,
   Bot,
-  BookOpenCheck,
   CircleAlert,
   ClipboardCheck,
   FileCheck2,
@@ -437,10 +436,7 @@ export default function ResearchSecretaryDashboard({
 
   const quickLinks = useMemo<QuickLink[]>(() => ([
     { key: 'dailyReview', label: t('common:tabs.dailyReview'), icon: <ClipboardCheck className="h-3.5 w-3.5" />, tab: 'dailyReview' as AppTab },
-    { key: 'thesis', label: t('common:tabs.thesis'), icon: <BookOpenCheck className="h-3.5 w-3.5" />, tab: 'thesis' as AppTab },
-    { key: 'submissions', label: t('common:tabs.submissions'), icon: <FileCheck2 className="h-3.5 w-3.5" />, tab: 'submissions' as AppTab },
     { key: 'meetings', label: t('common:tabs.meetings'), icon: <Presentation className="h-3.5 w-3.5" />, tab: 'meetings' as AppTab },
-    { key: 'advisor', label: t('common:tabs.advisor'), icon: <MessageSquareText className="h-3.5 w-3.5" />, tab: 'advisor' as AppTab },
     { key: 'automation', label: t('common:tabs.automation'), icon: <Bot className="h-3.5 w-3.5" />, tab: 'automation' as AppTab },
     { key: 'news', label: t('common:tabs.news'), icon: <Newspaper className="h-3.5 w-3.5" />, tab: 'news' as AppTab },
     { key: 'skills', label: t('common:tabs.skills'), icon: <Sparkles className="h-3.5 w-3.5" />, tab: 'skills' as AppTab },

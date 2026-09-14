@@ -1,0 +1,219 @@
+file,function,exported,args,title
+Alcohol_intake_frequency.R,Alcohol_intake_frequency,yes,path = NULL,酒精摄入频率数据处理函数
+Alcohol_status.R,Alcohol_status,yes,"path = NULL, instance = 0",饮酒状态数据处理函数
+Algorithmically_defined_outcomes_Extract.R,Algorithmically_defined_outcomes_Extract,yes,path = NULL,提取算法定义的结局数据  从UK Biobank数据中提取算法定义的结局数据
+Common_data_extraction.R,Common_data_extraction,yes,"path = NULL, id, name",通用数据提取函数
+Diabetes_Comprehensive_diagnosis.R,Diabetes_Comprehensive_diagnosis,yes,path = NULL,综合糖尿病诊断函数
+Diabetes_Comprehensive_diagnosis.R,create_medication_column,no,"data, original_col, drug_pattern",
+Diabetes_Comprehensive_diagnosis.R,convert_codes_to_names,no,"codes, coding_dict",
+Diabetes_Comprehensive_diagnosis.R,check_medication,no,codes,
+Diabetes_duration.R,Diabetes_duration,yes,path = NULL,糖尿病病程计算函数
+Fasting_time.R,Fasting_time,yes,"path = NULL, instance = 0",禁食时间数据处理函数
+Genetic_principal_components.R,Genetic_principal_components,yes,"path = NULL,n=20",遗传主成分数据提取函数
+Hand_grip_strength_kg.R,Hand_grip_strength_kg,yes,"path = NULL, instance = 0",提取 UK Biobank 握力数据并计算平均握力
+Healthy_diet_score.R,Healthy_diet_score,yes,"path = NULL, i = 0",计算UK Biobank健康饮食得分  基于UK Biobank基线数据，计算7个健康饮食指标（水果、蔬菜、鱼类、加工肉类、未加工红肉、全谷物、精制谷物）的达标情况， 并依据至少4项达标定义健康饮食得
+Healthy_sleep_score.R,Healthy_sleep_score,yes,path = NULL,健康睡眠评分计算函数
+Hospital_cancer_Diagnoses.R,Hospital_cancer_Diagnoses,yes,path = NULL,
+Hospital_cancer_Diagnoses_date.R,Hospital_cancer_Diagnoses_date,yes,"p40006, p40005, disease_codes, disease_name",
+Hospital_cancer_Diagnoses_date_list.R,Hospital_cancer_Diagnoses_date_list,yes,"p40006, p40005, disease_list",
+Hospital_inpatient_Diagnoses.R,Hospital_inpatient_Diagnoses,yes,path = NULL,
+Hospital_inpatient_Diagnoses_date.R,Hospital_inpatient_Diagnoses_date,yes,"p41270, p41280, disease_codes, disease_name",
+Hospital_inpatient_Diagnoses_date_ICD10.R,Hospital_inpatient_Diagnoses_date_ICD10,yes,"path = NULL, disease_list",住院诊断日期ICD10编码处理函数
+Hospital_inpatient_Diagnoses_date_ICD9.R,Hospital_inpatient_Diagnoses_date_ICD9,yes,"path = NULL, disease_list",住院诊断日期ICD9编码处理函数
+Hospital_inpatient_Diagnoses_date_list.R,Hospital_inpatient_Diagnoses_date_list,yes,"p41270, p41280, disease_list",
+Hospital_operative_Diagnoses.R,Hospital_operative_Diagnoses,yes,path = NULL,
+Hospital_operative_Diagnoses_date.R,Hospital_operative_Diagnoses_date,yes,"p41272, p41282, disease_codes, disease_name",
+Hospital_operative_Diagnoses_date_list.R,Hospital_operative_Diagnoses_date_list,yes,"p41272, p41282, disease_list",
+ICD9_41271_41281.R,p41281_data,yes,path,
+ICD9_41271_41281.R,p41271_data,yes,path,
+ICD9_41271_41281.R,convert_p41271_ultimate,yes,"data, path",
+ICD9_41271_41281.R,Hospital_inpatient_Diagnoses_ICD9,yes,path = NULL,
+ICD9_41271_41281.R,Hospital_inpatient_Diagnoses_date_list_ICD9,yes,"p41271, p41281, disease_list",
+NMR_process.R,NMR_process,yes,path = NULL,处理英国生物银行 (UK Biobank) NMR 代谢组数据  该函数负责完整的 NMR 代谢组数据处理流程： 1. 检查并安装必要的包 (`ukbnmr`)。 2. 检查指定目录下是否已有处理好的
+Pregnancy.R,Pregnancy,yes,"path = NULL, instance = 0",提取怀孕状态 (p3140)
+Process_Delta_Rank_Matrix.R,Process_Delta_Rank_Matrix,yes,"rank_matrix,ppi",Delta Rank矩阵计算函数
+Process_Delta_Rank_Matrix.R,calculate_delta_rank,no,"rank_mat, ppi_df",
+Proteomics_covariate.R,Proteomics_covariate,yes,path = NULL,蛋白组学协变量提取函数
+Proteomics_covariate.R,get_mode,no,x,
+Pulse_rate.R,Pulse_rate,yes,"path = NULL, instance = 0",提取脉搏率  提取指定实例的自动脉搏读数 (p102)、血压测量时脉搏 (p95) 以及单独脉搏 (p4194)。 优先使用自动脉搏的平均值，若缺失则使用血压测量脉搏的平均值，再缺失则使用单独脉搏读数
+SBP_DBP.R,SBP_DBP,yes,"path = NULL, instance = 0",计算收缩压、舒张压及派生指标（自动血压优先，手动补充）  提取指定实例的自动血压读数（p4079/p4080）与手动血压读数（p94/p93）， 优先使用自动血压，若自动读数缺失则用手动血压补充。计算
+Self_report_DR_diagnosis.R,Self_report_DR_diagnosis,yes,path = NULL,糖尿病视网膜病变自我报告诊断函数
+Self_report_diagnosis_p6150.R,Self_report_diagnosis_p6150,yes,path = NULL,自我报告疾病诊断函数（p6150）
+Self_report_drug_p10005.R,Self_report_drug_p10005,yes,path = NULL,自我报告药物使用数据处理函数（p10005）
+Self_report_drug_p10005.R,clean_medication_data,no,med_string,
+Self_report_drug_p10005.R,has_medication,no,"med_string, medication",
+Self_report_drug_p10005.R,create_med_col_name,no,med,
+Self_report_drug_p6154_p10004.R,Self_report_drug_p6154_p10004,yes,path = NULL,自我报告药物使用数据处理函数（p6154和p10004）
+Self_report_drug_p6154_p10004.R,clean_medication_data,no,med_string,
+Self_report_drug_p6154_p10004.R,has_medication,no,"med_string, medication",
+Self_report_drug_p6154_p10004.R,create_med_col_name,no,med,
+Self_report_drug_p6177_p6153.R,Self_report_drug_p6177_p6153,yes,"path = NULL,instance = 0",自我报告药物使用数据处理函数（p6177和p6153）
+Sleep.R,Sleep,yes,"path = NULL,instance = 0",睡眠数据处理函数
+Smoking_status.R,Smoking_status,yes,"path = NULL, instance = 0",吸烟状态数据处理函数
+Statistics_lm.R,Statistics_lm,yes,"data, y_cols, x_cols, covars = character(0), na_action = c(""na.omit"", ""na.fail"", ""na.exclude""), check_missing = TRUE, show_progress = TRUE, parallel = FALSE, n_cores = 1, keep_models = TRUE",批量一元线性回归  对数据框中指定的因变量（Y）和自变量（X）进行所有配对回归，可加入协变量， 提供缺失值处理选项，并在结果中报告每个模型因缺失值损失的有效样本量。
+Statistics_lm.R,fit_one,no,i,
+UKB_Assessment_Centre.R,UKB_Assessment_Centre,yes,path = NULL,UK Biobank 评估中心分类  从 UK Biobank 数据中提取评估中心（p54_i0）信息，并根据评估中心名称将其归类为英格兰（England）、威尔士（Wales）或苏格兰（Scotla
+UKB_Assessment_Centre_gard.R,UKB_Assessment_Centre_gard,yes,,UK Biobank 评估中心地理坐标数据  返回 UK Biobank 全部 29 个评估中心（含试点、影像及重复评估中心）的 英国国家网格坐标（British National Grid）及中心信
+Vitamin_and_mineral_supplements.R,Vitamin_and_mineral_supplements_minerals,yes,path = NULL,矿物质及其他膳食补充剂使用情况提取  从 UK Biobank 数据中提取矿物质及其他膳食补充剂使用情况，根据原始编码变量 p6179_i0 生成六种矿物质/补充剂的二元指示变量。 特殊处理：“Non
+Vitamin_and_mineral_supplements_minerals.R,Vitamin_and_mineral_supplements_minerals,yes,path = NULL,矿物质及膳食补充剂使用情况提取函数
+Vitamin_and_mineral_supplements_vitamins.R,Vitamin_and_mineral_supplements_vitamins,yes,path = NULL,维生素补充剂使用情况提取  从 UK Biobank 数据中提取维生素补充剂使用情况，根据原始编码变量 p6155_i0 生成七种维生素/叶酸/复合维生素的二元指示变量。 特殊处理：“None of 
+Waist_circumference.R,Waist_circumference,yes,"path = NULL, i = 0",获取UK Biobank腰围数据  该函数用于从UK Biobank数据集中提取指定索引的腰围测量值。
+add_col.R,add_col,yes,"data, colname = NULL, value = NULL, condition = NULL, position = NULL",
+age_sex_income.R,age_sex_income,yes,path = NULL,年龄、性别和收入数据处理函数
+batch_cindex_analysis.R,batch_cindex_analysis,yes,"OS, proteins, time_col, status_col, predictors = NULL, method = ""HZ"", verbose = TRUE, seed = 123",批量计算C指数函数  对多个变量进行批量C指数计算，适用于生存数据
+batch_impute.R,batch_impute,yes,"data, threshold = 20",批量缺失值插补处理函数  该函数对 UK Biobank 蛋白质组学数据进行批量缺失值插补处理，实现完整的插补分析流程。 首先计算每个蛋白质变量的缺失率，根据设定的阈值筛选保留的蛋白质（默认缺失率≤2
+batch_merge_data.R,batch_merge_data,yes,"path = NULL, id_list",批量数据合并函数
+batch_merge_data_optimized.R,batch_merge_data_optimized,yes,"data_path = NULL, id_list",批量数据合并优化函数
+batch_roc_analysis.R,batch_roc_analysis,yes,"data, outcome, predictors = NULL, positive_class = ""1"", plot_roc = FALSE, plot_n = 10, combine_plot = FALSE, save_plot = FALSE, plot_path = ""ROC_plots"", verbose = TRUE, seed = 123",批量ROC分析函数 对多个变量和结局进行批量ROC分析，计算AUC、最佳截断点等指标
+batch_survival_analysis.R,batch_survival_analysis,no,"proteins, OS, covariates = NULL, grouping_method = ""median"", quantile_threshold = 0.5, time_unit = ""years"", output_dir = ""./survival_results"", plot_top_n = 10, plot_individual = FALSE, plot_combined =",
+blood_baseline_time_p3166.R,blood_baseline_time_p3166,no,"path = NULL,instance=0",
+blood_biochemistry.R,blood_biochemistry,yes,"path = NULL,instance=0",血液生化数据处理函数
+blood_count.R,blood_count,yes,"path = NULL,instance=0",血常规数据处理函数
+blood_pressure_data.R,blood_pressure_data,yes,"path = NULL, instances=0",血压数据提取与合并函数  该函数从 UK Biobank 数据文件中提取参与者的血压测量数据（收缩压 p4080 和 舒张压 p4079）。函数根据指定的评估实例（instance）自动匹配对应的字段
+blood_time.R,blood_time,yes,"dt, date_pattern = ""p3166_i0_a""",血液采集日期处理与计算函数  该函数处理 UK Biobank 血液采集日期字段（p3166）的原始数据，对多列日期记录进行 清洗、格式转换和汇总计算。函数首先将字符型日期转换为 Date 类型，处理
+calc_uacr.R,calc_uacr,yes,"instance = 0, path = NULL",计算尿白蛋白肌酐比值（UACR）  从 UK Biobank 数据中提取尿白蛋白（ualb，单位 mg/L）和尿肌酐（ucreat，单位 μmol/L）， 计算尿白蛋白肌酐比值，并同时提供两种常用单位
+calculate_ASM.R,calculate_ASM,yes,"path = NULL, instance = 0",计算附肢骨骼肌质量 (ASM)
+calculate_All_Derived_Indices.R,calculate_All_Derived_Indices,yes,"path = NULL, instance = 0",一站式计算 UK Biobank 所有可用的血液与体型衍生指标
+calculate_BMI_group.R,calculate_BMI_group,yes,"path = NULL, instance = 0, asian_ethnicities = c( ""Indian"", ""Pakistani"", ""Bangladeshi"", ""Chinese"", ""Any other Asian background"", ""Asian or Asian British"" ), default_group = c(""White"", ""Asian"")",按种族划分的 BMI 分组
+calculate_BMI_group.R,classify_bmi,no,"bmi, asian",
+calculate_BioAge_Acceleration.R,calculate_BioAge_Acceleration,yes,"data, chronological_age, biological_age, sex = NULL, id = ""eid"", extreme_threshold = 1.5, method = c(""linear"", ""lowess"", ""direct"")",计算生物年龄加速（残差）并识别极端衰老/年轻个体
+calculate_BioAge_Acceleration.R,compute_accel,no,sub_df,
+calculate_BioAge_Acceleration.R,error,no,e,
+calculate_BioAges.R,calculate_BioAges,yes,"path = NULL,instance=0",计算多种生物年龄指标（KDM、PhenoAge、HD）
+calculate_CCR.R,calculate_CCR,yes,"path = NULL, instance = 0",计算肌酐与胱抑素 C 比值 (CCR) 及标准化 NCCR
+calculate_CKD_stage.R,calculate_CKD_stage,yes,"path = NULL, instance = 0, egfr_col = ""eGFR_EPI_2021_scr"", uacr_col = NULL, method = c(""simple"", ""kdigo_risk"", ""ckm_categories"")",慢性肾脏病(CKD)分期与风险分类函数
+calculate_CKM_stage.R,calculate_CKM_stage,yes,"path=NULL, instance = 0, egfr_col = ""eGFR_EPI_2021_scr"", uacr_col = ""uacr_mg_g"", tg_threshold = 1.7, asian_ethnicities = c( ""Indian"", ""Pakistani"", ""Bangladeshi"", ""Chinese"", ""Any other Asian background",计算心血管‑肾脏‑代谢（CKM）综合征分期  整合 UK Biobank 多项健康指标，依据 CKM 框架对参与者进行分期， 同时标记代谢综合征状态。支持自定义亚洲种族列表用于超重/肥胖阈值 及腹型肥
+calculate_CSPV.R,calculate_CSPV,yes,"path = NULL, instances = c(0, 1, 2, 3), method = ""discrete""",计算生理变异性综合得分 (CSPV)
+calculate_CSPV.R,extract_instance,no,inst,
+calculate_Derive_Blood_Indices.R,calculate_Derive_Blood_Indices,yes,"path = NULL, instance = 0",血常规与血生化数据计算多种衍生指标  一次性提取指定实例的血常规、血生化、基线年龄与性别字段，自动计算 30+ 种临床常用衍生指标，仅返回最终衍生变量。
+calculate_Derive_Blood_Indices.R,safe_div,no,"num, den",安全除法（分母为 0 或 NA 时返回 NA）
+calculate_Derive_Blood_Indices.R,calc_free_testosterone_ve,no,"T, SHBG, ALB",
+calculate_Dyslipidemia.R,calculate_Dyslipidemia,yes,"path=NULL, tg_threshold = 1.7",提取 UK Biobank 血脂并判定异常
+calculate_GOLD_BioAge_NHANES.R,calculate_GOLD_BioAge_NHANES,yes,data,计算 GOLD BioAge (NHANES 队列)
+calculate_GOLD_BioAge_UKB.R,calculate_GOLD_BioAge_UKB,yes,"path = NULL, instance = 0",计算 GOLD BioAge (UK Biobank 队列)
+calculate_GOLD_MetAge.R,calculate_GOLD_MetAge,yes,path = NULL,计算 GOLD MetAge（代谢组学生物年龄）
+calculate_GOLD_ProtAge.R,calculate_GOLD_ProtAge,yes,path = NULL,"计算 GOLD ProtAge 及相关衰老指标  包括22 种蛋白质，蛋白质数据应为标准化值（均值为 0，标准差为 1） 参考文献: Hao M, et al. Advanced Science 20"
+calculate_IR_indices.R,calculate_IR_indices,yes,"path = NULL, instance = 0",计算七项胰岛素抵抗指数  基于空腹 TG、Glucose、HDL-C、BMI、腰围、身高，计算 7 个 IR 指标。 所有血脂、血糖结果由 mmol/L 转为 mg/dL 后参与计算，非正值记为缺失。
+calculate_Light_BioAge_NHANES.R,calculate_Light_BioAge_NHANES,yes,data,
+calculate_Light_BioAge_UKB.R,calculate_Light_BioAge_UKB,yes,"path = NULL, instance = 0",计算 Light BioAge (UK Biobank 队列)
+calculate_MHO.R,calculate_MHO,yes,"path = NULL, instance = 0",肥胖代谢异质性 (MHO) 表型分类
+calculate_PhenotypicAge.R,calculate_PhenotypicAge,yes,"path=NULL, instance = 0",计算 Levine Phenotypic Age 表型年龄
+calculate_Prevent_CVD_Risk.R,calculate_Prevent_CVD_Risk,yes,"path = NULL, instances = 0",计算 PREVENT 心血管疾病风险  该函数整合 UK Biobank 的多个表型数据，并基于 AHA PREVENT 方程 批量计算每位参与者的 10 年及 30 年心血管疾病风险（包括总 CVD
+calculate_RPP.R,calculate_RPP,yes,"path = NULL, instance = 0",计算心率压力积 (RPP)
+calculate_SHR.R,calculate_SHR,yes,"path = NULL,instance = 0",计算应激性高血糖比值（SHR）  从 UK Biobank 数据中提取空腹血糖（Glucose，单位 mmol/L）和 HbA1c（单位 mmol/mol）， 先将 HbA1c 转换为 NGSP 单位
+calculate_abdominal_obesity.R,calculate_abdominal_obesity,yes,"path=NULL, instance=0, criteria = c(""AHA_metabolic"", ""IDF""), asian_ethnicities = c(""Indian"", ""Pakistani"", ""Bangladeshi"", ""Chinese"", ""Any other Asian background"", ""Asian or Asian British""), default_gro",从UK Biobank提取数据并计算腹型肥胖（返回完整数据）
+calculate_comorbidity.R,read_disease_data,no,filepath,
+calculate_delta_eGFR.R,calculate_delta_eGFR,yes,path = NULL,计算肌酐与胱抑素 C 估算肾小球滤过率的差值 (delta_eGFR_cysc_scr)
+calculate_eCRF.R,calculate_eCRF,yes,"path = NULL, instance = 0",估计心肺健康 (eCRF) 及分组
+calculate_eGDR.R,calculate_eGDR,yes,"path = NULL, instance = 0",计算估计葡萄糖处理率 (eGDR)
+calculate_ePWV.R,calculate_ePWV,yes,"path = NULL, instance = 0",计算估计脉搏波速度 (ePWV)
+calculate_framingham_ukb.R,calculate_framingham_ukb,yes,"data, id_col = ""eid"", age_col = ""age"", sex_col = ""sex"", tc_col = ""tc"", hdl_col = ""hdl"", sbp_col = ""sbp"", bp_tx_col = ""bp_tx"", smoking_col = ""smoking"", diabetes_col = ""diabetes"", output_suffix = ""frami",计算 UK Biobank 数据的 Framingham 10年冠心病风险评分  该函数根据 ATP III 版本的 Framingham 风险评分公式，计算每个参与者的 10年冠心病（CHD）风险。
+calculate_framingham_ukb.R,mmol_to_mgdl,no,x,
+calculate_metabolic_syndrome.R,calculate_metabolic_syndrome,yes,"path = NULL, instance = 0, tg_threshold = 1.7, abdominal_obesity_criteria = c(""AHA_metabolic"", ""IDF""), asian_ethnicities = c( ""Indian"", ""Pakistani"", ""Bangladeshi"", ""Chinese"", ""Any other Asian backgrou",计算代谢综合征（MetS）诊断  依据 AHA 代谢综合征标准，整合 UK Biobank 的腰围、血压、血脂、血糖信息， 对参与者进行代谢综合征诊断。支持自定义亚洲种族腰围阈值及甘油三酯临界值。
+calculate_missing_rate.R,calculate_missing_rate,yes,"data, exclude_cols = ""eid""",计算数据框的行缺失率与列缺失率
+calculate_obesity_indices.R,calculate_obesity_indices,yes,"path = NULL, instance = 0","计算九种肥胖相关体型指标  基于 UK Biobank 的人体测量和血脂数据，计算论文 (Wang et al.,PUBMEDID:41353132 BMC Public Health, 2026) "
+calculate_recode_scores.R,calculate_recode_scores,yes,"data, id_col = ""eid"", age_col = ""Age"", sex_col = ""Sex"", ethnicity_col = NULL, black_col = ""Ethnicity_black"", smoking_col = ""Smoking_status"", sbp_col = ""SBP"", hba1c_col = ""HbA1c(mmol/mol)"", tc_col = ""T",计算2型糖尿病RECODe 10年心血管风险评分  该函数计算2型糖尿病并发症风险方程（RECODe）的六种心血管结局的10年风险： 动脉粥样硬化性心血管疾病（ASCVD）、心肌梗死、卒中、充血性心力
+calculate_recode_scores.R,hba1c_mmol_to_pct,no,x,
+calculate_recode_scores.R,mmol_to_mgdl,no,x,
+calculate_recode_scores.R,umol_to_mgdl_creat,no,x,
+calculate_recode_scores.R,calc_uacr,no,"ualb, ucreat",
+calculate_recode_scores.R,predict_recode_cv,no,"age, sbp, hba1c, tot_chol, hdl, creatinine, uacr, female = 0, black = 0, smoking = 0, cvd_history = 0, bp_med = 0, statin = 0, anticoagulant = 0",
+combine_disease_ages.R,combine_disease_ages,yes,"time = NULL, ...",合并基于发病年龄的疾病诊断数据与时间变量  将多个由 `combine_diseases_and_age` 等函数生成的年龄结果数据框 按 `eid` 对齐合并，附加基线时间变量，最后调用 `proc
+combine_disease_dates.R,combine_disease_dates,yes,"time=NULL, ...",合并疾病诊断日期数据与时间变量  将多个已提取的疾病结果数据框（通常由 `combine_diseases_and_date` 等函数生成） 按行合并，并附加基线时间变量，最后调用 `process_
+convert_dates_to_binary.R,convert_dates_to_binary,yes,data,
+convert_number_to_date.R,convert_number_to_date,yes,df,
+convert_p20001_to_coding.R,convert_p20001_to_coding,yes,"data, path",
+convert_p20002_to_coding.R,convert_p20002_to_coding,yes,"data, path",
+convert_p20003_to_coding.R,convert_p20003_to_coding,yes,"data, path",
+convert_p20004_to_coding.R,convert_p20004_to_coding,yes,"data, path",
+convert_p40006_ultimate.R,convert_p40006_ultimate,yes,"data, path",
+convert_p41270_ultimate.R,convert_p41270_ultimate,yes,"data, path",
+convert_p41272_ultimate.R,convert_p41272_ultimate,yes,"data, path",
+create_coding_dict.R,create_coding_dict,yes,code6,
+create_disease_diagnosis.R,create_disease_diagnosis,yes,"Date_df, disease_codes, disease_name",
+create_overall_auc_summary_table.R,create_overall_auc_summary_table,yes,"roc_results_list, dataset_names",多数据集ROC分析AUC汇总表生成函数
+data_config.R,set_data_path,yes,path = NULL,设置默认数据路径 Set default data path
+data_config.R,get_data_path,yes,,获取当前数据路径 Get current data path
+data_config.R,get_ukb_path,no,path = NULL,"获取数据路径（内部辅助函数） Get data path (internal helper)  返回当前设置的数据路径，若未设置则报错。 Returns the current data path, "
+dex_eGFR.R,dex_eGFR,yes,"path = NULL,instance = 0",肾功能估算函数
+diagnose_baseline_hypertension.R,diagnose_baseline_hypertension,yes,"path = NULL,instance=0",诊断基线高血压状态并计算已知病程年数  整合 UK Biobank 多来源数据，包括首次发生记录、死亡登记、住院诊断、 口头访谈、触摸屏自报病史、血压测量及降压药使用情况，综合判定参与者 在基线时是否
+diagnose_hypertension_byBP.R,diagnose_hypertension_byBP,yes,"path = NULL, instances = 0",基于血压测量值诊断高血压
+eGFR_FAS_age.R,eGFR_FAS_age,yes,"data, scr_mg.dl",
+eGFR_FAS_height.R,eGFR_FAS_height,yes,"data, scr_mg.dl",
+electronic_device_use.R,electronic_device_use,yes,path = NULL,电子设备使用数据处理函数
+extract_FEV1_Best.R,extract_FEV1_Best,yes,"path = NULL, instance = 0",提取 FEV1（第1秒用力呼气量）的最佳值
+extract_protein_data.R,extract_protein_data,yes,"path = NULL, instance = 0, data = NULL, threshold_protein = 20, threshold_sample = 50, impute = c(""none"", ""mean"", ""median"")",蛋白组数据过滤与插补  读取或接收蛋白数据集，删除缺失率高于阈值的蛋白， 并剔除缺失蛋白数量过多的样本。可选择对剩余缺失值进行均值或中位数插补。
+extract_protein_data.R,impute_protein,no,"data, method = c(""mean"", ""median"")",内部函数：均值/中位数插补  对数据框中除 eid 列外的所有列进行均值或中位数插补。
+extract_sleep_durations.R,extract_sleep_durations,yes,"path = NULL, instance = 0, hours = 6",提取自报与实际睡眠时长  从 UK Biobank 同时获取参与者自报的每天睡眠小时数（p1160）和 过去一个月实际每晚睡眠分钟数（p30445），两者均转为数值型，无法 转换或缺失时返回 NA。
+family_illnesses.R,family_illnesses,yes,path = NULL,家族疾病史数据处理函数
+family_illnesses.R,disease_to_var,no,disease,
+family_illnesses.R,process_family_illnesses_fast,no,"dt, illness_col, prefix",
+family_survival_status.R,family_survival_status,yes,path = NULL,家庭成员生存状态数据处理函数
+filter_protein_pairs.R,filter_protein_pairs,yes,"pair_matrix, lower_threshold = 20, upper_threshold = 80",筛选蛋白质互作对矩阵  根据非零值比例筛选蛋白对，保留比例在指定阈值范围内的互作对。
+generate_validation_report.R,generate_validation_report,yes,"validation_results, valid_codes",
+handle_special_values.R,handle_special_values,yes,x,
+impute_mice.R,impute_mice,yes,"data, m = 5, maxit = 5, method = ""pmm""","多重插补链式方程（MICE）缺失值插补函数  该函数使用多重插补链式方程（Multivariate Imputation by Chained Equations, MICE）算法 对 UK Biob"
+impute_rf.R,impute_rf,yes,"data, maxiter = 10, ntree = 100",随机森林缺失值插补函数  该函数使用随机森林（Random Forest）算法对 UK Biobank 蛋白质组学数据中的缺失值进行插补。 随机森林是一种基于集成学习的非参数方法，通过构建多棵决策树并
+merge_col.R,merge_col,yes,"df1, df2, id_col = ""eid""",
+merge_disease_dataframes.R,merge_disease_dataframes,yes,"df1, df2, keep_base_cols = TRUE, base_cols = NULL",疾病数据框合并函数
+merge_disease_dataframes.R,get_disease_names,no,col_names,
+merge_disease_sources.R,merge_disease_sources,yes,"questionnaire_var, age_diagnosis_var",
+newVb.R,newVb,yes,"data, new_col, ...",
+obesity.R,obesity,yes,"path = NULL, instance = 0",肥胖数据处理函数
+p20001_Extract_Convert.R,p20001_Extract_Convert,yes,"path = NULL, instances=0",
+p20001_Verbal_interview_disease_age_date.R,p20001_Verbal_interview_disease_age_date,yes,"p20001_df, p20006_df, p20007_df, disease_codes, disease_name",
+p20001_data.R,p20001_data,yes,"path = NULL, instances=0",
+p20001_disease_age.R,p20001_disease_age,yes,"p20001_df, p20007_df, disease_codes, disease_name",
+p20001_disease_date.R,p20001_disease_date,yes,"p20001_df, p20006_df, disease_codes, disease_name",
+p20001_verbal_interview_diagnosis.R,p20001_verbal_interview_diagnosis,yes,"path = NULL,disease_list,instances=0",
+p20002_Extract_Convert.R,p20002_Extract_Convert,yes,"path = NULL, instances = 0",
+p20002_Verbal_interview_disease_age_date.R,p20002_Verbal_interview_disease_age_date,yes,"p20002_df, p20008_df, p20009_df, disease_codes, disease_name",
+p20002_data.R,p20002_data,yes,"path = NULL, instances = 0",
+p20002_disease_age.R,p20002_disease_age,yes,"p20002_df, p20009_df, disease_codes, disease_name",
+p20002_disease_date.R,p20002_disease_date,yes,"p20002_df, p20008_df, disease_codes, disease_name",
+p20002_verbal_interview_diagnosis.R,p20002_verbal_interview_diagnosis,yes,"path = NULL, disease_list, instances = 0",
+p20003_Extract_Convert.R,p20003_Extract_Convert,yes,"path = NULL, instances = 0",
+p20003_data.R,p20003_data,yes,"path = NULL, instances = 0",
+p20003_disease_medicine.R,p20003_disease_medicine,yes,"p20003_df, disease_codes, disease_name",
+p20004_Extract_Convert.R,p20004_Extract_Convert,yes,"path = NULL, instances = 0",
+p20004_Verbal_interview_operation_age_date.R,p20004_Verbal_interview_operation_age_date,yes,"p20004_df, p20010_df, p20011_df, disease_codes, disease_name",
+p20004_data.R,p20004_data,yes,"path = NULL, instances = 0",
+p20004_disease_age.R,p20004_disease_age,yes,"p20004_df, p20011_df, disease_codes, disease_name",
+p20004_disease_date.R,p20004_disease_date,yes,"p20004_df, p20010_df, disease_codes, disease_name",
+p20004_verbal_interview_batch.R,p20004_verbal_interview_batch,yes,"path = NULL, disease_list, instances = 0",
+p20006_data.R,p20006_data,yes,"path = NULL, instances = 0",
+p20007_data.R,p20007_data,yes,"path = NULL, instances=0",
+p20008_data.R,p20008_data,yes,"path = NULL, instances = 0",
+p20009_data.R,p20009_data,yes,"path = NULL, instances = 0",
+p20010_data.R,p20010_data,yes,"path = NULL, instances = 0",
+p20011_data.R,p20011_data,yes,"path = NULL, instances = 0",
+p2966_i0.R,p2966_i0,yes,path = NULL,
+p2976_i0.R,p2976_i0,yes,path = NULL,
+p3627_i0.R,p3627_i0,yes,path = NULL,
+p3894_i0.R,p3894_i0,yes,path = NULL,
+p40005_data.R,p40005_data,yes,"path = NULL, instances = 0",
+p40006_data.R,p40006_data,yes,"path = NULL, instances = 0",
+p4056_i0.R,p4056_i0,yes,path = NULL,
+p41270_data.R,p41270_data,yes,path,
+p41272_data.R,p41272_data,yes,path,
+p41280_data.R,p41280_data,yes,path,
+p41282_data.R,p41282_data,yes,path,
+p6150_i0.R,p6150_i0,yes,path = NULL,
+p6153_i0.R,p6153_i0,yes,"path = NULL, instance = 0",
+p6177_i0.R,p6177_i0,yes,"path = NULL, instance = 0",
+parse_method_parameters.R,parse_method_parameters,yes,"method_params, required_params",
+plot_single_survival_curve.R,plot_single_survival_curve,yes,"data, pair_column, time, status, cutoff = 0, time_unit = ""years"", output_dir = NULL",绘制单个蛋白质互作对生存曲线（带保存功能）
+plot_summary.R,plot_summary,yes,"results, output_dir",绘制生存分析结果汇总图  创建汇总统计图，展示分析结果的基因数量和显著性分布
+plot_top_survival_curves.R,plot_top_survival_curves,yes,"top_genes, survival_curves_data, time_unit, output_dir",绘制前N个显著基因的生存曲线  根据Cox回归分析结果，绘制显著基因的Kaplan-Meier生存曲线
+plot_volcano.R,plot_volcano,yes,"results, output_dir",绘制生存分析结果的火山图  从Cox回归分析结果创建火山图，可视化基因的风险比和显著性
+process_age_dataframe.R,process_age_dataframe,yes,df,
+process_date_dataframe.R,process_date_dataframe,yes,df,
+remove_by_missing.R,remove_by_missing,yes,"data, max_col_missing = NULL, max_row_missing = NULL, exclude_cols = ""eid"", verbose = TRUE",根据缺失率阈值删除行和列  先删除缺失率超过指定阈值的列（特征），再在剩余列基础上删除缺失率超过指定阈值的行（样本）。 支持在计算行缺失率时排除指定列（如 ID 列）。返回处理后的数据框，并可选择打印
+safe_bind_rows.R,safe_bind_rows,yes,"df1, df2, add_source = FALSE, source_names = c(""df1"", ""df2"")",安全合并两个数据框（只保留共有列）  安全地合并两个数据框，只保留共有的列，并可选添加来源标识
+sun_exposure_data.R,sun_exposure_data,yes,path = NULL,提取日晒相关变量数据  从UK Biobank数据中提取日晒相关变量，包括户外时间、肤色、晒黑程度等
+time_Extract.R,time_Extract,yes,path = NULL,时间信息提取与处理  从 UK Biobank 数据中提取并整合多种时间相关信息，包括抽血时间（最多四次）、死亡时间、失访时间、基线时间、出生日期等。 该函数会读取字段目录中的 time.xlsx 文
+time_Extract.R,calculate_exact_age,no,"birth_date, event_date",
+time_Extract.R,validate_age_calculation,no,data,
+ukb_data_prepare.R,ukb_data_prepare,yes,"path = NULL, output_dir = NULL, chunk_size = 80, start_number = 1, verbose = TRUE, save_excel = TRUE, remove_csv = FALSE",拆分 UKB CSV 文件为带 eid 列的数据块 Split UKB CSV files into chunks with eid column  此函数读取指定数据路径（或通过 \code{set
+zzz.R,.onLoad,no,"libname, pkgname",
+zzz.R,.onAttach,no,"libname, pkgname",

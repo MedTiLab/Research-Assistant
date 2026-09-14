@@ -123,8 +123,24 @@
     "year": "年",
     "prevPeriod": "上一周期",
     "nextPeriod": "下一周期",
-    "weekdaysShort": ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-    "weekdaysMondayNarrow": ["一", "二", "三", "四", "五", "六", "日"],
+    "weekdaysShort": [
+      "周日",
+      "周一",
+      "周二",
+      "周三",
+      "周四",
+      "周五",
+      "周六"
+    ],
+    "weekdaysMondayNarrow": [
+      "一",
+      "二",
+      "三",
+      "四",
+      "五",
+      "六",
+      "日"
+    ],
     "monthLabel": "{{month}}月",
     "yearLabel": "{{year}}年",
     "yearMonth": "{{year}}年{{month}}月",
@@ -511,7 +527,7 @@
     "create": "新建自动化",
     "edit": "编辑设置",
     "tabs": {
-      "active": "运行中",
+      "active": "已启用",
       "paused": "已暂停",
       "archived": "归档"
     },
@@ -519,7 +535,7 @@
     "noMatch": "没有匹配的自动化",
     "noneForTab": "没有{{tab}}的自动化",
     "status": {
-      "active": "运行中",
+      "active": "已启用",
       "paused": "已暂停",
       "cancelled": "已归档",
       "completed": "已完成"
@@ -529,7 +545,8 @@
       "completed": "成功",
       "failed": "失败",
       "cancelled": "已中止",
-      "interrupted": "意外中断"
+      "interrupted": "意外中断",
+      "completed_with_warnings": "已结束，有限制或错误"
     },
     "repeat": {
       "none": "不重复",
@@ -569,7 +586,7 @@
     "notScheduled": "尚未设置",
     "preview": "计划预览：{{time}}",
     "previewHint": "按 {{tz}} 显示；重复任务会从这个时间点开始，按所选频率继续运行。",
-    "previewAgent": "每次执行都会创建一个独立的 Pi Agent 会话，并在所属项目中以只读权限运行；后端需保持运行。",
+    "previewAgent": "每次运行创建独立对话，并按所选模式执行；后台不提供需要人工审批的计划模式。",
     "legacyModel": "执行时使用当前默认模型（旧任务）",
     "modelCard": "执行模型",
     "frequencyCard": "执行频率",
@@ -590,14 +607,34 @@
     "waitingResult": "等待结果",
     "session": "独立 Agent 会话：",
     "noRuns": "这项自动化还没有执行记录。",
-    "runHint": "每次运行都会新建独立的 Pi Agent 会话，不会向当前聊天追加消息；会话使用上方固定的模型与只读权限。",
+    "runHint": "结果保存在独立对话中，可在对话列表打开或通过上方按钮查看。运行结束会显示提醒。",
     "emptyTitle": "还没有自动化任务",
     "needProject": "请先创建一个项目",
-    "emptyHint": "创建后，任务会按计划在所属项目中运行，并保留最近一次执行状态。",
+    "emptyHint": "创建后按计划运行，保留每次执行记录、报告和错误信息。",
     "loadFailed": "自动化加载失败",
     "partialLoad": "{{count}} 个项目的自动化暂时无法加载",
     "noPiModels": "没有可用的 Pi 对话模型，请先到“设置 → medhelpOS → 模型”启用模型。",
-    "modelsFailed": "模型列表加载失败"
+    "modelsFailed": "模型列表加载失败",
+    "resultsTitle": "运行结果",
+    "openConversation": "打开对话",
+    "downloadResult": "下载结果",
+    "resultWarnings": "有 {{count}} 项工具错误，详情见对话",
+    "loadingResult": "正在加载运行结果…",
+    "resultRunning": "正在执行，报告生成后会自动显示。",
+    "noReport": "本次运行没有可用报告。请查看运行状态及错误信息。",
+    "unreadResults": "{{count}} 条自动化结果待查看",
+    "dismissResult": "标为已读",
+    "viewResult": "查看结果",
+    "executionMode": "执行模式",
+    "modes": {
+      "auto": "自动研究",
+      "readOnly": "只读研究"
+    },
+    "modeHints": {
+      "auto": "自动检索、执行项目命令并保存文件，无需逐步确认；危险系统命令仍会拦截。",
+      "readOnly": "读取资料并生成报告，不执行 Shell 命令或修改项目文件。"
+    },
+    "chooseRun": "选择运行记录"
   },
   "alerts": {
     "title": "风险提醒",

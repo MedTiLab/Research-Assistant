@@ -1123,7 +1123,7 @@ function createRuntimeServiceTools(definitions, options) {
     parameters: definition.parameters, executionMode: 'sequential',
     execute: async (toolCallId, input, signal) => {
       const mode = options.mode.value;
-      if (definition.mutation && !['ask', 'auto'].includes(mode)) throw new Error('Submit the plan for approval before using this tool');
+      if (definition.mutation && !['ask', 'auto'].includes(mode)) throw new Error(mode === 'plan' ? 'Submit the plan for approval before using this tool' : `${definition.name} is unavailable in readOnly mode. Use supported read-only tools and report this limitation; do not request plan approval.`);
       emit('tool_started', options.sessionId, { runId: options.runId, toolCallId, toolName: definition.name, input });
       if (definition.mutation && mode === 'ask') {
         const decision = await waitForToolApproval({ ...options, toolCallId, toolName: definition.name, input, signal, timeoutMs: options.approvalTimeoutMs });
@@ -1150,6 +1150,7 @@ function createRuntimeServiceTools(definitions, options) {
 }
 
 function createPlanTools(options) {
+  if (options.disableInteractions) return [];
   const { stateController, sessionId, runId, mode } = options;
   const publish = async (plan) => {
     await stateController.updatePlan(plan);

@@ -19,6 +19,7 @@ import type {
   ProjectFileChatContextItem,
 } from '../../../utils/projectFileChatContext';
 import type { WorkbenchCommand } from '../../../features/research-secretary/domain/workbenchCommand';
+import type { AutomationResultTarget } from '../../../features/research-secretary/services/automationsApi';
 
 export type SessionLifecycleHandler = (
   sessionId?: string | null,
@@ -71,6 +72,7 @@ export interface EditingFile {
 }
 
 export interface MainContentProps {
+  automationResultTarget?: AutomationResultTarget | null;
   projects: Project[];
   trashProjects: TrashProject[];
   trashSessions: TrashSession[];

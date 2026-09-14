@@ -4,9 +4,11 @@ import { serviceStatePath, readServiceState, mutateServiceState } from '../agent
 import { addPermissionPresets } from '../agent-runtime/permission-rules.js';
 import { resolveRequestUserId } from '../utils/userScope.js';
 import { PI_GLOBAL_INTEGRATIONS_PROJECT_KEY } from '../agent-runtime/integrations.js';
+import { indexAutomationSession } from '../agent-runtime/automation-results.js';
 
-export function createAgentServicesRouter({ services = piRuntime.native.toolServices, storageOptions = {} } = {}) {
+export function createAgentServicesRouter({ services = piRuntime.native.toolServices, storageOptions = {}, indexRun = indexAutomationSession } = {}) {
   const router = express.Router();
+  const indexedRuns = new Map();
   const contextFor = (req) => {
     const scope = String(req.query.scope || req.body?.scope || 'local');
     if (!['user', 'local'].includes(scope)) throw new Error('scope must be user or local');
@@ -56,6 +58,44 @@ export function createAgentServicesRouter({ services = piRuntime.native.toolServ
     try { res.json(await services.automations.execute('automation_list', {}, contextFor(req))); }
     catch (error) { res.status(400).json({ error: error.message }); }
   });
+  router.get('/automations/inbox', async (req, res) => {
+    try {
+      const ownerKey = resolveRequestUserId(req);
+      if (ownerKey == null) return res.status(401).json({ error: 'Authentication required' });
+      const items = await services.automations.inbox(String(ownerKey), storageOptions);
+      // Recover old background sessions into the same index as normal chats.
+      for (const item of items) {
+        const key = `${ownerKey}:${item.projectKey}:${item.sessionId}`;
+        if (indexedRuns.get(key) === item.status) continue;
+        try {
+          await indexRun({ id: item.automationId, title: item.title, identity: { ownerKey: String(ownerKey), projectKey: item.projectKey, runtimeId: 'pi' } }, item, storageOptions);
+          indexedRuns.set(key, item.status);
+        } catch (error) { console.error('[ERROR] Index automation conversation:', error.message); }
+        if (indexedRuns.size > 1000) indexedRuns.delete(indexedRuns.keys().next().value);
+      }
+      res.setHeader('Cache-Control', 'no-store');
+      res.json(items);
+    } catch (error) { res.status(400).json({ error: error.message }); }
+  });
+  router.get('/automations/:id/runs', async (req, res) => {
+    try { res.json(await services.automations.execute('automation_runs', { automation_id: req.params.id }, contextFor(req))); }
+    catch (error) { res.status(400).json({ error: error.message }); }
+  });
+  router.get('/automations/:id/runs/:sessionId', async (req, res) => {
+    try {
+      const context = contextFor(req);
+      const result = await services.automations.execute('automation_result', { automation_id: req.params.id, session_id: req.params.sessionId }, context);
+      const record = (await services.automations.execute('automation_list', {}, context)).find((row) => row.id === req.params.id);
+      try { await indexRun(record, result, storageOptions); }
+      catch (error) { console.error('[ERROR] Index automation conversation:', error.message); }
+      res.setHeader('Cache-Control', 'no-store');
+      res.json(result);
+    } catch (error) { res.status(400).json({ error: error.message }); }
+  });
+  router.post('/automations/:id/runs/:sessionId/read', async (req, res) => {
+    try { res.json(await services.automations.execute('automation_ack', { automation_id: req.params.id, session_id: req.params.sessionId }, contextFor(req))); }
+    catch (error) { res.status(400).json({ error: error.message }); }
+  });
   router.post('/automations', async (req, res) => {
     try {
       res.status(201).json(await services.automations.execute('automation_create', {
@@ -64,6 +104,7 @@ export function createAgentServicesRouter({ services = piRuntime.native.toolServ
         at: req.body?.at,
         interval_minutes: req.body?.intervalMinutes,
         model: req.body?.model,
+        permission_mode: req.body?.permissionMode,
       }, contextFor(req)));
     } catch (error) { res.status(400).json({ error: error.message }); }
   });
@@ -76,6 +117,7 @@ export function createAgentServicesRouter({ services = piRuntime.native.toolServ
       if (Object.hasOwn(req.body || {}, 'at')) input.at = req.body.at;
       if (Object.hasOwn(req.body || {}, 'intervalMinutes')) input.interval_minutes = req.body.intervalMinutes;
       if (Object.hasOwn(req.body || {}, 'model')) input.model = req.body.model;
+      if (Object.hasOwn(req.body || {}, 'permissionMode')) input.permission_mode = req.body.permissionMode;
       res.json(await services.automations.execute('automation_update', input, contextFor(req)));
     }
     catch (error) { res.status(400).json({ error: error.message }); }

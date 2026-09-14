@@ -1,0 +1,30 @@
+{
+  "fields": 11821,
+  "columns": 66368,
+  "codings": 858,
+  "coding_values": 533289,
+  "instance_values": 33,
+  "columns_by_layout": {
+    "easyukb": 38655,
+    "web": 27713
+  },
+  "participant_columns_by_layout": {
+    "easyukb": 32612,
+    "web": 27713
+  },
+  "coded_field_definitions_without_local_values": 0,
+  "source_field_versions": [
+    "2000-01-01T00:00:00",
+    "2025-09-20T00:00:00"
+  ],
+  "contains_participant_records": false,
+  "build_date": "2026-09-06",
+  "validation": {
+    "synthetic_workflow_tests_passed": 14,
+    "sqlite_integrity": "ok",
+    "skill_structure": "valid",
+    "real_participant_data_used": false,
+    "last_validation_date": "2026-09-14"
+  },
+  "sha256": "ac848771df568d8b63fa5bfbdef876ff9fd0eaf1239eab81c9c4fc7989e2a53d"
+}

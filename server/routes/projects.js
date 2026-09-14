@@ -8,10 +8,13 @@ import {
   addProjectManually,
   cleanupUnusedConversationWorkspaces,
   createConversationWorkspace,
+  deleteTrashedProject,
   extractProjectDirectory,
   getAllowedDataFolderEntriesFromConfig,
   getAllowedDataFoldersFromConfig,
+  getTrashedProjects,
   getWorkspaceRootFromConfig,
+  restoreProject,
   setAllowedDataFoldersInConfig,
   setWorkspaceRootInConfig,
 } from '../projects.js';
@@ -26,6 +29,36 @@ import { isProtectedProjectPath } from '../../shared/internalProjectFiles.js';
 const router = express.Router();
 const limitProjectArchiveDownload = createDownloadRateLimiter({
   action: 'project-archive-download',
+});
+
+// Trash entries can survive only in legacy config after their database row is
+// gone. Keep these routes outside the app-level projectName database guard;
+// the project services resolve trash metadata and check ownership themselves.
+router.get('/trash', async (req, res) => {
+  try {
+    res.json(await getTrashedProjects(req.user?.id));
+  } catch (error) {
+    res.status(error.status || 500).json({ error: error.message });
+  }
+});
+
+router.post('/trash/:trashedProjectName/restore', async (req, res) => {
+  try {
+    await restoreProject(req.params.trashedProjectName, req.user?.id);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete('/trash/:trashedProjectName', async (req, res) => {
+  try {
+    const mode = req.query.mode === 'physical' ? 'physical' : 'logical';
+    await deleteTrashedProject(req.params.trashedProjectName, mode, req.user?.id);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 function sanitizeGitError(message, token) {

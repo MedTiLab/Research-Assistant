@@ -772,6 +772,8 @@
     "useCore": "Use core skills",
     "useSelected": "Use selected ({{count}})",
     "clearSelected": "Clear selected",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all",
     "useSingle": "Use this skill only",
     "showAdvanced": "More skills ({{count}})",
     "hideAdvanced": "Hide more skills",
@@ -881,6 +883,7 @@
       "searchLiterature": "Use real literature-search skills to find evidence for me. First clarify the research question, PICO/keywords, databases, date range, and eligibility criteria; then provide verifiable papers, search strings, evidence summaries, and research gaps. Never invent titles, DOIs, or citations. Available skills: {{skills}}.\n\nMy topic:",
       "downloadLiterature": "Use literature-acquisition skills to download the requested full text. First identify the target papers from the supplied titles, DOIs, PMIDs, PMCIDs, arXiv IDs, literature list, or Zotero records. Then check existing project files, Zotero attachments, PMC/Europe PMC, Unpaywall, arXiv, and other lawful open sources in that order; never bypass a paywall. Save the files and report the source, status, local path, and failure reason, and parse PDFs when needed. Available skills: {{skills}}.\n\nLiterature to download:",
       "dataAnalysis": "For database extraction, locate real tables and fields, verify the cohort and timeline, and record data sources before cleaning and analysis. Use data-analysis skills to help me analyze data. Inspect the data structure, variable types, missingness, outliers, and analysis objective first; include database-specific analysis, baseline tables, descriptive statistics, tests, or models as needed, then complete diagnostics, visualization, effect-size reporting, and reproducible outputs. Never invent results without inspecting real data. Available skills: {{skills}}.\n\nMy data or analysis question:",
+      "ukb": "Use the UKB skills to help me look up fields, extract variables, or analyze UK Biobank data. First distinguish field lookup, extraction planning, actual extraction, and statistical analysis. Check the bundled local codebook before verifying against the official UKB site; if the site is unavailable, state the verification status and continue. For extraction, reuse the data paths I provide and verify coding, instances, arrays, and the actual data layout. Base statistical analysis on the research question and produce reproducible outputs. Available skills: {{skills}}.\n\nMy UKB task:",
       "experimentLog": "Use the experiment-log skill to organize this experiment. Read the supplied images, audio, or text; standardize experiment IDs, sample batches, equipment, conditions, observations, results, anomalies, and next actions; and produce a traceable Markdown log with YAML frontmatter. Available skills: {{skills}}.\n\nExperiment materials:",
       "researchDesign": "Use research-design skills to help me develop a study plan. Clarify the question, PICO, population, exposure/intervention, outcome, time zero, and available data; then define eligibility criteria, variables, bias control, sample size, and the statistical analysis plan. Available skills: {{skills}}.\n\nMy research question:",
       "databaseExtraction": "Use database-extraction skills to help me obtain real data. Confirm the research question, target database, cohort structure, and required variables; locate real tables and fields, verify timeline and coding semantics, and extract only task-relevant data while preserving source paths and reproducibility records. Available skills: {{skills}}.\n\nMy database task:",
@@ -964,6 +967,10 @@
       "dataAnalysis": {
         "title": "Data analysis",
         "description": "Extract real database data, clean it, and perform descriptive statistics, tests, modeling, and visualization."
+      },
+      "ukb": {
+        "title": "UKB",
+        "description": "Look up UK Biobank fields and codes, extract study variables, and plan statistical analysis."
       },
       "experimentLog": {
         "title": "Experiment log",

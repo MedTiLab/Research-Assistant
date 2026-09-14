@@ -1,5 +1,6 @@
 // One catalogue for provider adapters. Schemas sent to isolated hosts contain no credentials.
 const string = { type: 'string' };
+const automationPermissionMode = { type: 'string', enum: ['auto', 'readOnly'] };
 const object = { type: 'object', additionalProperties: true };
 const automationModel = {
   type: 'object',
@@ -29,8 +30,8 @@ export const AGENT_SERVICE_TOOLS = Object.freeze([
   tool('browser_snapshot', 'Read visible text and numbered interactive elements in this conversation’s browser page.', { page_id: string }, ['page_id']),
   tool('browser_action', 'Interact with a numbered element from the latest snapshot. This can submit data externally; obtain user authorization first.', { page_id: string, action: { type: 'string', enum: ['click', 'fill', 'close'] }, element: { type: 'integer', minimum: 0 }, text: string }, ['page_id', 'action'], true, 'browser'),
   tool('automation_list', 'List durable project automations and their next run, status and last result.'),
-  tool('automation_create', 'Schedule a read-only Pi task. Runs in a new Agent session while MedHelpSec backend is running; no missed-run replay. Requires explicit user request. at must be ISO time with timezone; interval_minutes optionally repeats.', { title: string, prompt: string, at: string, interval_minutes: { type: 'integer', minimum: 5, maximum: 525600 }, model: automationModel }, ['title', 'prompt', 'at'], true, 'automation'),
-  tool('automation_update', 'Edit, pause, resume or cancel a project automation. A changed at time must be a future ISO timestamp with timezone. Cancellation retains history.', { automation_id: string, status: { type: 'string', enum: ['active', 'paused', 'cancelled'] }, title: string, prompt: string, at: string, interval_minutes: { type: ['integer', 'null'], minimum: 5, maximum: 525600 }, model: automationModel }, ['automation_id'], true, 'automation'),
+  tool('automation_create', 'Schedule a Pi task in auto or readOnly mode (default readOnly). Auto may run project commands and save files; choose it only when the user authorizes automatic execution. Runs in a new Agent session while MedHelpSec backend is running; no missed-run replay. Requires explicit user request. at must be ISO time with timezone; interval_minutes optionally repeats.', { title: string, prompt: string, at: string, interval_minutes: { type: 'integer', minimum: 5, maximum: 525600 }, model: automationModel, permission_mode: automationPermissionMode }, ['title', 'prompt', 'at'], true, 'automation'),
+  tool('automation_update', 'Edit, pause, resume or cancel a project automation. A changed at time must be a future ISO timestamp with timezone. Cancellation retains history.', { automation_id: string, status: { type: 'string', enum: ['active', 'paused', 'cancelled'] }, title: string, prompt: string, at: string, interval_minutes: { type: ['integer', 'null'], minimum: 5, maximum: 525600 }, model: automationModel, permission_mode: automationPermissionMode }, ['automation_id'], true, 'automation'),
   tool('integration_list', 'List explicitly configured local MCP integrations, connection status and authorization needs.'),
   tool('integration_tools', 'Discover tools on one configured integration. Tool schemas are loaded only on demand.', { integration_id: string }, ['integration_id'], true, 'integration'),
   tool('integration_call', 'Call one discovered integration tool with its documented arguments. May have external effects; requires permission.', { integration_id: string, tool: string, arguments: object }, ['integration_id', 'tool', 'arguments'], true, 'integration'),
@@ -62,7 +63,7 @@ export function authorizeServiceTool(name, input, mode) {
     throw new Error('Invalid or oversized tool input');
   }
   if (entry.mutation && !['ask', 'auto'].includes(mode)) {
-    throw Object.assign(new Error(`${name} is unavailable in ${mode} mode. Submit a plan for user approval first.`), { code: 'PI_TOOL_WRITE_BLOCKED_IN_PLAN' });
+    throw Object.assign(new Error(mode === 'plan' ? `${name} is unavailable in Plan mode. Submit a plan for user approval first.` : `${name} is unavailable in readOnly mode. Use read-only tools and report the limitation; do not request plan approval.`), { code: mode === 'plan' ? 'PI_TOOL_WRITE_BLOCKED_IN_PLAN' : 'PI_TOOL_NOT_ALLOWED' });
   }
   return { allowed: true, requiresApproval: entry.mutation && mode === 'ask', toolName: name, input, permissionMode: mode };
 }

@@ -42,6 +42,59 @@ afterEach(async () => {
 });
 
 describePrepared('Pi SDK Host integration', () => {
+  it.each(['auto', 'readOnly'])('keeps background %s execution out of interactive plan approval', async (permissionMode) => {
+    const requests = [];
+    const calls = [
+      { name: 'plan_update', input: { title: 'Accidental plan', plan: 'Do research' } },
+      { name: 'tool_call', input: { name: 'terminal_open', arguments: { command: 'echo research' } } },
+      { name: 'tool_call', input: { name: 'web_fetch', arguments: { url: 'https://example.com' } } },
+    ];
+    upstream = http.createServer((request, response) => {
+      let body = '';
+      request.setEncoding('utf8');
+      request.on('data', (chunk) => { body += chunk; });
+      request.on('end', () => {
+        const payload = JSON.parse(body);
+        requests.push(payload);
+        const tool = calls[payload.messages.filter((message) => message.role === 'tool').length];
+        response.writeHead(200, { 'content-type': 'text/event-stream' });
+        const send = (delta, finish_reason = null) => response.write(`data: ${JSON.stringify({ id: 'background-mode', object: 'chat.completion.chunk', created: 1, model: 'test-model', choices: [{ index: 0, delta, finish_reason }] })}\n\n`);
+        if (tool) {
+          send({ role: 'assistant', tool_calls: [{ index: 0, id: `call-${requests.length}`, type: 'function', function: { name: tool.name, arguments: JSON.stringify(tool.input) } }] });
+          send({}, 'tool_calls');
+        } else { send({ role: 'assistant', content: '# Research report' }); send({}, 'stop'); }
+        response.end('data: [DONE]\n\n');
+      });
+    });
+    const address = await listen(upstream);
+    const projectRoot = path.join(testRoot, 'project');
+    await fs.mkdir(projectRoot);
+    manager = createPiHostManager({ hostPath: path.join(preparedRuntimeRoot, 'sdk-host.mjs'), configRoot: path.join(testRoot, 'config') });
+    const execute = vi.fn(async (name) => ({ text: `${name} fixture succeeded` }));
+    const runtime = createPiRuntime({ hostManager: manager, toolServices: { execute } });
+    const events = [];
+    await runtime.start('Produce a report', {
+      identity: { ownerKey: 'background-owner', projectKey: 'project', runtimeId: 'pi', sessionId: `background-${permissionMode}` },
+      projectPath: projectRoot, storageOptions: { dataDir: testRoot }, permissionMode,
+      disableInteractions: true, disableSubagents: true, automationRun: true,
+      piProviderEnv: { MEDHELP_PI_PROVIDER: 'local-openai-compatible', MEDHELP_PI_MODEL: 'test-model', MEDHELP_PI_BASE_URL: `http://127.0.0.1:${address.port}/v1` },
+    }, { send: (event) => events.push(event) });
+    expect(requests).toHaveLength(4);
+    expect(requests[0].tools.map((tool) => tool.function.name)).not.toContain('plan_update');
+    expect(requests[0].tools.map((tool) => tool.function.name)).not.toContain('exit_plan_mode');
+    expect(events.some((event) => event.type === 'agent-permission-request')).toBe(false);
+    const outputs = JSON.stringify(requests.at(-1).messages.filter((message) => message.role === 'tool'));
+    expect(outputs).toContain('web_fetch fixture succeeded');
+    if (permissionMode === 'auto') {
+      expect(outputs).toContain('terminal_open fixture succeeded');
+      expect(execute.mock.calls.some(([name]) => name === 'terminal_open')).toBe(true);
+    } else {
+      expect(outputs).toContain('unavailable in readOnly mode');
+      expect(execute.mock.calls.some(([name]) => name === 'terminal_open')).toBe(false);
+    }
+    expect(outputs).not.toContain('Submit the plan for approval');
+  }, 20000);
+
   it('deletes a branch subtree through RPC and persists the surviving branch across host restarts', async () => {
     const sessionId = 'branch-delete-regression';
     const sessionPath = path.join(testRoot, `${sessionId}.jsonl`);

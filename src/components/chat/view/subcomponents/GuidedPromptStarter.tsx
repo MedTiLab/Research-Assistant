@@ -33,6 +33,7 @@ const QUICK_ACTION_ACCENTS: Record<string, string> = {
   'search-literature': 'bg-fuchsia-50 text-fuchsia-600 dark:bg-fuchsia-950/55 dark:text-fuchsia-300',
   'download-literature': 'bg-orange-50 text-orange-600 dark:bg-orange-950/55 dark:text-orange-300',
   'data-analysis': 'bg-blue-50 text-blue-600 dark:bg-blue-950/55 dark:text-blue-300',
+  'ukb': 'bg-teal-50 text-teal-700 dark:bg-teal-950/55 dark:text-teal-300',
   'research-design': 'bg-lime-50 text-lime-700 dark:bg-lime-950/55 dark:text-lime-300',
   'experiment-log': 'bg-stone-100 text-stone-600 dark:bg-stone-900 dark:text-stone-300',
   'submit-manuscript': 'bg-rose-50 text-rose-600 dark:bg-rose-950/55 dark:text-rose-300',
@@ -63,7 +64,7 @@ export default function GuidedPromptStarter({
 }: GuidedPromptStarterProps) {
   const { t } = useTranslation(['chat', 'common']);
   const { getScenarioSkills } = useGuidedPromptSkills();
-  const [activeGroupId, setActiveGroupId] = useState<ChatQuickActionGroup['id']>(CHAT_QUICK_ACTION_GROUPS[0].id);
+  const [activeGroupId, setActiveGroupId] = useState<ChatQuickActionGroup['id']>('design');
   const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null);
   const [selectedSkillsByScenario, setSelectedSkillsByScenario] = useState<Record<string, string[]>>({});
 
@@ -224,7 +225,29 @@ export default function GuidedPromptStarter({
             })}
           </div>
 
-          <div className="mt-3 flex justify-end">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setSelectedSkillsByScenario((previous) => ({
+                  ...previous, [activeScenario.id]: [...activeScenarioSkills],
+                }))}
+                disabled={activeSelectedSkills.length === activeScenarioSkills.length}
+                className="rounded-full px-3 py-1.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/5 disabled:cursor-default disabled:opacity-40"
+              >
+                {t('skillShortcuts.selectAll')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedSkillsByScenario((previous) => ({
+                  ...previous, [activeScenario.id]: [],
+                }))}
+                disabled={activeSelectedSkills.length === 0}
+                className="rounded-full px-3 py-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:bg-muted disabled:cursor-default disabled:opacity-40"
+              >
+                {t('skillShortcuts.deselectAll')}
+              </button>
+            </div>
             <button
               type="button"
               onClick={applySelectedSkills}

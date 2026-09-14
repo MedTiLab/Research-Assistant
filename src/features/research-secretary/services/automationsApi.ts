@@ -3,6 +3,7 @@ import { getActiveLocalKernel } from '../../../services/localKernelConnection';
 import { authenticatedFetch } from '../../../utils/api';
 
 export type AutomationStatus = 'active' | 'paused' | 'cancelled' | 'completed';
+export type AutomationPermissionMode = 'auto' | 'readOnly';
 
 export type AutomationModel = {
   modelId: string;
@@ -29,7 +30,38 @@ export type AutomationRecord = {
   lastSessionId?: string;
   model?: AutomationModel | null;
   projectKey: string;
+  unreadCount?: number;
+  permissionMode?: AutomationPermissionMode;
 };
+
+export type AutomationRun = {
+  sessionId: string;
+  startedAt: string;
+  finishedAt?: string;
+  status: string;
+  error?: string | null;
+  readAt?: string | null;
+  hasOutput?: boolean;
+  preview?: string;
+  permissionMode?: AutomationPermissionMode;
+};
+export type AutomationResult = AutomationRun & {
+  markdown: string;
+  warnings: Array<{ tool: string; message: string }>;
+  sessionExists: boolean;
+};
+export type AutomationResultTarget = { automationId: string; projectKey: string; sessionId: string };
+export type AutomationNotice = AutomationRun & AutomationResultTarget & { title: string };
+export const AUTOMATION_RESULTS_UPDATED_EVENT = 'medhelp:automation-results-updated';
+
+export function automationRunsPath(item: { id: string; projectKey: string }, suffix = '') {
+  return `/api/agent-services/automations/${encodeURIComponent(item.id)}/runs${suffix}?projectKey=${encodeURIComponent(item.projectKey)}`;
+}
+
+export async function markAutomationRunRead(target: AutomationResultTarget) {
+  await automationRequestJson(automationRunsPath({ id: target.automationId, projectKey: target.projectKey }, `/${encodeURIComponent(target.sessionId)}/read`), { method: 'POST' });
+  window.dispatchEvent(new Event(AUTOMATION_RESULTS_UPDATED_EVENT));
+}
 
 export async function automationRequestJson<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await authenticatedFetch(path, init);

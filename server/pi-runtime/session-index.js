@@ -14,9 +14,9 @@ export async function syncPiSessionIndex(identity, options = {}) {
     return existing || null;
   }
 
-  const hasManualDisplayName = existing?.metadata?.displayNameSource === 'manual';
-  const displayNameSource = hasManualDisplayName
-    ? 'manual'
+  const hasPreservedDisplayName = ['manual', 'automation'].includes(existing?.metadata?.displayNameSource);
+  const displayNameSource = hasPreservedDisplayName
+    ? existing.metadata.displayNameSource
     : (summary.displayName ? 'user' : (existing?.metadata?.displayNameSource || 'placeholder'));
 
   return sessionDb.upsertSessionFromSource(
@@ -26,7 +26,7 @@ export async function syncPiSessionIndex(identity, options = {}) {
     {
       ownerKey: normalized.ownerKey,
       runtimeId: 'pi',
-      displayName: hasManualDisplayName
+      displayName: hasPreservedDisplayName
         ? existing?.display_name
         : (summary.displayName || undefined),
       lastActivity: summary.lastActivity || new Date().toISOString(),

@@ -52,14 +52,11 @@ import { markVisibleUserContent } from '../shared/visibleUserContent.js';
 
 import {
     getProjects,
-    getTrashedProjects,
     getSessions,
     getSessionMessages,
     renameProject,
     findCodexSessionFileById,
     deleteProject,
-    restoreProject,
-    deleteTrashedProject,
     addProjectManually,
     extractProjectDirectory,
     clearProjectDirectoryCache,
@@ -1647,16 +1644,6 @@ app.get('/api/projects', authenticateToken, async (req, res) => {
     }
 });
 
-app.get('/api/projects/trash', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user?.id;
-        const projects = await getTrashedProjects(userId);
-        res.json(projects);
-    } catch (error) {
-        res.status(sessionPersistenceErrorStatus(error)).json({ error: error.message });
-    }
-});
-
 app.post('/api/projects/token-usage-summary', authenticateToken, async (req, res) => {
     try {
         const projectRefs = req.body?.projects;
@@ -2044,27 +2031,6 @@ app.delete('/api/projects/:projectName', authenticateToken, async (req, res) => 
         const { projectName } = req.params;
         const force = req.query.force === 'true';
         await deleteProject(projectName, force, userId);
-        res.json({ success: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.post('/api/projects/trash/:projectName/restore', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user?.id;
-        await restoreProject(req.params.projectName, userId);
-        res.json({ success: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-app.delete('/api/projects/trash/:projectName', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user?.id;
-        const mode = req.query.mode === 'physical' ? 'physical' : 'logical';
-        await deleteTrashedProject(req.params.projectName, mode, userId);
         res.json({ success: true });
     } catch (error) {
         res.status(500).json({ error: error.message });

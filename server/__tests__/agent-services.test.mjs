@@ -175,7 +175,7 @@ describe('durable automations', () => {
     clock += 60_000;
     await Promise.all([service.tick(), service.tick()]);
     await vi.waitFor(() => expect(run).toHaveBeenCalledTimes(1));
-    await vi.waitFor(async () => expect((await service.execute('automation_list', {}, context))[0].lastStatus).toBe('completed'));
+    await vi.waitFor(async () => expect((await service.execute('automation_list', {}, context))[0].lastStatus).toBe('completed_with_warnings'));
     const restored = createAgentAutomations({ run, now: () => clock, storageOptions: context.storageOptions });
     cleanups.push(() => restored.stop());
     await restored.tick(); expect(run).toHaveBeenCalledTimes(1);

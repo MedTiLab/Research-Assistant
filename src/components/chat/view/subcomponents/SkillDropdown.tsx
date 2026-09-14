@@ -186,15 +186,24 @@ export default function SkillDropdown({
                           </div>
 
                           <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                            {selectedCount > 0 && (
-                              <button
-                                type="button"
-                                onClick={() => clearSelected(scenario.id)}
-                                className="rounded-full px-2 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                              >
-                                {t('skillShortcuts.clearSelected')}
-                              </button>
-                            )}
+                            <button
+                              type="button"
+                              onClick={() => setSelectedSkillsByScenario((previous) => ({
+                                ...previous, [scenario.id]: [...scenarioSkills],
+                              }))}
+                              disabled={selectedCount === scenarioSkills.length}
+                              className="rounded-full px-2 py-1 text-[10px] font-medium text-primary transition-colors hover:bg-primary/5 disabled:cursor-default disabled:opacity-40"
+                            >
+                              {t('skillShortcuts.selectAll')}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => clearSelected(scenario.id)}
+                              disabled={selectedCount === 0}
+                              className="rounded-full px-2 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:cursor-default disabled:opacity-40"
+                            >
+                              {t('skillShortcuts.deselectAll')}
+                            </button>
                             <button
                               type="button"
                               onClick={() => inject(scenario, selectedSkills, true)}

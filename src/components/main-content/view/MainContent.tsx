@@ -102,6 +102,7 @@ function readStoredChatSidebarWidth() {
 }
 
 function MainContent({
+  automationResultTarget,
   projects,
   trashProjects,
   selectedProject,
@@ -533,7 +534,7 @@ function MainContent({
   }
 
   if (activeTab === 'automation') {
-    return <div className="h-full min-h-0 overflow-hidden"><React.Suspense fallback={<LazyTabFallback />}><AutomationCenter projects={projects} onRunCommand={handleResearchSecretaryCommand} onMenuClick={isMobile ? onMenuClick : undefined} /></React.Suspense></div>;
+    return <div className="h-full min-h-0 overflow-hidden"><React.Suspense fallback={<LazyTabFallback />}><AutomationCenter projects={projects} resultTarget={automationResultTarget} onOpenSession={(sessionId: string, projectKey: string) => { setActiveTab('chat'); onNavigateToSession(sessionId, 'pi', projectKey); }} onRunCommand={handleResearchSecretaryCommand} onMenuClick={isMobile ? onMenuClick : undefined} /></React.Suspense></div>;
   }
 
   if (activeTab === 'companions') {

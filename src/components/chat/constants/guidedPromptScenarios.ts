@@ -47,7 +47,7 @@ export const CHAT_QUICK_ACTION_GROUPS: ChatQuickActionGroup[] = [
   {
     id: 'design',
     titleKey: 'guidedStarter.groups.design',
-    scenarioIds: ['research-design', 'data-analysis', 'experiment-log'],
+    scenarioIds: ['research-design', 'data-analysis', 'ukb', 'experiment-log'],
   },
   {
     id: 'visual',
@@ -192,6 +192,13 @@ export const CHAT_QUICK_ACTION_SCENARIOS: GuidedPromptScenario[] = [
       'statistical-analysis',
       'statsmodels',
     ],
+  },
+  {
+    id: 'ukb',
+    icon: '🧬',
+    titleKey: 'guidedStarter.scenarios.ukb.title',
+    descriptionKey: 'guidedStarter.scenarios.ukb.description',
+    skills: ['ukb-extract-analysis'],
   },
   {
     id: 'research-design',

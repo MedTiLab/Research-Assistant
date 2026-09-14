@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import { Archive, Bot, CalendarClock, Clock3, Loader2, Pause, Pencil, Play, Plus, RefreshCw, RotateCcw, Save, Trash2, X } from 'lucide-react';
+import { Archive, Bot, CalendarClock, Loader2, Pause, Pencil, Play, Plus, RefreshCw, RotateCcw, Save, Trash2, X } from 'lucide-react';
 import type { Project } from '../../../types/app';
 import { ExplorerPage, explorerItemClass } from '../../../components/explorer/ExplorerPage';
 import type { WorkbenchCommand } from '../domain/workbenchCommand';
+import AutomationRunResults from './AutomationRunResults';
+import type { AutomationResultTarget } from '../services/automationsApi';
 import {
   automationRequestJson,
   listAutomationModels,
@@ -13,10 +15,11 @@ import {
   type AutomationModelOption,
   type AutomationRecord,
   type AutomationStatus,
+  type AutomationPermissionMode,
 } from '../services/automationsApi';
 
 type AutomationTab = 'active' | 'paused' | 'archived';
-type AutomationDraft = { projectKey: string; title: string; prompt: string; at: string; intervalMinutes: string; modelKey: string };
+type AutomationDraft = { projectKey: string; title: string; prompt: string; at: string; intervalMinutes: string; modelKey: string; permissionMode: AutomationPermissionMode };
 
 const REPEAT_OPTIONS = [
   { value: '', labelKey: 'automation.repeat.none' },
@@ -70,7 +73,7 @@ function defaultModelKey(models: AutomationModelOption[]) {
 }
 
 function blankDraft(projectKey: string, models: AutomationModelOption[]): AutomationDraft {
-  return { projectKey, title: '', prompt: '', at: localDateTimeValue(), intervalMinutes: '', modelKey: defaultModelKey(models) };
+  return { projectKey, title: '', prompt: '', at: localDateTimeValue(), intervalMinutes: '', modelKey: defaultModelKey(models), permissionMode: 'auto' };
 }
 
 function editDraft(item: AutomationRecord, models: AutomationModelOption[]): AutomationDraft {
@@ -79,6 +82,7 @@ function editDraft(item: AutomationRecord, models: AutomationModelOption[]): Aut
     projectKey: item.projectKey,
     title: item.title,
     prompt: item.prompt,
+    permissionMode: item.permissionMode || 'readOnly',
     at: editableRunTime(item.nextRunAt),
     intervalMinutes: item.intervalMinutes ? String(item.intervalMinutes) : '',
     modelKey: models.some((model) => modelKey(model) === selectedModelKey) ? selectedModelKey : defaultModelKey(models),
@@ -133,6 +137,13 @@ function AutomationForm({ mode, projects, draft, models, modelsLoading, modelErr
         </select>
         <span className="mt-1.5 block text-xs font-normal text-muted-foreground">{t('automation.modelHint')}</span>
       </label>
+      <label className="block text-sm font-medium">{t('automation.executionMode')}
+        <select value={draft.permissionMode} onChange={(event) => onDraftChange({ ...draft, permissionMode: event.target.value as AutomationPermissionMode })} className="mt-2 w-full rounded-lg border bg-background px-3 py-2.5">
+          <option value="auto">{t('automation.modes.auto')}</option>
+          <option value="readOnly">{t('automation.modes.readOnly')}</option>
+        </select>
+        <span className="mt-1.5 block text-xs font-normal text-muted-foreground">{t(`automation.modeHints.${draft.permissionMode}`)}</span>
+      </label>
       <label className="block text-sm font-medium">{t('automation.prompt')}
         <textarea maxLength={16000} rows={7} value={draft.prompt} onChange={(event) => onDraftChange({ ...draft, prompt: event.target.value })} placeholder={t('automation.promptPlaceholder')} className="mt-2 w-full resize-y rounded-lg border bg-background px-3 py-2.5 leading-6" />
       </label>
@@ -156,7 +167,7 @@ function AutomationForm({ mode, projects, draft, models, modelsLoading, modelErr
   </div>;
 }
 
-export default function AutomationCenter({ projects, onMenuClick }: { projects: Project[]; onRunCommand?: (command: WorkbenchCommand) => void; onMenuClick?: () => void }) {
+export default function AutomationCenter({ projects, onMenuClick, resultTarget, onOpenSession }: { projects: Project[]; onRunCommand?: (command: WorkbenchCommand) => void; onMenuClick?: () => void; resultTarget?: AutomationResultTarget | null; onOpenSession?: (sessionId: string, projectKey: string) => void }) {
   const { t } = useTranslation('workbench');
   const [items, setItems] = useState<AutomationRecord[]>([]);
   const [models, setModels] = useState<AutomationModelOption[]>([]);
@@ -171,12 +182,20 @@ export default function AutomationCenter({ projects, onMenuClick }: { projects: 
   const [formMode, setFormMode] = useState<'create' | 'edit' | null>(null);
   const [draft, setDraft] = useState<AutomationDraft>(() => blankDraft(projects[0]?.name || '', []));
   const projectLabels = useMemo(() => new Map(projects.map((project) => [project.name, project.displayName || project.name])), [projects]);
+  const loadVersion = useRef(0);
+  const pollPending = useRef(false);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (silent = false) => {
+    if (silent && pollPending.current) return;
+    const version = ++loadVersion.current;
     if (!projects.length) { setItems([]); setLoading(false); return; }
-    setLoading(true);
+    pollPending.current = true;
+    if (!silent) setLoading(true);
     const { records, failures } = await listAutomationRecords(projects);
-    setItems(records);
+    if (version !== loadVersion.current) return;
+    pollPending.current = false;
+    // Keep the last usable list during a temporary connection failure.
+    if (failures.length < projects.length) setItems(records);
     setError(failures.length === projects.length ? String(failures[0]?.reason?.message || t('automation.loadFailed')) : failures.length ? t('automation.partialLoad', { count: failures.length }) : '');
     setLoading(false);
   }, [projects, t]);
@@ -192,8 +211,22 @@ export default function AutomationCenter({ projects, onMenuClick }: { projects: 
     } finally { setModelsLoading(false); }
   }, [t]);
 
-  useEffect(() => { void load(); }, [load]);
+  useEffect(() => { void load(); return () => { loadVersion.current++; pollPending.current = false; }; }, [load]);
   useEffect(() => { void loadModels(); }, [loadModels]);
+  useEffect(() => {
+    const timer = window.setInterval(() => { void load(true); }, 10000);
+    return () => window.clearInterval(timer);
+  }, [load]);
+  const targetItem = items.find((item) => item.id === resultTarget?.automationId && item.projectKey === resultTarget.projectKey);
+  useEffect(() => {
+    if (!resultTarget) return;
+    const item = targetItem;
+    if (!item) return;
+    setQuery('');
+    setFormMode(null);
+    setSelectedId(item.id);
+    setTab(item.status === 'active' ? 'active' : item.status === 'paused' ? 'paused' : 'archived');
+  }, [resultTarget, targetItem?.id, targetItem?.status]);
 
   const visibleItems = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -220,7 +253,7 @@ export default function AutomationCenter({ projects, onMenuClick }: { projects: 
   const saveForm = async () => {
     const model = modelForKey(draft.modelKey, models);
     if (!draft.projectKey || !draft.title.trim() || !draft.prompt.trim() || !draft.at || !model) return;
-    const body = { title: draft.title.trim(), prompt: draft.prompt.trim(), at: new Date(draft.at).toISOString(), intervalMinutes: draft.intervalMinutes ? Number(draft.intervalMinutes) : null, model };
+    const body = { title: draft.title.trim(), prompt: draft.prompt.trim(), at: new Date(draft.at).toISOString(), intervalMinutes: draft.intervalMinutes ? Number(draft.intervalMinutes) : null, model, permissionMode: draft.permissionMode };
     if (formMode === 'edit' && selected) {
       const movedToActive = selected.status === 'completed';
       if (await mutate(selected, 'PATCH', '', body)) { if (movedToActive) setTab('active'); setFormMode(null); }
@@ -252,9 +285,11 @@ export default function AutomationCenter({ projects, onMenuClick }: { projects: 
   return <ExplorerPage onMenuClick={onMenuClick} eyebrow="Research automation" title={t('automation.title')} countLabel={`${items.length}`} searchPlaceholder={t('automation.searchPlaceholder')} searchValue={query} onSearchChange={setQuery} sidebar={sidebar} resultsEyebrow={selected ? projectLabels.get(selected.projectKey) || selected.projectKey : t('automation.title')} resultsTitle={selected?.title || t('automation.taskFallback')} resultsDescription={selected ? `${scheduleLabel(selected, t)} · ${statusLabel(selected.status)}` : t('automation.description')} resultsActions={<div className="flex gap-2"><button type="button" disabled={loading || busy} onClick={() => void load()} className="rounded-lg border p-2 hover:bg-muted" aria-label={t('automation.refresh')}><RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} /></button><button type="button" disabled={!projects.length} onClick={beginCreate} className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground disabled:opacity-50"><Plus className="h-4 w-4" />{t('automation.create')}</button></div>}>
     {error && <div role="alert" className="border-b border-destructive/30 bg-destructive/5 px-5 py-3 text-sm text-destructive">{error}</div>}
     {selected ? <div className="space-y-5 p-5 md:p-7">
+      <AutomationRunResults key={`${selected.projectKey}:${selected.id}`} item={selected} requestedSessionId={resultTarget?.automationId === selected.id && resultTarget.projectKey === selected.projectKey ? resultTarget.sessionId : undefined} onOpenSession={onOpenSession} />
       <section className="rounded-2xl border bg-card p-5 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-3"><div className="flex min-w-0 items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"><CalendarClock className="h-5 w-5" /></span><div className="min-w-0"><h2 className="truncate text-lg font-semibold">{selected.title}</h2><p className="mt-1 text-xs text-muted-foreground">{projectLabels.get(selected.projectKey) || selected.projectKey}</p></div></div><div className="flex items-center gap-2"><button type="button" disabled={modelsLoading || models.length === 0} onClick={() => beginEdit(selected)} className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium hover:bg-muted disabled:opacity-50"><Pencil className="h-3.5 w-3.5" />{t('automation.edit')}</button><span className={`rounded-full px-3 py-1 text-xs font-medium ${selected.status === 'active' ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300' : selected.status === 'paused' ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300' : 'bg-muted text-muted-foreground'}`}>{statusLabel(selected.status)}</span></div></div>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="rounded-xl bg-muted/45 p-3"><div className="text-xs text-muted-foreground">{t('automation.executionMode')}</div><div className="mt-1 text-sm font-medium">{t(`automation.modes.${selected.permissionMode || 'readOnly'}`)}</div></div>
           <div className="rounded-xl bg-muted/45 p-3"><div className="text-xs text-muted-foreground">{t('automation.modelCard')}</div><div className="mt-1 truncate text-sm font-medium" title={selectedModelLabel}>{selectedModelLabel}</div></div>
           <div className="rounded-xl bg-muted/45 p-3"><div className="text-xs text-muted-foreground">{t('automation.frequencyCard')}</div><div className="mt-1 text-sm font-medium">{scheduleLabel(selected, t)}</div></div>
           <div className="rounded-xl bg-muted/45 p-3"><div className="text-xs text-muted-foreground">{t('automation.nextRunCard')}</div><div className="mt-1 text-sm font-medium">{formatDate(selected.nextRunAt)}</div></div>
@@ -268,9 +303,7 @@ export default function AutomationCenter({ projects, onMenuClick }: { projects: 
           {!['cancelled', 'completed'].includes(selected.status) ? <button type="button" disabled={busy} onClick={() => { if (confirm(t('automation.archiveConfirm', { title: selected.title }))) void mutate(selected, 'PATCH', '', { status: 'cancelled' }); }} className="ml-auto inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm text-muted-foreground hover:bg-muted disabled:opacity-50"><Archive className="h-4 w-4" />{t('automation.archive')}</button> : <><button type="button" disabled={busy} onClick={() => void mutate(selected, 'PATCH', '', { status: 'active' })} className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm hover:bg-muted disabled:opacity-50"><RotateCcw className="h-4 w-4" />{t('automation.resume')}</button><button type="button" disabled={busy} onClick={() => { if (confirm(t('automation.deleteConfirm', { title: selected.title }))) void mutate(selected, 'DELETE'); }} className="ml-auto inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm text-destructive hover:bg-destructive/10 disabled:opacity-50"><Trash2 className="h-4 w-4" />{t('automation.deleteForever')}</button></>}
         </div>
       </section>
-      <section className="rounded-2xl border bg-card p-5"><div className="flex items-center gap-2 font-semibold"><Clock3 className="h-4 w-4 text-primary" />{t('automation.lastRunTitle')}</div>{selected.lastRunAt ? <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><span className="text-muted-foreground">{t('automation.startedAt')}</span>{formatDate(selected.lastRunAt)}</div><div><span className="text-muted-foreground">{t('automation.result')}</span>{t(`automation.runStatus.${selected.lastStatus || 'running'}`, { defaultValue: selected.lastStatus || t('automation.waitingResult') })}</div>{selected.lastSessionId && <div className="sm:col-span-2"><span className="text-muted-foreground">{t('automation.session')}</span><code className="text-xs">{selected.lastSessionId}</code></div>}{selected.lastError && <div className="rounded-lg bg-destructive/5 p-3 text-destructive sm:col-span-2">{selected.lastError}</div>}</div> : <p className="mt-3 text-sm text-muted-foreground">{t('automation.noRuns')}</p>}
-        <div className="mt-4 flex items-start gap-2 rounded-xl bg-muted/45 p-3 text-xs leading-5 text-muted-foreground"><Bot className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{t('automation.runHint')}</div>
-      </section>
+      <div className="flex items-start gap-2 rounded-xl bg-muted/45 p-3 text-xs leading-5 text-muted-foreground"><Bot className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{t('automation.runHint')}</div>
     </div> : <div className="flex h-full min-h-[360px] flex-col items-center justify-center p-8 text-center"><CalendarClock className="mb-3 h-10 w-10 text-primary" /><div className="font-semibold">{projects.length ? t('automation.emptyTitle') : t('automation.needProject')}</div><p className="mt-1 max-w-md text-sm text-muted-foreground">{t('automation.emptyHint')}</p>{projects.length > 0 && <button type="button" onClick={beginCreate} className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"><Plus className="h-4 w-4" />{t('automation.create')}</button>}</div>}
   </ExplorerPage>;
 }
