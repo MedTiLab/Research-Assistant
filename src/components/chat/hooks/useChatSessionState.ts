@@ -24,6 +24,7 @@ import {
 import {
   getTranscriptPageStart,
   loadTranscriptWindow,
+  prependPersistedHistory,
   reconcilePersistedSessionMessages,
   shouldHoldLiveTranscript,
 } from '../utils/sessionTranscriptReconciliation';
@@ -1084,7 +1085,7 @@ export function useChatSessionState({
         isLoadingPersistedMessages: isLoadingSessionMessages,
         isCompletionReconcileActive,
       })) {
-        return previous;
+        return prependPersistedHistory(previous, messagesWithCodexTodo);
       }
 
       if (optimisticMessages.length === 0) {
@@ -1103,7 +1104,7 @@ export function useChatSessionState({
       });
 
       if (unmatchedOptimistic.length > 0) {
-        return previous;
+        return prependPersistedHistory(previous, messagesWithCodexTodo);
       }
 
       return messagesWithCodexTodo;

@@ -3,9 +3,64 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   getTranscriptPageStart,
   loadTranscriptWindow,
+  prependPersistedHistory,
   reconcilePersistedSessionMessages,
   shouldHoldLiveTranscript,
 } from './sessionTranscriptReconciliation';
+import type { ChatMessage } from '../types/types';
+
+describe('history while the live transcript is held', () => {
+  const message = (content: string, timestamp: number, extra: Partial<ChatMessage> = {}): ChatMessage => ({
+    type: 'assistant', content, timestamp, ...extra,
+  });
+
+  it('restores the first question behind a cached tool page without losing a pending prompt or streaming reply', () => {
+    const older = [
+      message('睡眠有哪些变量？', 1, { type: 'user' }),
+      ...Array.from({ length: 110 }, (_, i) => message('', i + 2, { isToolUse: true, toolId: `tool-${i}` })),
+    ];
+    const cached = older.slice(-50);
+    const pending = message('新的问题', 200, { type: 'user', isOptimistic: true });
+    const streaming = message('还在回答', 201, { isStreaming: true });
+    const current = [...cached, pending, streaming];
+
+    const merged = prependPersistedHistory(current, older);
+    expect(merged).toEqual([...older, pending, streaming]);
+    expect(merged.at(-1)).toBe(streaming);
+    expect(merged.at(-2)).toBe(pending);
+    expect(prependPersistedHistory(merged, older)).toBe(merged);
+  });
+
+  it('prepends history when there is no shared record with a newly queued turn', () => {
+    const older = [message('第一问', 1, { type: 'user' }), message('第一答', 2)];
+    const current = [message('新问题', 3, { type: 'user', isOptimistic: true }), message('回答中', 4, { isStreaming: true })];
+    expect(prependPersistedHistory(current, older)).toEqual([...older, ...current]);
+  });
+
+  it('does not anchor a repeated pending question to its older occurrence', () => {
+    const older = [message('继续', 1, { type: 'user' }), message('回答', 2)];
+    const current = [message('继续', 3, { type: 'user', isOptimistic: true })];
+    expect(prependPersistedHistory(current, older)).toEqual([...older, ...current]);
+  });
+
+  it('matches a cached Pi entry despite text formatting changes', () => {
+    const current = [message('格式有变化', 2, { piEntryId: 'entry-2' })];
+    const incoming = [message('首问', 1, { type: 'user' }), message('格式\n有变化', 2, { piEntryId: 'entry-2' })];
+    expect(prependPersistedHistory(current, incoming)).toEqual([incoming[0], ...current]);
+  });
+
+  it('retains the live streaming bubble when the persisted text has advanced', () => {
+    const current = [message('正在回答', 2, { isStreaming: true })];
+    const incoming = [message('首问', 1, { type: 'user' }), message('正在回答，已经写入文件', 2)];
+    expect(prependPersistedHistory(current, incoming)).toEqual([incoming[0], ...current]);
+  });
+
+  it('does not prepend a later snapshot or empty history ahead of the live transcript', () => {
+    const current = [message('首问', 1, { type: 'user', isOptimistic: true })];
+    expect(prependPersistedHistory(current, [message('后续回答', 5)])).toBe(current);
+    expect(prependPersistedHistory(current, [])).toBe(current);
+  });
+});
 
 describe('reconcilePersistedSessionMessages', () => {
   it('retains the existing empty reference while persistence is still empty', () => {

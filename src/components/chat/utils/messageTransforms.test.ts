@@ -2,8 +2,27 @@ import { describe, expect, it } from 'vitest';
 
 import { convertSessionMessages } from './messageTransforms';
 import { wrapVisibleUserContent } from '../../../../shared/visibleUserContent.js';
+import { stripInternalContextPrefix } from '../../../../server/utils/sessionFormatting.js';
 
 describe('convertSessionMessages', () => {
+  it('keeps every question in order after server and client both strip runtime memory', () => {
+    const questions = ['睡眠有哪些变量？', '这些变量搜到了吗？', '这个结果来自官网吗？'];
+    const raw = questions.map((content, index) => ({
+      type: 'user',
+      message: {
+        role: 'user',
+        content: index === 0 ? wrapVisibleUserContent(content)
+          : `<execution_memory>\nObjective changed: ${wrapVisibleUserContent(questions[index - 1]).replace(/\n/g, ' ')}\n</execution_memory>\nUser request:\n${wrapVisibleUserContent(content)}`,
+      },
+      timestamp: index + 1,
+    }));
+    const serverMessages = raw.map((entry) => ({ ...entry,
+      message: { ...entry.message, content: stripInternalContextPrefix(entry.message.content, false) },
+    }));
+    expect(convertSessionMessages(raw).map((entry) => entry.content)).toEqual(questions);
+    expect(convertSessionMessages(serverMessages).map((entry) => entry.content)).toEqual(questions);
+  });
+
   it('hides appended project memory from the user bubble', () => {
     const converted = convertSessionMessages([{
       message: {

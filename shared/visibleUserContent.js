@@ -46,10 +46,20 @@ export function extractVisibleUserContent(value) {
 export function findVisibleUserContentRange(value) {
   if (typeof value !== 'string') return null;
 
-  const opening = VISIBLE_USER_CONTENT_OPEN_PATTERN.exec(value);
+  // Runtime memory can quote a previous effective prompt, including complete
+  // or truncated visibility tags. Those quoted tags are data, not the current
+  // request's presentation boundary. Keep offsets into the original string.
+  const memoryRanges = [...value.matchAll(
+    /<(execution_memory|medhelp_project_memory|research_lessons|user_memory|codex_internal_context)\b[^>]*>[\s\S]*?<\/\1\s*>/gi,
+  )].map((match) => ({ start: match.index, end: match.index + match[0].length }));
+  const isOutsideMemory = (index) => !memoryRanges.some((range) => index >= range.start && index < range.end);
+  const opening = [...value.matchAll(new RegExp(VISIBLE_USER_CONTENT_OPEN_PATTERN, 'gi'))]
+    .find((match) => isOutsideMemory(match.index));
   if (!opening || opening.index === undefined) return null;
 
-  const closingIndex = value.toLowerCase().lastIndexOf(VISIBLE_USER_CONTENT_CLOSE);
+  const closing = [...value.matchAll(new RegExp(VISIBLE_USER_CONTENT_CLOSE, 'gi'))]
+    .filter((match) => isOutsideMemory(match.index)).at(-1);
+  const closingIndex = closing?.index ?? -1;
   let contentStart = opening.index + opening[0].length;
   let contentEnd = closingIndex;
   if (closingIndex < contentStart) return null;

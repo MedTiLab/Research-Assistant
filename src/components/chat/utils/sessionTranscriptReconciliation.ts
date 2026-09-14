@@ -130,6 +130,57 @@ export async function loadTranscriptWindow<T, P extends TranscriptPage<T>>({
   return page;
 }
 
+type DisplayTranscriptMessage = {
+  type: string;
+  content?: string;
+  timestamp: string | number | Date;
+  piEntryId?: unknown;
+  toolId?: string;
+  toolCallId?: string;
+  isThinking?: boolean;
+  isToolUse?: boolean;
+  isStreaming?: boolean;
+};
+
+/**
+ * A pending prompt or streaming reply can hold the live tail while persistence
+ * catches up. That must not block history pagination: its offset has already
+ * advanced, so discarding the older messages would make them unreachable.
+ * Only prepend history here; preserve every live message and its object identity.
+ */
+export function prependPersistedHistory<T extends DisplayTranscriptMessage>(current: T[], incoming: T[]): T[] {
+  if (!current.length) return incoming;
+  if (!incoming.length) return current;
+
+  const first = current[0];
+  const firstTime = new Date(first.timestamp).getTime();
+  const firstToolId = first.toolId || first.toolCallId;
+  let boundary = incoming.findIndex((message) => {
+    if (message.type !== first.type
+      || Boolean(message.isThinking) !== Boolean(first.isThinking)
+      || Boolean(message.isToolUse) !== Boolean(first.isToolUse)) return false;
+    if (firstToolId) return firstToolId === (message.toolId || message.toolCallId);
+    if (first.piEntryId && message.piEntryId) return first.piEntryId === message.piEntryId;
+    // The cache and persisted history share timestamps; live text may have
+    // arrived just after the server wrote it. Repeated user questions must not
+    // match an older occurrence and swallow intervening history.
+    const time = new Date(message.timestamp).getTime();
+    if (first.type === 'user' && time < firstTime) return false;
+    return !!first.content && (message.content === first.content
+      || (first.isStreaming && message.content?.startsWith(first.content)));
+  });
+
+  if (boundary < 0) {
+    // No shared record yet (e.g. the first new prompt is still queued). Only
+    // include the strictly older prefix, never overwrite the pending tail.
+    boundary = 0;
+    while (boundary < incoming.length
+      && new Date(incoming[boundary].timestamp).getTime() < firstTime) boundary += 1;
+  }
+
+  return boundary > 0 ? [...incoming.slice(0, boundary), ...current] : current;
+}
+
 export function shouldHoldLiveTranscript({
   liveMessageCount,
   persistedMessageCount,
