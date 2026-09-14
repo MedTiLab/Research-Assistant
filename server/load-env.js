@@ -8,7 +8,6 @@ import { shouldImportLoginShellEnvironment } from './utils/loginShellEnvironment
 import {
   resolveAppDataRoot,
   resolveAppDatabasePath,
-  resolveLegacyDatabasePaths,
 } from './utils/storagePaths.js';
 
 const LOGIN_SHELL_ENV_IMPORT_TIMEOUT_MS = 4000;
@@ -148,37 +147,10 @@ function importLoginShellEnvironment() {
   }
 }
 
+// This application owns its database. Do not import another application's
+// accounts, credentials, or project index during startup.
 function resolveDefaultDatabasePath() {
-  const currentDbPath = resolveAppDatabasePath();
-  const currentSidecars = [`${currentDbPath}-shm`, `${currentDbPath}-wal`];
-  const legacyDbPaths = resolveLegacyDatabasePaths();
-
-  if (fs.existsSync(currentDbPath)) {
-    return currentDbPath;
-  }
-
-  const legacyDbPath = legacyDbPaths.find((candidatePath) => fs.existsSync(candidatePath));
-  if (!legacyDbPath) {
-    return currentDbPath;
-  }
-
-  const legacySidecars = [`${legacyDbPath}-shm`, `${legacyDbPath}-wal`];
-
-  try {
-    fs.mkdirSync(path.dirname(currentDbPath), { recursive: true });
-    fs.copyFileSync(legacyDbPath, currentDbPath);
-
-    legacySidecars.forEach((legacySidecar, index) => {
-      if (fs.existsSync(legacySidecar) && !fs.existsSync(currentSidecars[index])) {
-        fs.copyFileSync(legacySidecar, currentSidecars[index]);
-      }
-    });
-
-    return currentDbPath;
-  } catch (error) {
-    console.warn('[load-env] Failed to migrate legacy auth DB, using legacy path:', error.message);
-    return legacyDbPath;
-  }
+  return resolveAppDatabasePath();
 }
 
 // Read flags before deciding whether to start a login shell.

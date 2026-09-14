@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { repository } from '../../package.json';
 
 import type { LocalKernelUpdateProgress } from '../services/localKernelClient';
 import type { ReleaseInfo } from '../types/sharedTypes';
@@ -44,6 +45,45 @@ type LegacyDesktopRelease = {
   downloadUrl: string | null;
   releaseInfo: ReleaseInfo | null;
 };
+
+export const DESKTOP_RELEASE_REPOSITORY = repository.url
+  .replace(/^git\+/, '').replace(/\.git$/, '');
+export const DESKTOP_RELEASE_API = DESKTOP_RELEASE_REPOSITORY
+  .replace('https://github.com/', 'https://api.github.com/repos/') + '/releases/latest';
+
+type GitHubDesktopRelease = {
+  tag_name?: string;
+  name?: string;
+  body?: string;
+  html_url?: string;
+  published_at?: string;
+  draft?: boolean;
+  prerelease?: boolean;
+  assets?: { name: string; browser_download_url: string }[];
+};
+
+export function desktopCatalogFromGitHub(release: GitHubDesktopRelease): DesktopDownloadCatalog {
+  if (release.draft || release.prerelease || !/^v?\d+\.\d+\.\d+$/.test(release.tag_name || '')) {
+    return { medhelpDesktop: [] };
+  }
+  return {
+    generatedAt: release.published_at,
+    medhelpDesktop: (release.assets || []).flatMap((asset) => {
+      const name = asset.name.toLowerCase();
+      const platform = name.endsWith('.dmg') ? 'macos'
+        : /\.(exe|msi)$/.test(name) ? 'windows'
+        : /\.(appimage|deb|rpm)$/.test(name) ? 'linux' : null;
+      if (!platform || !asset.browser_download_url.startsWith(`${DESKTOP_RELEASE_REPOSITORY}/releases/download/`)) return [];
+      return [{
+        name: asset.name,
+        url: asset.browser_download_url,
+        platform,
+        architecture: /arm64|aarch64/.test(name) ? 'arm64' : /x64|x86_64|amd64/.test(name) ? 'x64' : null,
+        version: release.tag_name!.replace(/^v/, ''),
+      }];
+    }),
+  };
+}
 
 const EMPTY_STATE: DesktopAppUpdateState = {
   status: 'unsupported',
@@ -141,9 +181,14 @@ export function useDesktopAppUpdate() {
     if (!isLegacyDesktop) return null;
     setLegacyChecking(true);
     try {
-      const response = await fetch('/api/public-downloads', { cache: 'no-store' });
+      const response = await fetch(DESKTOP_RELEASE_API, { cache: 'no-store' });
+      if (response.status === 404) {
+        setLegacyRelease(EMPTY_LEGACY_RELEASE);
+        return EMPTY_LEGACY_RELEASE;
+      }
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const catalog = await response.json() as DesktopDownloadCatalog;
+      const release = await response.json() as GitHubDesktopRelease;
+      const catalog = desktopCatalogFromGitHub(release);
       const artifact = selectDesktopDownloadArtifact(catalog, desktopPlatform);
       const latestVersion = artifact?.version?.replace(/^v/, '').trim() || null;
       const downloadUrl = artifact?.url || null;
@@ -152,9 +197,9 @@ export function useDesktopAppUpdate() {
         downloadUrl,
         releaseInfo: latestVersion && downloadUrl
           ? {
-              title: `MedHelp Desktop v${latestVersion}`,
-              body: '',
-              htmlUrl: '',
+              title: release.name || `v${latestVersion}`,
+              body: release.body || '',
+              htmlUrl: `${DESKTOP_RELEASE_REPOSITORY}/releases/latest`,
               publishedAt: catalog.generatedAt || '',
             }
           : null,

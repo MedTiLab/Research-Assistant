@@ -52,7 +52,6 @@ import { markVisibleUserContent } from '../shared/visibleUserContent.js';
 
 import {
     getProjects,
-    getSessions,
     getSessionMessages,
     renameProject,
     findCodexSessionFileById,
@@ -62,7 +61,6 @@ import {
     clearProjectDirectoryCache,
     reindexProjectSessions,
 } from './projects.js';
-import { getProjectTokenUsageSummary } from './project-token-usage.js';
 import {
     abortAgentRuntimeSession,
     abortAllAgentRuntimeSessions,
@@ -158,7 +156,6 @@ import {
 } from './utils/agentSessionIdentity.js';
 import { createClientOperationDeduper } from './utils/clientOperationDeduper.js';
 import { buildManagedAgentSessionContext } from './utils/agentSessionEnv.js';
-import { getDatabaseApiCredentialForUser } from './utils/databaseApiAgentEnv.js';
 import {
     captureCloudUserLongTermMemory,
     getAgentRuntimeEnvState,
@@ -1644,19 +1641,10 @@ app.get('/api/projects', authenticateToken, async (req, res) => {
     }
 });
 
-app.post('/api/projects/token-usage-summary', authenticateToken, async (req, res) => {
-    try {
-        const projectRefs = req.body?.projects;
-        if (!Array.isArray(projectRefs)) {
-            return res.status(400).json({ error: 'projects array is required' });
-        }
-
-        const summary = await getProjectTokenUsageSummary(projectRefs);
-        res.json(summary);
-    } catch (error) {
-        console.error('Error building project token usage summary:', error);
-        res.status(500).json({ error: 'Failed to build project token usage summary' });
-    }
+// The retired summary scanned global Claude/Codex transcripts. Do not read
+// those directories from the Pi-only app or report their usage as Pi usage.
+app.post('/api/projects/token-usage-summary', authenticateToken, (_req, res) => {
+    res.status(410).json({ error: 'Legacy provider token usage is no longer supported' });
 });
 
 function resolvePersistedRuntimeId(runtimeIdOrProvider) {
@@ -1686,15 +1674,8 @@ app.use('/api/projects', authenticateToken, createSessionManagementRouter({
     getSessionStatus: getAgentRuntimeSessionStatus,
 }));
 
-app.get('/api/projects/:projectName/sessions', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user?.id;
-        const { limit = 5, offset = 0 } = req.query;
-        const result = await getSessions(req.params.projectName, parseInt(limit), parseInt(offset), userId);
-        res.json(result);
-    } catch (error) {
-        res.status(sessionPersistenceErrorStatus(error)).json({ error: error.message });
-    }
+app.get('/api/projects/:projectName/sessions', authenticateToken, (_req, res) => {
+    res.status(410).json({ error: 'Legacy Claude sessions are no longer supported' });
 });
 
 // OAuth callback is bound to a short-lived random state, never a supplied owner/session id.
@@ -1754,7 +1735,7 @@ app.get('/api/agent-work', authenticateToken, async (req, res) => {
 app.post('/api/projects/:projectName/sessions/reindex', authenticateToken, async (req, res) => {
     try {
         const userId = req.user?.id;
-        const requestedProviders = Array.isArray(req.body?.providers) ? req.body.providers : ['codex'];
+        const requestedProviders = Array.isArray(req.body?.providers) ? req.body.providers : [];
         const result = await reindexProjectSessions(req.params.projectName, {
             providers: requestedProviders,
             userId,
@@ -3831,19 +3812,6 @@ function handleChatConnection(ws, request) {
             return false;
         }
     };
-    console.log('[database-api] WebSocket agent credential state:', localKernelSession
-        ? {
-            mode: 'local-kernel',
-            cloudUserId: cloudUserId == null ? null : String(cloudUserId),
-            credentialSource: 'cloud-account-per-agent-turn',
-        }
-        : {
-            mode: 'cloud-agent',
-            userId: userId == null ? null : String(userId),
-            tokenConfigured: getDatabaseApiCredentialForUser(userId).tokenConfigured,
-            baseUrl: getDatabaseApiCredentialForUser(userId).baseUrl,
-        });
-
     // Wrap WebSocket with writer for consistent interface with SSEStreamWriter
     const writer = new WebSocketWriter(ws, telemetryContext);
     // Every tracked alias is a full owner/project/runtime/session key. A

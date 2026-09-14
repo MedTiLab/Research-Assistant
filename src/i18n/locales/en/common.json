@@ -1,6 +1,6 @@
 {
   "app": {
-    "documentTitle": "MedHelp — Your Graduate AI Assistant"
+    "documentTitle": "medhelp-ukb"
   },
   "buttons": {
     "save": "Save",
@@ -789,7 +789,7 @@
     "desktop": {
       "autoUpdateStarting": "Downloading and verifying the desktop update in the background. MedHelp will quit, install it, and reopen automatically when ready.",
       "manualUpgrade": "Update the desktop app:",
-      "manualUpgradeHint": "This desktop client predates in-app updates. Download and install the desktop package once; after 1.1.15 is installed, future releases can be downloaded and verified inside the app.",
+      "manualUpgradeHint": "Download and install the desktop package for your platform from this project’s GitHub Releases.",
       "downloadBytes": "{{downloaded}} MB / {{total}} MB",
       "progressStates": {
         "checking": "Checking desktop release",

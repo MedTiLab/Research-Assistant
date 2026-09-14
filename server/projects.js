@@ -54,7 +54,6 @@ import { buildCodexTokenUsageFromTokenInfo } from './utils/sessionTokenUsage.js'
 import {
   ensureProjectProviderSessionFile,
   findProviderSessionFile,
-  resolveLegacyProjectConfigPaths,
   resolveProjectConfigPath,
   resolveUserSkillsDir,
 } from './utils/storagePaths.js';
@@ -107,7 +106,7 @@ function isConsultationSessionRecord(session = null) {
 }
 
 function isSessionVisibleInProjectHistory(session = null) {
-  return !isSessionTrashed(session) && !isConsultationSessionRecord(session);
+  return session?.provider === 'pi' && !isSessionTrashed(session) && !isConsultationSessionRecord(session);
 }
 
 function getDefaultConversationProjectDescriptor(userId = null, configuredWorkspaceRoot = null) {
@@ -253,75 +252,6 @@ async function resolveProviderSessionProjectPath(projectName, sessionId = null, 
     || await extractProjectDirectory(projectName).catch(() => null);
 }
 
-async function bootstrapProjectsIndexFromLegacySources(config, projectDb, userId = null, visibleWorkspaceRoots = []) {
-  const candidateProjectNames = new Set(Object.keys(config).filter((key) => !key.startsWith('_')));
-  const claudeProjectsRoot = path.join(os.homedir(), '.claude', 'projects');
-
-  try {
-    const entries = await fs.readdir(claudeProjectsRoot, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        candidateProjectNames.add(entry.name);
-      }
-    }
-  } catch (error) {
-    if (error.code !== 'ENOENT') {
-      console.warn('[projects] Failed to read Claude projects for bootstrap:', error.message);
-    }
-  }
-
-  let seededCount = 0;
-
-  for (const projectName of candidateProjectNames) {
-    const projectInfo = config[projectName];
-    if (isProjectSuppressed(projectName, config, projectInfo)) {
-      continue;
-    }
-
-    let projectPath = projectInfo?.originalPath || projectInfo?.path || null;
-    if (!projectPath) {
-      projectPath = await extractProjectDirectory(projectName);
-    }
-    if (!projectPath) {
-      continue;
-    }
-
-    const isManuallyAdded = Boolean(projectInfo?.manuallyAdded);
-    if (!isManuallyAdded && visibleWorkspaceRoots.length > 0 && !await isPathWithinWorkspaceRoots(projectPath, visibleWorkspaceRoots)) {
-      continue;
-    }
-
-    const existing = projectDb.getProjectById(projectName);
-    const ownerUserId = existing?.user_id ?? getProjectOwnerUserId(projectInfo, existing) ?? userId ?? null;
-    const metadata = { ...(existing?.metadata || {}) };
-
-    if (isManuallyAdded) {
-      metadata.manuallyAdded = true;
-    } else {
-      delete metadata.manuallyAdded;
-    }
-
-    if (projectInfo?.trash?.trashedAt) {
-      metadata.trash = {
-        ...projectInfo.trash,
-        ownerUserId: projectInfo.trash.ownerUserId ?? ownerUserId,
-      };
-    }
-
-    projectDb.upsertProject(
-      projectName,
-      ownerUserId,
-      existing?.display_name || projectInfo?.displayName || null,
-      projectPath,
-      existing?.is_starred || 0,
-      existing?.last_accessed || null,
-      Object.keys(metadata).length > 0 ? metadata : null,
-    );
-    seededCount += 1;
-  }
-
-  return seededCount;
-}
 
 function buildTrashEntry(projectName, projectInfo = null, dbEntry = null) {
   const trashMeta = dbEntry?.metadata?.trash || projectInfo?.trash;
@@ -528,24 +458,6 @@ async function loadProjectConfig() {
     }
   }
 
-  for (const legacyPath of resolveLegacyProjectConfigPaths(os.homedir())) {
-    try {
-      const configData = await fs.readFile(legacyPath, 'utf8');
-      const parsed = JSON.parse(configData);
-      try {
-        await writeProjectConfigFile(configPath, parsed);
-      } catch (migrationError) {
-        console.warn('[projects] Failed to migrate legacy project config:', migrationError.message);
-      }
-      return parsed;
-    } catch (error) {
-      if (error?.code !== 'ENOENT') {
-        return {};
-      }
-    }
-  }
-
-  // Return empty config if no config exists anywhere.
   return {};
 }
 
@@ -998,7 +910,7 @@ async function generateDisplayName(projectName, actualProjectDir = null) {
   return projectPath;
 }
 
-// Extract the actual project directory from JSONL sessions (with caching)
+// Resolve project directories from this application's own index and config.
 async function extractProjectDirectory(projectName) {
   // Check cache first
   if (projectDirectoryCache.has(projectName)) {
@@ -1028,114 +940,8 @@ async function extractProjectDirectory(projectName) {
     return originalPath;
   }
 
-  const projectDir = await resolveClaudeProjectDir(projectName);
-  const cwdCounts = new Map();
-  let latestTimestamp = 0;
-  let latestCwd = null;
-  let extractedPath;
-
-  try {
-    // Check if the project directory exists
-    await fs.access(projectDir);
-
-    const files = await fs.readdir(projectDir);
-    const jsonlFiles = files.filter(file => file.endsWith('.jsonl'));
-
-    if (jsonlFiles.length === 0) {
-      // Fall back to decoded project name if no sessions, but never to '/'
-      const decoded = projectName.replace(/-/g, '/');
-      extractedPath = decoded === '/' ? os.homedir() : decoded;
-    } else {
-      // Process all JSONL files to collect cwd values
-      for (const file of jsonlFiles) {
-        const jsonlFile = path.join(projectDir, file);
-        const fileStream = fsSync.createReadStream(jsonlFile);
-        const rl = readline.createInterface({
-          input: fileStream,
-          crlfDelay: Infinity
-        });
-
-        for await (const line of rl) {
-          if (line.trim()) {
-            try {
-              const entry = JSON.parse(line);
-
-              if (entry.cwd) {
-                // Count occurrences of each cwd
-                cwdCounts.set(entry.cwd, (cwdCounts.get(entry.cwd) || 0) + 1);
-
-                // Track the most recent cwd
-                const timestamp = new Date(entry.timestamp || 0).getTime();
-                if (timestamp > latestTimestamp) {
-                  latestTimestamp = timestamp;
-                  latestCwd = entry.cwd;
-                }
-              }
-            } catch (parseError) {
-              // Skip malformed lines
-            }
-          }
-        }
-        rl.close();
-        fileStream.destroy();
-      }
-
-      // Determine the best cwd to use
-      if (cwdCounts.size === 0) {
-        // No cwd found, fall back to decoded project name, but never to '/'
-        const decoded = projectName.replace(/-/g, '/');
-        extractedPath = decoded === '/' ? os.homedir() : decoded;
-      } else if (cwdCounts.size === 1) {
-        // Only one cwd, use it
-        extractedPath = Array.from(cwdCounts.keys())[0];
-      } else {
-        // Multiple cwd values - prefer the most recent one if it has reasonable usage
-        const mostRecentCount = cwdCounts.get(latestCwd) || 0;
-        const maxCount = Math.max(...cwdCounts.values());
-
-        // Use most recent if it has at least 25% of the max count
-        if (mostRecentCount >= maxCount * 0.25) {
-          extractedPath = latestCwd;
-        } else {
-          // Otherwise use the most frequently used cwd
-          for (const [cwd, count] of cwdCounts.entries()) {
-            if (count === maxCount) {
-              extractedPath = cwd;
-              break;
-            }
-          }
-        }
-
-        // Fallback (shouldn't reach here)
-        if (!extractedPath) {
-          const decoded = projectName.replace(/-/g, '/');
-          extractedPath = latestCwd || (decoded === '/' ? os.homedir() : decoded);
-        }
-      }
-    }
-
-    // Cache the result
-    projectDirectoryCache.set(projectName, extractedPath);
-
-    return extractedPath;
-
-  } catch (error) {
-    // If the directory doesn't exist, just use the decoded project name
-    if (error.code === 'ENOENT') {
-      const decoded = projectName.replace(/-/g, '/');
-      extractedPath = decoded === '/' ? os.homedir() : decoded;
-    } else {
-      console.error(`Error extracting project directory for ${projectName}:`, error);
-      // Fall back to decoded project name for other errors, but never to '/'
-      const decoded = projectName.replace(/-/g, '/');
-      extractedPath = decoded === '/' ? os.homedir() : decoded;
-    }
-
-    // Cache the fallback result too
-    projectDirectoryCache.set(projectName, extractedPath);
-
-    return extractedPath;
-  }
+  // Unknown project IDs must not trigger discovery in another CLI's history.
+  return null;
 }
 
 async function mapWithConcurrency(items, concurrency, mapper) {
@@ -1533,12 +1339,12 @@ async function reconcileCodexSessionIndex(projectPath, options = {}) {
 
 async function reindexProjectSessions(projectName, options = {}) {
   const {
-    providers = ['codex'],
+    providers = [],
     userId = null,
   } = options;
   const normalizedProviders = Array.isArray(providers)
-    ? Array.from(new Set(providers.filter((provider) => ['codex'].includes(provider))))
-    : ['codex'];
+    ? Array.from(new Set(providers.filter((provider) => provider === 'pi')))
+    : [];
 
   const actualProjectPath = await extractProjectDirectory(projectName);
   if (!actualProjectPath) {
@@ -1549,18 +1355,6 @@ async function reindexProjectSessions(projectName, options = {}) {
   const existingProject = projectDb.getProjectById(projectName);
   if (userId && existingProject?.user_id && existingProject.user_id !== userId) {
     throw new Error('You do not have permission to reindex this project');
-  }
-
-  const codexIndexRef = normalizedProviders.includes('codex') ? {} : null;
-
-  for (const provider of normalizedProviders) {
-    if (provider === 'codex') {
-      await reconcileCodexSessionIndex(actualProjectPath, {
-        limit: 0,
-        projectName,
-        indexRef: codexIndexRef,
-      });
-    }
   }
 
   const indexedSessions = sessionDb.getSessionsByProject(projectName).filter(isSessionVisibleInProjectHistory);
@@ -1584,25 +1378,12 @@ async function getProjects(userId, progressCallback = null, { sessionOwnerKey = 
     && (session.provider !== 'pi' || sessionOwnerKey == null
       || String(session.ownerKey ?? session.owner_key) === String(sessionOwnerKey));
 
-  await migrateLegacyProjects(config, projectDb);
-  await migrateProjectsToCurrentHome(config, projectDb);
 
   const visibleWorkspaceRoots = await getVisibleWorkspaceRoots(config._workspacesRoot || null);
   let totalProjects = 0;
   let processedProjects = 0;
 
   let dbProjects = projectDb.getAllProjects(userId || null);
-  if (dbProjects.length === 0) {
-    const seededCount = await bootstrapProjectsIndexFromLegacySources(
-      config,
-      projectDb,
-      userId || null,
-      visibleWorkspaceRoots,
-    );
-    if (seededCount > 0) {
-      dbProjects = projectDb.getAllProjects(userId || null);
-    }
-  }
 
   try {
     const configuredConversationRoot = userId
@@ -1674,35 +1455,6 @@ async function getProjects(userId, progressCallback = null, { sessionOwnerKey = 
         runtimeId: 'pi',
         sessionId: session.id,
       }, { sessionDb })));
-
-      indexedSessions = sessionDb.getSessionsByProjects(projectNames).filter(visibleSession);
-      sessionsByProject.clear();
-      for (const session of indexedSessions) {
-        if (!sessionsByProject.has(session.project_name)) {
-          sessionsByProject.set(session.project_name, []);
-        }
-        sessionsByProject.get(session.project_name).push(session);
-      }
-    }
-
-    const suspiciousCodexProjects = visibleProjects.filter(({ entry }) => {
-      const projectSessions = sessionsByProject.get(entry.name) || [];
-      return projectSessions.some((session) => (
-        session?.provider === 'codex' && isLegacyCodexPlaceholderSessionId(session.id)
-      ));
-    });
-
-    if (suspiciousCodexProjects.length > 0) {
-      const codexIndexRef = {};
-      await Promise.allSettled(
-        suspiciousCodexProjects.map(({ entry, actualProjectDir }) => (
-          reconcileCodexSessionIndex(actualProjectDir, {
-            limit: 0,
-            projectName: entry.name,
-            indexRef: codexIndexRef,
-          })
-        ))
-      );
 
       indexedSessions = sessionDb.getSessionsByProjects(projectNames).filter(visibleSession);
       sessionsByProject.clear();

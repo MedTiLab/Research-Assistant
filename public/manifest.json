@@ -1,6 +1,6 @@
 {
-  "name": "MedHelp — 你的研究生 AI 助理",
-  "short_name": "MedHelp",
+  "name": "medhelp-ukb",
+  "short_name": "medhelp-ukb",
   "description": "MedHelp 是你的研究生 AI 助理，提供智能体对话、文献动态、资源库、任务流水线、文件管理和计算资源。",
   "start_url": "/",
   "display": "standalone",

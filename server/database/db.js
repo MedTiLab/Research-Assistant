@@ -106,23 +106,6 @@ try {
   throw error;
 }
 
-// Migrate the legacy repo-local DB into the selected runtime location when present.
-const LEGACY_DB_PATH = path.join(__dirname, 'auth.db');
-const SHOULD_COPY_LEGACY_DB = !process.env.VITEST && process.env.NODE_ENV !== 'test';
-if (SHOULD_COPY_LEGACY_DB && DB_PATH !== LEGACY_DB_PATH && !fs.existsSync(DB_PATH) && fs.existsSync(LEGACY_DB_PATH)) {
-  try {
-    fs.copyFileSync(LEGACY_DB_PATH, DB_PATH);
-    console.log(`[MIGRATION] Copied database from ${LEGACY_DB_PATH} to ${DB_PATH}`);
-    for (const suffix of ['-wal', '-shm']) {
-      if (fs.existsSync(LEGACY_DB_PATH + suffix)) {
-        fs.copyFileSync(LEGACY_DB_PATH + suffix, DB_PATH + suffix);
-      }
-    }
-  } catch (err) {
-    console.warn(`[MIGRATION] Could not copy legacy database: ${err.message}`);
-  }
-}
-
 // Create one crash-aware connection. Tests intentionally skip the cross-process
 // owner lock because Vitest workers can import this singleton in parallel.
 const managedDatabase = openManagedDatabase({

@@ -1,6 +1,6 @@
 {
   "app": {
-    "documentTitle": "MedHelp — 你的研究生 AI 助理"
+    "documentTitle": "medhelp-ukb"
   },
   "buttons": {
     "save": "保存",
@@ -789,7 +789,7 @@
     "desktop": {
       "autoUpdateStarting": "正在后台下载并校验桌面更新。下载完成后 MedHelp 会自动退出、安装并重新打开。",
       "manualUpgrade": "升级桌面版：",
-      "manualUpgradeHint": "当前是旧版桌面客户端，需要先下载安装包完成升级；安装 1.1.15 后，后续版本即可在客户端内自动下载和校验。",
+      "manualUpgradeHint": "请从当前项目的 GitHub Releases 下载并安装适合本机的桌面安装包。",
       "downloadBytes": "已下载 {{downloaded}} MB / {{total}} MB",
       "progressStates": {
         "checking": "正在检查桌面版本",

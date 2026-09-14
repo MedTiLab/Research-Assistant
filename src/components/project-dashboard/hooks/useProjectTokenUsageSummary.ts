@@ -27,6 +27,10 @@ export function useProjectTokenUsageSummary(projects: Project[]) {
     const fetchProjectTokenUsageSummary = async () => {
       try {
         const response = await api.projectTokenUsageSummary(projects);
+        if (response.status === 410) {
+          if (!cancelled) setTokenUsageSummary(null);
+          return;
+        }
         if (!response.ok) {
           throw new Error(`Failed to fetch token usage summary: ${response.status}`);
         }

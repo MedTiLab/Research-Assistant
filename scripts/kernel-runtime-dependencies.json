@@ -1,5 +1,4 @@
 {
   "@embedpdf/fonts-sc": "1.0.0",
-  "@openai/codex": "0.146.0",
   "pdfkit": "^0.19.1"
 }
