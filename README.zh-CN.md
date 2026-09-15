@@ -93,6 +93,11 @@ Research Assistant 是面向研究生和科研人员的**开源 AI 科研助理*
 
 **UKB 是科研助理内置的一项免费小工具。** 在新对话中选择「设计与分析 → UKB」，即可带入 UKB 任务模板和对应技能，辅助查询 UK Biobank 字段与编码、提取研究变量，并衔接后续分析。
 
+**也可以单独下载 UKB Skill，用于数据提取：**
+
+- [查看 UKB 数据提取 Skill（ukb-extract-analysis）](https://github.com/MedTiLab/Research-Assistant/tree/main/skills/ukb-extract-analysis)
+- [下载仓库 ZIP](https://github.com/MedTiLab/Research-Assistant/archive/refs/heads/main.zip)，解压后取出完整的 `skills/ukb-extract-analysis` 文件夹，按所用 Agent 的技能安装方式导入，即可配合自己的数据文件夹和变量需求开展提取。
+
 **已有自己的 UK Biobank 数据？** 直接在对话中告诉 Agent 数据文件夹地址，并说明研究问题或需要提取的变量。Agent 可结合字段与编码查询，定位数据文件、提取研究变量，再逐步推进数据清理、统计分析和结果整理；你可以在同一对话中继续补充要求、调整变量和分析方案。
 
 例如：
