@@ -408,7 +408,7 @@ export async function addWorkspaceArchiveEntries(archive, absoluteDirPath, relat
 }
 
 // Keep date-grouped conversation workspaces under the MedHelpSec document root.
-const DEFAULT_WORKSPACES_ROOT = path.join(os.homedir(), 'Documents', 'MedHelpSec');
+const DEFAULT_WORKSPACES_ROOT = path.join(os.homedir(), 'Documents', 'medhelp-ukb');
 
 function getCompatibleWorkspaceRootSync() {
   if (process.env.WORKSPACES_ROOT) {
@@ -832,12 +832,13 @@ router.put('/workspace-root', async (req, res) => {
 
     // If null/empty, reset to default
     if (!newPath) {
+      const defaultRoot = userId ? await getDefaultUserWorkspaceRoot(userId) : (process.env.WORKSPACES_ROOT || DEFAULT_WORKSPACES_ROOT);
+      await ensureDirectory(defaultRoot);
       if (userId) {
         userDb.updateWorkspaceRoot(userId, null);
       } else {
         await setWorkspaceRootInConfig(null);
       }
-      const defaultRoot = userId ? await getDefaultUserWorkspaceRoot(userId) : (process.env.WORKSPACES_ROOT || DEFAULT_WORKSPACES_ROOT);
       return res.json({
         success: true,
         path: defaultRoot,
@@ -868,7 +869,10 @@ router.put('/workspace-root', async (req, res) => {
       return res.status(400).json({ error: 'Cannot use system-critical directories' });
     }
 
-    const validation = await validateWorkspacePath(absolutePath, getRequestWorkspacePathOptions(req));
+    const validation = await validateWorkspacePath(absolutePath, {
+      ...getRequestWorkspacePathOptions(req),
+      allowAnySafePath: !IS_PLATFORM || Boolean(req.localKernelSession),
+    });
     if (!validation.valid) {
       return res.status(400).json({ error: validation.error });
     }

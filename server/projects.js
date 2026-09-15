@@ -72,7 +72,7 @@ import { extractVisibleUserContent } from '../shared/visibleUserContent.js';
 const DRCLAW_SKILLS_DIR = resolveSystemSkillsDir();
 const PROJECT_SKILL_FOLDERS = ['.claude', '.agents', '.codex'];
 const CURRENT_DEFAULT_WORKSPACES_ROOT = os.homedir();
-const DEFAULT_CONVERSATION_WORKSPACES_ROOT = path.join(os.homedir(), 'Documents', 'MedHelpSec');
+const DEFAULT_CONVERSATION_WORKSPACES_ROOT = path.join(os.homedir(), 'Documents', 'medhelp-ukb');
 const LEGACY_DEFAULT_WORKSPACES_ROOTS = [
   path.join(os.homedir(), 'medhelp_workspace'),
   path.join(os.homedir(), 'medhelp'),

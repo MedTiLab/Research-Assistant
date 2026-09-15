@@ -23,7 +23,7 @@ function resolveHomeDir(options = {}) {
 }
 
 function resolveDefaultWorkspaceRoot(options = {}) {
-  return path.join(resolveHomeDir(options), 'Documents', 'MedHelpSec');
+  return path.join(resolveHomeDir(options), 'Documents', 'medhelp-ukb');
 }
 
 export function expandEnvironmentSetupPath(value, options = {}) {

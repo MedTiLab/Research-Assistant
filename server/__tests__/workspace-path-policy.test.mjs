@@ -60,13 +60,13 @@ describe('workspace path policy', () => {
     }
   });
 
-  it('defaults customer workspaces to Documents/MedHelpSec without a user subfolder', async () => {
+  it('defaults customer workspaces to Documents/medhelp-ukb without a user subfolder', async () => {
     const { database: db, projectsRoutes } = await loadWorkspaceModules();
     const user = db.userDb.createUser('customer', 'hash');
 
     const defaultRoot = await projectsRoutes.getDefaultUserWorkspaceRoot(user.id);
 
-    expect(defaultRoot).toBe(path.join(tempRoot, 'Documents', 'MedHelpSec'));
+    expect(defaultRoot).toBe(path.join(tempRoot, 'Documents', 'medhelp-ukb'));
     expect(defaultRoot).not.toContain(`${path.sep}u-`);
   });
 

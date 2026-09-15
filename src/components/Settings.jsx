@@ -1182,6 +1182,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
       const data = await response.json();
       if (response.ok) {
         applyWorkspaceRootPayload(data);
+        await window.refreshProjects?.();
         setWorkspaceRootSaved(true);
         setTimeout(() => setWorkspaceRootSaved(false), 2000);
       } else {
@@ -1194,13 +1195,10 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
     }
   };
 
-  const resetWorkspaceRoot = () => {
-    const nextDisplay = displayWorkspacePath(workspaceRootDefault);
-    setWorkspaceRootDraft(nextDisplay);
-    setWorkspaceRootError('');
-    setDataPathError('');
-    setWorkspaceRootSaved(false);
+  const resetWorkspaceRoot = async () => {
+    if (dataPathSaving || workspaceRootSaving) return;
     setDataPathSaved(false);
+    await saveWorkspaceRoot(null);
   };
 
   const saveDataPathSettings = async () => {
@@ -1254,7 +1252,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
   };
 
   const fetchWorkspaceBrowserFolders = (dirPath, showHidden = workspaceBrowserShowHidden) => {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams({ purpose: 'connectFolder' });
     if (dirPath) params.set('path', dirPath);
     if (showHidden) params.set('showHidden', 'true');
 
@@ -1270,7 +1268,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
 
   const createWorkspaceBrowserFolderRequest = (folderPath) => {
     if (workspaceRootUsesLocalKernel) {
-      return fetchWithLocalNetworkAccess(`${localKernelHttpBaseUrl}/api/local/create-folder`, {
+      return fetchWithLocalNetworkAccess(`${localKernelHttpBaseUrl}/api/local/create-folder?purpose=connectFolder`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localKernelSessionToken}`,
@@ -1280,7 +1278,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
       });
     }
 
-    return api.createFolder(folderPath);
+    return api.createFolder(folderPath, { purpose: 'connectFolder' });
   };
 
   const loadWorkspaceBrowserFolders = async (dirPath, showHidden = workspaceBrowserShowHidden) => {
@@ -1306,10 +1304,25 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
   };
 
   const openWorkspaceBrowser = async () => {
+    if (!workspaceRootUsesLocalKernel && window.medhelpDesktop?.selectDirectory) {
+      setWorkspaceBrowserLoading(true);
+      setWorkspaceRootError('');
+      try {
+        const result = await window.medhelpDesktop.selectDirectory(
+          resolveDisplayedWorkspacePath(workspaceRootDraft) || workspaceRoot || workspaceRootDefault,
+        );
+        if (!result?.canceled && result?.path) chooseWorkspaceBrowserFolder(result.path);
+      } catch (error) {
+        setWorkspaceRootError(error.message || t('appearanceSettings.defaultProjectPath.browseFailed'));
+      } finally {
+        setWorkspaceBrowserLoading(false);
+      }
+      return;
+    }
     setWorkspaceBrowserOpen(true);
     setWorkspaceBrowserShowNewFolder(false);
     setWorkspaceBrowserNewFolderName('');
-    const startPath = workspaceRoot || workspaceRootDefault || '~';
+    const startPath = resolveDisplayedWorkspacePath(workspaceRootDraft) || workspaceRoot || workspaceRootDefault || '~';
     await loadWorkspaceBrowserFolders(startPath, workspaceBrowserShowHidden);
   };
 
@@ -1777,7 +1790,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
                       }}
                       placeholder={displayWorkspacePath(workspaceRootDefault)}
                       className="flex-1 text-sm font-mono"
-                      disabled={workspaceRootWaitingForLocalKernel || dataPathLoading || dataPathSaving}
+                      disabled={workspaceRootWaitingForLocalKernel || dataPathLoading || dataPathSaving || workspaceRootSaving}
                     />
                     <Button
                       type="button"
@@ -1795,7 +1808,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
                       variant="ghost"
                       size="sm"
                       onClick={resetWorkspaceRoot}
-                      disabled={workspaceRootWaitingForLocalKernel || dataPathSaving}
+                      disabled={workspaceRootWaitingForLocalKernel || dataPathSaving || workspaceRootSaving}
                       className="shrink-0 gap-2"
                     >
                       <RefreshCcw className="h-4 w-4" />
@@ -1835,7 +1848,7 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'user', onMenuC
                     type="button"
                     variant="outline"
                     onClick={() => { void loadDataPathSettings(); }}
-                    disabled={workspaceRootWaitingForLocalKernel || dataPathLoading || dataPathSaving}
+                    disabled={workspaceRootWaitingForLocalKernel || dataPathLoading || dataPathSaving || workspaceRootSaving}
                     className="gap-2"
                   >
                     <RefreshCcw className={`h-4 w-4 ${dataPathLoading ? 'animate-spin' : ''}`} />

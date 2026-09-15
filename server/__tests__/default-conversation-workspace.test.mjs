@@ -69,8 +69,8 @@ describe('default conversation workspace', () => {
 
     expect(general).toMatchObject({
       name: 'general-local',
-      fullPath: path.join(tempRoot, 'Documents', 'MedHelpSec'),
-      path: path.join(tempRoot, 'Documents', 'MedHelpSec'),
+      fullPath: path.join(tempRoot, 'Documents', 'medhelp-ukb'),
+      path: path.join(tempRoot, 'Documents', 'medhelp-ukb'),
       pathExists: true,
     });
   });

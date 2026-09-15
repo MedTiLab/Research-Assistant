@@ -26,7 +26,7 @@ const EMPTY_FORM = {
   ccSwitchDataDir: '~/.cc-switch',
   pythonExecutable: '',
   rExecutable: '',
-  workspaceRoot: '~/Documents/MedHelpSec',
+  workspaceRoot: '~/Documents/medhelp-ukb',
 };
 
 const SETUP_SECTIONS = [

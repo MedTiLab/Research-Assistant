@@ -34,9 +34,9 @@ const ProjectCreationWizard = ({ onClose, onProjectCreated, connectFolderOnly = 
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
   const [creatingFolder, setCreatingFolder] = useState(false);
-  const [workspaceRoot, setWorkspaceRoot] = useState('~/Documents/MedHelpSec');
-  const [workspaceRootDefault, setWorkspaceRootDefault] = useState('~/Documents/MedHelpSec');
-  const [workspaceRootDisplay, setWorkspaceRootDisplay] = useState('~/Documents/MedHelpSec');
+  const [workspaceRoot, setWorkspaceRoot] = useState('~/Documents/medhelp-ukb');
+  const [workspaceRootDefault, setWorkspaceRootDefault] = useState('~/Documents/medhelp-ukb');
+  const [workspaceRootDisplay, setWorkspaceRootDisplay] = useState('~/Documents/medhelp-ukb');
 
   const normalizePath = (value) => String(value || '').replace(/\\/g, '/').replace(/\/+$/, '');
 
