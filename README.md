@@ -8,8 +8,39 @@ Research Assistant 是一个面向研究生和科研人员的开源 AI 科研工
 - 界面名称：`MedHelp`
 - npm 包名：`medhelpsec`
 - 开源仓库：<https://github.com/MedTiLab/Research-Assistant>
-- qq 群 <img width="310" height="360" alt="image" src="https://github.com/user-attachments/assets/435e8280-ebfb-4f8c-a65c-ff64b534e70a" />
-- 点击链接加入群聊【Research-Assistant 官方群】：https://qm.qq.com/q/nHa7cJDwzI
+
+## UKB 免费分析智能体与 MedHelp
+
+**UKB 分析智能体目前免费开放使用，欢迎大家体验、交流和分享！** 我们希望让更多科研人员用上 AI 分析工具，也欢迎在社群中反馈使用体验、提出功能建议，一起完善科研工作流。
+
+如果你需要覆盖更多数据库的研究支持，可以了解我们另一款产品 **MedHelp**。MedHelp 是面向医学数据库研究的**付费产品**，围绕 **31 个数据库的分析场景**进行适配，将变量检索、数据提取、统计建模、图表生成和论文写作串联在同一个工作区中。
+
+- **多数据库研究支持**：覆盖 UK Biobank、NHANES、MIMIC、CHARLS、HRS、SHARE、SEER 等，兼顾重症医学、肿瘤、老龄化、公共卫生与社会调查等研究方向。
+- **贴合实际分析流程**：从研究问题和变量选择，到队列构建、统计分析与结果整理，帮助持续推进数据库研究。
+- **具体方案联系咨询**：MedHelp 的产品功能、适用数据库、使用方式及收费方案，请通过下方个人微信联系沟通。
+
+本仓库开源的是 **Research Assistant**；上述 **MedHelp 为另行提供的非开源付费产品**。UKB 分析智能体目前免费使用，不代表 MedHelp 付费服务免费。
+
+欢迎把这个开源项目和演示视频分享给有需要的同学、同事及课题组，也欢迎加入社群交流使用经验、提出建议或沟通合作。
+
+### 产品演示视频
+
+[▶ 点击观看 MedHelp 演示视频（约 58 秒）](public/videos/medhelp-demo.mp4)
+
+[下载 MP4 视频](https://github.com/MedTiLab/Research-Assistant/raw/refs/heads/main/public/videos/medhelp-demo.mp4)
+
+### 联系我们与社群交流
+
+| 微信交流群 | 个人微信 · 产品咨询 |
+| --- | --- |
+| <img src="public/community/medhelp-wechat-group.png" alt="智能体 MedHelp 微信交流群二维码" width="280" /> | <img src="public/community/medhelp-personal-wechat.jpg" alt="个人微信 Pa Gen 二维码，扫码咨询 MedHelp" width="280" /> |
+| 交流使用经验、反馈问题与功能建议 | 咨询 MedHelp 功能、收费方案及合作事宜 |
+
+微信群二维码图片标注 **9 月 20 日前有效**；如二维码过期或无法入群，请添加上方个人微信联系。添加好友时可备注「UKB / MedHelp 咨询」，方便沟通。
+
+**QQ 交流群**：[点击加入 Research-Assistant 官方群](https://qm.qq.com/q/nHa7cJDwzI)
+
+<img src="https://github.com/user-attachments/assets/435e8280-ebfb-4f8c-a65c-ff64b534e70a" alt="Research-Assistant 官方 QQ 群二维码" width="280" />
 
 ## 界面预览
 
