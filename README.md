@@ -1,12 +1,58 @@
 # Research Assistant · 科研助理
 
+## 联系我们与社群交流
+
+<table>
+  <thead>
+    <tr>
+      <th width="33%" align="center">微信交流群</th>
+      <th width="33%" align="center">个人微信 · 产品咨询</th>
+      <th width="33%" align="center">QQ 交流群</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="middle"><a href="public/community/medhelp-wechat-group.png"><img src="public/community/medhelp-wechat-group.png" alt="智能体 MedHelp 微信交流群二维码" height="240" /></a></td>
+      <td align="center" valign="middle"><a href="public/community/medhelp-personal-wechat.jpg"><img src="public/community/medhelp-personal-wechat.jpg" alt="个人微信 Pa Gen 二维码" height="240" /></a></td>
+      <td align="center" valign="middle"><a href="https://qm.qq.com/q/nHa7cJDwzI"><img src="https://github.com/user-attachments/assets/435e8280-ebfb-4f8c-a65c-ff64b534e70a" alt="Research-Assistant 官方 QQ 群二维码" height="240" /></a></td>
+    </tr>
+    <tr>
+      <td align="center">使用交流 · 问题反馈</td>
+      <td align="center">功能咨询 · 收费方案 · 合作</td>
+      <td align="center"><a href="https://qm.qq.com/q/nHa7cJDwzI">点击加入官方 QQ 群</a></td>
+    </tr>
+  </tbody>
+</table>
+
+微信群二维码图片标注 **9 月 20 日前有效**；如过期或无法入群，请添加个人微信联系。添加好友时可备注「科研助理 / MedHelp 咨询」。点击微信二维码可查看原图。
+
+## MedHelp 付费产品
+
+如果你需要更广泛的医学数据库研究支持，可以了解我们另外一款产品 **MedHelp**。
+
+**MedHelp 是非开源的付费产品，适配 31 个数据库的分析场景**，涵盖 UK Biobank、NHANES、MIMIC、CHARLS、HRS、SHARE、SEER 等数据库。它把变量检索、数据提取、队列构建、统计建模、图表生成和论文写作串联在同一个工作区，贴合医学数据库研究的实际流程。
+
+| 项目 / 工具 | 定位与使用方式 |
+| --- | --- |
+| Research Assistant 科研助理 | 本仓库开源的科研工作区，支持项目协作与科研日常管理 |
+| 内置 UKB 分析小工具 | 科研助理中的一项工具，目前免费开放使用 |
+| MedHelp | 另一款非开源付费产品，面向 31 个数据库的分析场景；功能、使用方式和收费方案请联系咨询 |
+
+欢迎大家体验科研助理，交流使用经验、反馈建议，也欢迎把项目分享给有需要的同学、同事和课题组。MedHelp 的产品咨询与合作沟通，请添加下方个人微信。
+
+### MedHelp 产品演示
+
+[▶ 观看 MedHelp 演示视频（约 58 秒）](public/videos/medhelp-demo.mp4) · [下载 MP4](https://github.com/MedTiLab/Research-Assistant/raw/refs/heads/main/public/videos/medhelp-demo.mp4)
+
+## 项目介绍
+
 > 把科研对话、项目文件、组会、论文、导师反馈和日常计划放进同一个工作台。
 
 Research Assistant 是面向研究生和科研人员的**开源 AI 科研助理**。你可以围绕项目与 AI 协作，整理研究材料，跟进组会和论文进度，也可以调用内置科研工具完成具体任务。
 
 **UKB 分析智能体是科研助理内置的一项免费小工具**，用于辅助 UK Biobank 字段查询、变量提取与后续分析。它是整个科研工作区的一部分。
 
-当前源码版本为 **0.1.1**，npm 包名为 `medhelpsec`，Agent 执行使用 **Pi 运行时**。界面中仍保留部分 MedHelp 名称；本开源项目与另行提供的 MedHelp 付费产品分别介绍，详见下方产品说明。
+当前源码版本为 **0.1.1**，npm 包名为 `medhelpsec`，Agent 执行使用 **Pi 运行时**。界面中仍保留部分 MedHelp 名称；本开源项目与另行提供的 MedHelp 付费产品分别介绍，详见上方产品说明。
 
 [功能概览](#功能概览) · [快速开始](#快速开始) · [MedHelp 付费产品](#medhelp-付费产品) · [交流与联系](#联系我们与社群交流)
 
@@ -173,50 +219,6 @@ Research-Assistant/
 ├── public/                          # 图标、截图、二维码与演示视频
 └── test/                            # 集成测试与验证脚本
 ```
-
-## MedHelp 付费产品
-
-如果你需要更广泛的医学数据库研究支持，可以了解我们另外一款产品 **MedHelp**。
-
-**MedHelp 是非开源的付费产品，适配 31 个数据库的分析场景**，涵盖 UK Biobank、NHANES、MIMIC、CHARLS、HRS、SHARE、SEER 等数据库。它把变量检索、数据提取、队列构建、统计建模、图表生成和论文写作串联在同一个工作区，贴合医学数据库研究的实际流程。
-
-| 项目 / 工具 | 定位与使用方式 |
-| --- | --- |
-| Research Assistant 科研助理 | 本仓库开源的科研工作区，支持项目协作与科研日常管理 |
-| 内置 UKB 分析小工具 | 科研助理中的一项工具，目前免费开放使用 |
-| MedHelp | 另一款非开源付费产品，面向 31 个数据库的分析场景；功能、使用方式和收费方案请联系咨询 |
-
-欢迎大家体验科研助理，交流使用经验、反馈建议，也欢迎把项目分享给有需要的同学、同事和课题组。MedHelp 的产品咨询与合作沟通，请添加下方个人微信。
-
-### MedHelp 产品演示
-
-[▶ 观看 MedHelp 演示视频（约 58 秒）](public/videos/medhelp-demo.mp4) · [下载 MP4](https://github.com/MedTiLab/Research-Assistant/raw/refs/heads/main/public/videos/medhelp-demo.mp4)
-
-## 联系我们与社群交流
-
-<table>
-  <thead>
-    <tr>
-      <th width="33%" align="center">微信交流群</th>
-      <th width="33%" align="center">个人微信 · 产品咨询</th>
-      <th width="33%" align="center">QQ 交流群</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center" valign="middle"><a href="public/community/medhelp-wechat-group.png"><img src="public/community/medhelp-wechat-group.png" alt="智能体 MedHelp 微信交流群二维码" height="240" /></a></td>
-      <td align="center" valign="middle"><a href="public/community/medhelp-personal-wechat.jpg"><img src="public/community/medhelp-personal-wechat.jpg" alt="个人微信 Pa Gen 二维码" height="240" /></a></td>
-      <td align="center" valign="middle"><a href="https://qm.qq.com/q/nHa7cJDwzI"><img src="https://github.com/user-attachments/assets/435e8280-ebfb-4f8c-a65c-ff64b534e70a" alt="Research-Assistant 官方 QQ 群二维码" height="240" /></a></td>
-    </tr>
-    <tr>
-      <td align="center">使用交流 · 问题反馈</td>
-      <td align="center">功能咨询 · 收费方案 · 合作</td>
-      <td align="center"><a href="https://qm.qq.com/q/nHa7cJDwzI">点击加入官方 QQ 群</a></td>
-    </tr>
-  </tbody>
-</table>
-
-微信群二维码图片标注 **9 月 20 日前有效**；如过期或无法入群，请添加个人微信联系。添加好友时可备注「科研助理 / MedHelp 咨询」。点击微信二维码可查看原图。
 
 ## 数据与贡献
 
